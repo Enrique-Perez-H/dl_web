@@ -5,9 +5,18 @@ Source: the public Deadlock API asset list (https://api.deadlock-api.com/v1/asse
 serves the images extracted from the game files. Names are matched to the items in data.json.
 
     python3 scripts/fetch_item_icons.py
+
+If Pillow is installed (pip install pillow) icons are resized to 128px WebP (about 4 KB each instead of 25 KB).
 """
-import json, re, sys, urllib.request
+import io, json, re, sys, urllib.request
 from pathlib import Path
+
+try:
+    from PIL import Image
+except ImportError:
+    Image = None
+
+SIZE = 128
 
 ROOT = Path(__file__).resolve().parent.parent
 API = "https://api.deadlock-api.com/v1/assets/items"
@@ -36,7 +45,14 @@ def main():
         if s not in wanted or s in have or not url:
             continue
         ext = Path(url.split("?")[0]).suffix or ".png"
-        (OUT / f"{s}{ext}").write_bytes(get(url))
+        data = get(url)
+        if Image is not None and ext in (".png", ".webp"):
+            im = Image.open(io.BytesIO(data)).convert("RGBA")
+            im.thumbnail((SIZE, SIZE), Image.LANCZOS)
+            buf = io.BytesIO()
+            im.save(buf, "WEBP", quality=88, method=6)
+            data, ext = buf.getvalue(), ".webp"
+        (OUT / f"{s}{ext}").write_bytes(data)
         have[s] = f"{s}{ext}"
     (OUT / "index.json").write_text(json.dumps(have, indent=0, sort_keys=True) + "\n")
     print(f"{len(have)}/{len(wanted)} icons saved to {OUT}")
