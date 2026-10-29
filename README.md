@@ -41,7 +41,7 @@ Pulls the icons from the community Deadlock assets API (`assets.deadlock-api.com
     python3 scripts/update_stats.py                       # last 14 days, all ranks
     python3 scripts/update_stats.py --days 7 --min-badge 100 --match-mode ranked
 
-Refreshes winrates, pick rates, games, best-winrate items and item costs in `data.json` from the public Deadlock API (`api.deadlock-api.com`). The tier list itself, builds, plans and news are still edited by hand.
+Refreshes winrates, pick rates, games, best-winrate items, item costs, same-lane matchups and best lane partners in `data.json` from the public Deadlock API (`api.deadlock-api.com`). The tier list itself, builds, plans and news are still edited by hand.
 
 ## Sharing builds in Deadlock Hispano
 
@@ -50,3 +50,7 @@ To show a button that opens the server, put its invite link in `data.json` under
 Links reopen the exact build, but Discord shows a generic preview for them; per-build link previews would need a small server.
 
 The tier list maker (`#mi-tier`) works the same way: drag heroes into tiers (or tap a hero and pick a tier), reorder, then copy a Discord message, copy or download a PNG, or copy the link. "Cargar la de zok3r" starts from the official list.
+
+## Lane odds and partners
+
+The comparison page shows a slider with the estimated chance of winning the lane (`laneOdds()` in `app.js`): the log5 estimate from both overall winrates, blended with the real results of matches where the two heroes laned together (`lane.vs` in `data.json`, from the API's counter stats with `same_lane_filter`). It is the chance of winning the *match* in that matchup, used as an approximation for the lane. Best lane partners (`lane.duo`) are the same-lane allies whose pair winrate beats what both winrates predict.

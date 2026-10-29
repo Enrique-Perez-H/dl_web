@@ -163,6 +163,7 @@ function heroView(slug){
     <div class="blk"><h3>Objetos con mejor winrate</h3>
       ${best.length ? `<div class="best">${best.map(([n,w])=>`<div class="bi" style="--cat:${CAT[(S.items[n]||{c:'s'}).c]}"><i></i><a class="il" href="#objeto/${islug(n)}">${ico(n)}${esc(n)}</a><b>${pct(w)}</b></div>`).join("")}</div>
       <p class="fine">De ${SRC()} (${scopeTxt()}), entre objetos comprados en al menos el 5% de las partidas del héroe. Casi todos son de final: quien llega a comprarlos suele ir ganando ya, así que indican qué cerrar, no qué comprar primero.</p>` : '<p class="fine">No hay datos suficientes de objetos para este héroe ahora mismo.</p>'}</div>
+    ${heroLaneBlock(slug)}
     <div class="blk"><h3>Líneas más difíciles</h3><div class="lanes">${h.hard.map(s=>`<a class="lane" href="#h-${s}">${img(s)}${esc(H(s).name)}</a>`).join("")}</div></div>
   </section>`;
 }
@@ -236,6 +237,60 @@ function newsView(){
 const hchip = s => `<a class="lane" href="#h-${s}">${img(s)}${esc(H(s).name)}</a>`;
 const catChips = (attr,cur) => [["all","Todos"],...Object.keys(CAT).map(c=>[c,CATN[c]])].map(([k,l])=>`<button class="chip" data-${attr}="${k}" aria-pressed="${cur===k}">${l}</button>`).join("");
 
+// --- lane odds: direct same-lane results blended with what the two overall winrates predict ---
+const LANE_K = 1000;
+const dpts = n => (n>=0?"+":"−") + Math.abs(n).toLocaleString("es-ES",{minimumFractionDigits:1,maximumFractionDigits:1});
+function laneOdds(a,b){
+  const wa = (S.stats.hero[a].wr ?? 50)/100, wb = (S.stats.hero[b].wr ?? 50)/100;
+  const base = wa*(1-wb)/(wa*(1-wb)+wb*(1-wa));   // log5: chance of a beating b from overall winrates
+  const ab = (S.lane.vs[a]||{})[b], ba = (S.lane.vs[b]||{})[a];
+  let w = 0, n = 0; if (ab){ w += ab[0]; n += ab[1]; } if (ba){ w += ba[1]-ba[0]; n += ba[1]; }
+  return {p:(w+LANE_K*base)/(n+LANE_K)*100, base:base*100, games:ab?ab[1]:ba?ba[1]:0, direct:n>0, sig:ab||null};
+}
+function laneVerdict(p,a,b){
+  const d = Math.abs(p-50), who = esc(H(p>=50?a:b).name);
+  return d<1.5 ? "Línea igualada" : d<3.5 ? `Ligera ventaja para ${who}` : d<6 ? `Ventaja clara para ${who}` : `Gran ventaja para ${who}`;
+}
+function duoList(slug){
+  const l = (S.lane.duo||{})[slug] || [];
+  if (!l.length) return '<p class="fine">Sin datos suficientes.</p>';
+  return `<div class="duos">${l.map(([o,w,n,lift])=>`<a class="duo" href="#h-${o}">${img(o)}<span><b>${esc(H(o).name)}</b><small>${pct(w/n*100)} · ${kfmt(n)} partidas</small></span><em class="${lift>=0?'up':'dn'}">${dpts(lift)}</em></a>`).join("")}</div>`;
+}
+function sigBar(lab,share,a,b){
+  const x = (share*100);
+  return `<div class="sig"><span>${lab}</span><div class="sbar" role="img" aria-label="${lab}: ${esc(H(a).name)} ${x.toFixed(0)}%, ${esc(H(b).name)} ${(100-x).toFixed(0)}%"><i style="width:${x}%"></i></div><em>${x.toFixed(0)} / ${(100-x).toFixed(0)}</em></div>`;
+}
+function laneBlock(a,b){
+  const o = laneOdds(a,b), p = o.p, knob = Math.min(Math.max(50+(p-50)*5,3),97);
+  const sig = o.sig ? `<div class="sigs"><h4>Cuando coinciden en línea</h4>${sigBar("Kills",o.sig[2],a,b)}${sigBar("Farm (last hits)",o.sig[3],a,b)}${sigBar("Almas",o.sig[4],a,b)}<p class="fine">Reparto entre los dos al final de la partida, ${esc(H(a).name)} / ${esc(H(b).name)}. Son datos de la partida entera, no solo de la fase de línea.</p></div>` : "";
+  return `<div class="blk lanebox"><h3>Probabilidad de ganar la línea</h3>
+    <div class="lanetop"><span class="lw a">${img(a)}<b>${esc(H(a).name)}</b></span><span class="lw b"><b>${esc(H(b).name)}</b>${img(b)}</span></div>
+    <div class="lslider" role="img" aria-label="${esc(H(a).name)} ${p.toFixed(1)}% frente a ${esc(H(b).name)} ${(100-p).toFixed(1)}%">
+      <i class="la" style="width:${knob}%"></i><i class="lb" style="width:${100-knob}%"></i>
+      <span class="lmid"></span><span class="lknob" style="left:${knob}%"></span></div>
+    <div class="lscale"><span>40%</span><span>50%</span><span>60%</span></div>
+    <div class="lnums"><b class="a">${pct(p)}</b><span>${laneVerdict(p,a,b)}</span><b class="b">${pct(100-p)}</b></div>
+    <p class="fine">${o.direct ? `Basado en ${kfmt(o.games)} partidas en las que ambos jugaron la misma línea, combinadas con el winrate general de cada uno.` : `Sin partidas suficientes entre ellos en la misma línea: estimado solo con sus winrates generales.`} El marcador usa una escala ampliada de 40% a 60% para ${esc(H(a).name)}.</p>
+    ${sig}
+    <details class="method"><summary>Cómo se calcula</summary><p class="fine">Se parte del winrate de cada héroe (fórmula log5: ${pct(o.base)} para ${esc(H(a).name)}) y se mezcla con el resultado real de las partidas en que ambos coincidieron en la misma línea, con más peso cuanto más partidas haya. Es la probabilidad de ganar la <em>partida</em> en ese enfrentamiento, que usamos como aproximación de ganar la línea: no mide la línea por sí sola, y no tiene en cuenta objetos, compañero ni rango. Datos de ${SRC()} (${scopeTxt()}).</p></details>
+  </div>`;
+}
+function partnersBlock(a,b){
+  return `<div class="blk"><h3>Mejores compañeros de línea</h3><div class="duocols">
+    <div><h4>${esc(H(a).name)}</h4>${duoList(a)}</div><div><h4>${esc(H(b).name)}</h4>${duoList(b)}</div></div>
+    <p class="fine">Aliados que, jugando en la misma línea, ganan más de lo que predicen los winrates de ambos por separado. El número verde es esa diferencia en puntos de winrate.</p></div>`;
+}
+function heroLaneBlock(slug){
+  if (!S.lane) return "";
+  const odds = Object.keys(S.heroes).filter(x=>x!==slug && (S.lane.vs[slug]||{})[x]).map(x=>({x, p:laneOdds(slug,x).p})).sort((u,v)=>v.p-u.p);
+  if (!odds.length) return "";
+  const chip = o => `<a class="lane" href="#comparar/${slug}/${o.x}">${img(o.x)}${esc(H(o.x).name)} <small>${pct(o.p)}</small></a>`;
+  return `<div class="blk"><h3>Línea según los datos</h3>
+    <div class="duocols"><div><h4>Mejores enfrentamientos</h4><div class="lanes">${odds.slice(0,5).map(chip).join("")}</div></div><div><h4>Peores enfrentamientos</h4><div class="lanes">${odds.slice(-5).reverse().map(chip).join("")}</div></div></div>
+    <p class="fine">Probabilidad de ganar con ${esc(H(slug).name)} cuando coincide en línea con cada héroe. Pulsa uno para compararlos.</p>
+    <h4 style="margin-top:20px">Mejores compañeros de línea</h4>${duoList(slug)}</div>`;
+}
+
 function itemCard(n){
   const it = S.items[n], u = (USE[n]||[]).length, t = costTier(it.cost);
   return `<a class="icard" style="--cat:${CAT[it.c]}" href="#objeto/${islug(n)}">${ico(n,"lg")}<div><b>${esc(n)}</b><span>${CATN[it.c]}${t?` · T${t}`:''}${it.cost?` · ${souls(it.cost)}`:''}</span>${u?`<small>${u} ${u===1?'build':'builds'}</small>`:''}</div></a>`;
@@ -287,6 +342,7 @@ function cmpView(a,b){
   return `<section class="wrap">
     <div class="sh"><h2>Comparar héroes</h2><p>${esc(H(a).name)} vs ${esc(H(b).name)}</p></div>${pick}
     ${notes.length?`<p class="tnote">${notes.join(" ")}</p>`:''}
+    ${S.lane?laneBlock(a,b)+partnersBlock(a,b):''}
     <div class="tblwrap"><table class="cmp"><thead><tr><th></th><th><a class="hn" href="#h-${a}">${img(a)}<span>${esc(H(a).name)}</span></a></th><th><a class="hn" href="#h-${b}">${img(b)}<span>${esc(H(b).name)}</span></a></th></tr></thead><tbody>
       ${row("Mi tier",`<span class="tb" style="--tc:${TC[tierOf(a)]}">${tierOf(a)}</span>`,`<span class="tb" style="--tc:${TC[tierOf(b)]}">${tierOf(b)}</span>`,w(ta,tb,false))}
       ${row("Rol",esc(H(a).role),esc(H(b).role))}

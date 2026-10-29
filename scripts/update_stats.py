@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Refresh winrates, pick rates, games, best-winrate items and item costs in data.json from the public Deadlock API.
+"""Refresh winrates, pick rates, games, best-winrate items, item costs and same-lane matchups/duo partners in data.json from the public Deadlock API.
 
     python3 scripts/update_stats.py                      # last 14 days, all ranks, normal mode
     python3 scripts/update_stats.py --days 7 --min-badge 100 --match-mode ranked
@@ -30,6 +30,38 @@ def get(path, **params):
                 raise
             print(f"retry {path}: {e}", file=sys.stderr)
             time.sleep(3 * (attempt + 1))
+
+
+PARTNER_K = 300   # shrinkage (matches) pulling a pair's synergy toward "no synergy"
+PARTNERS_N = 6
+
+
+def lane_data(flt, hero_ids, slug_by_id, hero_stats):
+    """Same-lane matchups (vs) and best same-lane ally pairs (duo) from the counter and synergy endpoints.
+
+    vs[a][b]   = [wins of a, matches, kill share, last-hit share, net-worth share] when a and b laned against each other
+    duo[a]     = [[ally, wins, matches, lift in points over what the two winrates predict], ...]
+    """
+    vs = {}
+    for r in get("/analytics/hero-counter-stats", same_lane_filter="true", min_matches=100, **flt):
+        a, b = slug_by_id.get(r["hero_id"]), slug_by_id.get(r["enemy_hero_id"])
+        if not a or not b or not r["matches_played"]:
+            continue
+        share = lambda x, y: round(x / (x + y), 3) if x + y else 0.5
+        vs.setdefault(a, {})[b] = [r["wins"], r["matches_played"], share(r["kills"], r["enemy_kills"]),
+                                   share(r["last_hits"], r["enemy_last_hits"]), share(r["networth"], r["enemy_networth"])]
+    wr = {s: (h["wr"] or 50) / 100 for s, h in hero_stats.items()}
+    pairs = {}
+    for r in get("/analytics/hero-synergy-stats", same_lane_filter="true", min_matches=100, **flt):
+        a, b = slug_by_id.get(r["hero_id1"]), slug_by_id.get(r["hero_id2"])
+        if not a or not b or not r["matches_played"]:
+            continue
+        for x, y in ((a, b), (b, a)):
+            exp = min(max(wr[x] + wr[y] - 0.5, 0.05), 0.95)
+            lift = (r["wins"] - r["matches_played"] * exp) / (r["matches_played"] + PARTNER_K) * 100
+            pairs.setdefault(x, []).append([y, r["wins"], r["matches_played"], round(lift, 1)])
+    duo = {s: sorted(l, key=lambda q: -q[3])[:PARTNERS_N] for s, l in pairs.items()}
+    return {"vs": vs, "duo": duo}
 
 
 def main():
@@ -73,6 +105,7 @@ def main():
         print(f"{slug:14s} wr {out[slug]['wr']:5.1f}  pick {out[slug]['pick']:5.1f}  games {r['matches']:>8}")
         time.sleep(0.3)
 
+    S["lane"] = lane_data(flt, hero_ids, slug_by_id, out)
     S["stats"] = {
         "src": "https://deadlock-api.com", "srcName": "Deadlock API", "date": date.today().isoformat(),
         "scope": {"days": a.days, "matchMode": a.match_mode, "minBadge": a.min_badge, "maxBadge": a.max_badge},
