@@ -9,7 +9,7 @@ const CATN = {w:"Arma",v:"Vitalidad",s:"Espíritu"};
 const TYPES = {parche:["Parche","var(--t-b)"],heroe:["Héroe nuevo","var(--t-splus)"],discord:["Discord","var(--spirit)"],ranked:["Ranked","var(--t-s)"]};
 const MES = ["ene","feb","mar","abr","may","jun","jul","ago","sep","oct","nov","dic"];
 let wrSort = {k:"wr",dir:-1};
-let iq = "", icat = "all", itier = 0, isort = "cost", bq = "", bcat = "all", bm = null;
+let iq = "", icat = "all", itier = 0, isort = "cost", bq = "", bcat = "all", bm = null, tl = null, tq = "", trole = "Todos", dragging = null;
 let edit = false, canWrite = false, dirty = false, filterRole = "Todos", query = "", popFor = null, artifactNs = null;
 
 const $ = (s,el=document)=>el.querySelector(s);
@@ -30,6 +30,7 @@ const souls = n => n>=1000 ? (n/1000).toLocaleString("es-ES",{maximumFractionDig
 
 function route(){
   const h = (location.hash||"").slice(1).split("?")[0];
+  if (h==="mi-tier") return {v:"tl"};
   if (h==="objetos") return {v:"items"};
   if (h.startsWith("objeto/") && ISL[h.slice(7)]) return {v:"item",name:ISL[h.slice(7)]};
   if (h==="comparar" || h.startsWith("comparar/")){ const [,a,b] = h.split("/"); return {v:"cmp",a:S.heroes[a]?a:"",b:S.heroes[b]?b:""}; }
@@ -47,7 +48,7 @@ function header(r){
   const a = (id,href,txt)=>`<a href="#${href}" ${cur===id?'aria-current="page"':''}>${txt}</a>`;
   return `<header class="top"><div class="wrap">
     <a class="brand" href="#tier"><b>zok<span>3</span>r</b><small>Deadlock meta</small></a>
-    <nav class="tabs" aria-label="Secciones">${a("tier","tier","Tier list")}${a("builds","builds","Builds")}${a("wr","winrates","Winrates")}${a("items","objetos","Objetos")}${a("cmp","comparar","Comparar")}${a("mk","crear","Mi build")}${a("news","noticias","Noticias")}<a href="#coaching" class="cta-tab" ${cur==="coach"?'aria-current="page"':''}>Coaching</a></nav>
+    <nav class="tabs" aria-label="Secciones">${a("tier","tier","Tier list")}${a("builds","builds","Builds")}${a("wr","winrates","Winrates")}${a("items","objetos","Objetos")}${a("cmp","comparar","Comparar")}${a("mk","crear","Mi build")}${a("tl","mi-tier","Mi tier list")}${a("news","noticias","Noticias")}<a href="#coaching" class="cta-tab" ${cur==="coach"?'aria-current="page"':''}>Coaching</a></nav>
     <div class="gs"><input id="gs" type="search" placeholder="Buscar héroe u objeto…" autocomplete="off" aria-label="Buscar héroe u objeto"><div class="gsr" id="gsr" hidden></div></div>
   </div></header>`;
 }
@@ -62,7 +63,7 @@ function tierView(){
       <h1>Tier list de <em>Deadlock</em><br>en español</h1>
       <p>Mi ranking para ranked tras ${esc(S.meta.patchLabel)}. Pulsa un héroe para ver su build: objetos por fase, orden de habilidades y líneas difíciles.</p>
     </div>
-    <div class="patch"><span class="k">Actualizada</span><span class="v">${fmtDate(S.meta.updated)}</span><span class="k" style="margin-top:8px">Último parche</span><span class="v">${esc(S.meta.lastPatch)}</span></div></div>
+    <div class="patch"><a class="btn pri" href="#mi-tier" style="text-decoration:none;color:var(--brass-ink);margin-bottom:10px">Crea la tuya</a><span class="k">Actualizada</span><span class="v">${fmtDate(S.meta.updated)}</span><span class="k" style="margin-top:8px">Último parche</span><span class="v">${esc(S.meta.lastPatch)}</span></div></div>
     <div class="tiers">${rows}</div>
     <p class="tnote"><b>Nota:</b> la tier list es subjetiva y está hecha por mí en torno a rankeds de alto nivel. Los personajes pueden cambiar de tier en función de tu rango. Para ver datos de todos los rangos, mira los <a href="#winrates">winrates</a>.</p>
     <div class="legend"><span><b>44 héroes</b> · roster completo tras City Never Sleeps</span><span>Ranking propio de zok3r · Eternus 5 · 2.000 h</span></div>
@@ -414,6 +415,99 @@ function gsFill(){
   box.hidden = false;
 }
 
+// --- tier list maker: blank list the visitor fills and shares ---
+const TLK = {"S+":"sp",S:"s",A:"a",B:"b",C:"c",F:"f"};
+const tlBlank = () => ({t:"", by:"", tiers:Object.fromEntries(TIERS.map(x=>[x,[]])), sel:null});
+function tlParse(){
+  const raw = location.hash.slice(1), qi = raw.indexOf("?"), b = tlBlank();
+  if (qi<0) return b;
+  const p = new URLSearchParams(raw.slice(qi+1)), seen = new Set();
+  b.t = (p.get("t")||"").slice(0,60); b.by = (p.get("by")||"").slice(0,32);
+  TIERS.forEach(x=>{ b.tiers[x] = (p.get(TLK[x])||"").split("~").filter(s=>S.heroes[s] && !seen.has(s) && seen.add(s)); });
+  return b;
+}
+function tlHash(){
+  const x = (k,v) => v ? `&${k}=${encodeURIComponent(v)}` : "";
+  return `#mi-tier?${TIERS.map(t=>`${TLK[t]}=${tl.tiers[t].join("~")}`).join("&")}${x("t",tl.t)}${x("by",tl.by)}`;
+}
+const tlSync = () => history.replaceState(null,"",tlHash());
+const tlWhere = s => TIERS.find(t=>tl.tiers[t].includes(s)) || null;
+function tlPlace(slug, tier, before){
+  TIERS.forEach(t=>{ tl.tiers[t] = tl.tiers[t].filter(s=>s!==slug); });
+  if (!tier) return;
+  const arr = tl.tiers[tier], i = before ? arr.indexOf(before) : -1;
+  if (i>=0) arr.splice(i,0,slug); else arr.push(slug);
+}
+function tlText(){
+  const url = location.origin==="null" ? "" : location.href.split("#")[0] + tlHash();
+  const lines = TIERS.filter(t=>tl.tiers[t].length).map(t=>`**${t}** · ${tl.tiers[t].map(s=>H(s).name).join(", ")}`);
+  const left = Object.keys(S.heroes).length - TIERS.reduce((n,t)=>n+tl.tiers[t].length,0);
+  return [`**${tl.t || "Mi tier list de Deadlock"}**${tl.by?` · por ${tl.by}`:""}`, ...lines, left ? `> Sin clasificar: ${left}` : null, url && `[Ver y editar esta tier list](<${url}>)`].filter(Boolean).join("\n");
+}
+
+async function tlImage(){
+  const W = 1200, PAD = 40, LAB = 90, CELL = 84, TILE = 72, HEAD = 125;
+  const css = v => getComputedStyle(document.documentElement).getPropertyValue(v).trim();
+  const per = Math.floor((W-2*PAD-LAB-16)/CELL);
+  const rows = TIERS.map(t=>({t, list:tl.tiers[t], lines:Math.max(1,Math.ceil(tl.tiers[t].length/per))}));
+  const Hh = HEAD + PAD + rows.reduce((n,r)=>n+r.lines*(TILE+24)+14,0) + 20;
+  const cv = document.createElement("canvas"); cv.width = W; cv.height = Hh;
+  const c = cv.getContext("2d");
+  try { await Promise.all([document.fonts.load('800 44px "Big Shoulders Display"'), document.fonts.load('700 12px "Big Shoulders Display"')]); } catch(_){}
+  const load = src => new Promise(res=>{ const i = new Image(); i.onload = ()=>res(i); i.onerror = ()=>res(null); i.src = src; });
+  const imgs = {}; await Promise.all(TIERS.flatMap(t=>tl.tiers[t]).map(async s=>{ imgs[s] = await load(S.img[s]); }));
+  c.fillStyle = css("--ink"); c.fillRect(0,0,W,Hh);
+  c.fillStyle = css("--fg"); c.font = '800 54px "Big Shoulders Display", Arial Narrow, sans-serif';
+  c.fillText((tl.t || "Mi tier list de Deadlock").toUpperCase(), PAD, PAD+50, W-2*PAD);
+  c.fillStyle = css("--muted"); c.font = '500 20px "Instrument Sans", sans-serif';
+  c.fillText(`${S.community.name} · Zok3r Deadlock Meta${tl.by?` · por ${tl.by}`:""}`, PAD, PAD+82);
+  let y = HEAD + 20;
+  rows.forEach(r=>{
+    const h = r.lines*(TILE+24)+6;
+    c.fillStyle = css("--panel"); c.beginPath(); c.roundRect(PAD,y,W-2*PAD,h+8,10); c.fill();
+    c.fillStyle = css(TC[r.t].slice(4,-1)); c.beginPath(); c.roundRect(PAD,y,LAB,h+8,[10,0,0,10]); c.fill();
+    c.fillStyle = "#101413"; c.font = '900 44px "Big Shoulders Display", Arial Narrow, sans-serif'; c.textAlign = "center"; c.fillText(r.t, PAD+LAB/2, y+(h+8)/2+15); c.textAlign = "left";
+    r.list.forEach((s,i)=>{
+      const x = PAD+LAB+12+(i%per)*CELL, yy = y+6+Math.floor(i/per)*(TILE+24);
+      if (imgs[s]) c.drawImage(imgs[s], x, yy, TILE, TILE);
+      c.fillStyle = css("--muted"); c.font = '700 12px "Big Shoulders Display", Arial Narrow, sans-serif'; c.textAlign = "center";
+      c.fillText(H(s).name.toUpperCase(), x+TILE/2, yy+TILE+14, CELL-6); c.textAlign = "left";
+    });
+    y += h+8+6;
+  });
+  return cv;
+}
+
+function tlView(){
+  if (!tl) tl = tlParse();
+  const q = tq.trim().toLowerCase(), all = Object.keys(S.heroes);
+  const pool = all.filter(s=>!tlWhere(s) && (trole==="Todos"||H(s).role===trole) && (!q||H(s).name.toLowerCase().includes(q))).sort((a,b)=>H(a).name.localeCompare(H(b).name));
+  const tile = s => `<button class="tile${tl.sel===s?' sel':''}" draggable="true" data-tlhero="${s}" title="${esc(H(s).name)}">${img(s)}<span class="nm">${esc(H(s).name)}</span></button>`;
+  const rows = TIERS.map(t=>`<div class="tier" style="--tc:${TC[t]}"><div class="lab"><div>${t}<small>${tl.tiers[t].length}</small></div></div><div class="row tlrow" data-tlrow="${t}">${tl.tiers[t].map(tile).join("") || '<span class="tlhint">Arrastra héroes aquí</span>'}</div></div>`).join("");
+  const left = all.filter(s=>!tlWhere(s)).length;
+  const roles = ["Todos","Luchador","Asesino","Tirador","Místico"];
+  const sel = tl.sel && S.heroes[tl.sel] ? `<div class="tlbar" role="toolbar" aria-label="Mover ${esc(H(tl.sel).name)}">${img(tl.sel)}<b>${esc(H(tl.sel).name)}</b>
+      <div class="tiersel">${TIERS.map(x=>`<button data-tlmove="${x}" style="--tc:${TC[x]}" aria-pressed="${tlWhere(tl.sel)===x}">${x}</button>`).join("")}</div>
+      <button class="btn" data-tlshift="-1" aria-label="Mover antes">←</button><button class="btn" data-tlshift="1" aria-label="Mover después">→</button>
+      <button class="btn" data-tlmove="">Quitar</button><button class="btn" data-tlmove="__done">Hecho</button></div>` : "";
+  return `<section class="wrap">
+    <div class="sh"><h2>Crea tu tier list</h2><p>Arrastra los héroes a su tier, o púlsalos y elige tier abajo</p></div>
+    <div class="mkbar"><div class="mkbtns"><button class="btn" data-tlload="zok">Cargar la de zok3r</button><button class="btn" data-tlload="clear">Vaciar</button><button class="btn pri" id="tl-copy">Copiar enlace</button></div>
+      <span class="fine" id="tl-msg" role="status">${left ? `${left} héroes sin clasificar` : "Todos los héroes clasificados ✓"}</span></div>
+    <div class="tiers tlmk">${rows}</div>
+    <div class="blk"><h3>Héroes sin clasificar <small class="fine">(${left})</small></h3>
+      <div class="filters"><input id="tq" type="search" placeholder="Buscar héroe…" value="${esc(tq)}" aria-label="Buscar héroe">${roles.map(r=>`<button class="chip" data-trole="${r}" aria-pressed="${trole===r}">${r}</button>`).join("")}</div>
+      <div class="tlpool row" data-tlrow="">${pool.map(tile).join("") || `<span class="tlhint">${left ? "Ningún héroe coincide." : "No queda ninguno. Suelta aquí un héroe para quitarlo de su tier."}</span>`}</div></div>
+    <div class="blk share"><h3>Compartir en ${esc(S.community.name)}</h3>
+      <div class="r2"><label>Título (opcional)<input id="tl-title" maxlength="60" placeholder="p. ej. Mi tier list para ranked" value="${esc(tl.t)}"></label><label>Tu nombre (opcional)<input id="tl-author" maxlength="32" placeholder="Tu nick en el Discord" value="${esc(tl.by)}"></label></div>
+      <div class="sharebtns"><button class="btn pri" id="tl-discord">Copiar mensaje para Discord</button><button class="btn" id="tl-img-copy">Copiar imagen</button><button class="btn" id="tl-img-dl">Descargar imagen</button>${S.community.invite?`<a class="btn" href="${esc(S.community.invite)}" target="_blank" rel="noopener">Abrir ${esc(S.community.name)} ↗</a>`:''}</div>
+      <p class="fine" id="tl-smsg" role="status">Pega el mensaje en el canal y, si quieres, añade la imagen: Discord la muestra dentro del chat.</p>
+      <label class="k" for="tl-text">Vista previa del mensaje</label><textarea id="tl-text" rows="8" readonly>${esc(tlText())}</textarea>
+      <div id="tl-canvas-wrap"></div></div>
+    ${sel}
+  </section>`;
+}
+
 function footer(){
   return `<footer><div class="wrap"><span>Tier list y notas: zok3r · <a href="https://twitch.tv/zok3r" target="_blank" rel="noopener">twitch.tv/zok3r</a></span>
   <span>Winrates, pick rates y objetos con mejor winrate: ${SRC()} (${scopeTxt()}, consultado ${fmtDate(S.stats.date)}). Objetos más comprados, orden de habilidades y líneas difíciles: <a href="https://deadlocktiers.com/" target="_blank" rel="noopener">deadlocktiers.com</a> (ranked, datos a ${fmtDate(S.meta.dataDate)}). Nombres de objetos y habilidades en inglés, como en el cliente original.</span>
@@ -441,7 +535,7 @@ function popup(){
 
 function render(){
   const r = route();
-  const body = r.v==="hero" ? heroView(r.slug) : r.v==="builds" ? buildsView() : r.v==="items" ? itemsView() : r.v==="item" ? itemView(r.name) : r.v==="cmp" ? cmpView(r.a,r.b) : r.v==="mk" ? mkView(r.slug) : r.v==="news" ? newsView() : r.v==="wr" ? wrView() : r.v==="coach" ? coachView() : tierView();
+  const body = r.v==="hero" ? heroView(r.slug) : r.v==="builds" ? buildsView() : r.v==="items" ? itemsView() : r.v==="item" ? itemView(r.name) : r.v==="cmp" ? cmpView(r.a,r.b) : r.v==="mk" ? mkView(r.slug) : r.v==="tl" ? tlView() : r.v==="news" ? newsView() : r.v==="wr" ? wrView() : r.v==="coach" ? coachView() : tierView();
   document.getElementById("app").innerHTML = header(r) + `<main>${body}</main>` + footer() + edbar() + popup();
   document.title = r.v==="hero" ? `${H(r.slug).name} · Zok3r Deadlock Meta` : r.v==="item" ? `${r.name} · Zok3r Deadlock Meta` : "Zok3r Deadlock Meta";
 }
@@ -455,6 +549,27 @@ function swapPortrait(a,b){
   S.flags = S.flags.filter(x=>x!==a && x!==b);
 }
 
+function copyText(text, msgSel, boxSel, okMsg){
+  const msg = $(msgSel), box = boxSel && $(boxSel);
+  const done = ok => { if (msg) msg.textContent = ok ? okMsg : "No se pudo copiar solo: selecciona la vista previa y cópiala."; if (!ok && box){ box.focus(); box.select(); } };
+  if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(text).then(()=>done(true),()=>done(false)); else done(false);
+}
+function shareImage(make, copy, filename, msgSel, wrapSel){
+  const msg = $(msgSel), wrap = $(wrapSel);
+  if (msg) msg.textContent = "Generando imagen…";
+  make().then(cv=>{
+    if (wrap){ cv.className = "bmcanvas"; wrap.replaceChildren(cv); }
+    cv.toBlob(async blob=>{
+      if (copy){
+        try { await navigator.clipboard.write([new ClipboardItem({"image/png":blob})]); if (msg) msg.textContent = "Imagen copiada. Pégala en Discord con Ctrl+V ✓"; return; } catch(_){}
+        if (msg) msg.textContent = "Tu navegador no deja copiar la imagen. Descárgala o haz clic derecho sobre la vista previa y cópiala.";
+      } else {
+        const a = document.createElement("a"); a.href = URL.createObjectURL(blob); a.download = filename; document.body.appendChild(a); a.click(); a.remove(); setTimeout(()=>URL.revokeObjectURL(a.href),4000);
+        if (msg) msg.textContent = "Imagen descargada. Arrástrala al chat de Discord ✓. Si no se descarga, haz clic derecho sobre la vista previa y guárdala.";
+      }
+    },"image/png");
+  }).catch(()=>{ if (msg) msg.textContent = "No se pudo generar la imagen."; });
+}
 function rerender(id){
   const el = id && $("#"+id), pos = el && el.selectionStart, y = window.scrollY;
   render(); window.scrollTo(0,y);
@@ -473,26 +588,18 @@ document.addEventListener("click", e=>{
   if (D.bmload){
     const src = D.bmload==="clear" ? {early:[],mid:[],late:[]} : D.bmload==="zok" ? S.zbuilds[bm.slug] : H(bm.slug);
     bm.e = [...(src.early||[])]; bm.m = [...(src.mid||[])]; bm.l = [...(src.late||[])]; bmSync(); rerender(); return; }
-  if (t.id==="bm-discord"){
-    const msg = $("#bm-smsg"), box = $("#bm-text"), done = ok => { if (msg) msg.textContent = ok ? "Mensaje copiado. Pégalo en el canal de builds ✓" : "No se pudo copiar solo: selecciona la vista previa y cópiala."; if (!ok && box){ box.focus(); box.select(); } };
-    if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(bmText()).then(()=>done(true),()=>done(false)); else done(false);
-    return; }
-  if (t.id==="bm-img-copy" || t.id==="bm-img-dl"){
-    const msg = $("#bm-smsg"), wrap = $("#bm-canvas-wrap"), copy = t.id==="bm-img-copy";
-    if (msg) msg.textContent = "Generando imagen…";
-    bmImage().then(cv=>{
-      if (wrap){ cv.className = "bmcanvas"; wrap.replaceChildren(cv); }
-      cv.toBlob(async blob=>{
-        if (copy){
-          try { await navigator.clipboard.write([new ClipboardItem({"image/png":blob})]); if (msg) msg.textContent = "Imagen copiada. Pégala en Discord con Ctrl+V ✓"; return; } catch(_){}
-          if (msg) msg.textContent = "Tu navegador no deja copiar la imagen. Descárgala o haz clic derecho sobre la vista previa y cópiala.";
-        } else {
-          const a = document.createElement("a"); a.href = URL.createObjectURL(blob); a.download = `build-${bm.slug}.png`; document.body.appendChild(a); a.click(); a.remove(); setTimeout(()=>URL.revokeObjectURL(a.href),4000);
-          if (msg) msg.textContent = "Imagen descargada. Arrástrala al chat de Discord ✓. Si no se descarga, haz clic derecho sobre la vista previa y guárdala.";
-        }
-      },"image/png");
-    }).catch(()=>{ if (msg) msg.textContent = "No se pudo generar la imagen."; });
-    return; }
+  if (t.id==="bm-discord"){ copyText(bmText(), "#bm-smsg", "#bm-text", "Mensaje copiado. Pégalo en el canal de builds ✓"); return; }
+  if (t.id==="bm-img-copy" || t.id==="bm-img-dl"){ shareImage(bmImage, t.id==="bm-img-copy", `build-${bm.slug}.png`, "#bm-smsg", "#bm-canvas-wrap"); return; }
+  if (t.id==="tl-discord"){ copyText(tlText(), "#tl-smsg", "#tl-text", "Mensaje copiado. Pégalo en el canal ✓"); return; }
+  if (t.id==="tl-img-copy" || t.id==="tl-img-dl"){ shareImage(tlImage, t.id==="tl-img-copy", "mi-tier-list.png", "#tl-smsg", "#tl-canvas-wrap"); return; }
+  if (t.id==="tl-copy"){ copyText(location.href, "#tl-msg", null, "Enlace copiado ✓"); return; }
+  if (D.tlhero){ tl.sel = tl.sel===D.tlhero ? null : D.tlhero; rerender(); return; }
+  if (D.tlmove!==undefined && tl.sel){
+    if (D.tlmove==="__done") tl.sel = null; else tlPlace(tl.sel, D.tlmove||null);
+    tlSync(); rerender(); return; }
+  if (D.tlshift && tl.sel){ const t0 = tlWhere(tl.sel); if (t0){ const arr = tl.tiers[t0], i = arr.indexOf(tl.sel), j = i + +D.tlshift; if (j>=0 && j<arr.length){ [arr[i],arr[j]] = [arr[j],arr[i]]; tlSync(); rerender(); } } return; }
+  if (D.tlload){ tl = tlBlank(); if (D.tlload==="zok") TIERS.forEach(x=>{ tl.tiers[x] = [...(S.tiers[x]||[])]; }); tlSync(); rerender(); return; }
+  if (D.trole){ trole = D.trole; rerender(); return; }
   if (t.id==="bm-copy"){
     const msg = $("#bm-msg"), url = location.href;
     const done = ok => { if (msg) msg.textContent = ok ? "Enlace copiado ✓" : "No se pudo copiar; cópialo de la barra de direcciones."; };
@@ -521,6 +628,10 @@ document.addEventListener("input", e=>{
   if (e.target.id==="iq"){ iq = e.target.value; rerender("iq"); }
   if (e.target.id==="bq"){ bq = e.target.value; rerender("bq"); }
   if (e.target.id==="gs") gsFill();
+  if (e.target.id==="tq"){ tq = e.target.value; rerender("tq"); }
+  if (e.target.id==="tl-title" || e.target.id==="tl-author"){
+    if (e.target.id==="tl-title") tl.t = e.target.value; else tl.by = e.target.value;
+    tlSync(); const tx = $("#tl-text"); if (tx) tx.value = tlText(); }
   if (e.target.id==="bm-title" || e.target.id==="bm-author"){
     if (e.target.id==="bm-title") bm.t = e.target.value; else bm.a = e.target.value;
     bmSync(); const tx = $("#bm-text"); if (tx) tx.value = bmText(); }
@@ -548,12 +659,27 @@ document.addEventListener("submit", e=>{
   const src = $("#n-src").value.trim(); if (src) n.src = src;
   if (!n.title) return; S.news.push(n); markDirty(); render();
 });
+document.addEventListener("dragstart", e=>{
+  const t = e.target.closest && e.target.closest("[data-tlhero]"); if (!t) return;
+  dragging = t.dataset.tlhero; e.dataTransfer.effectAllowed = "move"; try{ e.dataTransfer.setData("text/plain", dragging); }catch(_){}
+});
+document.addEventListener("dragover", e=>{
+  const row = dragging && e.target.closest && e.target.closest("[data-tlrow]"); if (!row) return;
+  e.preventDefault(); document.querySelectorAll(".tlrow.over,.tlpool.over").forEach(x=>x.classList.remove("over")); row.classList.add("over");
+});
+document.addEventListener("drop", e=>{
+  const row = dragging && e.target.closest && e.target.closest("[data-tlrow]"); if (!row) return;
+  e.preventDefault(); const over = e.target.closest("[data-tlhero]");
+  tlPlace(dragging, row.dataset.tlrow||null, over && over.dataset.tlhero!==dragging ? over.dataset.tlhero : null);
+  dragging = null; tl.sel = null; tlSync(); rerender();
+});
+document.addEventListener("dragend", ()=>{ dragging = null; document.querySelectorAll(".over").forEach(x=>x.classList.remove("over")); });
 document.addEventListener("keydown", e=>{
   if (e.target.id!=="gs") return;
   if (e.key==="Escape"){ e.target.value = ""; gsFill(); }
   if (e.key==="Enter"){ const a = $("#gsr a"); if (a){ location.hash = a.getAttribute("href"); e.target.blur(); } }
 });
-window.addEventListener("hashchange", ()=>{ popFor=null; bm=null; render(); window.scrollTo(0,0); });
+window.addEventListener("hashchange", ()=>{ popFor=null; bm=null; tl=null; render(); window.scrollTo(0,0); });
 
 const RESET = ":root{color-scheme:light;padding-top:env(safe-area-inset-top);padding-bottom:env(safe-area-inset-bottom)}body{margin:0;font:14px system-ui,sans-serif}img{max-width:100%}[hidden]{display:none!important}";
 function buildDoc(){

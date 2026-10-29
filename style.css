@@ -301,3 +301,15 @@ ul.mini li{border-left:3px solid var(--cat);padding-left:8px}
 .sharebtns{display:flex;gap:8px;flex-wrap:wrap}
 .share .k{display:block;margin-top:14px;font:700 12px var(--f-display);letter-spacing:.14em;text-transform:uppercase}
 .bmcanvas{display:block;max-width:100%;height:auto;margin-top:14px;border:1px solid var(--line);border-radius:10px}
+
+/* tier list maker */
+.tlmk .row{min-height:84px}
+.tlhint{color:var(--muted);font-size:13px;padding:8px;align-self:center}
+.tlrow.over,.tlpool.over{background:var(--panel2);outline:2px dashed var(--brass);outline-offset:-4px}
+.tile[draggable="true"]{cursor:grab}
+.tlpool{display:flex;flex-wrap:wrap;gap:4px;padding:8px;min-height:100px;background:var(--panel);border:1px solid var(--line);border-radius:10px}
+.tlbar{position:sticky;bottom:calc(12px + env(safe-area-inset-bottom,0px));z-index:12;display:flex;flex-wrap:wrap;gap:10px;align-items:center;background:var(--panel2);border:1px solid var(--brass);border-radius:12px;padding:8px 12px;box-shadow:0 12px 36px rgba(0,0,0,.55);margin-top:16px}
+.tlbar img{width:40px;height:40px}.tlbar b{font:800 20px var(--f-display);text-transform:uppercase}
+.tiersel{display:flex;gap:4px}
+.tiersel button{min-width:34px;border:1px solid var(--line);background:var(--panel);border-radius:6px;padding:6px 8px;font:800 15px/1 var(--f-display);cursor:pointer}
+.tiersel button[aria-pressed="true"]{background:var(--tc);color:#101413;border-color:var(--tc)}
