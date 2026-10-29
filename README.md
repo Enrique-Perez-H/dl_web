@@ -1,56 +1,75 @@
 # Zok3r Deadlock Meta
 
-Static site (Spanish): Deadlock tier list, hero builds and news.
+A static, bilingual (Spanish / English) Deadlock site: tier list, hero builds, winrates, item browser, hero comparison with lane odds, and makers that let visitors build a build or a tier list and share it in Discord ("Deadlock Hispano").
 
-- `index.html` – page shell
-- `style.css` – styles
-- `app.js` – rendering and routing (hash routes: `#h-<hero-slug>`)
-- `data.json` – all content: tiers, heroes, items, news, stats
-- `assets/heroes/` – hero portraits (`<slug>.webp`)
-- `assets/items/` – in-game item icons plus `index.json` (slug → file); empty until you run the script below
-- `scripts/fetch_item_icons.py` – downloads the item icons
-
-The app loads `data.json` with `fetch`, so serve the folder instead of opening the file directly:
+There is no build step. Serve the folder with any static host. Locally:
 
     python3 -m http.server 8000
 
-Note: the owner edit mode and `publish()` came from the original Claude artifact and only work inside that runtime; outside it the page is read-only.
+(`data.json` is loaded with `fetch`, so opening `index.html` straight from disk does not work.)
 
-## Pages
+## Files
 
-| Hash route | What it shows |
+| Path | What it is |
+| --- | --- |
+| `index.html`, `style.css`, `app.js` | The app (one classic script, no dependencies) |
+| `data.json` | All content: tiers, heroes, items, news, per-rank-bracket stats, lane data, builds, winrate history |
+| `i18n/en.json` | English translations. Spanish strings are the keys: `t("Texto")` in `app.js` |
+| `assets/heroes/`, `assets/items/` | Hero portraits and item icons (`assets/items/index.json` maps item slug to file) |
+| `scripts/` | `update_stats.py`, `fetch_item_icons.py`, `check_i18n.py` |
+| `functions/index.js` | Optional Cloudflare Pages Function for Discord link previews |
+
+## Pages (hash routes)
+
+| Route | What it shows |
 | --- | --- |
 | `#tier` | Tier list |
-| `#builds`, `#h-<hero>` | Hero list and hero sheets |
-| `#objetos`, `#objeto/<item>` | Item browser (search, category, cost tier, sort) and item detail |
-| `#comparar/<heroA>/<heroB>` | Side-by-side hero comparison |
-| `#crear/<hero>?e=..&m=..&l=..` | Build maker; the build is stored in the URL, so the link is the share link |
-| `#mi-tier?sp=..&s=..&a=..&b=..&c=..&f=..` | Tier list maker (blank by default); hero slugs per tier are stored in the URL |
-| `#winrates`, `#noticias`, `#coaching` | Winrates, news, coaching |
+| `#builds`, `#h-<hero>` | Hero list and hero sheets (build by phase, best items, winrate history, lane matchups and partners) |
+| `#winrates` | Winrate table with change since the previous patch |
+| `#objetos`, `#objeto/<item>` | Item browser and item detail |
+| `#comparar/<a>/<b>` | Hero comparison: lane win chance, soul lead curve, partners, builds |
+| `#crear/<hero>?e=..&m=..&l=..` | Build maker. The build lives in the URL |
+| `#mi-tier?sp=..&s=..&a=..&b=..&c=..&f=..` | Tier list maker. Hero slugs per tier live in the URL |
+| `#noticias`, `#coaching`, `#aviso` | News, coaching, legal notice and privacy |
 
-The header search finds heroes and items.
+The header has a rank switch (all ranks / Oracle+) and a language switch (ES / EN). Both are remembered in the browser and the language can be forced with `?lang=en`.
 
-## Item icons
+## Updating the data
 
-    python3 scripts/fetch_item_icons.py
+    python3 scripts/update_stats.py                 # everything, last 14 days (about 30 min, mostly lane curves)
+    python3 scripts/update_stats.py --skip-curves   # faster, keeps the previous lane curves
+    python3 scripts/update_stats.py --only builds   # one step: stats | curves | builds | history
+    python3 scripts/fetch_item_icons.py             # icons for every item in data.json (needs: pip install pillow to resize)
+    python3 scripts/check_i18n.py                   # lists strings without an English translation
 
-Pulls the icons from the community Deadlock assets API (`assets.deadlock-api.com`) into `assets/items/` and writes `index.json`. Items without an icon still render, just without the image. The game art belongs to Valve; this is a fan project.
+Everything comes from the public Deadlock API (`api.deadlock-api.com`):
 
-## Updating the stats
+- **stats** (per rank bracket): winrate, pick rate, games, best-winrate items, same-lane hero matchups, best lane partners.
+- **curves**: souls lead of a hero's duo over the enemy duo at 3/6/9/12/15 minutes for every pair of heroes that lane against each other (`lane-soul-curve`, which the API marks as subject to change).
+- **builds**: the most bought items per phase for every hero (ranked, purchase-time windows). They overwrite `early`/`mid`/`late` in `data.json`.
+- **history**: winrate per hero between the balance patches listed in `meta.patchDates` (edit that list when a new balance patch ships).
 
-    python3 scripts/update_stats.py                       # last 14 days, all ranks
-    python3 scripts/update_stats.py --days 7 --min-badge 100 --match-mode ranked
+Still maintained by hand: the tier list, the game plans, the news, the coaching copy, and the ability order (from deadlocktiers.com).
+When a script adds new heroes, items or text, add their English text to `i18n/en.json` (the checker shows what is missing).
 
-Refreshes winrates, pick rates, games, best-winrate items, item costs, same-lane matchups and best lane partners in `data.json` from the public Deadlock API (`api.deadlock-api.com`). The tier list itself, builds, plans and news are still edited by hand.
+## Lane odds, in short
 
-## Sharing builds in Deadlock Hispano
+The comparison slider is the probability that hero A's duo is ahead in souls at 15 minutes against hero B's duo, from real 2v2 lane data (mean lead and spread, normal approximation). With little data it falls back to the chance of winning the match when both lane against each other, blended with the log5 estimate from their overall winrates. Best lane partners are the same-lane allies whose pair winrate beats what both winrates predict.
 
-The build maker (`#crear/<hero>`) has a share block: optional title and author, **Copiar mensaje para Discord** (formatted text with a link back to the build), **Copiar imagen** / **Descargar imagen** (a PNG of the build to paste or drop into the chat) and a live preview of the message.
-To show a button that opens the server, put its invite link in `data.json` under `community.invite`.
-Links reopen the exact build, but Discord shows a generic preview for them; per-build link previews would need a small server.
+## Sharing in Discord
 
-The tier list maker (`#mi-tier`) works the same way: drag heroes into tiers (or tap a hero and pick a tier), reorder, then copy a Discord message, copy or download a PNG, or copy the link. "Cargar la de zok3r" starts from the official list.
+The build and tier list makers have a share block: a Discord-formatted message, a PNG image (copy or download) and a link that reopens the exact build or list. To show a button that opens the server, set `community.invite` in `data.json`.
 
-## Lane odds and partners
+Share links look like `/?r=crear/abrams&e=..` (state in the query so a server can read it). The app turns them back into hash routes on load.
 
-The comparison page shows a slider with the estimated chance of winning the lane (`laneOdds()` in `app.js`): the log5 estimate from both overall winrates, blended with the real results of matches where the two heroes laned together (`lane.vs` in `data.json`, from the API's counter stats with `same_lane_filter`). It is the chance of winning the *match* in that matchup, used as an approximation for the lane. Best lane partners (`lane.duo`) are the same-lane allies whose pair winrate beats what both winrates predict.
+### Link previews (optional)
+
+Discord only shows a generic card for a bare link. On Cloudflare Pages, `functions/index.js` adds Open Graph tags for share links so Discord shows the build or tier list title, items and hero portrait. Deploy the repo as a Cloudflare Pages project (no build command, output directory `/`). On other static hosts, such as GitHub Pages, the site works the same but without per-link previews; the image export covers that.
+
+## Deploying
+
+Any static host works. GitHub Pages: Settings, Pages, deploy from the branch root. Cloudflare Pages: connect the repo, no build command, output directory `/`.
+
+## Legal
+
+Fan project, not affiliated with Valve. Game names, hero portraits and item icons belong to Valve. See `#aviso` in the app for the notice and privacy statement, and review it before going public or monetising.
