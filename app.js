@@ -306,21 +306,73 @@ function cmpView(a,b){
 const BMK = {e:"early",m:"mid",l:"late"};
 function bmDefault(slug){
   const zb = S.zbuilds[slug], h = H(slug);
-  return {slug, e:[...(zb&&zb.early&&zb.early.length?zb.early:h.early)], m:[...(zb&&zb.mid&&zb.mid.length?zb.mid:h.mid)], l:[...(zb&&zb.late&&zb.late.length?zb.late:h.late)], ph:"e"};
+  return {slug, t:"", a:"", e:[...(zb&&zb.early&&zb.early.length?zb.early:h.early)], m:[...(zb&&zb.mid&&zb.mid.length?zb.mid:h.mid)], l:[...(zb&&zb.late&&zb.late.length?zb.late:h.late)], ph:"e"};
 }
 function bmParse(slug){
   const raw = location.hash.slice(1), qi = raw.indexOf("?");
   if (qi<0) return bmDefault(slug);
-  const p = new URLSearchParams(raw.slice(qi+1)), b = {slug, e:[], m:[], l:[], ph:"e"};
+  const p = new URLSearchParams(raw.slice(qi+1)), b = {slug, t:(p.get("t")||"").slice(0,60), a:(p.get("a")||"").slice(0,32), e:[], m:[], l:[], ph:"e"};
   Object.keys(BMK).forEach(k=>{ b[k] = (p.get(k)||"").split("~").filter(n=>S.items[n]); });
   return b;
 }
 function bmHash(){
   const f = k => bm[k].map(encodeURIComponent).join("~");
-  return `#crear/${bm.slug}?e=${f("e")}&m=${f("m")}&l=${f("l")}`;
+  const x = (k,v) => v ? `&${k}=${encodeURIComponent(v)}` : "";
+  return `#crear/${bm.slug}?e=${f("e")}&m=${f("m")}&l=${f("l")}${x("t",bm.t)}${x("a",bm.a)}`;
 }
 function bmSync(){ history.replaceState(null,"",bmHash()); }
 const bmHas = n => bm.e.includes(n)||bm.m.includes(n)||bm.l.includes(n);
+
+function bmText(){
+  const h = H(bm.slug), url = location.origin==="null" ? "" : location.href.split("#")[0] + bmHash();
+  const line = ([k,lab,time,key]) => bm[key].length ? `> **${lab}** (${time}): ${bm[key].join(" · ")}` : null;
+  const total = [...bm.e,...bm.m,...bm.l].reduce((t,n)=>t+(S.items[n].cost||0),0);
+  return [`**${bm.t || "Build de "+h.name}** · ${h.name} (${tierOf(bm.slug)})${bm.a?` · por ${bm.a}`:""}`, ...PH.map(line).filter(Boolean), `> Total: ${total.toLocaleString("es-ES")} almas`, url && `[Ver y editar esta build](<${url}>)`].filter(Boolean).join("\n");
+}
+
+async function bmImage(){
+  const W = 1200, PAD = 40, GAP = 24, COL = (W-2*PAD-2*GAP)/3, ROW = 46;
+  const css = v => getComputedStyle(document.documentElement).getPropertyValue(v).trim();
+  const rows = Math.max(1, ...PH.map(p=>bm[p[3]].length));
+  const Hh = 150 + 44 + rows*ROW + 70;
+  const cv = document.createElement("canvas"); cv.width = W; cv.height = Hh;
+  const c = cv.getContext("2d");
+  try { await Promise.all([document.fonts.load('800 44px "Big Shoulders Display"'), document.fonts.load('500 20px "Instrument Sans"')]); } catch(_){}
+  const load = src => new Promise(res=>{ const i = new Image(); i.onload = ()=>res(i); i.onerror = ()=>res(null); i.src = src; });
+  const rr = (x,y,w,h,r) => { c.beginPath(); c.roundRect(x,y,w,h,r); };
+  c.fillStyle = css("--ink"); c.fillRect(0,0,W,Hh);
+  const portrait = await load(S.img[bm.slug]);
+  if (portrait){ c.save(); rr(PAD,PAD,96,96,14); c.clip(); c.drawImage(portrait,PAD,PAD,96,96); c.restore(); }
+  c.textBaseline = "alphabetic"; c.fillStyle = css("--fg");
+  c.font = '800 54px "Big Shoulders Display", Arial Narrow, sans-serif';
+  c.fillText((bm.t || "Build de "+H(bm.slug).name).toUpperCase(), PAD+120, PAD+52, W-2*PAD-120);
+  c.fillStyle = css("--muted"); c.font = '500 22px "Instrument Sans", sans-serif';
+  c.fillText(`${H(bm.slug).name} · Tier ${tierOf(bm.slug)} · ${H(bm.slug).role}${bm.a?` · por ${bm.a}`:""}`, PAD+120, PAD+90, W-2*PAD-120);
+  const icons = {};
+  await Promise.all([...new Set([...bm.e,...bm.m,...bm.l])].map(async n=>{ if (ICONS[islug(n)]) icons[n] = await load("assets/items/"+ICONS[islug(n)]); }));
+  const top = 150;
+  PH.forEach(([k,lab,time,key],ci)=>{
+    const x = PAD + ci*(COL+GAP);
+    c.fillStyle = css("--panel"); rr(x,top,COL,44+rows*ROW+10,12); c.fill();
+    c.fillStyle = css("--fg"); c.font = '800 26px "Big Shoulders Display", Arial Narrow, sans-serif'; c.fillText(lab.toUpperCase(), x+16, top+32);
+    c.fillStyle = css("--muted"); c.font = '500 14px "Instrument Sans", sans-serif'; c.textAlign = "right"; c.fillText(time, x+COL-16, top+31); c.textAlign = "left";
+    bm[key].forEach((n,i)=>{
+      const y = top + 44 + i*ROW, cat = getComputedStyle(document.documentElement).getPropertyValue(CAT[S.items[n].c].slice(4,-1)).trim();
+      c.fillStyle = css("--panel2"); rr(x+8,y,COL-16,ROW-6,8); c.fill();
+      c.fillStyle = cat; c.fillRect(x+8,y+4,4,ROW-14);
+      if (icons[n]) c.drawImage(icons[n], x+20, y+2, ROW-10, ROW-10);
+      c.fillStyle = css("--fg"); c.font = '500 17px "Instrument Sans", sans-serif';
+      c.fillText(n, x+20+(icons[n]?ROW-2:6), y+ROW/2+2, COL-90);
+      c.fillStyle = css("--muted"); c.font = '500 13px "JetBrains Mono", monospace'; c.textAlign = "right"; c.fillText(S.items[n].cost?souls(S.items[n].cost):"", x+COL-16, y+ROW/2+2); c.textAlign = "left";
+    });
+  });
+  const total = [...bm.e,...bm.m,...bm.l].reduce((t,n)=>t+(S.items[n].cost||0),0);
+  c.fillStyle = css("--brass"); c.font = '800 24px "Big Shoulders Display", Arial Narrow, sans-serif';
+  c.fillText(`TOTAL ${total.toLocaleString("es-ES")} ALMAS`, PAD, Hh-30);
+  c.fillStyle = css("--muted"); c.font = '500 16px "Instrument Sans", sans-serif'; c.textAlign = "right";
+  c.fillText(`${S.community.name} · Zok3r Deadlock Meta`, W-PAD, Hh-30); c.textAlign = "left";
+  return cv;
+}
 
 function mkView(slug){
   if (!bm || bm.slug!==slug) bm = bmParse(slug);
@@ -337,6 +389,12 @@ function mkView(slug){
       <div class="mkbtns"><button class="btn" data-bmload="pop">Cargar la más comprada</button>${S.zbuilds[slug]?'<button class="btn" data-bmload="zok">Cargar la de zok3r</button>':''}<button class="btn" data-bmload="clear">Vaciar</button><button class="btn pri" id="bm-copy">Copiar enlace</button></div>
       <span class="fine" id="bm-msg" role="status">Total: ${total.toLocaleString("es-ES")} almas</span></div>
     <div class="phases">${cols}</div>
+    <div class="blk share"><h3>Compartir en ${esc(S.community.name)}</h3>
+      <div class="r2"><label>Título de la build (opcional)<input id="bm-title" maxlength="60" placeholder="p. ej. Abrams tanque de melee" value="${esc(bm.t)}"></label><label>Tu nombre (opcional)<input id="bm-author" maxlength="32" placeholder="Tu nick en el Discord" value="${esc(bm.a)}"></label></div>
+      <div class="sharebtns"><button class="btn pri" id="bm-discord">Copiar mensaje para Discord</button><button class="btn" id="bm-img-copy">Copiar imagen</button><button class="btn" id="bm-img-dl">Descargar imagen</button>${S.community.invite?`<a class="btn" href="${esc(S.community.invite)}" target="_blank" rel="noopener">Abrir ${esc(S.community.name)} ↗</a>`:''}</div>
+      <p class="fine" id="bm-smsg" role="status">Pega el mensaje en el canal de builds y, si quieres, añade la imagen: Discord la muestra dentro del chat.</p>
+      <label class="k" for="bm-text">Vista previa del mensaje</label><textarea id="bm-text" rows="8" readonly>${esc(bmText())}</textarea>
+      <div id="bm-canvas-wrap"></div></div>
     <div class="blk"><h3>Añadir a ${PH.find(p=>p[3]===bm.ph)[1].toLowerCase()}</h3>
       <div class="filters"><input id="bq" type="search" placeholder="Buscar objeto…" value="${esc(bq)}" aria-label="Buscar objeto">${catChips("bcat",bcat)}</div>
       <div class="pgrid">${list.map(n=>`<button class="pick" style="--cat:${CAT[S.items[n].c]}" data-bmadd="${esc(n)}" ${bmHas(n)?'disabled':''} title="${esc(n)}">${ico(n)}<span>${esc(n)}</span><em>${S.items[n].cost?souls(S.items[n].cost):''}</em></button>`).join("") || '<p class="fine">Ningún objeto coincide.</p>'}</div></div>
@@ -415,6 +473,26 @@ document.addEventListener("click", e=>{
   if (D.bmload){
     const src = D.bmload==="clear" ? {early:[],mid:[],late:[]} : D.bmload==="zok" ? S.zbuilds[bm.slug] : H(bm.slug);
     bm.e = [...(src.early||[])]; bm.m = [...(src.mid||[])]; bm.l = [...(src.late||[])]; bmSync(); rerender(); return; }
+  if (t.id==="bm-discord"){
+    const msg = $("#bm-smsg"), box = $("#bm-text"), done = ok => { if (msg) msg.textContent = ok ? "Mensaje copiado. Pégalo en el canal de builds ✓" : "No se pudo copiar solo: selecciona la vista previa y cópiala."; if (!ok && box){ box.focus(); box.select(); } };
+    if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(bmText()).then(()=>done(true),()=>done(false)); else done(false);
+    return; }
+  if (t.id==="bm-img-copy" || t.id==="bm-img-dl"){
+    const msg = $("#bm-smsg"), wrap = $("#bm-canvas-wrap"), copy = t.id==="bm-img-copy";
+    if (msg) msg.textContent = "Generando imagen…";
+    bmImage().then(cv=>{
+      if (wrap){ cv.className = "bmcanvas"; wrap.replaceChildren(cv); }
+      cv.toBlob(async blob=>{
+        if (copy){
+          try { await navigator.clipboard.write([new ClipboardItem({"image/png":blob})]); if (msg) msg.textContent = "Imagen copiada. Pégala en Discord con Ctrl+V ✓"; return; } catch(_){}
+          if (msg) msg.textContent = "Tu navegador no deja copiar la imagen. Descárgala o haz clic derecho sobre la vista previa y cópiala.";
+        } else {
+          const a = document.createElement("a"); a.href = URL.createObjectURL(blob); a.download = `build-${bm.slug}.png`; document.body.appendChild(a); a.click(); a.remove(); setTimeout(()=>URL.revokeObjectURL(a.href),4000);
+          if (msg) msg.textContent = "Imagen descargada. Arrástrala al chat de Discord ✓. Si no se descarga, haz clic derecho sobre la vista previa y guárdala.";
+        }
+      },"image/png");
+    }).catch(()=>{ if (msg) msg.textContent = "No se pudo generar la imagen."; });
+    return; }
   if (t.id==="bm-copy"){
     const msg = $("#bm-msg"), url = location.href;
     const done = ok => { if (msg) msg.textContent = ok ? "Enlace copiado ✓" : "No se pudo copiar; cópialo de la barra de direcciones."; };
@@ -443,6 +521,9 @@ document.addEventListener("input", e=>{
   if (e.target.id==="iq"){ iq = e.target.value; rerender("iq"); }
   if (e.target.id==="bq"){ bq = e.target.value; rerender("bq"); }
   if (e.target.id==="gs") gsFill();
+  if (e.target.id==="bm-title" || e.target.id==="bm-author"){
+    if (e.target.id==="bm-title") bm.t = e.target.value; else bm.a = e.target.value;
+    bmSync(); const tx = $("#bm-text"); if (tx) tx.value = bmText(); }
   if (e.target.id==="note"){ const s=e.target.dataset.slug; const v=e.target.value.trim(); if (v) S.notes[s]=v; else delete S.notes[s]; if(!dirty){ dirty=true; const b=$("#ed-pub"); if(b) b.disabled=false; const m=$("#edmsg"); if(m) m.textContent="Cambios sin publicar"; } }
 });
 document.addEventListener("submit", e=>{

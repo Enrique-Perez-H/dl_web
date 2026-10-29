@@ -41,3 +41,9 @@ Pulls the icons from the community Deadlock assets API (`assets.deadlock-api.com
     python3 scripts/update_stats.py --days 7 --min-badge 100 --match-mode ranked
 
 Refreshes winrates, pick rates, games, best-winrate items and item costs in `data.json` from the public Deadlock API (`api.deadlock-api.com`). The tier list itself, builds, plans and news are still edited by hand.
+
+## Sharing builds in Deadlock Hispano
+
+The build maker (`#crear/<hero>`) has a share block: optional title and author, **Copiar mensaje para Discord** (formatted text with a link back to the build), **Copiar imagen** / **Descargar imagen** (a PNG of the build to paste or drop into the chat) and a live preview of the message.
+To show a button that opens the server, put its invite link in `data.json` under `community.invite`.
+Links reopen the exact build, but Discord shows a generic preview for them; per-build link previews would need a small server.
