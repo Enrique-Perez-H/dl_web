@@ -83,6 +83,13 @@ function buildsView(){
   </section>`;
 }
 
+const SRC = () => `<a href="${esc(S.stats.src)}" target="_blank" rel="noopener">${esc(S.stats.srcName||"statlocker.gg")}</a>`;
+function scopeTxt(){
+  const c = S.stats.scope; if (!c) return "parche actual, todos los modos";
+  const bits = [c.days ? `últimos ${c.days} días` : "parche actual", c.matchMode ? `modo ${c.matchMode}` : "todos los modos"];
+  if (c.minBadge!=null || c.maxBadge!=null) bits.push(`rango medio ${c.minBadge??"…"}–${c.maxBadge??"…"}`);
+  return bits.join(", ");
+}
 const pct = n => n==null ? "—" : n.toLocaleString("es-ES",{minimumFractionDigits:1,maximumFractionDigits:1})+"%";
 const kfmt = n => n==null ? "—" : n>=1000 ? Math.round(n/1000).toLocaleString("es-ES")+"k" : String(n);
 function wrView(){
@@ -96,11 +103,11 @@ function wrView(){
   const over = rows.filter(r=>r.wr>=54).length, under = rows.filter(r=>r.wr<46).length;
   const top = [...rows].sort((a,b)=>b.wr-a.wr);
   return `<section class="wrap">
-    <div class="sh"><h2>Winrates</h2><p>Fuente: <a href="${st.src}" target="_blank" rel="noopener">statlocker.gg</a> · parche actual, todos los modos · consultado ${fmtDate(st.date)}</p></div>
+    <div class="sh"><h2>Winrates</h2><p>Fuente: ${SRC()} · ${scopeTxt()} · consultado ${fmtDate(st.date)}</p></div>
     <div class="kpis">
       <div><span class="k">Mejor winrate</span><b>${esc(top[0].name)}</b><span class="v">${pct(top[0].wr)}</span></div>
       <div><span class="k">Peor winrate</span><b>${esc(top[top.length-1].name)}</b><span class="v">${pct(top[top.length-1].wr)}</span></div>
-      <div><span class="k">Por encima del 54%</span><b>${over} héroes</b><span class="v">S según statlocker</span></div>
+      <div><span class="k">Por encima del 54%</span><b>${over} héroes</b><span class="v">winrate alto</span></div>
       <div><span class="k">Por debajo del 46%</span><b>${under} héroes</b><span class="v">media del roster ${pct(avg)}</span></div>
     </div>
     <div class="tblwrap"><table class="wrt">
@@ -112,7 +119,7 @@ function wrView(){
         <td><div class="cell"><div class="bar wr"><span class="mid"></span><i class="${r.wr>=50?'up':'dn'}" style="${r.wr>=50?`left:50%;width:${w}%`:`left:auto;right:50%;width:${w}%`}"></i></div><em>${pct(r.wr)}</em></div></td>
         <td><div class="cell"><div class="bar"><i class="pk" style="width:${(r.pick/maxPick*100).toFixed(1)}%"></i></div><em>${pct(r.pick)}</em></div></td>
         <td class="r num">${kfmt(r.games)}</td></tr>`;}).join("")}</tbody></table></div>
-    <p class="fine">Winrate: % de partidas ganadas con el héroe. Pick rate: % de partidas en las que aparece. La barra de winrate parte del 50%; cada punto por encima o por debajo alarga la barra. Partidas: total del héroe en su página de statlocker; vacío cuando la página no lo muestra. </p>
+    <p class="fine">Winrate: % de partidas ganadas con el héroe. Pick rate: % de partidas en las que aparece. La barra de winrate parte del 50%; cada punto por encima o por debajo alarga la barra. Partidas: partidas del héroe en el periodo analizado. </p>
     <p class="tnote"><b>Nota:</b> la tier list es subjetiva y está hecha por mí en torno a rankeds de alto nivel. Los personajes pueden cambiar de tier en función de tu rango.</p>
   </section>`;
 }
@@ -136,7 +143,7 @@ function heroView(slug){
     <a class="back" href="#builds">← Todas las builds</a>
     <div class="sheet-head">${img(slug)}
       <div><h2>${esc(h.name)}</h2><div class="meta"><span class="tb" style="--tc:${TC[t]}">Tier ${t}</span><span>${esc(h.role)}</span>${h.weapon!=="—"?`<span>· ${esc(h.weapon)}</span>`:''}</div></div>
-      <div class="wr"><div class="n">${pct(S.stats.hero[slug].wr)}</div><div class="l">Winrate · pick ${pct(S.stats.hero[slug].pick)}${S.stats.hero[slug].games?` · ${kfmt(S.stats.hero[slug].games)} partidas`:''}<br><a href="${S.stats.src}" target="_blank" rel="noopener">statlocker.gg</a></div></div>
+      <div class="wr"><div class="n">${pct(S.stats.hero[slug].wr)}</div><div class="l">Winrate · pick ${pct(S.stats.hero[slug].pick)}${S.stats.hero[slug].games?` · ${kfmt(S.stats.hero[slug].games)} partidas`:''}<br>${SRC()}</div></div>
     </div>
     <div class="plan"><p class="k">Plan de juego</p><p>${esc(h.plan)}</p>
       ${edit ? `<div class="note"><label class="k" for="note">Nota de zok3r</label><textarea id="note" data-slug="${slug}" placeholder="Tu consejo personal para este héroe…">${esc(note)}</textarea></div>` : (note?`<div class="note"><p class="k">Nota de zok3r</p><p>${esc(note)}</p></div>`:'')}
@@ -154,7 +161,7 @@ function heroView(slug){
       <div class="cats">${Object.keys(CAT).map(c=>`<span style="--cat:${CAT[c]}"><i></i>${CATN[c]}</span>`).join("")}<span>Coste en almas</span><span>Datos: objetos más comprados en ranked, últimos 7 días (<a href="https://deadlocktiers.com/heroes/${slug}/" target="_blank" rel="noopener">deadlocktiers.com</a>)</span></div></div>
     <div class="blk"><h3>Objetos con mejor winrate</h3>
       ${best.length ? `<div class="best">${best.map(([n,w])=>`<div class="bi" style="--cat:${CAT[(S.items[n]||{c:'s'}).c]}"><i></i><a class="il" href="#objeto/${islug(n)}">${ico(n)}${esc(n)}</a><b>${pct(w)}</b></div>`).join("")}</div>
-      <p class="fine">De <a href="${S.stats.src.replace('standard-winrates','hero-library/')+slug.replace('mo-krill','mo-&-krill')}" target="_blank" rel="noopener">statlocker.gg</a>, entre objetos comprados en al menos el 5% de las partidas del héroe. Casi todos son de final: quien llega a comprarlos suele ir ganando ya, así que indican qué cerrar, no qué comprar primero.</p>` : '<p class="fine">statlocker no muestra objetos para este héroe ahora mismo.</p>'}</div>
+      <p class="fine">De ${SRC()} (${scopeTxt()}), entre objetos comprados en al menos el 5% de las partidas del héroe. Casi todos son de final: quien llega a comprarlos suele ir ganando ya, así que indican qué cerrar, no qué comprar primero.</p>` : '<p class="fine">No hay datos suficientes de objetos para este héroe ahora mismo.</p>'}</div>
     <div class="blk"><h3>Líneas más difíciles</h3><div class="lanes">${h.hard.map(s=>`<a class="lane" href="#h-${s}">${img(s)}${esc(H(s).name)}</a>`).join("")}</div></div>
   </section>`;
 }
@@ -256,7 +263,7 @@ function itemView(n){
     <div class="sheet-head ihead" style="--cat:${CAT[it.c]}">${ico(n,"xl")}
       <div><h2>${esc(n)}</h2><div class="meta"><span class="tb" style="--tc:${CAT[it.c]}">${CATN[it.c]}</span>${t?`<span>Tier ${t}</span>`:''}${it.cost?`<span>· ${it.cost.toLocaleString("es-ES")} almas</span>`:''}</div></div></div>
     <div class="blk"><h3>Lo compran en su build</h3>${users.length ? users.map(([lab,time,l])=>`<div class="ufor"><h4>${lab}<small>${time}</small></h4><div class="lanes">${l.sort((a,b)=>H(a).name.localeCompare(H(b).name)).map(hchip).join("")}</div></div>`).join("") : '<p class="fine">Ningún héroe lo lleva en su build más comprada ahora mismo.</p>'}</div>
-    <div class="blk"><h3>Héroes donde mejor rinde</h3>${bestIn.length ? `<div class="best">${bestIn.map(b=>`<a class="bi" href="#h-${b.sl}">${img(b.sl)}<span>${esc(H(b.sl).name)}</span><b>${pct(b.wr)}</b></a>`).join("")}</div><p class="fine">Winrate del héroe con este objeto, según statlocker.gg.</p>` : '<p class="fine">No aparece entre los objetos con mejor winrate de ningún héroe.</p>'}</div>
+    <div class="blk"><h3>Héroes donde mejor rinde</h3>${bestIn.length ? `<div class="best">${bestIn.map(b=>`<a class="bi" href="#h-${b.sl}">${img(b.sl)}<span>${esc(H(b.sl).name)}</span><b>${pct(b.wr)}</b></a>`).join("")}</div><p class="fine">Winrate del héroe con este objeto, según ${SRC()}.</p>` : '<p class="fine">No aparece entre los objetos con mejor winrate de ningún héroe.</p>'}</div>
     <div class="acts"><a class="btn pri" href="#crear">Crear una build</a></div>
   </section>`;
 }
@@ -351,7 +358,7 @@ function gsFill(){
 
 function footer(){
   return `<footer><div class="wrap"><span>Tier list y notas: zok3r · <a href="https://twitch.tv/zok3r" target="_blank" rel="noopener">twitch.tv/zok3r</a></span>
-  <span>Winrates, pick rates y objetos con mejor winrate: <a href="https://statlocker.gg/heroes/standard-winrates" target="_blank" rel="noopener">statlocker.gg</a> (consultado ${fmtDate(S.stats.date)}). Objetos más comprados, orden de habilidades y líneas difíciles: <a href="https://deadlocktiers.com/" target="_blank" rel="noopener">deadlocktiers.com</a> (ranked, datos a ${fmtDate(S.meta.dataDate)}). Nombres de objetos y habilidades en inglés, como en el cliente original.</span>
+  <span>Winrates, pick rates y objetos con mejor winrate: ${SRC()} (${scopeTxt()}, consultado ${fmtDate(S.stats.date)}). Objetos más comprados, orden de habilidades y líneas difíciles: <a href="https://deadlocktiers.com/" target="_blank" rel="noopener">deadlocktiers.com</a> (ranked, datos a ${fmtDate(S.meta.dataDate)}). Nombres de objetos y habilidades en inglés, como en el cliente original.</span>
   <span>Proyecto de fans, sin relación con Valve.</span></div></footer>`;
 }
 

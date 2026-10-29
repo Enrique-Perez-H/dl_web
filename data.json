@@ -2436,15 +2436,15 @@
   },
   "Haunting Shot": {
    "c": "w",
-   "cost": 0
+   "cost": 9999
   },
   "Infinite Rounds": {
    "c": "w",
-   "cost": 0
+   "cost": 9999
   },
   "Runed Gauntlets": {
    "c": "w",
-   "cost": 0
+   "cost": 9999
   },
   "Extra Health": {
    "c": "v",
@@ -2664,31 +2664,31 @@
   },
   "Celestial Blessing": {
    "c": "v",
-   "cost": 0
+   "cost": 9999
   },
   "Cloak of Opportunity": {
    "c": "v",
-   "cost": 0
+   "cost": 9999
   },
   "Electric Slippers": {
    "c": "v",
-   "cost": 0
+   "cost": 9999
   },
   "Eternal Gift": {
    "c": "v",
-   "cost": 0
+   "cost": 9999
   },
   "Nullification Burst": {
    "c": "v",
-   "cost": 0
+   "cost": 9999
   },
   "Seraphim Wings": {
    "c": "v",
-   "cost": 0
+   "cost": 9999
   },
   "Shadow Strike": {
    "c": "v",
-   "cost": 0
+   "cost": 9999
   },
   "Extra Charge": {
    "c": "s",
@@ -2888,31 +2888,31 @@
   },
   "Frostbite Charm": {
    "c": "s",
-   "cost": 0
+   "cost": 9999
   },
   "Mystic Conduit": {
    "c": "s",
-   "cost": 0
+   "cost": 9999
   },
   "Mystical Piano": {
    "c": "s",
-   "cost": 0
+   "cost": 9999
   },
   "Omnicharge Signet": {
    "c": "s",
-   "cost": 0
+   "cost": 9999
   },
   "Prism Blast": {
    "c": "s",
-   "cost": 0
+   "cost": 9999
   },
   "Shrink Ray": {
    "c": "s",
-   "cost": 0
+   "cost": 9999
   },
   "Unstable Concoction": {
    "c": "s",
-   "cost": 0
+   "cost": 9999
   }
  },
  "news": [
@@ -3046,193 +3046,212 @@
  },
  "flags": [],
  "stats": {
-  "src": "https://statlocker.gg/heroes/standard-winrates",
-  "date": "2026-10-28",
+  "src": "https://deadlock-api.com",
+  "srcName": "Deadlock API",
+  "date": "2026-10-29",
+  "scope": {
+   "days": 14,
+   "matchMode": null,
+   "minBadge": null,
+   "maxBadge": null
+  },
   "hero": {
    "abrams": {
-    "wr": 52.0,
-    "pick": 27.5,
-    "games": 307909,
+    "wr": 51.8,
+    "pick": 27.4,
+    "games": 578621,
     "best": [
      [
       "Colossus",
-      60.5
+      60.3
+     ],
+     [
+      "Scourge",
+      59.9
      ],
      [
       "Witchmail",
-      59.6
+      59.5
      ],
      [
       "Unstoppable",
-      59.4
-     ],
-     [
-      "Phantom Strike",
-      58.9
+      58.8
      ]
     ]
    },
    "apollo": {
     "wr": 49.3,
-    "pick": 27.5,
-    "games": 257083,
+    "pick": 27.6,
+    "games": 582522,
     "best": [
      [
       "Mystic Reverb",
-      58.7
+      58.3
      ],
      [
       "Spirit Burn",
-      58.1
-     ],
-     [
-      "Witchmail",
       57.9
      ],
      [
+      "Witchmail",
+      57.8
+     ],
+     [
       "Escalating Exposure",
-      56.1
+      56.0
      ]
     ]
    },
    "baba": {
-    "wr": 54.0,
-    "pick": 14.8,
-    "games": 160710,
+    "wr": 53.3,
+    "pick": 16.8,
+    "games": 353754,
     "best": [
      [
+      "Spirit Burn",
+      61.3
+     ],
+     [
       "Boundless Spirit",
-      61.1
+      60.4
      ],
      [
       "Escalating Exposure",
-      61.0
+      60.0
      ],
      [
-      "Greater Expansion",
-      59.8
-     ],
-     [
-      "Plated Armor",
-      59.5
+      "Unstoppable",
+      59.4
      ]
     ]
    },
    "bebop": {
-    "wr": 48.3,
+    "wr": 48.4,
     "pick": 35.0,
-    "games": 189598,
+    "games": 738289,
     "best": [
      [
       "Mystic Reverb",
-      58.0
+      57.8
      ],
      [
       "Spirit Burn",
-      56.2
+      56.5
      ],
      [
       "Witchmail",
-      55.5
+      55.3
      ],
      [
-      "Siphon Bullets",
-      54.8
+      "Escalating Exposure",
+      54.7
      ]
     ]
    },
    "billy": {
-    "wr": 48.5,
-    "pick": 29.3,
-    "games": 11334,
+    "wr": 48.2,
+    "pick": 29.6,
+    "games": 623425,
     "best": [
      [
       "Scourge",
-      57.9
+      56.8
      ],
      [
       "Colossus",
-      57.1
+      56.7
      ],
      [
       "Juggernaut",
-      56.9
+      55.8
      ],
      [
-      "Spellbreaker",
-      55.9
+      "Indomitable",
+      55.5
      ]
     ]
    },
    "calico": {
-    "wr": 48.0,
-    "pick": 13.7,
-    "games": 33057,
+    "wr": 48.1,
+    "pick": 13.9,
+    "games": 292580,
     "best": [
      [
       "Spirit Burn",
-      59.2
+      58.4
      ],
      [
-      "Crushing Fists",
+      "Indomitable",
+      57.8
+     ],
+     [
+      "Scourge",
+      57.6
+     ],
+     [
+      "Focus Lens",
       56.8
-     ],
-     [
-      "Juggernaut",
-      55.9
      ]
     ]
    },
    "celeste": {
-    "wr": 48.4,
-    "pick": 33.1,
-    "games": 28456,
+    "wr": 48.5,
+    "pick": 33.3,
+    "games": 701391,
     "best": [
      [
       "Spellslinger",
-      57.6
-     ],
-     [
-      "Witchmail",
-      56.0
+      55.9
      ],
      [
       "Spirit Burn",
-      55.6
+      55.4
      ],
      [
-      "Spiritual Overflow",
-      55.2
+      "Witchmail",
+      54.1
+     ],
+     [
+      "Refresher",
+      53.8
      ]
     ]
    },
    "deadman-danny": {
-    "wr": 50.8,
-    "pick": 49.5,
-    "games": 139124,
+    "wr": 49.9,
+    "pick": 56.0,
+    "games": 1180751,
     "best": [
      [
-      "Diviner's Kevlar",
-      59.6
-     ],
-     [
       "Mystic Reverb",
-      59.1
+      58.8
      ],
      [
-      "Spiritual Overflow",
-      56.4
+      "Diviner's Kevlar",
+      58.7
+     ],
+     [
+      "Spirit Burn",
+      57.8
+     ],
+     [
+      "Escalating Exposure",
+      56.9
      ]
     ]
    },
    "drifter": {
-    "wr": 50.3,
-    "pick": 35.2,
-    "games": 359534,
+    "wr": 50.4,
+    "pick": 35.1,
+    "games": 740891,
     "best": [
      [
       "Glass Cannon",
-      61.3
+      61.2
+     ],
+     [
+      "Frenzy",
+      60.6
      ],
      [
       "Lucky Shot",
@@ -3240,56 +3259,60 @@
      ],
      [
       "Silencer",
-      59.9
-     ],
-     [
-      "Crippling Headshot",
-      58.3
+      60.0
      ]
     ]
    },
    "dynamo": {
     "wr": 51.9,
-    "pick": 20.0,
-    "games": 62278,
+    "pick": 20.6,
+    "games": 434629,
     "best": [
      [
-      "Healing Tempo",
-      57.3
+      "Diviner's Kevlar",
+      59.4
+     ],
+     [
+      "Spirit Burn",
+      57.7
      ],
      [
       "Mystic Reverb",
-      56.6
+      57.3
+     ],
+     [
+      "Indomitable",
+      56.7
      ]
     ]
    },
    "graves": {
-    "wr": 57.4,
-    "pick": 44.8,
-    "games": 361753,
+    "wr": 57.5,
+    "pick": 44.5,
+    "games": 938534,
     "best": [
      [
       "Siphon Bullets",
-      63.4
+      63.3
      ],
      [
-      "Escalating Exposure",
+      "Diviner's Kevlar",
       62.1
      ],
      [
-      "Spiritual Overflow",
-      61.6
+      "Escalating Exposure",
+      61.9
      ],
      [
-      "Torment Pulse",
-      60.4
+      "Spirit Burn",
+      61.6
      ]
     ]
    },
    "grey-talon": {
-    "wr": 46.4,
-    "pick": 15.5,
-    "games": 173556,
+    "wr": 46.7,
+    "pick": 15.7,
+    "games": 330357,
     "best": [
      [
       "Spiritual Overflow",
@@ -3301,251 +3324,271 @@
      ],
      [
       "Indomitable",
-      54.2
+      54.1
+     ],
+     [
+      "Spirit Burn",
+      53.6
      ]
     ]
    },
    "haze": {
-    "wr": 52.8,
-    "pick": 44.5,
-    "games": 462938,
+    "wr": 52.9,
+    "pick": 43.9,
+    "games": 925667,
     "best": [
      [
       "Silencer",
-      62.7
+      62.9
+     ],
+     [
+      "Glass Cannon",
+      62.8
      ],
      [
       "Siphon Bullets",
-      62.3
+      62.4
      ],
      [
       "Lucky Shot",
       61.9
-     ],
-     [
-      "Crippling Headshot",
-      61.5
      ]
     ]
    },
    "holliday": {
     "wr": 46.3,
-    "pick": 18.1,
-    "games": 171114,
+    "pick": 18.6,
+    "games": 392036,
     "best": [
      [
       "Lucky Shot",
-      55.2
-     ],
-     [
-      "Escalating Exposure",
-      54.2
+      55.5
      ],
      [
       "Mercurial Magnum",
       54.1
      ],
      [
-      "Spirit Burn",
-      53.4
+      "Escalating Exposure",
+      53.9
+     ],
+     [
+      "Glass Cannon",
+      53.5
      ]
     ]
    },
    "infernus": {
     "wr": 49.2,
-    "pick": 34.6,
-    "games": 320850,
+    "pick": 35.0,
+    "games": 738625,
     "best": [
      [
       "Spirit Burn",
       57.2
      ],
      [
+      "Infuser",
+      56.1
+     ],
+     [
       "Mercurial Magnum",
-      56.2
+      56.1
      ],
      [
-      "Juggernaut",
-      54.7
-     ],
-     [
-      "Leech",
-      53.9
+      "Indomitable",
+      55.0
      ]
     ]
    },
    "ivy": {
-    "wr": 52.3,
-    "pick": 18.2,
-    "games": 98689,
+    "wr": 52.8,
+    "pick": 19.0,
+    "games": 400608,
     "best": [
      [
+      "Spirit Burn",
+      60.9
+     ],
+     [
+      "Echo Shard",
+      58.8
+     ],
+     [
       "Silencer",
-      59.4
+      58.6
      ],
      [
       "Escalating Exposure",
-      58.4
-     ],
-     [
-      "Healing Tempo",
-      56.7
-     ],
-     [
-      "Siphon Bullets",
-      56.7
+      58.2
      ]
     ]
    },
    "kelvin": {
-    "wr": 53.5,
-    "pick": 12.3,
-    "games": 52112,
+    "wr": 54.1,
+    "pick": 12.8,
+    "games": 270128,
     "best": [
      [
-      "Spirit Burn",
-      62.1
+      "Mystic Reverb",
+      63.4
      ],
      [
-      "Healing Tempo",
-      58.8
+      "Spirit Burn",
+      62.8
+     ],
+     [
+      "Infuser",
+      60.2
      ],
      [
       "Escalating Exposure",
-      58.8
-     ],
-     [
-      "Boundless Spirit",
-      58.4
+      58.9
      ]
     ]
    },
    "lady-geist": {
-    "wr": 51.2,
-    "pick": 22.0,
-    "games": 125235,
+    "wr": 51.4,
+    "pick": 22.1,
+    "games": 466145,
     "best": [
      [
       "Spirit Burn",
-      59.3
-     ],
-     [
-      "Escalating Exposure",
-      57.3
+      59.1
      ],
      [
       "Mystic Reverb",
-      57.1
+      57.3
      ],
      [
-      "Boundless Spirit",
-      56.2
+      "Escalating Exposure",
+      57.2
+     ],
+     [
+      "Infuser",
+      56.6
      ]
     ]
    },
    "lash": {
-    "wr": 50.4,
+    "wr": 50.6,
     "pick": 30.5,
-    "games": 341092,
+    "games": 642601,
     "best": [
      [
       "Mystic Reverb",
-      59.6
+      59.7
      ],
      [
       "Spirit Burn",
-      57.6
+      57.7
      ],
      [
-      "Unstoppable",
-      53.8
+      "Indomitable",
+      55.6
      ],
      [
-      "Boundless Spirit",
-      53.1
+      "Arctic Blast",
+      54.8
      ]
     ]
    },
    "mcginnis": {
-    "wr": 48.2,
-    "pick": 11.1,
-    "games": 27821,
+    "wr": 48.5,
+    "pick": 11.5,
+    "games": 243037,
     "best": [
      [
       "Spirit Burn",
-      57.8
+      57.1
      ],
      [
-      "Stamina Mastery",
+      "Boundless Spirit",
+      54.1
+     ],
+     [
+      "Escalating Exposure",
+      53.6
+     ],
+     [
+      "Lightning Scroll",
       53.3
-     ],
-     [
-      "Heroic Aura",
-      52.2
      ]
     ]
    },
    "mina": {
-    "wr": 44.4,
-    "pick": 38.5,
-    "games": 310195,
+    "wr": 44.9,
+    "pick": 38.9,
+    "games": 819225,
     "best": [
      [
+      "Ethereal Shift",
+      55.4
+     ],
+     [
       "Spiritual Overflow",
-      54.7
+      54.8
+     ],
+     [
+      "Spellbreaker",
+      53.2
      ],
      [
       "Indomitable",
-      52.1
-     ],
-     [
-      "Spirit Burn",
-      50.9
-     ],
-     [
-      "Mercurial Magnum",
-      50.7
+      52.6
      ]
     ]
    },
    "mirage": {
-    "wr": 44.7,
-    "pick": 10.3,
-    "games": 109549,
+    "wr": 44.8,
+    "pick": 10.4,
+    "games": 219778,
     "best": [
+     [
+      "Siphon Bullets",
+      54.6
+     ],
+     [
+      "Silencer",
+      54.6
+     ],
      [
       "Spiritual Overflow",
       53.8
      ],
      [
       "Inhibitor",
-      53.0
-     ],
-     [
-      "Boundless Spirit",
-      50.5
+      53.1
      ]
     ]
    },
    "mo-krill": {
-    "wr": 51.3,
-    "pick": 19.7,
-    "games": 199193,
+    "wr": 51.0,
+    "pick": 19.6,
+    "games": 412247,
     "best": [
      [
+      "Spirit Burn",
+      61.4
+     ],
+     [
       "Escalating Exposure",
-      60.7
+      60.6
+     ],
+     [
+      "Scourge",
+      59.2
      ],
      [
       "Witchmail",
-      58.6
+      58.5
      ]
     ]
    },
    "nurse-harrow": {
-    "wr": 51.6,
-    "pick": 67.5,
-    "games": 749089,
+    "wr": 51.7,
+    "pick": 39.6,
+    "games": 835108,
     "best": [
      [
       "Spiritual Overflow",
@@ -3566,36 +3609,36 @@
     ]
    },
    "paige": {
-    "wr": 54.9,
-    "pick": 27.1,
-    "games": 25730,
+    "wr": 55.4,
+    "pick": 29.3,
+    "games": 617179,
     "best": [
      [
-      "Diviner's Kevlar",
-      61.5
+      "Mystic Reverb",
+      61.1
      ],
      [
       "Spirit Burn",
-      60.9
+      60.7
      ],
      [
-      "Cheat Death",
-      60.8
+      "Refresher",
+      59.7
      ],
      [
-      "Mystic Reverb",
-      60.8
+      "Escalating Exposure",
+      58.9
      ]
     ]
    },
    "paradox": {
-    "wr": 45.5,
-    "pick": 23.4,
-    "games": 214717,
+    "wr": 45.7,
+    "pick": 23.8,
+    "games": 500965,
     "best": [
      [
       "Glass Cannon",
-      55.3
+      55.2
      ],
      [
       "Spirit Burn",
@@ -3603,122 +3646,122 @@
      ],
      [
       "Crippling Headshot",
-      53.1
+      53.4
      ],
      [
-      "Mystic Reverb",
-      52.1
+      "Escalating Exposure",
+      52.8
      ]
     ]
    },
    "pocket": {
-    "wr": 44.5,
-    "pick": 15.9,
-    "games": 65926,
+    "wr": 44.6,
+    "pick": 16.4,
+    "games": 345473,
     "best": [
      [
-      "Diviner's Kevlar",
+      "Cheat Death",
       57.5
      ],
      [
+      "Diviner's Kevlar",
+      55.9
+     ],
+     [
       "Ethereal Shift",
-      55.1
+      55.5
      ],
      [
-      "Arctic Blast",
-      52.6
-     ],
-     [
-      "Boundless Spirit",
-      52.5
+      "Spiritual Overflow",
+      54.9
      ]
     ]
    },
    "rat-king": {
-    "wr": 55.7,
-    "pick": 55.6,
-    "games": 536690,
+    "wr": 56.2,
+    "pick": 58.7,
+    "games": 1237247,
     "best": [
      [
       "Spellslinger",
-      62.7
+      63.0
+     ],
+     [
+      "Frenzy",
+      60.3
      ],
      [
       "Siphon Bullets",
-      60.0
+      60.3
      ],
      [
       "Colossus",
-      58.9
-     ],
-     [
-      "Witchmail",
-      58.2
+      59.1
      ]
     ]
    },
    "rem": {
-    "wr": 44.9,
-    "pick": 29.7,
-    "games": 14066,
+    "wr": 45.2,
+    "pick": 31.5,
+    "games": 663644,
     "best": [
      [
-      "Cheat Death",
-      58.7
-     ],
-     [
       "Mystic Reverb",
-      56.9
-     ],
-     [
-      "Witchmail",
-      56.9
+      56.4
      ],
      [
       "Spirit Burn",
-      56.4
+      56.1
+     ],
+     [
+      "Scourge",
+      55.1
+     ],
+     [
+      "Escalating Exposure",
+      55.0
      ]
     ]
    },
    "seven": {
-    "wr": 54.0,
+    "wr": 54.2,
     "pick": 32.7,
-    "games": 305868,
+    "games": 688824,
     "best": [
      [
       "Spirit Burn",
-      61.4
+      61.6
      ],
      [
       "Lightning Scroll",
-      59.2
+      59.5
      ],
      [
       "Indomitable",
-      58.6
+      59.0
      ],
      [
-      "Spiritual Overflow",
-      57.7
+      "Mercurial Magnum",
+      58.3
      ]
     ]
    },
    "shiv": {
-    "wr": 45.3,
-    "pick": 25.4,
-    "games": 261884,
+    "wr": 45.1,
+    "pick": 24.5,
+    "games": 517232,
     "best": [
      [
       "Mystic Reverb",
-      56.5
+      56.1
      ],
      [
       "Ethereal Shift",
-      56.2
+      56.0
      ],
      [
       "Witchmail",
-      55.5
+      55.1
      ],
      [
       "Glass Cannon",
@@ -3727,284 +3770,301 @@
     ]
    },
    "silver": {
-    "wr": 46.1,
-    "pick": 28.9,
-    "games": 246401,
+    "wr": 45.9,
+    "pick": 29.3,
+    "games": 617568,
     "best": [
      [
       "Silencer",
-      57.6
+      57.1
      ],
      [
       "Frenzy",
-      56.7
-     ],
-     [
-      "Phantom Strike",
-      55.6
-     ],
-     [
-      "Diviner's Kevlar",
-      55.5
-     ]
-    ]
-   },
-   "sinclair": {
-    "wr": 44.6,
-    "pick": 9.6,
-    "games": 41188,
-    "best": [
-     [
-      "Mystic Reverb",
-      56.6
+      56.3
      ],
      [
       "Diviner's Kevlar",
       55.4
      ],
      [
-      "Spirit Burn",
+      "Phantom Strike",
+      55.3
+     ]
+    ]
+   },
+   "sinclair": {
+    "wr": 44.7,
+    "pick": 9.7,
+    "games": 203492,
+    "best": [
+     [
+      "Mystic Reverb",
+      56.2
+     ],
+     [
+      "Diviner's Kevlar",
       55.3
      ],
      [
+      "Spirit Burn",
+      54.7
+     ],
+     [
       "Magic Carpet",
-      54.5
+      54.2
      ]
     ]
    },
    "solomon": {
-    "wr": 45.6,
-    "pick": 17.4,
-    "games": 112929,
+    "wr": 46.3,
+    "pick": 22.8,
+    "games": 480072,
     "best": [
      [
       "Magic Carpet",
-      55.7
+      56.1
+     ],
+     [
+      "Mystic Reverb",
+      54.9
      ],
      [
       "Spirit Burn",
-      53.4
+      53.5
      ],
      [
       "Escalating Exposure",
-      52.0
-     ],
-     [
-      "Lightning Scroll",
-      51.9
+      52.3
      ]
     ]
    },
    "the-doorman": {
-    "wr": 45.2,
-    "pick": 13.9,
-    "games": 134379,
+    "wr": 45.4,
+    "pick": 14.9,
+    "games": 313679,
     "best": [
      [
       "Mystic Reverb",
-      55.7
+      55.5
      ],
      [
       "Spirit Burn",
-      53.6
-     ],
-     [
-      "Cheat Death",
-      51.7
+      53.8
      ],
      [
       "Indomitable",
-      51.5
+      51.9
+     ],
+     [
+      "Cheat Death",
+      51.8
      ]
     ]
    },
    "venator": {
-    "wr": 47.0,
-    "pick": 39.8,
-    "games": 445008,
+    "wr": 47.1,
+    "pick": 39.4,
+    "games": 830727,
     "best": [
      [
+      "Spellslinger",
+      55.7
+     ],
+     [
       "Lucky Shot",
-      54.4
+      54.2
+     ],
+     [
+      "Frenzy",
+      53.9
      ],
      [
       "Silencer",
-      53.6
-     ],
-     [
-      "Siphon Bullets",
-      52.5
-     ],
-     [
-      "Ricochet",
-      51.7
+      53.7
      ]
     ]
    },
    "victor": {
     "wr": 54.7,
-    "pick": 31.5,
-    "games": 289453,
+    "pick": 30.7,
+    "games": 647066,
     "best": [
      [
+      "Spirit Burn",
+      67.0
+     ],
+     [
+      "Scourge",
+      65.4
+     ],
+     [
       "Ethereal Shift",
-      65.9
+      65.3
      ],
      [
       "Refresher",
       65.3
-     ],
-     [
-      "Boundless Spirit",
-      63.0
-     ],
-     [
-      "Transcendent Cooldown",
-      62.6
      ]
     ]
    },
    "vindicta": {
-    "wr": 48.6,
-    "pick": 29.3,
-    "games": 278050,
+    "wr": 48.8,
+    "pick": 30.4,
+    "games": 640538,
     "best": [
      [
       "Lucky Shot",
-      58.3
+      58.2
      ],
      [
       "Crippling Headshot",
-      56.1
-     ],
-     [
-      "Spiritual Overflow",
-      55.7
+      55.9
      ],
      [
       "Spellslinger",
+      55.6
+     ],
+     [
+      "Spiritual Overflow",
       55.4
      ]
     ]
    },
    "violet": {
-    "wr": 51.8,
-    "pick": 48.6,
-    "games": 466887,
+    "wr": 51.2,
+    "pick": 52.2,
+    "games": 1100511,
     "best": [
      [
+      "Diviner's Kevlar",
+      62.3
+     ],
+     [
       "Spirit Burn",
-      60.2
+      59.8
      ],
      [
       "Escalating Exposure",
-      60.1
+      59.5
      ],
      [
       "Spiritual Overflow",
-      58.3
-     ],
-     [
-      "Mystic Vulnerability",
-      56.4
+      57.8
      ]
     ]
    },
    "viscous": {
-    "wr": 45.6,
-    "pick": 11.3,
-    "games": null,
+    "wr": 45.7,
+    "pick": 12.0,
+    "games": 252220,
     "best": [
      [
       "Witchmail",
-      56.6
-     ],
-     [
-      "Mystic Reverb",
-      56.0
-     ],
-     [
-      "Spirit Burn",
-      55.4
+      55.1
      ],
      [
       "Phantom Strike",
-      54.9
+      54.3
+     ],
+     [
+      "Mystic Reverb",
+      54.1
+     ],
+     [
+      "Spirit Burn",
+      53.9
      ]
     ]
    },
    "vyper": {
-    "wr": 46.3,
-    "pick": 13.9,
-    "games": null,
-    "best": []
-   },
-   "warden": {
-    "wr": 47.5,
-    "pick": 11.8,
-    "games": 57542,
+    "wr": 46.2,
+    "pick": 13.7,
+    "games": 288214,
     "best": [
      [
-      "Boundless Spirit",
-      55.9
+      "Lucky Shot",
+      58.6
+     ],
+     [
+      "Glass Cannon",
+      58.3
      ],
      [
       "Silencer",
-      55.2
+      57.9
+     ],
+     [
+      "Crippling Headshot",
+      57.4
+     ]
+    ]
+   },
+   "warden": {
+    "wr": 47.1,
+    "pick": 10.8,
+    "games": 228278,
+    "best": [
+     [
+      "Boundless Spirit",
+      55.7
+     ],
+     [
+      "Witchmail",
+      55.5
+     ],
+     [
+      "Silencer",
+      55.4
      ],
      [
       "Siphon Bullets",
-      55.2
-     ],
-     [
-      "Spellslinger",
-      54.1
+      54.8
      ]
     ]
    },
    "wraith": {
-    "wr": 50.9,
-    "pick": 35.0,
-    "games": 249593,
+    "wr": 50.8,
+    "pick": 33.8,
+    "games": 712763,
     "best": [
      [
       "Spellslinger",
-      63.5
+      63.2
+     ],
+     [
+      "Cheat Death",
+      61.4
      ],
      [
       "Silencer",
-      61.5
+      61.2
      ],
      [
-      "Spiritual Overflow",
-      58.4
-     ],
-     [
-      "Boundless Spirit",
-      58.4
+      "Siphon Bullets",
+      59.0
      ]
     ]
    },
    "yamato": {
     "wr": 47.6,
-    "pick": 26.2,
-    "games": 149005,
+    "pick": 26.4,
+    "games": 555840,
     "best": [
      [
       "Refresher",
-      59.6
+      59.2
+     ],
+     [
+      "Diviner's Kevlar",
+      57.8
      ],
      [
       "Spirit Burn",
       57.0
      ],
      [
-      "Witchmail",
-      56.9
-     ],
-     [
-      "Mystic Reverb",
-      56.2
+      "Colossus",
+      56.8
      ]
     ]
    }

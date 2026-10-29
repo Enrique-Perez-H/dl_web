@@ -34,3 +34,10 @@ The header search finds heroes and items.
     python3 scripts/fetch_item_icons.py
 
 Pulls the icons from the community Deadlock assets API (`assets.deadlock-api.com`) into `assets/items/` and writes `index.json`. Items without an icon still render, just without the image. The game art belongs to Valve; this is a fan project.
+
+## Updating the stats
+
+    python3 scripts/update_stats.py                       # last 14 days, all ranks
+    python3 scripts/update_stats.py --days 7 --min-badge 100 --match-mode ranked
+
+Refreshes winrates, pick rates, games, best-winrate items and item costs in `data.json` from the public Deadlock API (`api.deadlock-api.com`). The tier list itself, builds, plans and news are still edited by hand.
