@@ -1,0 +1,4013 @@
+{
+ "meta": {
+  "updated": "2026-10-28",
+  "today": "2026-10-28",
+  "dataDate": "2026-10-27",
+  "patchLabel": "el parche del 14 de octubre y la llegada de Nurse Harrow",
+  "lastPatch": "14 oct · balance / 26 oct · build 6821"
+ },
+ "tiers": {
+  "S+": [
+   "nurse-harrow",
+   "mo-krill",
+   "celeste",
+   "yamato"
+  ],
+  "S": [
+   "violet",
+   "baba",
+   "venator",
+   "rat-king",
+   "wraith",
+   "bebop",
+   "grey-talon",
+   "mina",
+   "holliday",
+   "vyper",
+   "apollo",
+   "solomon",
+   "shiv",
+   "sinclair"
+  ],
+  "A": [
+   "lady-geist",
+   "haze",
+   "paige",
+   "rem",
+   "graves",
+   "calico",
+   "the-doorman",
+   "drifter",
+   "victor",
+   "dynamo",
+   "kelvin",
+   "ivy",
+   "mirage",
+   "pocket",
+   "viscous"
+  ],
+  "B": [
+   "vindicta",
+   "lash",
+   "silver",
+   "paradox",
+   "deadman-danny",
+   "infernus",
+   "billy",
+   "abrams"
+  ],
+  "C": [
+   "mcginnis",
+   "warden"
+  ],
+  "F": [
+   "seven"
+  ]
+ },
+ "heroes": {
+  "abrams": {
+   "name": "Abrams",
+   "role": "Luchador",
+   "weapon": "Escopeta",
+   "abilities": [
+    "Siphon Life",
+    "Shoulder Charge",
+    "Infernal Resilience",
+    "Seismic Impact"
+   ],
+   "prio": [
+    "Shoulder Charge",
+    "Seismic Impact",
+    "Infernal Resilience",
+    "Siphon Life"
+   ],
+   "early": [
+    "Melee Charge",
+    "Melee Lifesteal",
+    "Close Quarters",
+    "Stalker",
+    "Extra Regen",
+    "Restorative Shot"
+   ],
+   "mid": [
+    "Lifestrike",
+    "Bullet Resist Shredder",
+    "Healing Booster",
+    "Warp Stone",
+    "Duration Extender",
+    "Extra Health"
+   ],
+   "late": [
+    "Crushing Fists",
+    "Hunter's Aura",
+    "Superior Duration",
+    "Spirit Snatch",
+    "Spirit Resilience",
+    "Point Blank"
+   ],
+   "hard": [
+    "graves",
+    "victor",
+    "paige"
+   ],
+   "wr": 52.0,
+   "plan": "Build de melee y sustain: carga, pega cuerpo a cuerpo y vive del robo de vida. Warp Stone para cerrar distancias a mitad de partida."
+  },
+  "apollo": {
+   "name": "Apollo",
+   "role": "Asesino",
+   "weapon": "Perdigones",
+   "abilities": [
+    "Disengaging Sigil",
+    "Riposte",
+    "Flawless Advance",
+    "Itani Lo Sahn"
+   ],
+   "prio": [
+    "Flawless Advance",
+    "Riposte",
+    "Disengaging Sigil",
+    "Itani Lo Sahn"
+   ],
+   "early": [
+    "Mystic Burst",
+    "Mystic Expansion",
+    "Extra Spirit",
+    "Extra Regen",
+    "Spirit Strike",
+    "Mystic Regeneration"
+   ],
+   "mid": [
+    "Improved Spirit",
+    "Compress Cooldown",
+    "Spirit Snatch",
+    "Healing Booster",
+    "Healbane",
+    "Radiant Regeneration"
+   ],
+   "late": [
+    "Tankbuster",
+    "Boundless Spirit",
+    "Superior Cooldown",
+    "Greater Expansion",
+    "Torment Pulse",
+    "Stamina Mastery"
+   ],
+   "hard": [
+    "graves",
+    "paige",
+    "baba"
+   ],
+   "wr": 49.4,
+   "plan": "Duelista de espíritu: Flawless Advance como herramienta principal, entra, castiga y sal con Sigil. Tankbuster es el pico de daño."
+  },
+  "baba": {
+   "name": "Baba",
+   "role": "Místico",
+   "weapon": "Artillería pesada",
+   "abilities": [
+    "Threadsap",
+    "Granny Long Legs",
+    "Baba's Brew",
+    "Feed The Birds"
+   ],
+   "prio": [
+    "Threadsap",
+    "Baba's Brew",
+    "Granny Long Legs",
+    "Feed The Birds"
+   ],
+   "early": [
+    "Extra Charge",
+    "Mystic Regeneration",
+    "Spirit Strike",
+    "Extra Regen",
+    "Rapid Rounds",
+    "Melee Lifesteal"
+   ],
+   "mid": [
+    "Radiant Regeneration",
+    "Healing Booster",
+    "Torment Pulse",
+    "Reactive Barrier",
+    "Healbane",
+    "Extra Spirit"
+   ],
+   "late": [
+    "Spirit Snatch",
+    "Superior Cooldown",
+    "Duration Extender",
+    "Rapid Recharge",
+    "Mystic Vulnerability",
+    "Superior Duration"
+   ],
+   "hard": [
+    "rat-king",
+    "graves",
+    "seven"
+   ],
+   "wr": 54.0,
+   "plan": "Sustain de espíritu con Threadsap al máximo. Tras el nerf del 14 oct el Brew da menos barrera: juega más con regeneración y Torment Pulse."
+  },
+  "bebop": {
+   "name": "Bebop",
+   "role": "Luchador",
+   "weapon": "Rayo",
+   "abilities": [
+    "Exploding Uppercut",
+    "Sticky Bomb",
+    "Grapple Arm",
+    "Hyper Beam"
+   ],
+   "prio": [
+    "Sticky Bomb",
+    "Exploding Uppercut",
+    "Grapple Arm",
+    "Hyper Beam"
+   ],
+   "early": [
+    "Mystic Burst",
+    "Spirit Strike",
+    "Sprint Boots",
+    "Trophy Collector",
+    "Extra Spirit",
+    "Extra Regen"
+   ],
+   "mid": [
+    "Spirit Snatch",
+    "Improved Spirit",
+    "Enduring Speed",
+    "Veil Walker",
+    "Compress Cooldown",
+    "Healing Booster"
+   ],
+   "late": [
+    "Tankbuster",
+    "Boundless Spirit",
+    "Superior Cooldown",
+    "Spirit Resilience",
+    "Echo Shard",
+    "Surge of Power"
+   ],
+   "hard": [
+    "graves",
+    "rat-king",
+    "baba"
+   ],
+   "wr": 48.4,
+   "plan": "Bebop de bomba: Sticky Bomb al máximo y gancho para picks. Veil Walker y Echo Shard para encadenar gancho + bomba dos veces."
+  },
+  "billy": {
+   "name": "Billy",
+   "role": "Luchador",
+   "weapon": "Corto alcance",
+   "abilities": [
+    "Bashdown",
+    "Rising Ram",
+    "Blasted",
+    "Chain Gang"
+   ],
+   "prio": [
+    "Blasted",
+    "Bashdown",
+    "Rising Ram",
+    "Chain Gang"
+   ],
+   "early": [
+    "Melee Lifesteal",
+    "Close Quarters",
+    "Stalker",
+    "Monster Rounds",
+    "Grit",
+    "Extra Regen"
+   ],
+   "mid": [
+    "Spirit Snatch",
+    "Lifestrike",
+    "Melee Charge",
+    "Spirit Strike",
+    "Bullet Resist Shredder",
+    "Extra Charge"
+   ],
+   "late": [
+    "Crushing Fists",
+    "Rapid Recharge",
+    "Point Blank",
+    "Spirit Resilience",
+    "Berserker",
+    "Greater Expansion"
+   ],
+   "hard": [
+    "graves",
+    "paige",
+    "seven"
+   ],
+   "wr": 48.5,
+   "plan": "Brawler híbrido de melee: Blasted y Bashdown a 4 puntos. Crushing Fists convierte cada combo de melee en kill."
+  },
+  "calico": {
+   "name": "Calico",
+   "role": "Asesino",
+   "weapon": "Perdigones",
+   "abilities": [
+    "Gloom Bombs",
+    "Leaping Slash",
+    "Ava",
+    "Return to Shadows"
+   ],
+   "prio": [
+    "Ava",
+    "Return to Shadows",
+    "Gloom Bombs",
+    "Leaping Slash"
+   ],
+   "early": [
+    "Melee Lifesteal",
+    "Spirit Strike",
+    "Stalker",
+    "Sprint Boots",
+    "Trophy Collector",
+    "Cold Front"
+   ],
+   "mid": [
+    "Spirit Snatch",
+    "Cold Front",
+    "Enduring Speed",
+    "Hunter's Aura",
+    "Extra Spirit",
+    "Spirit Shredder"
+   ],
+   "late": [
+    "Arctic Blast",
+    "Improved Spirit",
+    "Boundless Spirit",
+    "Mystic Vulnerability",
+    "Superior Cooldown",
+    "Torment Pulse"
+   ],
+   "hard": [
+    "graves",
+    "baba",
+    "victor"
+   ],
+   "wr": 48.0,
+   "plan": "Asesina de espíritu y control: Ava primero, Cold Front y Arctic Blast para congelar peleas enteras."
+  },
+  "celeste": {
+   "name": "Celeste",
+   "role": "Místico",
+   "weapon": "Ráfaga",
+   "abilities": [
+    "Light Eater",
+    "Dazzling Trick",
+    "Radiant Daggers",
+    "Shining Wonder"
+   ],
+   "prio": [
+    "Light Eater",
+    "Radiant Daggers",
+    "Dazzling Trick",
+    "Shining Wonder"
+   ],
+   "early": [
+    "High-Velocity Rounds",
+    "Extra Regen",
+    "Mystic Regeneration",
+    "Mystic Burst"
+   ],
+   "mid": [
+    "Radiant Regeneration",
+    "Torment Pulse",
+    "Healing Booster",
+    "Mystic Expansion",
+    "Opening Rounds",
+    "Restorative Locket"
+   ],
+   "late": [
+    "Greater Expansion",
+    "Escalating Exposure",
+    "Stamina Mastery",
+    "Spirit Lifesteal",
+    "Mystic Vulnerability",
+    "Witchmail"
+   ],
+   "hard": [
+    "graves",
+    "rat-king",
+    "paige"
+   ],
+   "wr": 48.4,
+   "plan": "Light Eater al máximo y pelea larga con regeneración. Escalating Exposure y Witchmail para aguantar el late."
+  },
+  "deadman-danny": {
+   "name": "Deadman Danny",
+   "role": "Tirador",
+   "weapon": "Disparo cargado",
+   "abilities": [
+    "Strix Salvo",
+    "Chimera Mk1",
+    "Jettison Fuel",
+    "Close The Deal"
+   ],
+   "prio": [
+    "Strix Salvo",
+    "Chimera Mk1",
+    "Close The Deal",
+    "Jettison Fuel"
+   ],
+   "early": [
+    "High-Velocity Rounds",
+    "Extra Spirit",
+    "Opening Rounds",
+    "Grit",
+    "Extra Regen",
+    "Restorative Shot"
+   ],
+   "mid": [
+    "Improved Spirit",
+    "Mystic Expansion",
+    "Reactive Barrier",
+    "Express Shot",
+    "Mystic Burst",
+    "Fortitude"
+   ],
+   "late": [
+    "Tankbuster",
+    "Greater Expansion",
+    "Boundless Spirit",
+    "Superior Cooldown",
+    "Compress Cooldown",
+    "Toxic Bullets"
+   ],
+   "hard": [
+    "kelvin",
+    "graves",
+    "rat-king"
+   ],
+   "wr": 50.8,
+   "plan": "Tras el buff del 14 oct: Strix Salvo marca y el disparo cargado consume la marca. Híbrido espíritu/arma, Express Shot es clave."
+  },
+  "drifter": {
+   "name": "Drifter",
+   "role": "Asesino",
+   "weapon": "Perdigones",
+   "abilities": [
+    "Rend",
+    "Stalker's Mark",
+    "Bloodscent",
+    "Eternal Night"
+   ],
+   "prio": [
+    "Stalker's Mark",
+    "Rend",
+    "Bloodscent",
+    "Eternal Night"
+   ],
+   "early": [
+    "Stalker",
+    "Melee Lifesteal",
+    "Spirit Strike",
+    "Close Quarters",
+    "Sprint Boots",
+    "Mystic Burst"
+   ],
+   "mid": [
+    "Spirit Snatch",
+    "Trophy Collector",
+    "Lifestrike",
+    "Fortitude",
+    "Point Blank",
+    "Extra Health"
+   ],
+   "late": [
+    "Hunter's Aura",
+    "Tankbuster",
+    "Burst Fire",
+    "Bullet Lifesteal",
+    "Superior Duration",
+    "Spirit Resilience"
+   ],
+   "hard": [
+    "graves",
+    "paige",
+    "rat-king"
+   ],
+   "wr": 50.3,
+   "plan": "Cazador de picks: marca, aísla y remata en la noche. Rend y Stalker's Mark a 4 puntos."
+  },
+  "dynamo": {
+   "name": "Dynamo",
+   "role": "Místico",
+   "weapon": "Pistola",
+   "abilities": [
+    "Kinetic Pulse",
+    "Quantum Entanglement",
+    "Rejuvenating Aurora",
+    "Singularity"
+   ],
+   "prio": [
+    "Kinetic Pulse",
+    "Rejuvenating Aurora",
+    "Singularity",
+    "Quantum Entanglement"
+   ],
+   "early": [
+    "Extra Charge",
+    "Extra Regen",
+    "Sprint Boots",
+    "Headshot Booster",
+    "Trophy Collector",
+    "Mystic Burst"
+   ],
+   "mid": [
+    "Mystic Expansion",
+    "Rapid Recharge",
+    "Compress Cooldown",
+    "Duration Extender",
+    "Healing Booster",
+    "Recharging Rush"
+   ],
+   "late": [
+    "Superior Cooldown",
+    "Greater Expansion",
+    "Superior Duration",
+    "Transcendent Cooldown",
+    "Refresher",
+    "Tankbuster"
+   ],
+   "hard": [
+    "graves",
+    "victor",
+    "seven"
+   ],
+   "wr": 51.9,
+   "plan": "Iniciador de equipo: Singularity bien colocada gana la pelea. Refresher para la doble ultimate en late."
+  },
+  "graves": {
+   "name": "Graves",
+   "role": "Místico",
+   "weapon": "Pistola",
+   "abilities": [
+    "Jar of Dead",
+    "Grasping Hands",
+    "Essence Theft",
+    "Borrowed Decree"
+   ],
+   "prio": [
+    "Grasping Hands",
+    "Essence Theft",
+    "Jar of Dead",
+    "Borrowed Decree"
+   ],
+   "early": [
+    "Restorative Shot",
+    "Extra Stamina",
+    "Extra Spirit",
+    "Mystic Shot",
+    "Grit",
+    "Extra Charge"
+   ],
+   "mid": [
+    "Improved Spirit",
+    "Tesla Bullets",
+    "Enchanter's Emblem",
+    "Torment Pulse",
+    "Arcane Surge",
+    "Duration Extender"
+   ],
+   "late": [
+    "Toxic Bullets",
+    "Stamina Mastery",
+    "Mystic Vulnerability",
+    "Spirit Lifesteal",
+    "Boundless Spirit",
+    "Escalating Exposure"
+   ],
+   "hard": [
+    "paige",
+    "rat-king",
+    "seven"
+   ],
+   "wr": 57.4,
+   "plan": "El héroe más difícil de jugar contra en línea ahora mismo. Grasping Hands y Essence Theft a 4 puntos, daño de espíritu sostenido."
+  },
+  "grey-talon": {
+   "name": "Grey Talon",
+   "role": "Tirador",
+   "weapon": "Arco",
+   "abilities": [
+    "Charged Shot",
+    "Rain of Arrows",
+    "Spirit Snare",
+    "Guided Owl"
+   ],
+   "prio": [
+    "Charged Shot",
+    "Rain of Arrows",
+    "Guided Owl",
+    "Spirit Snare"
+   ],
+   "early": [
+    "Extra Charge",
+    "Mystic Burst",
+    "Extra Spirit",
+    "High-Velocity Rounds",
+    "Opening Rounds",
+    "Rapid Rounds"
+   ],
+   "mid": [
+    "Improved Spirit",
+    "Tankbuster",
+    "Rapid Recharge",
+    "Compress Cooldown",
+    "Enchanter's Emblem",
+    "Extra Stamina"
+   ],
+   "late": [
+    "Boundless Spirit",
+    "Stamina Mastery",
+    "Superior Cooldown",
+    "Spirit Burn",
+    "Mystic Reverb",
+    "Transcendent Cooldown"
+   ],
+   "hard": [
+    "graves",
+    "rat-king",
+    "paige"
+   ],
+   "wr": 46.4,
+   "plan": "Talon de espíritu: Charged Shot al máximo y poke desde lejos. Mystic Reverb multiplica cada disparo cargado."
+  },
+  "haze": {
+   "name": "Haze",
+   "role": "Asesino",
+   "weapon": "Fuego rápido",
+   "abilities": [
+    "Sleep Dagger",
+    "Smoke Bomb",
+    "Fixation",
+    "Bullet Dance"
+   ],
+   "prio": [
+    "Fixation",
+    "Sleep Dagger",
+    "Smoke Bomb",
+    "Bullet Dance"
+   ],
+   "early": [
+    "Swift Striker",
+    "Rapid Rounds",
+    "Active Reload",
+    "Extra Spirit",
+    "Extra Health",
+    "Extended Magazine"
+   ],
+   "mid": [
+    "Burst Fire",
+    "Bullet Lifesteal",
+    "Surge of Power",
+    "Fortitude",
+    "Bullet Resist Shredder",
+    "Titanic Magazine"
+   ],
+   "late": [
+    "Ricochet",
+    "Tesla Bullets",
+    "Silencer",
+    "Vampiric Burst",
+    "Capacitor",
+    "Lucky Shot"
+   ],
+   "hard": [
+    "graves",
+    "rat-king",
+    "victor"
+   ],
+   "wr": 52.7,
+   "plan": "Haze de arma pura: Fixation primero, Ricochet y Silencer para que Bullet Dance borre equipos."
+  },
+  "holliday": {
+   "name": "Holliday",
+   "role": "Tirador",
+   "weapon": "Pistola",
+   "abilities": [
+    "Powder Keg",
+    "Bounce Pad",
+    "Crackshot",
+    "Spirit Lasso"
+   ],
+   "prio": [
+    "Powder Keg",
+    "Spirit Lasso",
+    "Bounce Pad",
+    "Crackshot"
+   ],
+   "early": [
+    "Extra Charge",
+    "Headshot Booster",
+    "Extra Spirit",
+    "Extra Health",
+    "Long Range",
+    "Sprint Boots"
+   ],
+   "mid": [
+    "Rapid Recharge",
+    "Extra Stamina",
+    "Recharging Rush",
+    "Headhunter",
+    "Improved Spirit",
+    "Mystic Burst"
+   ],
+   "late": [
+    "Stamina Mastery",
+    "Tankbuster",
+    "Superior Duration",
+    "Boundless Spirit",
+    "Superior Cooldown",
+    "Surge of Power"
+   ],
+   "hard": [
+    "victor",
+    "graves",
+    "rat-king"
+   ],
+   "wr": 46.3,
+   "plan": "Barriles y headshots: Powder Keg al máximo con cargas extra. Lasso para picks en mid game."
+  },
+  "infernus": {
+   "name": "Infernus",
+   "role": "Tirador",
+   "weapon": "Fuego rápido",
+   "abilities": [
+    "Napalm",
+    "Flame Dash",
+    "Afterburn",
+    "Concussive Combustion"
+   ],
+   "prio": [
+    "Afterburn",
+    "Napalm",
+    "Flame Dash",
+    "Concussive Combustion"
+   ],
+   "early": [
+    "Improved Spirit",
+    "Rapid Rounds",
+    "Extended Magazine",
+    "Extra Spirit",
+    "Swift Striker",
+    "Extra Regen"
+   ],
+   "mid": [
+    "Spirit Lifesteal",
+    "Titanic Magazine",
+    "Mystic Vulnerability",
+    "Duration Extender",
+    "Healbane",
+    "Rapid Recharge"
+   ],
+   "late": [
+    "Superior Duration",
+    "Toxic Bullets",
+    "Escalating Exposure",
+    "Spiritual Overflow",
+    "Ricochet",
+    "Boundless Spirit"
+   ],
+   "hard": [
+    "graves",
+    "paige",
+    "rat-king"
+   ],
+   "wr": 49.2,
+   "plan": "Afterburn al máximo: quema con balas y estira la duración. Spiritual Overflow y Ricochet esparcen el fuego en peleas."
+  },
+  "ivy": {
+   "name": "Ivy",
+   "role": "Tirador",
+   "weapon": "Fuego rápido",
+   "abilities": [
+    "Entangling Thorns",
+    "Kudzu Connection",
+    "Stone Form",
+    "Air Drop"
+   ],
+   "prio": [
+    "Stone Form",
+    "Kudzu Connection",
+    "Air Drop",
+    "Entangling Thorns"
+   ],
+   "early": [
+    "Titanic Magazine",
+    "Extended Magazine",
+    "Extra Charge",
+    "Extra Regen",
+    "Monster Rounds",
+    "Healing Rite"
+   ],
+   "mid": [
+    "Tesla Bullets",
+    "Mystic Expansion",
+    "Healing Booster",
+    "Mystic Slow",
+    "Improved Spirit",
+    "Active Reload"
+   ],
+   "late": [
+    "Capacitor",
+    "Greater Expansion",
+    "Rapid Recharge",
+    "Superior Cooldown",
+    "Healing Tempo",
+    "Superior Duration"
+   ],
+   "hard": [
+    "graves",
+    "rat-king",
+    "victor"
+   ],
+   "wr": 52.3,
+   "plan": "Ivy de arma con soporte (build de rango Phantom+): cargadores grandes, Tesla y Capacitor, Stone Form para salvar o iniciar."
+  },
+  "kelvin": {
+   "name": "Kelvin",
+   "role": "Luchador",
+   "weapon": "—",
+   "abilities": [
+    "Frost Grenade",
+    "Ice Path",
+    "Arctic Beam",
+    "Frozen Shelter"
+   ],
+   "prio": [
+    "Frost Grenade",
+    "Arctic Beam",
+    "Ice Path",
+    "Frozen Shelter"
+   ],
+   "early": [
+    "Extra Spirit",
+    "Extra Charge",
+    "Extra Regen",
+    "Sprint Boots",
+    "High-Velocity Rounds",
+    "Mystic Regeneration"
+   ],
+   "mid": [
+    "Improved Spirit",
+    "Mystic Vulnerability",
+    "Mystic Expansion",
+    "Healing Booster",
+    "Healbane",
+    "Trophy Collector"
+   ],
+   "late": [
+    "Rapid Recharge",
+    "Boundless Spirit",
+    "Superior Cooldown",
+    "Escalating Exposure",
+    "Greater Expansion",
+    "Compress Cooldown"
+   ],
+   "hard": [
+    "graves",
+    "paige",
+    "rat-king"
+   ],
+   "wr": 53.5,
+   "plan": "Kelvin de espíritu: Frost Grenade con cargas extra cura y ralentiza. Ice Path para rotar y Frozen Shelter para negar ultis."
+  },
+  "lady-geist": {
+   "name": "Lady Geist",
+   "role": "Místico",
+   "weapon": "Pistola",
+   "abilities": [
+    "Essence Bomb",
+    "Life Drain",
+    "Malice",
+    "Soul Exchange"
+   ],
+   "prio": [
+    "Essence Bomb",
+    "Life Drain",
+    "Malice",
+    "Soul Exchange"
+   ],
+   "early": [
+    "Mystic Regeneration",
+    "Mystic Burst",
+    "Extra Spirit",
+    "Mystic Expansion",
+    "Extra Regen",
+    "Sprint Boots"
+   ],
+   "mid": [
+    "Radiant Regeneration",
+    "Improved Spirit",
+    "Tankbuster",
+    "Spirit Lifesteal",
+    "Mystic Vulnerability",
+    "Compress Cooldown"
+   ],
+   "late": [
+    "Superior Cooldown",
+    "Greater Expansion",
+    "Spirit Resilience",
+    "Escalating Exposure",
+    "Leech",
+    "Boundless Spirit"
+   ],
+   "hard": [
+    "graves",
+    "victor",
+    "paige"
+   ],
+   "wr": 51.2,
+   "plan": "Burst de Essence Bomb y mucho sustain. Leech en late la hace casi imposible de matar."
+  },
+  "lash": {
+   "name": "Lash",
+   "role": "Asesino",
+   "weapon": "Ráfaga",
+   "abilities": [
+    "Ground Strike",
+    "Grapple",
+    "Flog",
+    "Death Slam"
+   ],
+   "prio": [
+    "Flog",
+    "Ground Strike",
+    "Grapple",
+    "Death Slam"
+   ],
+   "early": [
+    "Mystic Burst",
+    "Extra Charge",
+    "Extra Spirit",
+    "Headshot Booster",
+    "Quicksilver Reload",
+    "Sprint Boots"
+   ],
+   "mid": [
+    "Tankbuster",
+    "Improved Spirit",
+    "Mystic Expansion",
+    "Extra Stamina",
+    "Headhunter",
+    "Mystic Shot"
+   ],
+   "late": [
+    "Stamina Mastery",
+    "Greater Expansion",
+    "Boundless Spirit",
+    "Superior Cooldown",
+    "Spirit Burn",
+    "Compress Cooldown"
+   ],
+   "hard": [
+    "graves",
+    "rat-king",
+    "kelvin"
+   ],
+   "wr": 50.4,
+   "plan": "Lash de espíritu y movilidad: Flog al máximo, Ground Strike desde la altura y Death Slam para meter a 3+ en la pelea. Stamina Mastery para no bajar del aire."
+  },
+  "mcginnis": {
+   "name": "McGinnis",
+   "role": "Místico",
+   "weapon": "Artillería pesada",
+   "abilities": [
+    "Mini Turret",
+    "Medicinal Specter",
+    "Spectral Wall",
+    "Heavy Barrage"
+   ],
+   "prio": [
+    "Mini Turret",
+    "Heavy Barrage",
+    "Spectral Wall",
+    "Medicinal Specter"
+   ],
+   "early": [
+    "Extra Charge",
+    "Monster Rounds",
+    "Extra Stamina",
+    "Intensifying Magazine",
+    "Extra Regen",
+    "Mystic Regeneration"
+   ],
+   "mid": [
+    "Mystic Expansion",
+    "Mystic Vulnerability",
+    "Compress Cooldown",
+    "Mystic Slow",
+    "Healbane",
+    "Enchanter's Emblem"
+   ],
+   "late": [
+    "Rapid Recharge",
+    "Superior Cooldown",
+    "Escalating Exposure",
+    "Greater Expansion",
+    "Heroic Aura",
+    "Transcendent Cooldown"
+   ],
+   "hard": [
+    "rat-king",
+    "paige",
+    "victor"
+   ],
+   "wr": 48.2,
+   "plan": "Torretas con cargas extra para empujar y defender. Spectral Wall para cortar huidas; Heroic Aura potencia a tus torretas y equipo."
+  },
+  "mina": {
+   "name": "Mina",
+   "role": "Tirador",
+   "weapon": "Pistola",
+   "abilities": [
+    "Rake",
+    "Sanguine Retreat",
+    "Love Bites",
+    "Nox Nostra"
+   ],
+   "prio": [
+    "Rake",
+    "Sanguine Retreat",
+    "Love Bites",
+    "Nox Nostra"
+   ],
+   "early": [
+    "Extra Spirit",
+    "Improved Spirit",
+    "Mystic Burst",
+    "Extra Stamina",
+    "Quicksilver Reload",
+    "Mystic Expansion"
+   ],
+   "mid": [
+    "Tankbuster",
+    "Stamina Mastery",
+    "Grit",
+    "Swift Striker",
+    "Dispel Magic",
+    "Reactive Barrier"
+   ],
+   "late": [
+    "Boundless Spirit",
+    "Superior Cooldown",
+    "Spirit Burn",
+    "Compress Cooldown",
+    "Greater Expansion",
+    "Spirit Shredder"
+   ],
+   "hard": [
+    "graves",
+    "paige",
+    "rat-king"
+   ],
+   "wr": 44.4,
+   "plan": "Rake al máximo y daño de espíritu en burst. Línea muy dura ahora: Grit y Reactive Barrier pronto si te presionan."
+  },
+  "mirage": {
+   "name": "Mirage",
+   "role": "Asesino",
+   "weapon": "Pistola",
+   "abilities": [
+    "Fire Scarabs",
+    "Dust Devil",
+    "Djinn's Mark",
+    "Traveler"
+   ],
+   "prio": [
+    "Fire Scarabs",
+    "Djinn's Mark",
+    "Dust Devil",
+    "Traveler"
+   ],
+   "early": [
+    "Mystic Regeneration",
+    "Suppressor",
+    "Monster Rounds",
+    "Extra Spirit",
+    "Headshot Booster",
+    "Opening Rounds"
+   ],
+   "mid": [
+    "Mystic Vulnerability",
+    "Healbane",
+    "Compress Cooldown",
+    "Titanic Magazine",
+    "Recharging Rush",
+    "Improved Spirit"
+   ],
+   "late": [
+    "Toxic Bullets",
+    "Ricochet",
+    "Escalating Exposure",
+    "Superior Cooldown",
+    "Boundless Spirit",
+    "Dispel Magic"
+   ],
+   "hard": [
+    "graves",
+    "rat-king",
+    "paige"
+   ],
+   "wr": 44.7,
+   "plan": "Fire Scarabs para robar vida y Djinn's Mark para el daño de arma. Traveler para flanquear peleas lejanas."
+  },
+  "mo-krill": {
+   "name": "Mo & Krill",
+   "role": "Luchador",
+   "weapon": "—",
+   "abilities": [
+    "Scorn",
+    "Burrow",
+    "Sand Blast",
+    "Combo"
+   ],
+   "prio": [
+    "Scorn",
+    "Burrow",
+    "Combo",
+    "Sand Blast"
+   ],
+   "early": [
+    "Mystic Burst",
+    "Sprint Boots",
+    "Trophy Collector",
+    "Extra Charge",
+    "Mystic Expansion",
+    "Extra Regen"
+   ],
+   "mid": [
+    "Torment Pulse",
+    "Cold Front",
+    "Healbane",
+    "Extra Spirit",
+    "Compress Cooldown",
+    "Improved Spirit"
+   ],
+   "late": [
+    "Tankbuster",
+    "Superior Cooldown",
+    "Superior Duration",
+    "Transcendent Cooldown",
+    "Scourge",
+    "Spirit Resilience"
+   ],
+   "hard": [
+    "vindicta",
+    "baba",
+    "mirage"
+   ],
+   "wr": 51.3,
+   "plan": "Tanque de espíritu: Scorn para sustain, Burrow para entrar y Combo para el pick. Scourge y Torment Pulse en peleas largas."
+  },
+  "nurse-harrow": {
+   "name": "Nurse Harrow",
+   "role": "Tirador",
+   "weapon": "Proyectil",
+   "abilities": [
+    "Leech Therapy",
+    "Wretched Vapors",
+    "Healing Needles",
+    "Lurking Terrors"
+   ],
+   "prio": [
+    "Leech Therapy",
+    "Healing Needles",
+    "Lurking Terrors",
+    "Wretched Vapors"
+   ],
+   "early": [
+    "Titanic Magazine",
+    "Extra Regen",
+    "Extended Magazine",
+    "Extra Spirit",
+    "Extra Stamina",
+    "Rapid Rounds"
+   ],
+   "mid": [
+    "Healing Booster",
+    "Improved Spirit",
+    "Kinetic Dash",
+    "Duration Extender",
+    "Arcane Surge",
+    "Mystic Expansion"
+   ],
+   "late": [
+    "Superior Duration",
+    "Superior Cooldown",
+    "Healing Tempo",
+    "Ricochet",
+    "Compress Cooldown",
+    "Greater Expansion"
+   ],
+   "hard": [
+    "graves",
+    "rat-king",
+    "paige"
+   ],
+   "wr": 51.6,
+   "plan": "Sanadora agresiva: sanguijuelas al máximo y recógelas para regen y cadencia permanentes. Lurking Terrors bloquea la movilidad de quien la mira."
+  },
+  "paige": {
+   "name": "Paige",
+   "role": "Místico",
+   "weapon": "Proyectil",
+   "abilities": [
+    "Bookwyrm",
+    "Plot Armor",
+    "Captivating Read",
+    "Rallying Charge"
+   ],
+   "prio": [
+    "Bookwyrm",
+    "Plot Armor",
+    "Captivating Read",
+    "Rallying Charge"
+   ],
+   "early": [
+    "Extra Charge",
+    "High-Velocity Rounds",
+    "Guardian Ward",
+    "Extra Spirit",
+    "Grit",
+    "Opening Rounds"
+   ],
+   "mid": [
+    "Mystic Expansion",
+    "Compress Cooldown",
+    "Improved Spirit",
+    "Trophy Collector",
+    "Extra Stamina",
+    "Arcane Surge"
+   ],
+   "late": [
+    "Greater Expansion",
+    "Superior Cooldown",
+    "Rapid Recharge",
+    "Superior Duration",
+    "Transcendent Cooldown",
+    "Duration Extender"
+   ],
+   "hard": [
+    "rat-king",
+    "victor",
+    "graves"
+   ],
+   "wr": 54.9,
+   "plan": "Soporte de enfriamientos: Plot Armor protege y Bookwyrm hace el daño. De las peores líneas para casi todo el roster."
+  },
+  "paradox": {
+   "name": "Paradox",
+   "role": "Tirador",
+   "weapon": "Ráfaga",
+   "abilities": [
+    "Pulse Grenade",
+    "Time Wall",
+    "Kinetic Carbine",
+    "Paradoxical Swap"
+   ],
+   "prio": [
+    "Kinetic Carbine",
+    "Time Wall",
+    "Paradoxical Swap",
+    "Pulse Grenade"
+   ],
+   "early": [
+    "High-Velocity Rounds",
+    "Long Range",
+    "Restorative Shot",
+    "Mystic Shot",
+    "Headshot Booster",
+    "Opening Rounds"
+   ],
+   "mid": [
+    "Sharpshooter",
+    "Tankbuster",
+    "Express Shot",
+    "Mystic Burst",
+    "Extra Stamina",
+    "Trophy Collector"
+   ],
+   "late": [
+    "Compress Cooldown",
+    "Stamina Mastery",
+    "Mystic Reverb",
+    "Superior Cooldown",
+    "Hollow Point",
+    "Spirit Burn"
+   ],
+   "hard": [
+    "graves",
+    "victor",
+    "rat-king"
+   ],
+   "wr": 45.5,
+   "plan": "Picks a distancia: Kinetic Carbine al máximo, Swap para meter al objetivo en tu equipo y Time Wall para cerrar."
+  },
+  "pocket": {
+   "name": "Pocket",
+   "role": "Asesino",
+   "weapon": "Perdigones",
+   "abilities": [
+    "Barrage",
+    "Flying Cloak",
+    "Enchanter's Satchel",
+    "Affliction"
+   ],
+   "prio": [
+    "Flying Cloak",
+    "Barrage",
+    "Enchanter's Satchel",
+    "Affliction"
+   ],
+   "early": [
+    "Mystic Burst",
+    "Monster Rounds",
+    "Cold Front",
+    "Rapid Rounds",
+    "Extra Regen",
+    "Extra Spirit"
+   ],
+   "mid": [
+    "Tankbuster",
+    "Mystic Expansion",
+    "Compress Cooldown",
+    "Swift Striker",
+    "Cultist Sacrifice",
+    "Majestic Leap"
+   ],
+   "late": [
+    "Superior Cooldown",
+    "Superior Duration",
+    "Greater Expansion",
+    "Spirit Burn",
+    "Duration Extender",
+    "Transcendent Cooldown"
+   ],
+   "hard": [
+    "graves",
+    "paige",
+    "rat-king"
+   ],
+   "wr": 44.4,
+   "plan": "Pocket de espíritu: Barrage + Affliction desde el maletín. Flying Cloak para entrar y salir sin recibir daño."
+  },
+  "rat-king": {
+   "name": "Rat King",
+   "role": "Luchador",
+   "weapon": "Perdigones",
+   "abilities": [
+    "Scrap Grenade",
+    "Rat Swarm",
+    "Royal Pestments",
+    "Rule, Ratannia!"
+   ],
+   "prio": [
+    "Scrap Grenade",
+    "Royal Pestments",
+    "Rat Swarm",
+    "Rule, Ratannia!"
+   ],
+   "early": [
+    "Extra Health",
+    "High-Velocity Rounds",
+    "Opening Rounds",
+    "Monster Rounds",
+    "Sprint Boots",
+    "Extended Magazine"
+   ],
+   "mid": [
+    "Fortitude",
+    "Enduring Speed",
+    "Swift Striker",
+    "Fleetfoot",
+    "Mystic Expansion",
+    "Cultist Sacrifice"
+   ],
+   "late": [
+    "Berserker",
+    "Ballistic Enchantment",
+    "Spirit Resilience",
+    "Siphon Bullets",
+    "Superior Cooldown",
+    "Juggernaut"
+   ],
+   "hard": [
+    "graves",
+    "victor",
+    "paige"
+   ],
+   "wr": 55.7,
+   "plan": "Tanque de arma con 55,7% de WR incluso tras el nerf de la ulti. Scrap Grenade al máximo; contra él compra Ethereal Shift o Juggernaut."
+  },
+  "rem": {
+   "name": "Rem",
+   "role": "Místico",
+   "weapon": "—",
+   "abilities": [
+    "Pillow Toss",
+    "Tag Along",
+    "Lil Helpers",
+    "Naptime"
+   ],
+   "prio": [
+    "Pillow Toss",
+    "Tag Along",
+    "Lil Helpers",
+    "Naptime"
+   ],
+   "early": [
+    "Extra Charge",
+    "Extra Spirit",
+    "Grit",
+    "Mystic Burst",
+    "Extra Regen",
+    "Sprint Boots"
+   ],
+   "mid": [
+    "Improved Spirit",
+    "Rapid Recharge",
+    "Healing Booster",
+    "Mystic Expansion",
+    "Guardian Ward",
+    "Compress Cooldown"
+   ],
+   "late": [
+    "Superior Cooldown",
+    "Boundless Spirit",
+    "Tankbuster",
+    "Greater Expansion",
+    "Healing Tempo",
+    "Transcendent Cooldown"
+   ],
+   "hard": [
+    "graves",
+    "victor",
+    "rat-king"
+   ],
+   "wr": 44.9,
+   "plan": "Soporte pegado a un carry con Tag Along. Pillow Toss al máximo y Naptime para dormir al equipo rival."
+  },
+  "seven": {
+   "name": "Seven",
+   "role": "Místico",
+   "weapon": "Ráfaga",
+   "abilities": [
+    "Lightning Ball",
+    "Static Charge",
+    "Power Surge",
+    "Storm Cloud"
+   ],
+   "prio": [
+    "Power Surge",
+    "Lightning Ball",
+    "Storm Cloud",
+    "Static Charge"
+   ],
+   "early": [
+    "Monster Rounds",
+    "Extra Spirit",
+    "Extra Charge",
+    "Extra Regen",
+    "Arcane Surge",
+    "Intensifying Magazine"
+   ],
+   "mid": [
+    "Mystic Vulnerability",
+    "Spirit Lifesteal",
+    "Healbane",
+    "Improved Spirit",
+    "Duration Extender",
+    "Mystic Expansion"
+   ],
+   "late": [
+    "Escalating Exposure",
+    "Superior Duration",
+    "Greater Expansion",
+    "Boundless Spirit",
+    "Superior Cooldown",
+    "Rapid Recharge"
+   ],
+   "hard": [
+    "graves",
+    "rat-king",
+    "paige"
+   ],
+   "wr": 54.0,
+   "plan": "Power Surge al máximo para línea y farmeo rápido. Storm Cloud con Superior Duration gana las peleas en late."
+  },
+  "shiv": {
+   "name": "Shiv",
+   "role": "Luchador",
+   "weapon": "Perdigones",
+   "abilities": [
+    "Serrated Knives",
+    "Slice and Dice",
+    "Bloodletting",
+    "Killing Blow"
+   ],
+   "prio": [
+    "Serrated Knives",
+    "Bloodletting",
+    "Killing Blow",
+    "Slice and Dice"
+   ],
+   "early": [
+    "Mystic Regeneration",
+    "Restorative Shot",
+    "Extra Charge",
+    "Close Quarters",
+    "Extra Regen",
+    "Spirit Strike"
+   ],
+   "mid": [
+    "Radiant Regeneration",
+    "Healbane",
+    "Hunter's Aura",
+    "Mystic Vulnerability",
+    "Healing Booster",
+    "Bullet Resist Shredder"
+   ],
+   "late": [
+    "Dispel Magic",
+    "Torment Pulse",
+    "Express Shot",
+    "Superior Cooldown",
+    "Spirit Resilience",
+    "Compress Cooldown"
+   ],
+   "hard": [
+    "graves",
+    "seven",
+    "paige"
+   ],
+   "wr": 45.3,
+   "plan": "Cuchillos al máximo y Bloodletting para aguantar. Llena la barra de rabia y remata con Killing Blow."
+  },
+  "silver": {
+   "name": "Silver",
+   "role": "Luchador",
+   "weapon": "Largo alcance",
+   "abilities": [
+    "Slam Fire",
+    "Boot Kick",
+    "Entangling Bola",
+    "Lycan Curse"
+   ],
+   "prio": [
+    "Slam Fire",
+    "Boot Kick",
+    "Entangling Bola",
+    "Lycan Curse"
+   ],
+   "early": [
+    "Melee Lifesteal",
+    "Close Quarters",
+    "Stalker",
+    "Restorative Shot",
+    "Extra Regen",
+    "Grit"
+   ],
+   "mid": [
+    "Hunter's Aura",
+    "Lifestrike",
+    "Weighted Shots",
+    "Slowing Bullets",
+    "Healing Booster",
+    "Extra Health"
+   ],
+   "late": [
+    "Berserker",
+    "Point Blank",
+    "Spirit Resilience",
+    "Frenzy",
+    "Superior Duration",
+    "Debuff Reducer"
+   ],
+   "hard": [
+    "graves",
+    "paige",
+    "rat-king"
+   ],
+   "wr": 46.1,
+   "plan": "Dos kits en uno: dispara con Slam Fire y transforma con Lycan Curse para pelear cuerpo a cuerpo. Frenzy y Berserker en late."
+  },
+  "sinclair": {
+   "name": "Sinclair",
+   "role": "Místico",
+   "weapon": "Ráfaga",
+   "abilities": [
+    "Vexing Bolt",
+    "Spectral Assistant",
+    "Rabbit Hex",
+    "Audience Participation"
+   ],
+   "prio": [
+    "Spectral Assistant",
+    "Vexing Bolt",
+    "Audience Participation",
+    "Rabbit Hex"
+   ],
+   "early": [
+    "Extra Charge",
+    "Improved Spirit",
+    "Extra Spirit",
+    "Opening Rounds",
+    "High-Velocity Rounds",
+    "Mystic Burst"
+   ],
+   "mid": [
+    "Mystic Expansion",
+    "Rapid Recharge",
+    "Enchanter's Emblem",
+    "Trophy Collector",
+    "Sprint Boots",
+    "Veil Walker"
+   ],
+   "late": [
+    "Greater Expansion",
+    "Boundless Spirit",
+    "Superior Duration",
+    "Superior Cooldown",
+    "Duration Extender",
+    "Compress Cooldown"
+   ],
+   "hard": [
+    "baba",
+    "graves",
+    "paige"
+   ],
+   "wr": 44.6,
+   "plan": "Mago de utilidad: Spectral Assistant primero y Vexing Bolt para el daño. Audience Participation copia la ulti rival."
+  },
+  "solomon": {
+   "name": "Solomon",
+   "role": "Místico",
+   "weapon": "Proyectil",
+   "abilities": [
+    "Setup Bishop",
+    "Kingside Knight",
+    "Rook Battery",
+    "Develop Queen"
+   ],
+   "prio": [
+    "Setup Bishop",
+    "Kingside Knight",
+    "Rook Battery",
+    "Develop Queen"
+   ],
+   "early": [
+    "Mystic Expansion",
+    "Extra Spirit",
+    "Opening Rounds",
+    "High-Velocity Rounds",
+    "Extra Regen",
+    "Long Range"
+   ],
+   "mid": [
+    "Improved Spirit",
+    "Compress Cooldown",
+    "Extra Stamina",
+    "Mystic Burst",
+    "Enchanter's Emblem",
+    "Grit"
+   ],
+   "late": [
+    "Superior Cooldown",
+    "Greater Expansion",
+    "Tankbuster",
+    "Boundless Spirit",
+    "Stamina Mastery",
+    "Transcendent Cooldown"
+   ],
+   "hard": [
+    "rat-king",
+    "graves",
+    "victor"
+   ],
+   "wr": 45.6,
+   "plan": "Control de zona con el alfil y las diagonales; Kingside Knight da barrera a un aliado. Develop Queen para aturdir en línea recta."
+  },
+  "the-doorman": {
+   "name": "The Doorman",
+   "role": "Místico",
+   "weapon": "Pistola",
+   "abilities": [
+    "Call Bell",
+    "Doorway",
+    "Luggage Cart",
+    "Hotel Guest"
+   ],
+   "prio": [
+    "Call Bell",
+    "Luggage Cart",
+    "Doorway",
+    "Hotel Guest"
+   ],
+   "early": [
+    "Extra Charge",
+    "Mystic Burst",
+    "Mystic Expansion",
+    "High-Velocity Rounds",
+    "Opening Rounds",
+    "Sprint Boots"
+   ],
+   "mid": [
+    "Rapid Recharge",
+    "Improved Spirit",
+    "Extra Spirit",
+    "Compress Cooldown",
+    "Slowing Hex",
+    "Trophy Collector"
+   ],
+   "late": [
+    "Tankbuster",
+    "Greater Expansion",
+    "Boundless Spirit",
+    "Superior Cooldown",
+    "Fortitude",
+    "Vortex Web"
+   ],
+   "hard": [
+    "graves",
+    "rat-king",
+    "victor"
+   ],
+   "wr": 45.2,
+   "plan": "Call Bell con cargas extra para poke y Luggage Cart para picks. Vortex Web para agrupar al rival en tu Doorway."
+  },
+  "venator": {
+   "name": "Venator",
+   "role": "Tirador",
+   "weapon": "Ballesta",
+   "abilities": [
+    "Consecrating Grenade",
+    "Gutshot",
+    "Hex-Lined Snap Trap",
+    "Ira Domini"
+   ],
+   "prio": [
+    "Gutshot",
+    "Consecrating Grenade",
+    "Hex-Lined Snap Trap",
+    "Ira Domini"
+   ],
+   "early": [
+    "Restorative Shot",
+    "Close Quarters",
+    "Extra Health",
+    "Monster Rounds",
+    "Extended Magazine",
+    "Rapid Rounds"
+   ],
+   "mid": [
+    "Battle Vest",
+    "Enduring Speed",
+    "Swift Striker",
+    "Fortitude",
+    "Bullet Lifesteal",
+    "Titanic Magazine"
+   ],
+   "late": [
+    "Hollow Point",
+    "Vampiric Burst",
+    "Spirit Resilience",
+    "Weighted Shots",
+    "Silencer",
+    "Ricochet"
+   ],
+   "hard": [
+    "graves",
+    "rat-king",
+    "paige"
+   ],
+   "wr": 47.0,
+   "plan": "Build de arma a media distancia: Gutshot al máximo, trampa para controlar la línea. Hollow Point y Vampiric Burst en late."
+  },
+  "victor": {
+   "name": "Victor",
+   "role": "Luchador",
+   "weapon": "Pistola",
+   "abilities": [
+    "Pain Battery",
+    "Jumpstart",
+    "Aura of Suffering",
+    "Shocking Reanimation"
+   ],
+   "prio": [
+    "Pain Battery",
+    "Jumpstart",
+    "Aura of Suffering",
+    "Shocking Reanimation"
+   ],
+   "early": [
+    "Extra Regen",
+    "Extra Spirit",
+    "Improved Spirit",
+    "Mystic Regeneration",
+    "Opening Rounds",
+    "Monster Rounds"
+   ],
+   "mid": [
+    "Healing Booster",
+    "Spirit Lifesteal",
+    "Mystic Vulnerability",
+    "Enduring Speed",
+    "Mystic Expansion",
+    "Torment Pulse"
+   ],
+   "late": [
+    "Infuser",
+    "Escalating Exposure",
+    "Greater Expansion",
+    "Superior Cooldown",
+    "Rapid Recharge",
+    "Compress Cooldown"
+   ],
+   "hard": [
+    "graves",
+    "baba",
+    "kelvin"
+   ],
+   "wr": 54.7,
+   "plan": "Tanque de espíritu que gana casi todas las líneas. Aura of Suffering + Spirit Lifesteal para aguantar; la ulti te devuelve a la pelea."
+  },
+  "vindicta": {
+   "name": "Vindicta",
+   "role": "Tirador",
+   "weapon": "Rifle con mira",
+   "abilities": [
+    "Stake",
+    "Flight",
+    "Crow Familiar",
+    "Assassinate"
+   ],
+   "prio": [
+    "Crow Familiar",
+    "Stake",
+    "Flight",
+    "Assassinate"
+   ],
+   "early": [
+    "Extra Charge",
+    "High-Velocity Rounds",
+    "Opening Rounds",
+    "Extra Spirit",
+    "Mystic Burst"
+   ],
+   "mid": [
+    "Sharpshooter",
+    "Rapid Recharge",
+    "Long Range",
+    "Quicksilver Reload",
+    "Swift Striker",
+    "Improved Spirit"
+   ],
+   "late": [
+    "Burst Fire",
+    "Titanic Magazine",
+    "Counterspell",
+    "Mercurial Magnum",
+    "Bullet Lifesteal",
+    "Spiritual Overflow"
+   ],
+   "hard": [
+    "graves",
+    "rat-king",
+    "paige"
+   ],
+   "wr": 48.6,
+   "plan": "Francotiradora de arma: cuervo para la línea, Sharpshooter y Long Range para disparar desde el aire. Counterspell contra divers."
+  },
+  "violet": {
+   "name": "Violet",
+   "role": "Místico",
+   "weapon": "Proyectil",
+   "abilities": [
+    "Living Ink",
+    "Flow State",
+    "Still Life",
+    "Abstract Landscape"
+   ],
+   "prio": [
+    "Still Life",
+    "Living Ink",
+    "Flow State",
+    "Abstract Landscape"
+   ],
+   "early": [
+    "Extra Charge",
+    "Extra Spirit",
+    "Mystic Regeneration",
+    "Extra Regen",
+    "Grit",
+    "Rapid Rounds"
+   ],
+   "mid": [
+    "Radiant Regeneration",
+    "Rapid Recharge",
+    "Improved Spirit",
+    "Healing Booster",
+    "Spirit Shielding",
+    "Mystic Burst"
+   ],
+   "late": [
+    "Tankbuster",
+    "Boundless Spirit",
+    "Superior Cooldown",
+    "Compress Cooldown",
+    "Torment Pulse",
+    "Stamina Mastery"
+   ],
+   "hard": [
+    "graves",
+    "rat-king",
+    "victor"
+   ],
+   "wr": 51.8,
+   "plan": "Pintora de control: Still Life y Living Ink a 4 puntos. Rapid Recharge pronto para tener tinta siempre lista."
+  },
+  "viscous": {
+   "name": "Viscous",
+   "role": "Místico",
+   "weapon": "Proyectil",
+   "abilities": [
+    "Splatter",
+    "The Cube",
+    "Puddle Punch",
+    "Goo Ball"
+   ],
+   "prio": [
+    "Splatter",
+    "The Cube",
+    "Puddle Punch",
+    "Goo Ball"
+   ],
+   "early": [
+    "Mystic Burst",
+    "High-Velocity Rounds",
+    "Melee Lifesteal",
+    "Mystic Shot",
+    "Close Quarters",
+    "Monster Rounds"
+   ],
+   "mid": [
+    "Mystic Expansion",
+    "Spirit Strike",
+    "Extra Charge",
+    "Improved Spirit",
+    "Melee Charge",
+    "Express Shot"
+   ],
+   "late": [
+    "Tankbuster",
+    "Spirit Snatch",
+    "Greater Expansion",
+    "Superior Cooldown",
+    "Compress Cooldown",
+    "Rapid Recharge"
+   ],
+   "hard": [
+    "graves",
+    "rat-king",
+    "seven"
+   ],
+   "wr": 45.6,
+   "plan": "Viscous de espíritu y melee: Splatter al máximo, Cube para salvar o salvarte. Goo Ball para iniciar."
+  },
+  "vyper": {
+   "name": "Vyper",
+   "role": "Asesino",
+   "weapon": "Fuego rápido",
+   "abilities": [
+    "Screwjab Dagger",
+    "Lethal Venom",
+    "Slither",
+    "Petrifying Bola"
+   ],
+   "prio": [
+    "Slither",
+    "Lethal Venom",
+    "Petrifying Bola",
+    "Screwjab Dagger"
+   ],
+   "early": [
+    "Close Quarters",
+    "Rapid Rounds",
+    "Extra Spirit",
+    "Grit",
+    "Extra Regen",
+    "High-Velocity Rounds"
+   ],
+   "mid": [
+    "Burst Fire",
+    "Quicksilver Reload",
+    "Split Shot",
+    "Bullet Lifesteal",
+    "Improved Spirit",
+    "Tesla Bullets"
+   ],
+   "late": [
+    "Mercurial Magnum",
+    "Stamina Mastery",
+    "Point Blank",
+    "Ricochet",
+    "Vampiric Burst",
+    "Spirit Resilience"
+   ],
+   "hard": [
+    "graves",
+    "rat-king",
+    "paige"
+   ],
+   "wr": 46.3,
+   "plan": "Asesina de arma: Slither para entrar, veneno para el daño y Bola para petrificar. Mercurial Magnum como pieza de late."
+  },
+  "warden": {
+   "name": "Warden",
+   "role": "Luchador",
+   "weapon": "—",
+   "abilities": [
+    "Alchemical Flask",
+    "Willpower",
+    "Binding Word",
+    "Last Stand"
+   ],
+   "prio": [
+    "Alchemical Flask",
+    "Binding Word",
+    "Willpower",
+    "Last Stand"
+   ],
+   "early": [
+    "High-Velocity Rounds",
+    "Opening Rounds",
+    "Extended Magazine",
+    "Rapid Rounds",
+    "Monster Rounds",
+    "Extra Regen"
+   ],
+   "mid": [
+    "Quicksilver Reload",
+    "Titanic Magazine",
+    "Fleetfoot",
+    "Enduring Speed",
+    "Swift Striker",
+    "Sprint Boots"
+   ],
+   "late": [
+    "Mercurial Magnum",
+    "Spiritual Overflow",
+    "Spirit Lifesteal",
+    "Spirit Resilience",
+    "Surge of Power",
+    "Siphon Bullets"
+   ],
+   "hard": [
+    "graves",
+    "rat-king",
+    "paige"
+   ],
+   "wr": 47.5,
+   "plan": "Warden de arma: Flask y Binding Word a 4 puntos. Last Stand ahora indica inmunidad al miedo (ojo contra Nurse Harrow)."
+  },
+  "wraith": {
+   "name": "Wraith",
+   "role": "Tirador",
+   "weapon": "Fuego rápido",
+   "abilities": [
+    "Card Trick",
+    "Project Mind",
+    "Full Auto",
+    "Telekinesis"
+   ],
+   "prio": [
+    "Card Trick",
+    "Full Auto",
+    "Project Mind",
+    "Telekinesis"
+   ],
+   "early": [
+    "Quicksilver Reload",
+    "Rapid Rounds",
+    "Monster Rounds",
+    "Extra Spirit",
+    "Extra Regen",
+    "Extra Health"
+   ],
+   "mid": [
+    "Surge of Power",
+    "Swift Striker",
+    "Tesla Bullets",
+    "Improved Spirit",
+    "Recharging Rush",
+    "Enduring Speed"
+   ],
+   "late": [
+    "Mercurial Magnum",
+    "Ricochet",
+    "Spirit Lifesteal",
+    "Spiritual Overflow",
+    "Capacitor",
+    "Dispel Magic"
+   ],
+   "hard": [
+    "graves",
+    "paige",
+    "rat-king"
+   ],
+   "wr": 50.9,
+   "plan": "Wraith de cadencia: Full Auto + Ricochet derrite oleadas y héroes. Card Trick para el poke en línea."
+  },
+  "yamato": {
+   "name": "Yamato",
+   "role": "Asesino",
+   "weapon": "Perdigones",
+   "abilities": [
+    "Power Slash",
+    "Flying Slash",
+    "Crimson Slash",
+    "Shadow Transformation"
+   ],
+   "prio": [
+    "Flying Slash",
+    "Crimson Slash",
+    "Shadow Transformation",
+    "Power Slash"
+   ],
+   "early": [
+    "Melee Lifesteal",
+    "Restorative Shot",
+    "Spirit Strike",
+    "Stalker",
+    "Mystic Regeneration",
+    "Extra Regen"
+   ],
+   "mid": [
+    "Spirit Snatch",
+    "Radiant Regeneration",
+    "Healing Booster",
+    "Improved Spirit",
+    "Lifestrike",
+    "Mystic Shot"
+   ],
+   "late": [
+    "Torment Pulse",
+    "Superior Cooldown",
+    "Tankbuster",
+    "Boundless Spirit",
+    "Hunter's Aura",
+    "Compress Cooldown"
+   ],
+   "hard": [
+    "graves",
+    "paige",
+    "seven"
+   ],
+   "wr": 47.6,
+   "plan": "Yamato de espíritu y melee: Flying Slash para entrar y Shadow Transformation para no morir mientras limpias la pelea."
+  }
+ },
+ "img": {
+  "nurse-harrow": "assets/heroes/nurse-harrow.webp",
+  "mo-krill": "assets/heroes/mo-krill.webp",
+  "celeste": "assets/heroes/celeste.webp",
+  "yamato": "assets/heroes/yamato.webp",
+  "violet": "assets/heroes/violet.webp",
+  "baba": "assets/heroes/baba.webp",
+  "venator": "assets/heroes/venator.webp",
+  "rat-king": "assets/heroes/rat-king.webp",
+  "wraith": "assets/heroes/wraith.webp",
+  "bebop": "assets/heroes/bebop.webp",
+  "grey-talon": "assets/heroes/grey-talon.webp",
+  "mina": "assets/heroes/mina.webp",
+  "holliday": "assets/heroes/holliday.webp",
+  "vyper": "assets/heroes/vyper.webp",
+  "apollo": "assets/heroes/apollo.webp",
+  "solomon": "assets/heroes/solomon.webp",
+  "shiv": "assets/heroes/shiv.webp",
+  "sinclair": "assets/heroes/sinclair.webp",
+  "lady-geist": "assets/heroes/lady-geist.webp",
+  "haze": "assets/heroes/haze.webp",
+  "paige": "assets/heroes/paige.webp",
+  "rem": "assets/heroes/rem.webp",
+  "graves": "assets/heroes/graves.webp",
+  "calico": "assets/heroes/calico.webp",
+  "the-doorman": "assets/heroes/the-doorman.webp",
+  "drifter": "assets/heroes/drifter.webp",
+  "victor": "assets/heroes/victor.webp",
+  "dynamo": "assets/heroes/dynamo.webp",
+  "kelvin": "assets/heroes/kelvin.webp",
+  "ivy": "assets/heroes/ivy.webp",
+  "mirage": "assets/heroes/mirage.webp",
+  "pocket": "assets/heroes/pocket.webp",
+  "viscous": "assets/heroes/viscous.webp",
+  "vindicta": "assets/heroes/vindicta.webp",
+  "lash": "assets/heroes/lash.webp",
+  "silver": "assets/heroes/silver.webp",
+  "paradox": "assets/heroes/paradox.webp",
+  "deadman-danny": "assets/heroes/deadman-danny.webp",
+  "infernus": "assets/heroes/infernus.webp",
+  "billy": "assets/heroes/billy.webp",
+  "abrams": "assets/heroes/abrams.webp",
+  "mcginnis": "assets/heroes/mcginnis.webp",
+  "warden": "assets/heroes/warden.webp",
+  "seven": "assets/heroes/seven.webp"
+ },
+ "items": {
+  "Close Quarters": {
+   "c": "w",
+   "cost": 800
+  },
+  "Extended Magazine": {
+   "c": "w",
+   "cost": 800
+  },
+  "Headshot Booster": {
+   "c": "w",
+   "cost": 800
+  },
+  "High-Velocity Rounds": {
+   "c": "w",
+   "cost": 800
+  },
+  "Monster Rounds": {
+   "c": "w",
+   "cost": 800
+  },
+  "Rapid Rounds": {
+   "c": "w",
+   "cost": 800
+  },
+  "Restorative Shot": {
+   "c": "w",
+   "cost": 800
+  },
+  "Active Reload": {
+   "c": "w",
+   "cost": 1600
+  },
+  "Fleetfoot": {
+   "c": "w",
+   "cost": 1600
+  },
+  "Intensifying Magazine": {
+   "c": "w",
+   "cost": 1600
+  },
+  "Kinetic Dash": {
+   "c": "w",
+   "cost": 1600
+  },
+  "Long Range": {
+   "c": "w",
+   "cost": 1600
+  },
+  "Melee Charge": {
+   "c": "w",
+   "cost": 1600
+  },
+  "Mystic Shot": {
+   "c": "w",
+   "cost": 1600
+  },
+  "Opening Rounds": {
+   "c": "w",
+   "cost": 1600
+  },
+  "Recharging Rush": {
+   "c": "w",
+   "cost": 1600
+  },
+  "Slowing Bullets": {
+   "c": "w",
+   "cost": 1600
+  },
+  "Spirit Shredder": {
+   "c": "w",
+   "cost": 1600
+  },
+  "Split Shot": {
+   "c": "w",
+   "cost": 1600
+  },
+  "Stalker": {
+   "c": "w",
+   "cost": 1600
+  },
+  "Swift Striker": {
+   "c": "w",
+   "cost": 1600
+  },
+  "Titanic Magazine": {
+   "c": "w",
+   "cost": 1600
+  },
+  "Weakening Headshot": {
+   "c": "w",
+   "cost": 1600
+  },
+  "Alchemical Fire": {
+   "c": "w",
+   "cost": 3200
+  },
+  "Ballistic Enchantment": {
+   "c": "w",
+   "cost": 3200
+  },
+  "Berserker": {
+   "c": "w",
+   "cost": 3200
+  },
+  "Blood Tribute": {
+   "c": "w",
+   "cost": 3200
+  },
+  "Burst Fire": {
+   "c": "w",
+   "cost": 3200
+  },
+  "Cultist Sacrifice": {
+   "c": "w",
+   "cost": 3200
+  },
+  "Escalating Resilience": {
+   "c": "w",
+   "cost": 3200
+  },
+  "Express Shot": {
+   "c": "w",
+   "cost": 3200
+  },
+  "Headhunter": {
+   "c": "w",
+   "cost": 3200
+  },
+  "Heroic Aura": {
+   "c": "w",
+   "cost": 3200
+  },
+  "Hollow Point": {
+   "c": "w",
+   "cost": 3200
+  },
+  "Hunter's Aura": {
+   "c": "w",
+   "cost": 3200
+  },
+  "Point Blank": {
+   "c": "w",
+   "cost": 3200
+  },
+  "Shadow Weave": {
+   "c": "w",
+   "cost": 3200
+  },
+  "Sharpshooter": {
+   "c": "w",
+   "cost": 3200
+  },
+  "Spirit Rend": {
+   "c": "w",
+   "cost": 3200
+  },
+  "Tesla Bullets": {
+   "c": "w",
+   "cost": 3200
+  },
+  "Toxic Bullets": {
+   "c": "w",
+   "cost": 3200
+  },
+  "Weighted Shots": {
+   "c": "w",
+   "cost": 3200
+  },
+  "Armor Piercer": {
+   "c": "w",
+   "cost": 6400
+  },
+  "Capacitor": {
+   "c": "w",
+   "cost": 6400
+  },
+  "Crippling Headshot": {
+   "c": "w",
+   "cost": 6400
+  },
+  "Crushing Fists": {
+   "c": "w",
+   "cost": 6400
+  },
+  "Frenzy": {
+   "c": "w",
+   "cost": 6400
+  },
+  "Glass Cannon": {
+   "c": "w",
+   "cost": 6400
+  },
+  "Lucky Shot": {
+   "c": "w",
+   "cost": 6400
+  },
+  "Ricochet": {
+   "c": "w",
+   "cost": 6400
+  },
+  "Silencer": {
+   "c": "w",
+   "cost": 6400
+  },
+  "Spellslinger": {
+   "c": "w",
+   "cost": 6400
+  },
+  "Spiritual Overflow": {
+   "c": "w",
+   "cost": 6400
+  },
+  "Haunting Shot": {
+   "c": "w",
+   "cost": 0
+  },
+  "Infinite Rounds": {
+   "c": "w",
+   "cost": 0
+  },
+  "Runed Gauntlets": {
+   "c": "w",
+   "cost": 0
+  },
+  "Extra Health": {
+   "c": "v",
+   "cost": 800
+  },
+  "Extra Regen": {
+   "c": "v",
+   "cost": 800
+  },
+  "Extra Stamina": {
+   "c": "v",
+   "cost": 800
+  },
+  "Grit": {
+   "c": "v",
+   "cost": 800
+  },
+  "Healing Rite": {
+   "c": "v",
+   "cost": 800
+  },
+  "Melee Lifesteal": {
+   "c": "v",
+   "cost": 800
+  },
+  "Rebuttal": {
+   "c": "v",
+   "cost": 800
+  },
+  "Sprint Boots": {
+   "c": "v",
+   "cost": 800
+  },
+  "Battle Vest": {
+   "c": "v",
+   "cost": 1600
+  },
+  "Bullet Lifesteal": {
+   "c": "v",
+   "cost": 1600
+  },
+  "Debuff Reducer": {
+   "c": "v",
+   "cost": 1600
+  },
+  "Enchanter's Emblem": {
+   "c": "v",
+   "cost": 1600
+  },
+  "Enduring Speed": {
+   "c": "v",
+   "cost": 1600
+  },
+  "Guardian Ward": {
+   "c": "v",
+   "cost": 1600
+  },
+  "Healbane": {
+   "c": "v",
+   "cost": 1600
+  },
+  "Healing Booster": {
+   "c": "v",
+   "cost": 1600
+  },
+  "Reactive Barrier": {
+   "c": "v",
+   "cost": 1600
+  },
+  "Restorative Locket": {
+   "c": "v",
+   "cost": 1600
+  },
+  "Return Fire": {
+   "c": "v",
+   "cost": 1600
+  },
+  "Spirit Lifesteal": {
+   "c": "v",
+   "cost": 1600
+  },
+  "Spirit Shielding": {
+   "c": "v",
+   "cost": 1600
+  },
+  "Trophy Collector": {
+   "c": "v",
+   "cost": 1600
+  },
+  "Weapon Shielding": {
+   "c": "v",
+   "cost": 1600
+  },
+  "Bullet Resilience": {
+   "c": "v",
+   "cost": 3200
+  },
+  "Counterspell": {
+   "c": "v",
+   "cost": 3200
+  },
+  "Dispel Magic": {
+   "c": "v",
+   "cost": 3200
+  },
+  "Fortitude": {
+   "c": "v",
+   "cost": 3200
+  },
+  "Fury Trance": {
+   "c": "v",
+   "cost": 3200
+  },
+  "Healing Nova": {
+   "c": "v",
+   "cost": 3200
+  },
+  "Lifestrike": {
+   "c": "v",
+   "cost": 3200
+  },
+  "Majestic Leap": {
+   "c": "v",
+   "cost": 3200
+  },
+  "Metal Skin": {
+   "c": "v",
+   "cost": 3200
+  },
+  "Rescue Beam": {
+   "c": "v",
+   "cost": 3200
+  },
+  "Spirit Resilience": {
+   "c": "v",
+   "cost": 3200
+  },
+  "Stamina Mastery": {
+   "c": "v",
+   "cost": 3200
+  },
+  "Veil Walker": {
+   "c": "v",
+   "cost": 3200
+  },
+  "Warp Stone": {
+   "c": "v",
+   "cost": 3200
+  },
+  "Cheat Death": {
+   "c": "v",
+   "cost": 6400
+  },
+  "Colossus": {
+   "c": "v",
+   "cost": 6400
+  },
+  "Divine Barrier": {
+   "c": "v",
+   "cost": 6400
+  },
+  "Diviner's Kevlar": {
+   "c": "v",
+   "cost": 6400
+  },
+  "Healing Tempo": {
+   "c": "v",
+   "cost": 6400
+  },
+  "Indomitable": {
+   "c": "v",
+   "cost": 6400
+  },
+  "Infuser": {
+   "c": "v",
+   "cost": 6400
+  },
+  "Inhibitor": {
+   "c": "v",
+   "cost": 6400
+  },
+  "Juggernaut": {
+   "c": "v",
+   "cost": 6400
+  },
+  "Leech": {
+   "c": "v",
+   "cost": 6400
+  },
+  "Phantom Strike": {
+   "c": "v",
+   "cost": 6400
+  },
+  "Plated Armor": {
+   "c": "v",
+   "cost": 6400
+  },
+  "Siphon Bullets": {
+   "c": "v",
+   "cost": 6400
+  },
+  "Spellbreaker": {
+   "c": "v",
+   "cost": 6400
+  },
+  "Unstoppable": {
+   "c": "v",
+   "cost": 6400
+  },
+  "Vampiric Burst": {
+   "c": "v",
+   "cost": 6400
+  },
+  "Witchmail": {
+   "c": "v",
+   "cost": 6400
+  },
+  "Celestial Blessing": {
+   "c": "v",
+   "cost": 0
+  },
+  "Cloak of Opportunity": {
+   "c": "v",
+   "cost": 0
+  },
+  "Electric Slippers": {
+   "c": "v",
+   "cost": 0
+  },
+  "Eternal Gift": {
+   "c": "v",
+   "cost": 0
+  },
+  "Nullification Burst": {
+   "c": "v",
+   "cost": 0
+  },
+  "Seraphim Wings": {
+   "c": "v",
+   "cost": 0
+  },
+  "Shadow Strike": {
+   "c": "v",
+   "cost": 0
+  },
+  "Extra Charge": {
+   "c": "s",
+   "cost": 800
+  },
+  "Extra Spirit": {
+   "c": "s",
+   "cost": 800
+  },
+  "Golden Goose Egg": {
+   "c": "s",
+   "cost": 800
+  },
+  "Mystic Burst": {
+   "c": "s",
+   "cost": 800
+  },
+  "Mystic Expansion": {
+   "c": "s",
+   "cost": 800
+  },
+  "Mystic Regeneration": {
+   "c": "s",
+   "cost": 800
+  },
+  "Rusted Barrel": {
+   "c": "s",
+   "cost": 800
+  },
+  "Spirit Strike": {
+   "c": "s",
+   "cost": 800
+  },
+  "Arcane Surge": {
+   "c": "s",
+   "cost": 1600
+  },
+  "Bullet Resist Shredder": {
+   "c": "s",
+   "cost": 1600
+  },
+  "Cold Front": {
+   "c": "s",
+   "cost": 1600
+  },
+  "Compress Cooldown": {
+   "c": "s",
+   "cost": 1600
+  },
+  "Duration Extender": {
+   "c": "s",
+   "cost": 1600
+  },
+  "Improved Spirit": {
+   "c": "s",
+   "cost": 1600
+  },
+  "Mystic Slow": {
+   "c": "s",
+   "cost": 1600
+  },
+  "Mystic Vulnerability": {
+   "c": "s",
+   "cost": 1600
+  },
+  "Quicksilver Reload": {
+   "c": "s",
+   "cost": 1600
+  },
+  "Slowing Hex": {
+   "c": "s",
+   "cost": 1600
+  },
+  "Spirit Sap": {
+   "c": "s",
+   "cost": 1600
+  },
+  "Suppressor": {
+   "c": "s",
+   "cost": 1600
+  },
+  "Decay": {
+   "c": "s",
+   "cost": 3200
+  },
+  "Disarming Hex": {
+   "c": "s",
+   "cost": 3200
+  },
+  "Greater Expansion": {
+   "c": "s",
+   "cost": 3200
+  },
+  "Knockdown": {
+   "c": "s",
+   "cost": 3200
+  },
+  "Radiant Regeneration": {
+   "c": "s",
+   "cost": 3200
+  },
+  "Rapid Recharge": {
+   "c": "s",
+   "cost": 3200
+  },
+  "Silence Wave": {
+   "c": "s",
+   "cost": 3200
+  },
+  "Spirit Snatch": {
+   "c": "s",
+   "cost": 3200
+  },
+  "Superior Cooldown": {
+   "c": "s",
+   "cost": 3200
+  },
+  "Superior Duration": {
+   "c": "s",
+   "cost": 3200
+  },
+  "Surge of Power": {
+   "c": "s",
+   "cost": 3200
+  },
+  "Tankbuster": {
+   "c": "s",
+   "cost": 3200
+  },
+  "Torment Pulse": {
+   "c": "s",
+   "cost": 3200
+  },
+  "Arctic Blast": {
+   "c": "s",
+   "cost": 6400
+  },
+  "Boundless Spirit": {
+   "c": "s",
+   "cost": 6400
+  },
+  "Cursed Relic": {
+   "c": "s",
+   "cost": 6400
+  },
+  "Echo Shard": {
+   "c": "s",
+   "cost": 6400
+  },
+  "Escalating Exposure": {
+   "c": "s",
+   "cost": 6400
+  },
+  "Ethereal Shift": {
+   "c": "s",
+   "cost": 6400
+  },
+  "Focus Lens": {
+   "c": "s",
+   "cost": 6400
+  },
+  "Lightning Scroll": {
+   "c": "s",
+   "cost": 6400
+  },
+  "Magic Carpet": {
+   "c": "s",
+   "cost": 6400
+  },
+  "Mercurial Magnum": {
+   "c": "s",
+   "cost": 6400
+  },
+  "Mystic Reverb": {
+   "c": "s",
+   "cost": 6400
+  },
+  "Refresher": {
+   "c": "s",
+   "cost": 6400
+  },
+  "Scourge": {
+   "c": "s",
+   "cost": 6400
+  },
+  "Spirit Burn": {
+   "c": "s",
+   "cost": 6400
+  },
+  "Transcendent Cooldown": {
+   "c": "s",
+   "cost": 6400
+  },
+  "Vortex Web": {
+   "c": "s",
+   "cost": 6400
+  },
+  "Frostbite Charm": {
+   "c": "s",
+   "cost": 0
+  },
+  "Mystic Conduit": {
+   "c": "s",
+   "cost": 0
+  },
+  "Mystical Piano": {
+   "c": "s",
+   "cost": 0
+  },
+  "Omnicharge Signet": {
+   "c": "s",
+   "cost": 0
+  },
+  "Prism Blast": {
+   "c": "s",
+   "cost": 0
+  },
+  "Shrink Ray": {
+   "c": "s",
+   "cost": 0
+  },
+  "Unstable Concoction": {
+   "c": "s",
+   "cost": 0
+  }
+ },
+ "news": [
+  {
+   "date": "2026-11-05",
+   "type": "ranked",
+   "title": "Fin de la Temporada 1 de ranked",
+   "body": "Valve amplió la Beta Season 1 hasta el jueves 5 de noviembre a las 23:00 (hora de Madrid). La siguiente temporada empieza justo después.",
+   "src": "https://deadlock-tracker.com/news/deadlock-ranked-season-1-new-leaderboard-october-8",
+   "srcName": "Deadlock Tracker",
+   "upcoming": true
+  },
+  {
+   "date": "2026-10-26",
+   "type": "parche",
+   "title": "Build 6821: animaciones de Nurse Harrow",
+   "body": "Rehechas las animaciones del dash y del golpe cuerpo a cuerpo de Nurse Harrow. Nuevo sonido para el miedo de Lurking Terrors. Sin cambios de valores de héroes ni objetos.",
+   "src": "https://undeadlock.com/patches",
+   "srcName": "unDeadlock"
+  },
+  {
+   "date": "2026-10-22",
+   "type": "discord",
+   "title": "Hotfix anunciado por Yoshi en Discord",
+   "body": "Correcciones de bugs y ajustes menores. El texto de Last Stand de Warden ahora indica inmunidad al miedo, y Living Ink de Violet recibe una distancia mínima de trazo.",
+   "src": "https://www.deadlocklab.com/patch-notes",
+   "srcName": "Deadlock Lab"
+  },
+  {
+   "date": "2026-10-21",
+   "type": "parche",
+   "title": "Hotfix sin notas (build 6812)",
+   "body": "Parche silencioso con correcciones de bugs y ajustes de héroes, publicado el día después de la salida de Nurse Harrow.",
+   "src": "https://undeadlock.com/patches",
+   "srcName": "unDeadlock"
+  },
+  {
+   "date": "2026-10-20",
+   "type": "heroe",
+   "hero": "nurse-harrow",
+   "title": "Nurse Harrow ya disponible",
+   "body": "Sexta y última heroína de City Never Sleeps. Cierra una votación de 110 millones de votos, casi el doble que Old Gods, New Blood. Ganó el 51,1% de sus partidas la primera noche.",
+   "src": "https://deadlock-tracker.com/news/deadlock-new-heroes-first-hours-nurse-harrow-violet",
+   "srcName": "Deadlock Tracker"
+  },
+  {
+   "date": "2026-10-16",
+   "type": "heroe",
+   "hero": "violet",
+   "title": "Violet ya disponible",
+   "body": "La pintora llega como quinta heroína y marca el récord de jugadores simultáneos del juego: 303.347.",
+   "src": "https://www.gosugamers.net/entertainment/news/79382-nurse-harrow-arrives-in-deadlock-ending-the-city-never-sleeps-hero-releases",
+   "srcName": "GosuGamers"
+  },
+  {
+   "date": "2026-10-14",
+   "type": "parche",
+   "title": "Parche de balance: nerf a Baba, buff a Deadman Danny",
+   "body": "Baba: Baba's Brew pasa de 100 a 90 de barrera y su enfriamiento de 25 a 27 s; menos impulso en Granny Long Legs. Danny: vida base 680 → 730, regeneración 2,5 → 3,25, Strix Salvo 30 → 25 s. En 35 horas Danny subió del 37,5% al 45,4% de WR y Baba bajó del 58,3% al 51,9%.",
+   "src": "https://steamdb.info/patchnotes/25950029/",
+   "srcName": "SteamDB"
+  },
+  {
+   "date": "2026-10-13",
+   "type": "heroe",
+   "hero": "deadman-danny",
+   "title": "Deadman Danny ya disponible",
+   "body": "El temerario del jetpack sale con un 37,5% de WR, el peor primer día registrado. Valve lo rescata al día siguiente.",
+   "src": "https://deadlock-tracker.com/news/deadlock-patch-baba-nerf-deadman-danny-buff",
+   "srcName": "Deadlock Tracker"
+  },
+  {
+   "date": "2026-10-09",
+   "type": "heroe",
+   "hero": "solomon",
+   "title": "Solomon ya disponible",
+   "body": "El estratega del ajedrez: alfil, caballo, torres y reina. Arranca con un 43% de WR, el peor inicio de los últimos quince héroes.",
+   "src": "https://deadlock-tracker.com/news/deadlock-new-heroes-halfway-solomon-baba-rat-king",
+   "srcName": "Deadlock Tracker"
+  },
+  {
+   "date": "2026-10-06",
+   "type": "heroe",
+   "hero": "baba",
+   "title": "Baba ya disponible y la temporada se alarga",
+   "body": "Llega Baba y Valve extiende la Temporada 1 de ranked hasta el 5 de noviembre.",
+   "src": "https://deadlock-tracker.com/news/deadlock-ranked-season-1-new-leaderboard-october-8",
+   "srcName": "Deadlock Tracker"
+  },
+  {
+   "date": "2026-10-05",
+   "type": "parche",
+   "title": "Nerf a Rat King y Sinclair",
+   "body": "Rule, Ratannia!: enfriamiento 130 → 160 s, reducción de daño 20% → 15%, radio 24 → 20 m y carga de 12 a 10 s. Rat Swarm baja de 28 a 24 s y Scrap Grenade sube a 70 de daño.",
+   "src": "https://thegamehaus.com/deadlock/complete-deadlock-patch-notes-october-5-2026/2026/10/05/",
+   "srcName": "The Game Haus"
+  },
+  {
+   "date": "2026-10-02",
+   "type": "heroe",
+   "hero": "rat-king",
+   "title": "Rat King ya disponible",
+   "body": "Primer héroe de City Never Sleeps. Ganó el 59% de sus partidas la noche de salida y llegó a picos del 62,7% antes del nerf.",
+   "src": "https://deadlock-tracker.com/news/deadlock-rat-king-one-week-review",
+   "srcName": "Deadlock Tracker"
+  },
+  {
+   "date": "2026-09-29",
+   "type": "parche",
+   "title": "City Never Sleeps",
+   "body": "Primera gran actualización en ocho meses: mapa y neutrales rehechos, seis héroes por votación, el Broker con objetos corruptos, HUD nuevo y muchas opciones nuevas.",
+   "src": "https://deadlock-tracker.com/news/deadlock-city-never-sleeps-update",
+   "srcName": "Deadlock Tracker"
+  },
+  {
+   "date": "2026-09-25",
+   "type": "discord",
+   "title": "Yoshi confirma la fecha de la gran actualización",
+   "body": "En el Discord oficial, Yoshi anunció que la actualización saldría a principios de la semana siguiente, pero no el lunes. Salió el martes 29.",
+   "src": "https://deadlock-tracker.com/news/deadlock-major-content-update-release-date",
+   "srcName": "Deadlock Tracker"
+  }
+ ],
+ "notes": {},
+ "zbuilds": {},
+ "recBuilds": {},
+ "coaching": {
+  "price": "14,99 €",
+  "per": "",
+  "url": ""
+ },
+ "flags": [],
+ "stats": {
+  "src": "https://statlocker.gg/heroes/standard-winrates",
+  "date": "2026-10-28",
+  "hero": {
+   "abrams": {
+    "wr": 52.0,
+    "pick": 27.5,
+    "games": 307909,
+    "best": [
+     [
+      "Colossus",
+      60.5
+     ],
+     [
+      "Witchmail",
+      59.6
+     ],
+     [
+      "Unstoppable",
+      59.4
+     ],
+     [
+      "Phantom Strike",
+      58.9
+     ]
+    ]
+   },
+   "apollo": {
+    "wr": 49.3,
+    "pick": 27.5,
+    "games": 257083,
+    "best": [
+     [
+      "Mystic Reverb",
+      58.7
+     ],
+     [
+      "Spirit Burn",
+      58.1
+     ],
+     [
+      "Witchmail",
+      57.9
+     ],
+     [
+      "Escalating Exposure",
+      56.1
+     ]
+    ]
+   },
+   "baba": {
+    "wr": 54.0,
+    "pick": 14.8,
+    "games": 160710,
+    "best": [
+     [
+      "Boundless Spirit",
+      61.1
+     ],
+     [
+      "Escalating Exposure",
+      61.0
+     ],
+     [
+      "Greater Expansion",
+      59.8
+     ],
+     [
+      "Plated Armor",
+      59.5
+     ]
+    ]
+   },
+   "bebop": {
+    "wr": 48.3,
+    "pick": 35.0,
+    "games": 189598,
+    "best": [
+     [
+      "Mystic Reverb",
+      58.0
+     ],
+     [
+      "Spirit Burn",
+      56.2
+     ],
+     [
+      "Witchmail",
+      55.5
+     ],
+     [
+      "Siphon Bullets",
+      54.8
+     ]
+    ]
+   },
+   "billy": {
+    "wr": 48.5,
+    "pick": 29.3,
+    "games": 11334,
+    "best": [
+     [
+      "Scourge",
+      57.9
+     ],
+     [
+      "Colossus",
+      57.1
+     ],
+     [
+      "Juggernaut",
+      56.9
+     ],
+     [
+      "Spellbreaker",
+      55.9
+     ]
+    ]
+   },
+   "calico": {
+    "wr": 48.0,
+    "pick": 13.7,
+    "games": 33057,
+    "best": [
+     [
+      "Spirit Burn",
+      59.2
+     ],
+     [
+      "Crushing Fists",
+      56.8
+     ],
+     [
+      "Juggernaut",
+      55.9
+     ]
+    ]
+   },
+   "celeste": {
+    "wr": 48.4,
+    "pick": 33.1,
+    "games": 28456,
+    "best": [
+     [
+      "Spellslinger",
+      57.6
+     ],
+     [
+      "Witchmail",
+      56.0
+     ],
+     [
+      "Spirit Burn",
+      55.6
+     ],
+     [
+      "Spiritual Overflow",
+      55.2
+     ]
+    ]
+   },
+   "deadman-danny": {
+    "wr": 50.8,
+    "pick": 49.5,
+    "games": 139124,
+    "best": [
+     [
+      "Diviner's Kevlar",
+      59.6
+     ],
+     [
+      "Mystic Reverb",
+      59.1
+     ],
+     [
+      "Spiritual Overflow",
+      56.4
+     ]
+    ]
+   },
+   "drifter": {
+    "wr": 50.3,
+    "pick": 35.2,
+    "games": 359534,
+    "best": [
+     [
+      "Glass Cannon",
+      61.3
+     ],
+     [
+      "Lucky Shot",
+      60.5
+     ],
+     [
+      "Silencer",
+      59.9
+     ],
+     [
+      "Crippling Headshot",
+      58.3
+     ]
+    ]
+   },
+   "dynamo": {
+    "wr": 51.9,
+    "pick": 20.0,
+    "games": 62278,
+    "best": [
+     [
+      "Healing Tempo",
+      57.3
+     ],
+     [
+      "Mystic Reverb",
+      56.6
+     ]
+    ]
+   },
+   "graves": {
+    "wr": 57.4,
+    "pick": 44.8,
+    "games": 361753,
+    "best": [
+     [
+      "Siphon Bullets",
+      63.4
+     ],
+     [
+      "Escalating Exposure",
+      62.1
+     ],
+     [
+      "Spiritual Overflow",
+      61.6
+     ],
+     [
+      "Torment Pulse",
+      60.4
+     ]
+    ]
+   },
+   "grey-talon": {
+    "wr": 46.4,
+    "pick": 15.5,
+    "games": 173556,
+    "best": [
+     [
+      "Spiritual Overflow",
+      55.1
+     ],
+     [
+      "Mystic Reverb",
+      54.8
+     ],
+     [
+      "Indomitable",
+      54.2
+     ]
+    ]
+   },
+   "haze": {
+    "wr": 52.8,
+    "pick": 44.5,
+    "games": 462938,
+    "best": [
+     [
+      "Silencer",
+      62.7
+     ],
+     [
+      "Siphon Bullets",
+      62.3
+     ],
+     [
+      "Lucky Shot",
+      61.9
+     ],
+     [
+      "Crippling Headshot",
+      61.5
+     ]
+    ]
+   },
+   "holliday": {
+    "wr": 46.3,
+    "pick": 18.1,
+    "games": 171114,
+    "best": [
+     [
+      "Lucky Shot",
+      55.2
+     ],
+     [
+      "Escalating Exposure",
+      54.2
+     ],
+     [
+      "Mercurial Magnum",
+      54.1
+     ],
+     [
+      "Spirit Burn",
+      53.4
+     ]
+    ]
+   },
+   "infernus": {
+    "wr": 49.2,
+    "pick": 34.6,
+    "games": 320850,
+    "best": [
+     [
+      "Spirit Burn",
+      57.2
+     ],
+     [
+      "Mercurial Magnum",
+      56.2
+     ],
+     [
+      "Juggernaut",
+      54.7
+     ],
+     [
+      "Leech",
+      53.9
+     ]
+    ]
+   },
+   "ivy": {
+    "wr": 52.3,
+    "pick": 18.2,
+    "games": 98689,
+    "best": [
+     [
+      "Silencer",
+      59.4
+     ],
+     [
+      "Escalating Exposure",
+      58.4
+     ],
+     [
+      "Healing Tempo",
+      56.7
+     ],
+     [
+      "Siphon Bullets",
+      56.7
+     ]
+    ]
+   },
+   "kelvin": {
+    "wr": 53.5,
+    "pick": 12.3,
+    "games": 52112,
+    "best": [
+     [
+      "Spirit Burn",
+      62.1
+     ],
+     [
+      "Healing Tempo",
+      58.8
+     ],
+     [
+      "Escalating Exposure",
+      58.8
+     ],
+     [
+      "Boundless Spirit",
+      58.4
+     ]
+    ]
+   },
+   "lady-geist": {
+    "wr": 51.2,
+    "pick": 22.0,
+    "games": 125235,
+    "best": [
+     [
+      "Spirit Burn",
+      59.3
+     ],
+     [
+      "Escalating Exposure",
+      57.3
+     ],
+     [
+      "Mystic Reverb",
+      57.1
+     ],
+     [
+      "Boundless Spirit",
+      56.2
+     ]
+    ]
+   },
+   "lash": {
+    "wr": 50.4,
+    "pick": 30.5,
+    "games": 341092,
+    "best": [
+     [
+      "Mystic Reverb",
+      59.6
+     ],
+     [
+      "Spirit Burn",
+      57.6
+     ],
+     [
+      "Unstoppable",
+      53.8
+     ],
+     [
+      "Boundless Spirit",
+      53.1
+     ]
+    ]
+   },
+   "mcginnis": {
+    "wr": 48.2,
+    "pick": 11.1,
+    "games": 27821,
+    "best": [
+     [
+      "Spirit Burn",
+      57.8
+     ],
+     [
+      "Stamina Mastery",
+      53.3
+     ],
+     [
+      "Heroic Aura",
+      52.2
+     ]
+    ]
+   },
+   "mina": {
+    "wr": 44.4,
+    "pick": 38.5,
+    "games": 310195,
+    "best": [
+     [
+      "Spiritual Overflow",
+      54.7
+     ],
+     [
+      "Indomitable",
+      52.1
+     ],
+     [
+      "Spirit Burn",
+      50.9
+     ],
+     [
+      "Mercurial Magnum",
+      50.7
+     ]
+    ]
+   },
+   "mirage": {
+    "wr": 44.7,
+    "pick": 10.3,
+    "games": 109549,
+    "best": [
+     [
+      "Spiritual Overflow",
+      53.8
+     ],
+     [
+      "Inhibitor",
+      53.0
+     ],
+     [
+      "Boundless Spirit",
+      50.5
+     ]
+    ]
+   },
+   "mo-krill": {
+    "wr": 51.3,
+    "pick": 19.7,
+    "games": 199193,
+    "best": [
+     [
+      "Escalating Exposure",
+      60.7
+     ],
+     [
+      "Witchmail",
+      58.6
+     ]
+    ]
+   },
+   "nurse-harrow": {
+    "wr": 51.6,
+    "pick": 67.5,
+    "games": 749089,
+    "best": [
+     [
+      "Spiritual Overflow",
+      57.0
+     ],
+     [
+      "Ricochet",
+      56.4
+     ],
+     [
+      "Escalating Exposure",
+      56.2
+     ],
+     [
+      "Indomitable",
+      54.9
+     ]
+    ]
+   },
+   "paige": {
+    "wr": 54.9,
+    "pick": 27.1,
+    "games": 25730,
+    "best": [
+     [
+      "Diviner's Kevlar",
+      61.5
+     ],
+     [
+      "Spirit Burn",
+      60.9
+     ],
+     [
+      "Cheat Death",
+      60.8
+     ],
+     [
+      "Mystic Reverb",
+      60.8
+     ]
+    ]
+   },
+   "paradox": {
+    "wr": 45.5,
+    "pick": 23.4,
+    "games": 214717,
+    "best": [
+     [
+      "Glass Cannon",
+      55.3
+     ],
+     [
+      "Spirit Burn",
+      54.7
+     ],
+     [
+      "Crippling Headshot",
+      53.1
+     ],
+     [
+      "Mystic Reverb",
+      52.1
+     ]
+    ]
+   },
+   "pocket": {
+    "wr": 44.5,
+    "pick": 15.9,
+    "games": 65926,
+    "best": [
+     [
+      "Diviner's Kevlar",
+      57.5
+     ],
+     [
+      "Ethereal Shift",
+      55.1
+     ],
+     [
+      "Arctic Blast",
+      52.6
+     ],
+     [
+      "Boundless Spirit",
+      52.5
+     ]
+    ]
+   },
+   "rat-king": {
+    "wr": 55.7,
+    "pick": 55.6,
+    "games": 536690,
+    "best": [
+     [
+      "Spellslinger",
+      62.7
+     ],
+     [
+      "Siphon Bullets",
+      60.0
+     ],
+     [
+      "Colossus",
+      58.9
+     ],
+     [
+      "Witchmail",
+      58.2
+     ]
+    ]
+   },
+   "rem": {
+    "wr": 44.9,
+    "pick": 29.7,
+    "games": 14066,
+    "best": [
+     [
+      "Cheat Death",
+      58.7
+     ],
+     [
+      "Mystic Reverb",
+      56.9
+     ],
+     [
+      "Witchmail",
+      56.9
+     ],
+     [
+      "Spirit Burn",
+      56.4
+     ]
+    ]
+   },
+   "seven": {
+    "wr": 54.0,
+    "pick": 32.7,
+    "games": 305868,
+    "best": [
+     [
+      "Spirit Burn",
+      61.4
+     ],
+     [
+      "Lightning Scroll",
+      59.2
+     ],
+     [
+      "Indomitable",
+      58.6
+     ],
+     [
+      "Spiritual Overflow",
+      57.7
+     ]
+    ]
+   },
+   "shiv": {
+    "wr": 45.3,
+    "pick": 25.4,
+    "games": 261884,
+    "best": [
+     [
+      "Mystic Reverb",
+      56.5
+     ],
+     [
+      "Ethereal Shift",
+      56.2
+     ],
+     [
+      "Witchmail",
+      55.5
+     ],
+     [
+      "Glass Cannon",
+      54.0
+     ]
+    ]
+   },
+   "silver": {
+    "wr": 46.1,
+    "pick": 28.9,
+    "games": 246401,
+    "best": [
+     [
+      "Silencer",
+      57.6
+     ],
+     [
+      "Frenzy",
+      56.7
+     ],
+     [
+      "Phantom Strike",
+      55.6
+     ],
+     [
+      "Diviner's Kevlar",
+      55.5
+     ]
+    ]
+   },
+   "sinclair": {
+    "wr": 44.6,
+    "pick": 9.6,
+    "games": 41188,
+    "best": [
+     [
+      "Mystic Reverb",
+      56.6
+     ],
+     [
+      "Diviner's Kevlar",
+      55.4
+     ],
+     [
+      "Spirit Burn",
+      55.3
+     ],
+     [
+      "Magic Carpet",
+      54.5
+     ]
+    ]
+   },
+   "solomon": {
+    "wr": 45.6,
+    "pick": 17.4,
+    "games": 112929,
+    "best": [
+     [
+      "Magic Carpet",
+      55.7
+     ],
+     [
+      "Spirit Burn",
+      53.4
+     ],
+     [
+      "Escalating Exposure",
+      52.0
+     ],
+     [
+      "Lightning Scroll",
+      51.9
+     ]
+    ]
+   },
+   "the-doorman": {
+    "wr": 45.2,
+    "pick": 13.9,
+    "games": 134379,
+    "best": [
+     [
+      "Mystic Reverb",
+      55.7
+     ],
+     [
+      "Spirit Burn",
+      53.6
+     ],
+     [
+      "Cheat Death",
+      51.7
+     ],
+     [
+      "Indomitable",
+      51.5
+     ]
+    ]
+   },
+   "venator": {
+    "wr": 47.0,
+    "pick": 39.8,
+    "games": 445008,
+    "best": [
+     [
+      "Lucky Shot",
+      54.4
+     ],
+     [
+      "Silencer",
+      53.6
+     ],
+     [
+      "Siphon Bullets",
+      52.5
+     ],
+     [
+      "Ricochet",
+      51.7
+     ]
+    ]
+   },
+   "victor": {
+    "wr": 54.7,
+    "pick": 31.5,
+    "games": 289453,
+    "best": [
+     [
+      "Ethereal Shift",
+      65.9
+     ],
+     [
+      "Refresher",
+      65.3
+     ],
+     [
+      "Boundless Spirit",
+      63.0
+     ],
+     [
+      "Transcendent Cooldown",
+      62.6
+     ]
+    ]
+   },
+   "vindicta": {
+    "wr": 48.6,
+    "pick": 29.3,
+    "games": 278050,
+    "best": [
+     [
+      "Lucky Shot",
+      58.3
+     ],
+     [
+      "Crippling Headshot",
+      56.1
+     ],
+     [
+      "Spiritual Overflow",
+      55.7
+     ],
+     [
+      "Spellslinger",
+      55.4
+     ]
+    ]
+   },
+   "violet": {
+    "wr": 51.8,
+    "pick": 48.6,
+    "games": 466887,
+    "best": [
+     [
+      "Spirit Burn",
+      60.2
+     ],
+     [
+      "Escalating Exposure",
+      60.1
+     ],
+     [
+      "Spiritual Overflow",
+      58.3
+     ],
+     [
+      "Mystic Vulnerability",
+      56.4
+     ]
+    ]
+   },
+   "viscous": {
+    "wr": 45.6,
+    "pick": 11.3,
+    "games": null,
+    "best": [
+     [
+      "Witchmail",
+      56.6
+     ],
+     [
+      "Mystic Reverb",
+      56.0
+     ],
+     [
+      "Spirit Burn",
+      55.4
+     ],
+     [
+      "Phantom Strike",
+      54.9
+     ]
+    ]
+   },
+   "vyper": {
+    "wr": 46.3,
+    "pick": 13.9,
+    "games": null,
+    "best": []
+   },
+   "warden": {
+    "wr": 47.5,
+    "pick": 11.8,
+    "games": 57542,
+    "best": [
+     [
+      "Boundless Spirit",
+      55.9
+     ],
+     [
+      "Silencer",
+      55.2
+     ],
+     [
+      "Siphon Bullets",
+      55.2
+     ],
+     [
+      "Spellslinger",
+      54.1
+     ]
+    ]
+   },
+   "wraith": {
+    "wr": 50.9,
+    "pick": 35.0,
+    "games": 249593,
+    "best": [
+     [
+      "Spellslinger",
+      63.5
+     ],
+     [
+      "Silencer",
+      61.5
+     ],
+     [
+      "Spiritual Overflow",
+      58.4
+     ],
+     [
+      "Boundless Spirit",
+      58.4
+     ]
+    ]
+   },
+   "yamato": {
+    "wr": 47.6,
+    "pick": 26.2,
+    "games": 149005,
+    "best": [
+     [
+      "Refresher",
+      59.6
+     ],
+     [
+      "Spirit Burn",
+      57.0
+     ],
+     [
+      "Witchmail",
+      56.9
+     ],
+     [
+      "Mystic Reverb",
+      56.2
+     ]
+    ]
+   }
+  }
+ }
+}
