@@ -107,6 +107,17 @@ function laneVerdict(p,a,b){
 function matchupsOf(slug){
   return Object.keys(S.heroes).filter(x=>x!==slug && S.stats.hero[x] && ((S.lane.vs[slug]||{})[x] || (S.lane.vs[x]||{})[slug])).map(x=>({x, p:laneOdds(slug,x).p})).sort((u,v)=>v.p-u.p);
 }
+/* ═══════════════ Patch changes: buff / nerf labels ═══════════════ */
+const VERD = {buff:["Buff","▲"], nerf:["Nerf","▼"], mixed:["Mixto","◆"], other:["Otros cambios","•"]};
+const verdictOf = (net,tot) => !tot ? "other" : net/tot>=0.35 ? "buff" : net/tot<=-0.35 ? "nerf" : "mixed";
+const pvChip = (v,extra="") => `<span class="pv ${v}">${VERD[v][1]} ${t(VERD[v][0])}${extra}</span>`;
+const dayShift = (d,n) => new Date(Date.parse(d+"T00:00:00Z")+n*864e5).toISOString().slice(0,10);
+// combined verdict of the patches in the two weeks up to the latest patch (null when the hero was not touched)
+function recentChange(slug){
+  const ps = S.patches||[]; if (!ps.length) return null;
+  const cut = dayShift(ps[0].d,-14), cs = (H(slug).changes||[]).filter(c=>c.d>=cut); if (!cs.length) return null;
+  return {v:verdictOf(cs.reduce((n,c)=>n+c.net,0),cs.reduce((n,c)=>n+c.tot,0)), d:cs[0].d, since:cut};
+}
 const hardLanes = slug => matchupsOf(slug).slice(-3).reverse().map(o=>o.x);
 
 /* ═══════════════ Routing ═══════════════ */
@@ -154,7 +165,7 @@ function footer(){
 /* ═══════════════ Tier list, builds, winrates ═══════════════ */
 function tierView(){
   const rows = TIERS.map(x=>{
-    const list = (S.tiers[x]||[]).map(slug=>`<button class="tile" data-hero="${slug}" title="${esc(H(slug).name)}">${img(slug)}<span class="nm">${esc(H(slug).name)}</span></button>`).join("");
+    const list = (S.tiers[x]||[]).map(slug=>`<button class="tile" data-hero="${slug}" title="${esc(H(slug).name)}">${img(slug)}${(rc=>rc&&rc.v!=="other"?`<span class="tchg ${rc.v}" title="${esc(t(VERD[rc.v][0]))} · ${fmtShort(rc.d)}">${VERD[rc.v][1]}</span>`:"")(recentChange(slug))}<span class="nm">${esc(H(slug).name)}</span></button>`).join("");
     return `<div class="tier" style="--tc:${TC[x]}"><div class="lab"><div>${x}<small>${t("{n} héroes",{n:S.tiers[x].length})}</small></div></div><div class="row">${list||`<span class="tlhint">${t("Sin héroes")}</span>`}</div></div>`;
   }).join("");
   return `<section class="wrap">
@@ -165,6 +176,7 @@ function tierView(){
     <div class="patch"><a class="btn pri" href="#mi-tier" style="text-decoration:none;color:var(--brass-ink);margin-bottom:10px">${t("Crea la tuya")}</a><span class="k">${t("Actualizada")}</span><span class="v">${fmtDate(S.meta.updated)}</span><span class="k" style="margin-top:8px">${t("Último parche")}</span><span class="v">${esc(t(S.meta.lastPatch))}</span></div></div>
     <div class="tiers">${rows}</div>
     <p class="tnote"><b>${t("Nota")}:</b> ${t("la tier list es subjetiva y está hecha por mí en torno a rankeds de alto nivel. Los personajes pueden cambiar de tier en función de tu rango. Para ver datos de todos los rangos, mira los")} <a href="#winrates">winrates</a>.</p>
+    ${(S.patches||[]).length?`<p class="fine pvlegend"><span class="pv buff">▲ ${t("Buff")}</span> <span class="pv nerf">▼ ${t("Nerf")}</span> <span class="pv mixed">◆ ${t("Mixto")}</span> ${t("según los parches desde el {date}. Pulsa un héroe para ver los cambios.",{date:fmtDate(dayShift(S.patches[0].d,-14))})}</p>`:""}
     <div class="legend"><span><b>${t("{n} héroes",{n:Object.keys(S.heroes).length})}</b> · ${t("roster completo tras City Never Sleeps")}</span><span>${t("Ranking propio de zok3r · Eternus 5 · 2.000 h")}</span></div>
   </section>`;
 }
@@ -226,6 +238,16 @@ function itemLi(n,times){
   return `<li style="--cat:${CAT[it.c]}"><i title="${esc(catName(it.c))}"></i><span><a class="il" href="#objeto/${islug(n)}">${ico(n)}${esc(n)}</a></span><em>${m?`<span class="tm" title="${esc(t("Minuto medio de compra"))}">${nf(m,{maximumFractionDigits:0})}'</span> `:""}${it.cost?souls(it.cost):""}</em></li>`;
 }
 
+function changesBlock(slug){
+  const cs = H(slug).changes||[]; if (!cs.length) return "";
+  const title = d => ((S.patches||[]).find(p=>p.d===d)||{});
+  const cnt = c => [c.b?t(c.b===1?"{n} buff":"{n} buffs",{n:c.b}):"", c.n?t(c.n===1?"{n} nerf":"{n} nerfs",{n:c.n}):""].filter(Boolean).join(" · ");
+  const one = (c,i) => { const p = title(c.d);
+    return `<details class="chg" ${i===0?"open":""}><summary>${pvChip(c.v)} <b>${fmtDate(c.d)}</b> ${p.url?`<a href="${esc(p.url)}" target="_blank" rel="noopener">${esc(p.title)} ↗</a>`:""} <small>${cnt(c)}</small></summary>
+      <ul class="cl">${c.l.map(([d,x])=>`<li class="${d>0?"up":d<0?"dn":"ne"}"><i>${d>0?"▲":d<0?"▼":"•"}</i><span>${esc(x)}</span></li>`).join("")}${c.more?`<li class="ne"><i>…</i><span>${t("y {n} cambios más",{n:c.more})}</span></li>`:""}</ul></details>`; };
+  return `<div class="blk" id="cambios"><h3>${t("Cambios por parche")}</h3>${cs.slice(0,6).map(one).join("")}
+    <p class="fine">${t("Cambios de equilibrio de los parches oficiales de Valve, con su texto original en inglés. Cada línea lleva una flecha: ▲ mejora, ▼ empeora, • otro tipo de cambio. El veredicto del parche (buff, nerf o mixto) es una estimación automática a partir de todas las líneas y de su tamaño: ante la duda, lee las líneas.")} ${t("Fuente")}: Steam / Valve.</p></div>`;
+}
 function historyBlock(slug){
   const h = S.history, vals = h && h.hero[slug]; if (!vals) return "";
   const pts = vals.map((v,i)=>({v,i})).filter(p=>p.v!=null); if (pts.length<2) return "";
@@ -284,7 +306,7 @@ function heroView(slug){
   return `<section class="wrap">
     <a class="back" href="#builds">← ${t("Todas las builds")}</a>
     <div class="sheet-head">${img(slug)}
-      <div><h2>${esc(h.name)}</h2><div class="meta"><span class="tb" style="--tc:${TC[x]}">Tier ${x}</span><span>${esc(t(h.role))}</span>${h.weapon!=="—"?`<span>· ${esc(t(h.weapon))}</span>`:''}</div></div>
+      <div><h2>${esc(h.name)}</h2><div class="meta"><span class="tb" style="--tc:${TC[x]}">Tier ${x}</span><span>${esc(t(h.role))}</span>${h.weapon!=="—"?`<span>· ${esc(t(h.weapon))}</span>`:''}${(rc=>rc&&rc.v!=="other"?`<a href="#cambios" class="pvlink">${pvChip(rc.v," · "+fmtShort(rc.d))}</a>`:"")(recentChange(slug))}</div></div>
       <div class="wr"><div class="n">${pct(st.wr)}</div><div class="l">Winrate · pick ${pct(st.pick)}${st.games?` · ${t("{n} partidas",{n:kfmt(st.games)})}`:''}<br>${SRC()} · ${bracketName()}</div></div>
     </div>
     <div class="plan"><p class="k">${t("Plan de juego")}</p><p>${esc(t(h.plan))}</p></div>
@@ -296,6 +318,7 @@ function heroView(slug){
       <p class="fine">${t("De {src} ({scope}), entre objetos comprados en al menos el 5% de las partidas del héroe. Casi todos son de final: quien llega a comprarlos suele ir ganando ya, así que indican qué cerrar, no qué comprar primero.",{src:SRC(),scope:scopeTxt()})}</p>` : `<p class="fine">${t("No hay datos suficientes de objetos para este héroe ahora mismo.")}</p>`}</div>
     ${flowBlock(slug)}
     ${historyBlock(slug)}
+    ${changesBlock(slug)}
     ${heroLaneBlock(slug)}
     ${tipsBlock(slug)}
     <div class="blk"><h3>${t("Si juegas contra {hero}",{hero:h.name})}</h3>${counterItemsBlock(slug)}<div class="acts" style="margin-top:14px"><a class="btn" href="#contrarrestar/${slug}">${t("Ver los mejores héroes contra {hero}",{hero:h.name})}</a></div></div>
@@ -357,7 +380,7 @@ function legalView(){
   return `<section class="wrap legal">
     <div class="sh"><h2>${t("Aviso legal y privacidad")}</h2><p>${t("Última revisión")}: ${fmtDate(S.meta.updated)}</p></div>
     ${sec("Proyecto de fans",p("Esta web es un proyecto de fans de Deadlock, hecho por la comunidad. No está afiliada, patrocinada ni respaldada por Valve Corporation. Deadlock y los nombres, personajes, objetos e imágenes del juego son marcas y material protegido de Valve.")+p("Los retratos de los héroes y los iconos de los objetos pertenecen a Valve y se usan para identificar el contenido del juego. Si eres titular de derechos y quieres que se retire algo, escribe a zok3r por Twitch y se eliminará."))}
-    ${sec("De dónde salen los datos",`<ul><li>${t("Winrates, pick rates, enfrentamientos de línea, compañeros de línea, builds, objetos con mejor winrate, costes e iconos")}: <a href="https://deadlock-api.com" target="_blank" rel="noopener">Deadlock API</a>.</li><li>${t("Orden de habilidades")}: <a href="https://deadlocktiers.com/" target="_blank" rel="noopener">deadlocktiers.com</a>.</li><li>${t("Tier list, planes de juego y noticias: zok3r y la comunidad.")}</li></ul>`+p("Las estadísticas son aproximaciones calculadas sobre partidas recientes y pueden no reflejar el estado actual del juego ni tu rango. Se ofrecen tal cual, sin garantía de exactitud."))}
+    ${sec("De dónde salen los datos",`<ul><li>${t("Winrates, pick rates, enfrentamientos de línea, compañeros de línea, builds, objetos con mejor winrate, costes e iconos")}: <a href="https://deadlock-api.com" target="_blank" rel="noopener">Deadlock API</a>.</li><li>${t("Orden de habilidades")}: <a href="https://deadlocktiers.com/" target="_blank" rel="noopener">deadlocktiers.com</a>.</li><li>${t("Cambios por parche: notas oficiales de Valve en Steam, con el veredicto de buff o nerf calculado automáticamente.")}</li><li>${t("Tier list, planes de juego y noticias: zok3r y la comunidad.")}</li></ul>`+p("Las estadísticas son aproximaciones calculadas sobre partidas recientes y pueden no reflejar el estado actual del juego ni tu rango. Se ofrecen tal cual, sin garantía de exactitud."))}
     ${sec("Coaching",p("El coaching es un servicio privado de zok3r, ofrecido a través de Whop. No tiene relación con Valve ni con la Deadlock API."))}
     ${sec("Privacidad",p("Esta web no usa cookies, no tiene cuentas y no incluye herramientas de analítica ni publicidad.")+p("Tu navegador guarda en este dispositivo dos preferencias (idioma y rango de las estadísticas). No se envían a ningún sitio.")+p("Las builds y tier lists que creas viven en el enlace que compartes: quien lo abre ve lo que contiene, incluidos el título y el nombre que hayas escrito. No se almacena nada en ningún servidor.")+p("Las fuentes tipográficas se cargan desde Google Fonts, que puede registrar tu dirección IP al servirlas."))}
   </section>`;

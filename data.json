@@ -6,9 +6,12 @@
   "patchLabel": "el parche del 14 de octubre y la llegada de Nurse Harrow",
   "lastPatch": "14 oct · balance / 26 oct · build 6821",
   "patchDates": [
-   "2026-09-29",
+   "2026-08-22",
+   "2026-09-16",
    "2026-10-05",
-   "2026-10-14"
+   "2026-10-15",
+   "2026-10-30",
+   "2026-11-05"
   ],
   "buildsSrc": {
    "srcName": "Deadlock API",
@@ -232,7 +235,97 @@
     "Enchanter's Emblem": 13.4,
     "Extra Stamina": 7.8,
     "Rebuttal": 8.4
-   }
+   },
+   "changes": [
+    {
+     "d": "2026-10-30",
+     "v": "buff",
+     "b": 2,
+     "n": 0,
+     "net": 2.11,
+     "tot": 2.11,
+     "l": [
+      [
+       1,
+       "Base gun damage increased by 5%"
+      ],
+      [
+       1,
+       "Siphon Life - T3 increased from +18 DPS to +22"
+      ],
+      [
+       0,
+       "Shoulder Charge - Fixed enemies being held in place longer if you don't hit a wall"
+      ]
+     ],
+     "more": 0
+    },
+    {
+     "d": "2026-09-16",
+     "v": "mixed",
+     "b": 1,
+     "n": 1,
+     "net": -0.21,
+     "tot": 1.45,
+     "l": [
+      [
+       1,
+       "Infernal Resilience T3 increased from +8% to +9%"
+      ],
+      [
+       -1,
+       "Seismic Impact T3 reduced from 6s Unstoppable to 5s"
+      ]
+     ],
+     "more": 0
+    },
+    {
+     "d": "2026-06-30",
+     "v": "nerf",
+     "b": 1,
+     "n": 1,
+     "net": -1.17,
+     "tot": 2.17,
+     "l": [
+      [
+       -1,
+       "Siphon Life T3 reduced from +3m Radius to +2m"
+      ],
+      [
+       1,
+       "Shoulder Charge T3 reduced from -20s Cooldown to -18s"
+      ]
+     ],
+     "more": 0
+    },
+    {
+     "d": "2026-05-22",
+     "v": "buff",
+     "b": 2,
+     "n": 0,
+     "net": 1.71,
+     "tot": 1.71,
+     "l": [
+      [
+       0,
+       "Infernal Resilience T1 changed from \"+1.5 Health Regen\" to \"+200 Max Health\""
+      ],
+      [
+       0,
+       "Infernal Resilience T2 changed from \"200 Max Health\" to \"+18% Melee Lifesteal\" (40% effective vs non-heroes)"
+      ],
+      [
+       1,
+       "Seismic Impact T2 increased from +0.7s Stun Duration to +0.8s"
+      ],
+      [
+       1,
+       "Seismic Impact T3 Unstoppable duration increased from 5s to 6s"
+      ]
+     ],
+     "more": 0
+    }
+   ]
   },
   "apollo": {
    "name": "Apollo",
@@ -389,7 +482,261 @@
     "Enchanter's Emblem": 13.9,
     "Extra Stamina": 13.7,
     "Rebuttal": 10.2
-   }
+   },
+   "changes": [
+    {
+     "d": "2026-11-05",
+     "v": "buff",
+     "b": 3,
+     "n": 0,
+     "net": 2.83,
+     "tot": 2.83,
+     "l": [
+      [
+       1,
+       "Riposte - Pommel Hit now also disarms the enemy"
+      ],
+      [
+       0,
+       "Riposte - Pummel hit now ends any preexisting parry on the target"
+      ],
+      [
+       1,
+       "Riposte - T2 increased from +0.6s duration to +0.7s"
+      ],
+      [
+       1,
+       "Itani Lo Sahn - T3 bonus damage increased from +50% to +60%"
+      ]
+     ],
+     "more": 0
+    },
+    {
+     "d": "2026-10-30",
+     "v": "buff",
+     "b": 2,
+     "n": 1,
+     "net": 3.0,
+     "tot": 5.0,
+     "l": [
+      [
+       0,
+       "Riposte - Pommel Hit changed from a stun to an immobilize and parry disable"
+      ],
+      [
+       1,
+       "Riposte - Pommel Hit disable duration increased from 0.8s to 1.5s"
+      ],
+      [
+       1,
+       "Riposte - T2 disable duration increased from +0.4s to +0.6s"
+      ],
+      [
+       0,
+       "Riposte - Fixed the counterattack dash sometimes missing its target or launching Apollo away when the target moves, rounds a corner, or is displaced"
+      ],
+      [
+       0,
+       "Riposte - Fixed the counterattack dash missing when Apollo is right on top of the target"
+      ],
+      [
+       0,
+       "Flawless Advance - Being stunned or put to sleep during the ability now refunds that stab and keeps your remaining recasts instead of putting it on cooldown"
+      ],
+      [
+       -1,
+       "Itani Lo Sahn - No longer interrupted by Sleep"
+      ]
+     ],
+     "more": 0
+    },
+    {
+     "d": "2026-08-12",
+     "v": "mixed",
+     "b": 1,
+     "n": 1,
+     "net": 0.32,
+     "tot": 1.68,
+     "l": [
+      [
+       -1,
+       "Riposte melee resist reduction increased from -22% to -25%"
+      ],
+      [
+       0,
+       "Riposte T2 changed from \"-30% Melee Resist\" to \"-25% Melee Resist and +0.4s Stun Duration\""
+      ],
+      [
+       1,
+       "Riposte T3 increased from 60% Lifesteal for 7s to 75% Lifesteal for 13s"
+      ],
+      [
+       0,
+       "Fixed Itani Lo Sahn being canceled with movement abilities"
+      ]
+     ],
+     "more": 0
+    },
+    {
+     "d": "2026-07-28",
+     "v": "buff",
+     "b": 2,
+     "n": 0,
+     "net": 3.67,
+     "tot": 3.67,
+     "l": [
+      [
+       1,
+       "Riposte base stun duration increased from 0.6s to 0.8s"
+      ],
+      [
+       1,
+       "Riposte T3 changed from +1.6s Stun Duration to +60% Bullet, Spirit and Melee Lifesteal against the target for 7s"
+      ]
+     ],
+     "more": 0
+    },
+    {
+     "d": "2026-06-30",
+     "v": "buff",
+     "b": 5,
+     "n": 1,
+     "net": 6.97,
+     "tot": 8.39,
+     "l": [
+      [
+       -1,
+       "Riposte T1 increased from -7s Cooldown to -8s"
+      ],
+      [
+       1,
+       "Riposte grace window to target after channel increased from +1s to +1.3s"
+      ],
+      [
+       1,
+       "Riposte cast range increased from 25m to 35m"
+      ],
+      [
+       1,
+       "Riposte targeting angle increased from 70 to 90"
+      ],
+      [
+       1,
+       "Flawless Advance Heal on hero hit spirit scaling increased from 1 to 1.3"
+      ],
+      [
+       1,
+       "Itani Lo Sahn T3 increased from +40% Bonus Damage to +50%"
+      ]
+     ],
+     "more": 0
+    },
+    {
+     "d": "2026-06-12",
+     "v": "buff",
+     "b": 3,
+     "n": 0,
+     "net": 3.0,
+     "tot": 3.0,
+     "l": [
+      [
+       1,
+       "Disengaging Sigil velocity increased by 50%"
+      ],
+      [
+       0,
+       "Disengaging Sigil velocity's vertical:horizontal ratio changed from 1.5:1 to 1:1"
+      ],
+      [
+       0,
+       "Disengaging Sigil now allows input to alter the direction apollo launches himself (A/D biases to the left/right and W/S affect how much backwards motion is applied"
+      ],
+      [
+       1,
+       "Disengaging Sigil T1 changed from \"+30 Damage\" to \"Gain +25% Fire Rate and Bullet Speed for 8s\""
+      ],
+      [
+       1,
+       "Disengaging Sigil T2 changed from \"Gain +30% Fire Rate and +50% Bullet Speed for 10s\" to \"On Player Hit: +1 Stamina restored and resets Air Jump/Dash limit\""
+      ],
+      [
+       0,
+       "Disengaging Sigil T3 changed from \"On Player Hit: +2 stamina restored and reset Air Jump/Dash limit\" to \"Recast within 4s\""
+      ],
+      [
+       0,
+       "Flawless Advance now allows Apollo to parry during it"
+      ]
+     ],
+     "more": 0
+    },
+    {
+     "d": "2026-05-31",
+     "v": "buff",
+     "b": 3,
+     "n": 1,
+     "net": 2.15,
+     "tot": 4.15,
+     "l": [
+      [
+       1,
+       "Disengaging Sigil T2 increased from +20% Fire Rate to +30%"
+      ],
+      [
+       0,
+       "Flawless Advance T1 heal from 30+0.75 to 35+1.0"
+      ],
+      [
+       -1,
+       "Flawless Advance T2 increased from -10s Cooldown to -12s"
+      ],
+      [
+       1,
+       "Itani Lo Sahn damage increased from 190 to 200"
+      ],
+      [
+       1,
+       "Itani Lo Sahn spirit scaling increased from 2.3 to 2.6"
+      ]
+     ],
+     "more": 0
+    },
+    {
+     "d": "2026-05-22",
+     "v": "nerf",
+     "b": 1,
+     "n": 4,
+     "net": -4.0,
+     "tot": 6.0,
+     "l": [
+      [
+       1,
+       "Improved the hero's hitboxes (easier to hit)"
+      ],
+      [
+       -1,
+       "Base regen reduced from 2 to 1"
+      ],
+      [
+       0,
+       "Riposte no longer automatically dashes. It now grants you a sub ability immediately to target the hero you want to jump to for a brief duration (can target the enemy befo"
+      ],
+      [
+       -1,
+       "Riposte no longer triggers on damage auras (things like Flame Dash)"
+      ],
+      [
+       -1,
+       "Riposte no longer triggers off of objective damage"
+      ],
+      [
+       -1,
+       "Flawless Advance hitbox reduced by 10%"
+      ]
+     ],
+     "more": 0
+    }
+   ]
   },
   "baba": {
    "name": "Baba",
@@ -546,7 +893,162 @@
     "Spirit Rend": 27.6,
     "Swift Striker": 13.7,
     "Extra Stamina": 12.1
-   }
+   },
+   "changes": [
+    {
+     "d": "2026-11-05",
+     "v": "nerf",
+     "b": 0,
+     "n": 7,
+     "net": -5.76,
+     "tot": 5.76,
+     "l": [
+      [
+       -1,
+       "Spirit Resistance scaling reduced from 0.7 to 0.5"
+      ],
+      [
+       -1,
+       "Melee damage per boon reduced by 10%"
+      ],
+      [
+       -1,
+       "Baba's Brew - Cooldown increased from 27s to 28s"
+      ],
+      [
+       -1,
+       "Baba's Brew - Burn DPS spirit scaling reduced from 0.15 to 0.13"
+      ],
+      [
+       -1,
+       "Baba's Brew - Cycle time increased from 1.5s to 1.6s"
+      ],
+      [
+       -1,
+       "Granny Long Legs - Melee Resist reduced from 30% to 25%"
+      ],
+      [
+       -1,
+       "Granny Long Legs - Debuff Resist reduced from 30% to 25%"
+      ]
+     ],
+     "more": 0
+    },
+    {
+     "d": "2026-10-30",
+     "v": "nerf",
+     "b": 1,
+     "n": 8,
+     "net": -9.65,
+     "tot": 11.07,
+     "l": [
+      [
+       -1,
+       "Spirit Resist scaling reduced from 0.1 to 0.07"
+      ],
+      [
+       -1,
+       "Threadsap - Spirit Steal duration reduced from 22s to 16s"
+      ],
+      [
+       -1,
+       "Threadsap - When a victim cleanses the Threadsap debuff, the matching spirit Baba gained is also removed"
+      ],
+      [
+       -1,
+       "Granny Long Legs - Light Melee knockback distance reduced from 10m to 8m"
+      ],
+      [
+       1,
+       "Granny Long Legs - Heavy Melee cooldown reduced from 1.4s to 1.2s (default is 1.0s)"
+      ],
+      [
+       -1,
+       "Granny Long Legs - Heavy Melee slow duration reduced from 4s to 2s"
+      ],
+      [
+       0,
+       "Granny Long Legs - Heavy melee stomp now only hits the closest Rejuvenator in range"
+      ],
+      [
+       -1,
+       "Baba's Brew - No longer has an initial brew time"
+      ],
+      [
+       0,
+       "Baba's Brew - Brew order is now random each time she casts it"
+      ],
+      [
+       -1,
+       "Baba's Brew - Cycle time between each type of brew increased from 1s to 1.5s"
+      ],
+      [
+       0,
+       "Baba's Brew - UI indicator color now matches the current brew"
+      ],
+      [
+       -1,
+       "Baba's Brew - Silence duration reduced from 3s to 2.75s"
+      ]
+     ],
+     "more": 0
+    },
+    {
+     "d": "2026-10-15",
+     "v": "nerf",
+     "b": 0,
+     "n": 10,
+     "net": -8.83,
+     "tot": 8.83,
+     "l": [
+      [
+       -1,
+       "Spirit Resistance scaling reduced from 0.12 to 0.1"
+      ],
+      [
+       -1,
+       "Now has -7% Base Bullet Resistance"
+      ],
+      [
+       -1,
+       "Threadsap - Spirit reduction on enemies now ends when Baba dies"
+      ],
+      [
+       -1,
+       "Threadsap - Cooldown increased from 26s to 28s"
+      ],
+      [
+       -1,
+       "Granny Long Legs - Cooldown increased from 30s to 32s"
+      ],
+      [
+       -1,
+       "Granny Long Legs - Repeat light melees while airborne now have diminishing forward momentum"
+      ],
+      [
+       -1,
+       "Granny Long Legs - Light melee upward launch reduced (looking up no longer lifts her as high)"
+      ],
+      [
+       0,
+       "Granny Long Legs - Heavy melee ground pound no longer gains horizontal speed when landing on slopes"
+      ],
+      [
+       -1,
+       "Baba's Brew - Barrier scaling reduced from 1.2 to 0.7"
+      ],
+      [
+       -1,
+       "Baba's Brew - Barrier reduced from 100 to 90"
+      ],
+      [
+       -1,
+       "Baba's Brew - Cooldown increased from 25s to 27s (moved to T2)"
+      ]
+     ],
+     "more": 0
+    }
+   ]
   },
   "bebop": {
    "name": "Bebop",
@@ -720,7 +1222,55 @@
     "Swift Striker": 18.6,
     "Extra Stamina": 9.8,
     "Rebuttal": 10.1
-   }
+   },
+   "changes": [
+    {
+     "d": "2026-06-12",
+     "v": "buff",
+     "b": 1,
+     "n": 0,
+     "net": 0.5,
+     "tot": 0.5,
+     "l": [
+      [
+       1,
+       "Exploding Uppercut T3 increased from +17% Missing Health to +18%"
+      ],
+      [
+       0,
+       "Fixed Sticky Bomb T3 duration ending once the bomb went off rather than the 5s duration"
+      ],
+      [
+       0,
+       "Sticky Bomb T3 changed from \"On Cast: +5m Move Speed and +20% Fire Rate for 5s\" to \"On Cast: +5m Move Speed and +25% Debuff Resistance for 6s\" (applies retroactively)"
+      ]
+     ],
+     "more": 0
+    },
+    {
+     "d": "2026-05-22",
+     "v": "nerf",
+     "b": 1,
+     "n": 2,
+     "net": -1.44,
+     "tot": 2.78,
+     "l": [
+      [
+       -1,
+       "Bullet damage per boon reduced from 0.139 to 0.115"
+      ],
+      [
+       -1,
+       "Exploding Uppercut T2 weapon damage reduced from +40% to +30%"
+      ],
+      [
+       1,
+       "Sticky Bomb T2 increased from +75 Damage to +85"
+      ]
+     ],
+     "more": 0
+    }
+   ]
   },
   "billy": {
    "name": "Billy",
@@ -876,7 +1426,143 @@
     "Crippling Headshot": 32.5,
     "Enchanter's Emblem": 14.7,
     "Rebuttal": 8.2
-   }
+   },
+   "changes": [
+    {
+     "d": "2026-10-30",
+     "v": "buff",
+     "b": 2,
+     "n": 0,
+     "net": 1.5,
+     "tot": 1.5,
+     "l": [
+      [
+       1,
+       "Rising Ram - T3 increased from +10% Max Health for 16s to +15% for 20s"
+      ],
+      [
+       1,
+       "Blasted - Cooldown reduced from 27s to 25s"
+      ]
+     ],
+     "more": 0
+    },
+    {
+     "d": "2026-08-12",
+     "v": "nerf",
+     "b": 0,
+     "n": 2,
+     "net": -2.5,
+     "tot": 2.5,
+     "l": [
+      [
+       -1,
+       "Base health regen reduced from 2.5 to 2.0"
+      ],
+      [
+       0,
+       "Rising Ram T3 changed from \"On Impact: Deal 7% max health as spirit damage\" to \"On hero hit: +10% Max HP for 16s\""
+      ],
+      [
+       -1,
+       "Chain Gang spirit scaling reduced from 1 to 0.7"
+      ]
+     ],
+     "more": 0
+    },
+    {
+     "d": "2026-07-28",
+     "v": "nerf",
+     "b": 0,
+     "n": 1,
+     "net": -0.62,
+     "tot": 0.62,
+     "l": [
+      [
+       -1,
+       "Rising Ram T3 reduced from 8% Max Health to 7%"
+      ]
+     ],
+     "more": 0
+    },
+    {
+     "d": "2026-07-09",
+     "v": "nerf",
+     "b": 0,
+     "n": 1,
+     "net": -0.71,
+     "tot": 0.71,
+     "l": [
+      [
+       -1,
+       "Rising Ram T3 spirit scaling reduced from 0.035 to 0.03"
+      ]
+     ],
+     "more": 0
+    },
+    {
+     "d": "2026-06-30",
+     "v": "mixed",
+     "b": 1,
+     "n": 4,
+     "net": -1.74,
+     "tot": 5.74,
+     "l": [
+      [
+       -1,
+       "Bullet damage per boon reduced by 10%"
+      ],
+      [
+       -1,
+       "Bashdown melee scaling reduced from 1.1 to 0.9"
+      ],
+      [
+       -1,
+       "Bashdown T3 reduced from 60% Heavy Melee damage to 50%"
+      ],
+      [
+       -1,
+       "Rising Ram T3 Max HP Damage reduced from 10% to 8%"
+      ],
+      [
+       1,
+       "Rising Ram T3 Max HP Damage spirit scaling increased from 0.017 to 0.035 (break even at 111 spirit power)"
+      ]
+     ],
+     "more": 0
+    },
+    {
+     "d": "2026-05-22",
+     "v": "mixed",
+     "b": 2,
+     "n": 3,
+     "net": 0.12,
+     "tot": 5.52,
+     "l": [
+      [
+       1,
+       "Health per boon increased from +48 to +59"
+      ],
+      [
+       -1,
+       "Bullet damage per boon reduced from 0.165 to 0.142"
+      ],
+      [
+       -1,
+       "Rising Ram cooldown increased from 30s to 32s"
+      ],
+      [
+       1,
+       "Rising Ram T2 increased from +0.3s Duration to +0.4s"
+      ],
+      [
+       -1,
+       "Rising Ram T3 increased from -10s Cooldown to -13s"
+      ]
+     ],
+     "more": 0
+    }
+   ]
   },
   "calico": {
    "name": "Calico",
@@ -1023,7 +1709,97 @@
     "Arctic Blast": 22.2,
     "Spirit Rend": 28.1,
     "Rebuttal": 9.8
-   }
+   },
+   "changes": [
+    {
+     "d": "2026-10-30",
+     "v": "buff",
+     "b": 2,
+     "n": 0,
+     "net": 3.67,
+     "tot": 3.67,
+     "l": [
+      [
+       1,
+       "Leaping Slash - T3 increased from +60 Damage to +90"
+      ],
+      [
+       1,
+       "Ava - T3 increased from 6s duration to 8s"
+      ]
+     ],
+     "more": 0
+    },
+    {
+     "d": "2026-07-28",
+     "v": "nerf",
+     "b": 0,
+     "n": 2,
+     "net": -1.06,
+     "tot": 1.06,
+     "l": [
+      [
+       -1,
+       "Ava T2 reduced from +45% Move Speed to +40%"
+      ],
+      [
+       -1,
+       "Ava T3 reduced from +20% damage amp to +18%"
+      ]
+     ],
+     "more": 0
+    },
+    {
+     "d": "2026-06-12",
+     "v": "buff",
+     "b": 4,
+     "n": 0,
+     "net": 3.7,
+     "tot": 3.7,
+     "l": [
+      [
+       0,
+       "Gloom Bombs melee resist debuff now stacks additively"
+      ],
+      [
+       1,
+       "Gloom Bombs T2 increased from -5% Melee Resist for 5s to -6% for 6s"
+      ],
+      [
+       0,
+       "Gloom Bombs melee resist now applies on impact rather than explosion"
+      ],
+      [
+       1,
+       "Return to Shadows damage increased from 140 to 150"
+      ],
+      [
+       1,
+       "Return to Shadows T2 damage increased from +65 to +75"
+      ],
+      [
+       1,
+       "Return to Shadows T3 heal increased from 350 to 450"
+      ]
+     ],
+     "more": 0
+    },
+    {
+     "d": "2026-05-22",
+     "v": "other",
+     "b": 0,
+     "n": 0,
+     "net": 0.0,
+     "tot": 0.0,
+     "l": [
+      [
+       0,
+       "Gloom Bomb T2 changed from \"+75 Damage to Barriers\" to \"-5% Melee Resist for 5s Per Bomb\" (stacks)"
+      ]
+     ],
+     "more": 0
+    }
+   ]
   },
   "celeste": {
    "name": "Celeste",
@@ -1179,7 +1955,238 @@
     "Swift Striker": 12.7,
     "Extra Stamina": 13.9,
     "Rebuttal": 10.7
-   }
+   },
+   "changes": [
+    {
+     "d": "2026-11-05",
+     "v": "nerf",
+     "b": 0,
+     "n": 8,
+     "net": -6.34,
+     "tot": 6.34,
+     "l": [
+      [
+       -1,
+       "Dazzling Trick - T3 silence duration reduced from +1.25s to +0.75s"
+      ],
+      [
+       -1,
+       "Radiant Daggers - Cast range reduced from 30m to 25m (moved to T2)"
+      ],
+      [
+       -1,
+       "Radiant Daggers - Spirit Amp per Stack reduced from +7% to +6% (moved to T3)"
+      ],
+      [
+       -1,
+       "Shining Wonder - Slow reduced from -32% Movement to -28%"
+      ],
+      [
+       -1,
+       "Shining Wonder - Cooldown increased from 160s to 170s"
+      ],
+      [
+       -1,
+       "Shining Wonder - Bounce range reduced from 15.5m to 15m"
+      ],
+      [
+       -1,
+       "Shining Wonder - T1 move speed slow reduced from -16% to -14%"
+      ],
+      [
+       -1,
+       "Shining Wonder - T2 bonus damage reduced from +90 to +80"
+      ]
+     ],
+     "more": 0
+    },
+    {
+     "d": "2026-10-30",
+     "v": "nerf",
+     "b": 0,
+     "n": 1,
+     "net": -0.54,
+     "tot": 0.54,
+     "l": [
+      [
+       -1,
+       "Shining Wonder - Damage reduced from 140 to 125"
+      ]
+     ],
+     "more": 0
+    },
+    {
+     "d": "2026-09-16",
+     "v": "nerf",
+     "b": 0,
+     "n": 7,
+     "net": -4.56,
+     "tot": 4.56,
+     "l": [
+      [
+       -1,
+       "Stamina cooldown increased from 5 to 5.3"
+      ],
+      [
+       -1,
+       "Light Eater spirit lifesteal reduced from 20% to 18%"
+      ],
+      [
+       -1,
+       "Light Eater T3 decreased from +25 to +22"
+      ],
+      [
+       -1,
+       "Dazzling Trick cooldown increased from 34s to 38s"
+      ],
+      [
+       -1,
+       "Radiant Daggers T2 reduced from +80 to +70"
+      ],
+      [
+       -1,
+       "Shining Wonder radius reduced from 16.5m to 15.5m"
+      ],
+      [
+       -1,
+       "Shining Wonder T3 Max Bounces reduced from +8 to +6"
+      ]
+     ],
+     "more": 0
+    },
+    {
+     "d": "2026-08-22",
+     "v": "mixed",
+     "b": 2,
+     "n": 7,
+     "net": -2.77,
+     "tot": 8.11,
+     "l": [
+      [
+       -1,
+       "Dazzling Trick cooldown increased from 32s to 34s"
+      ],
+      [
+       0,
+       "Dazzling Trick T2 barrier rescaled from \"+80 and +0.7 scaling\" to \"+70 and +0.76\""
+      ],
+      [
+       -1,
+       "Dazzling Trick T3 cooldown increased from -18s to -20s"
+      ],
+      [
+       -1,
+       "Dazzling Trick T3 reduced from +1.5s Silence to +1.25s"
+      ],
+      [
+       -1,
+       "Radiant Daggers Spirit Amp per stack reduced from +8% to +7%"
+      ],
+      [
+       1,
+       "Radiant Daggers T3 Spirit Amp per stack increased from +3% to +4%"
+      ],
+      [
+       -1,
+       "Shining Wonder bounce range reduced from 17.5m to 16.5m"
+      ],
+      [
+       -1,
+       "Shining Wonder damage reduced from 165 to 140"
+      ],
+      [
+       -1,
+       "Shining Wonder spirit scaling reduced from 0.9 to 0.6"
+      ],
+      [
+       1,
+       "Shining Wonder T2 now also increases spirit scaling by +0.45"
+      ]
+     ],
+     "more": 0
+    },
+    {
+     "d": "2026-07-28",
+     "v": "buff",
+     "b": 3,
+     "n": 0,
+     "net": 2.0,
+     "tot": 2.0,
+     "l": [
+      [
+       1,
+       "Shining Wonder radius increased from 16.5m to 17.5m"
+      ],
+      [
+       1,
+       "Shining Wonder damage increased by 10%"
+      ],
+      [
+       1,
+       "Shining Wonder buffer duration increased from 3s to 3.25s"
+      ]
+     ],
+     "more": 0
+    },
+    {
+     "d": "2026-06-30",
+     "v": "buff",
+     "b": 5,
+     "n": 0,
+     "net": 3.62,
+     "tot": 3.62,
+     "l": [
+      [
+       1,
+       "Dazzling Trick cooldown reduced from 35s to 32s"
+      ],
+      [
+       1,
+       "Radiant Daggers buff duration increased from 25s to 30s"
+      ],
+      [
+       1,
+       "Radiant Daggers spirit scaling increased from 0.56 to 0.63"
+      ],
+      [
+       1,
+       "Shining Wonder bounce range increased from 15.5m to 16.5m"
+      ],
+      [
+       1,
+       "Shining Wonder damage increased by 10%"
+      ]
+     ],
+     "more": 0
+    },
+    {
+     "d": "2026-05-22",
+     "v": "buff",
+     "b": 2,
+     "n": 1,
+     "net": 2.44,
+     "tot": 3.56,
+     "l": [
+      [
+       1,
+       "Improved the hero's hitboxes (easier to hit)"
+      ],
+      [
+       -1,
+       "Stamina cooldown increased from 4.5s to 5s"
+      ],
+      [
+       0,
+       "Radiant Daggers T2 changed from \"-18s Cooldown and +70 Damage\" to \"-22s Cooldown and +80 Damage\""
+      ],
+      [
+       1,
+       "Shining Wonder T2 increased from +50 Damage to +70"
+      ]
+     ],
+     "more": 0
+    }
+   ]
   },
   "deadman-danny": {
    "name": "Deadman Danny",
@@ -1399,7 +2406,142 @@
     "Enchanter's Emblem": 12.5,
     "Swift Striker": 13.5,
     "Extra Stamina": 14.4
-   }
+   },
+   "changes": [
+    {
+     "d": "2026-11-05",
+     "v": "nerf",
+     "b": 0,
+     "n": 4,
+     "net": -3.91,
+     "tot": 3.91,
+     "l": [
+      [
+       -1,
+       "Close The Deal - Bonus damage to under half health targets reduced from +75% to +55%"
+      ],
+      [
+       -1,
+       "Strix Salvo - Spirit scaling reduced by 8%"
+      ],
+      [
+       -1,
+       "Chimera Mk1 - T2 reduced from 150 Heal On Hit to 125"
+      ],
+      [
+       -1,
+       "Chimera Mk1 - T2 heal spirit scaling reduced from 2.0 to 1.7"
+      ]
+     ],
+     "more": 0
+    },
+    {
+     "d": "2026-10-30",
+     "v": "mixed",
+     "b": 1,
+     "n": 3,
+     "net": -1.88,
+     "tot": 5.88,
+     "l": [
+      [
+       -1,
+       "Chimera Mk1 - Jetpack can no longer be used while cursed"
+      ],
+      [
+       0,
+       "Chimera Mk1 - Fixed bug causing it to not deal damage when held through a Close The Deal"
+      ],
+      [
+       0,
+       "Chimera Mk1 - Items and abilities that pull to the ground now work more reliably against Danny"
+      ],
+      [
+       -1,
+       "Chimera Mk1 - Slows now reduce the jetpack's in-air impulse more effectively, and even more if movement abilities are silenced"
+      ],
+      [
+       0,
+       "Close the Deal - Fixed some incorrect behavior when used at the top of the belltower"
+      ],
+      [
+       -1,
+       "Chimera Mk1 - Cooldown reduction per boon reduced from -0.4s to -0.25s"
+      ],
+      [
+       1,
+       "Chimera Mk1 - Cooldown refund on hit from T3 reduced from 50% to 30%"
+      ]
+     ],
+     "more": 0
+    },
+    {
+     "d": "2026-10-15",
+     "v": "buff",
+     "b": 13,
+     "n": 1,
+     "net": 17.43,
+     "tot": 19.43,
+     "l": [
+      [
+       1,
+       "Health regen increased from 2.5 to 3.25"
+      ],
+      [
+       1,
+       "Base health increased from 680 to 730"
+      ],
+      [
+       1,
+       "Gun - Base bullet damage for uncharged shots from 12 to 15 and charged shots from 44 to 48"
+      ],
+      [
+       1,
+       "Chimera Mk1 - Cooldown boon scaling increased from -0.25 to -0.45"
+      ],
+      [
+       1,
+       "Chimera Mk1 - Heal on hit spirit scaling increased from 1 to 2"
+      ],
+      [
+       1,
+       "Chimera Mk1 weapon scaling increased from 1.15 to 1.4"
+      ],
+      [
+       1,
+       "Strix Salvo - Cooldown from 30s to 25s"
+      ],
+      [
+       1,
+       "Strix Salvo - Damage spirit scaling from 0.9 to 1.1"
+      ],
+      [
+       1,
+       "Strix Salvo - T2 increased from \"+20 damage / +35 mark damage\" to \"+30 damage / +45 mark damage\""
+      ],
+      [
+       1,
+       "Strix Salvo - T3 increased from +0.2 spirit scaling to +0.35"
+      ],
+      [
+       1,
+       "Close the Deal - 1AP increased from +50 to +90"
+      ],
+      [
+       -1,
+       "Chimera Mk1 - Slow effectiveness in air reduced by 15%"
+      ],
+      [
+       1,
+       "Rocket Jumping - Self damage from 6.5% max HP to 5% and is now spirit damage"
+      ],
+      [
+       1,
+       "Close The Deal - Bonus damage to under half health targets increased from +50% to +75%"
+      ]
+     ],
+     "more": 0
+    }
+   ]
   },
   "drifter": {
    "name": "Drifter",
@@ -1646,7 +2788,159 @@
     "Swift Striker": 13.6,
     "Extra Stamina": 9.0,
     "Rebuttal": 10.7
-   }
+   },
+   "changes": [
+    {
+     "d": "2026-10-30",
+     "v": "buff",
+     "b": 3,
+     "n": 0,
+     "net": 2.0,
+     "tot": 2.0,
+     "l": [
+      [
+       1,
+       "Base gun damage increased by 3%"
+      ],
+      [
+       1,
+       "Bloodscent - T3 increased from +11% Amplified Damage to +12%"
+      ],
+      [
+       1,
+       "Eternal Night - T3 increased from +2.5s Duration to +2.75s"
+      ]
+     ],
+     "more": 0
+    },
+    {
+     "d": "2026-08-12",
+     "v": "mixed",
+     "b": 1,
+     "n": 2,
+     "net": -0.55,
+     "tot": 2.21,
+     "l": [
+      [
+       -1,
+       "Rend spirit scaling reduced from 1.7 to 1.4"
+      ],
+      [
+       -1,
+       "Stalker's Mark cooldown increased from 24s to 26s"
+      ],
+      [
+       1,
+       "Stalker's Mark T2 reduced from -12s Cooldown to -10s"
+      ]
+     ],
+     "more": 0
+    },
+    {
+     "d": "2026-07-28",
+     "v": "nerf",
+     "b": 0,
+     "n": 2,
+     "net": -1.15,
+     "tot": 1.15,
+     "l": [
+      [
+       -1,
+       "Rend spirit scaling reduced from 1.8 to 1.7"
+      ],
+      [
+       -1,
+       "Rend T3 silence duration reduced from 2.3s to 2s"
+      ]
+     ],
+     "more": 0
+    },
+    {
+     "d": "2026-07-09",
+     "v": "nerf",
+     "b": 0,
+     "n": 5,
+     "net": -5.77,
+     "tot": 5.77,
+     "l": [
+      [
+       -1,
+       "Bullet damage per boon reduced from +0.616 to +0.49"
+      ],
+      [
+       -1,
+       "Bloodscent T3 reduced from +12% to +11%"
+      ],
+      [
+       -1,
+       "Stalker's Mark cooldown increased from 20s to 24s"
+      ],
+      [
+       -1,
+       "Stalker's Mark T2 increased from -8s Cooldown to -12s"
+      ],
+      [
+       -1,
+       "Stalker's Mark T3 reduced from +2% Bleed to +1.5%"
+      ]
+     ],
+     "more": 0
+    },
+    {
+     "d": "2026-06-30",
+     "v": "buff",
+     "b": 5,
+     "n": 1,
+     "net": 4.46,
+     "tot": 5.88,
+     "l": [
+      [
+       1,
+       "Health per boon increased from 41 to 43 (global hp boon reduction is after this)"
+      ],
+      [
+       1,
+       "Rend cast time reduced from 0.5s to 0.4s"
+      ],
+      [
+       1,
+       "Rend post cast time reduced from 0.5s to 0.4s"
+      ],
+      [
+       -1,
+       "Rend T2 increased from -7s Cooldown to -8s"
+      ],
+      [
+       1,
+       "Bloodscent T1 increased from +2m/s while near an isolated enemy to +3m/s"
+      ],
+      [
+       1,
+       "Bloodscent T2 increased from 18% missing health heal to +24%"
+      ]
+     ],
+     "more": 0
+    },
+    {
+     "d": "2026-05-22",
+     "v": "buff",
+     "b": 1,
+     "n": 0,
+     "net": 1.0,
+     "tot": 1.0,
+     "l": [
+      [
+       0,
+       "Rend T3 no longer increases scaling by 0.4"
+      ],
+      [
+       1,
+       "Rend T3 now also deals Heavy Melee Damage (0.55 scale)"
+      ]
+     ],
+     "more": 0
+    }
+   ]
   },
   "dynamo": {
    "name": "Dynamo",
@@ -1880,7 +3174,62 @@
     "Swift Striker": 9.1,
     "Extra Stamina": 7.9,
     "Rebuttal": 6.3
-   }
+   },
+   "changes": [
+    {
+     "d": "2026-07-28",
+     "v": "buff",
+     "b": 1,
+     "n": 0,
+     "net": 0.5,
+     "tot": 0.5,
+     "l": [
+      [
+       1,
+       "Singularity cooldown reduced from 265s to 250s"
+      ]
+     ],
+     "more": 0
+    },
+    {
+     "d": "2026-06-30",
+     "v": "buff",
+     "b": 1,
+     "n": 0,
+     "net": 1.0,
+     "tot": 1.0,
+     "l": [
+      [
+       1,
+       "Rejuvenating Aurora regeneration increased from 25/s to 30/s"
+      ]
+     ],
+     "more": 0
+    },
+    {
+     "d": "2026-05-22",
+     "v": "nerf",
+     "b": 0,
+     "n": 3,
+     "net": -2.33,
+     "tot": 2.33,
+     "l": [
+      [
+       -1,
+       "Kinetic Pulse T2 reduced from -18% Bullet Resistance to -15%"
+      ],
+      [
+       -1,
+       "Kinetic Pulse spirit scaling reduced from 1.65 to 1.55"
+      ],
+      [
+       -1,
+       "Quantum Entanglement T3 changed from dispelling non-ult debuffs to reducing the duration of non-ult debuffs by 50%"
+      ]
+     ],
+     "more": 0
+    }
+   ]
   },
   "graves": {
    "name": "Graves",
@@ -2046,7 +3395,219 @@
     "Enchanter's Emblem": 14.1,
     "Extra Stamina": 8.9,
     "Rebuttal": 9.3
-   }
+   },
+   "changes": [
+    {
+     "d": "2026-10-30",
+     "v": "mixed",
+     "b": 2,
+     "n": 3,
+     "net": 0.17,
+     "tot": 5.17,
+     "l": [
+      [
+       -1,
+       "Move speed reduced from 7 to 6.7"
+      ],
+      [
+       -1,
+       "Bullet damage per boon reduced by 4%"
+      ],
+      [
+       0,
+       "Grasping Hands - Can now be more easily double jumped over"
+      ],
+      [
+       1,
+       "Grasping Hands - Deploy time increased from 0.6s to 0.8s"
+      ],
+      [
+       -1,
+       "Borrowed Decree - T2 no longer has -0.3s Time To Spawn"
+      ],
+      [
+       1,
+       "Borrowed Decree - T3 now also provides -0.3s Time To Spawn"
+      ]
+     ],
+     "more": 0
+    },
+    {
+     "d": "2026-09-16",
+     "v": "buff",
+     "b": 1,
+     "n": 0,
+     "net": 0.5,
+     "tot": 0.5,
+     "l": [
+      [
+       1,
+       "Health per boon increased from 33 to 35"
+      ]
+     ],
+     "more": 0
+    },
+    {
+     "d": "2026-07-09",
+     "v": "mixed",
+     "b": 2,
+     "n": 2,
+     "net": 0.67,
+     "tot": 6.67,
+     "l": [
+      [
+       1,
+       "Jar of Dead T1 heal spirit scaling increased from 0.1 to 0.16"
+      ],
+      [
+       0,
+       "Jar of Dead now build up faster from neutral creeps"
+      ],
+      [
+       -1,
+       "Grasping Hands immobilize duration reduced from 1.25s to 1s"
+      ],
+      [
+       -1,
+       "Grasping Hands T3 cooldown increased from -10s to -14s"
+      ],
+      [
+       0,
+       "Essence Theft now procs from melee hits"
+      ],
+      [
+       1,
+       "Essence Theft T3 now also increases Max Steal Targets from 3 to 4"
+      ],
+      [
+       0,
+       "Borrowed Decree T1 changed from \"-15s Cooldown\" to \"-15s Cooldown and +25% Ghoul Speed\""
+      ],
+      [
+       0,
+       "Borrowed Decree T2 changed from \"+25% Ghoul Speed and +10s Duration\" to \"-0.3s Time to Spawn and +10s Duration\""
+      ]
+     ],
+     "more": 0
+    },
+    {
+     "d": "2026-06-12",
+     "v": "nerf",
+     "b": 1,
+     "n": 2,
+     "net": -1.25,
+     "tot": 3.25,
+     "l": [
+      [
+       0,
+       "Jar of Dead collection rate reduced by 20% (takes longer to gain a charge)"
+      ],
+      [
+       -1,
+       "Jar of Dead damage reduced from 17+0.27 to 16+0.25"
+      ],
+      [
+       1,
+       "Jar of Dead bounty increased from 5+0.25/boon to 7+0.5/boon"
+      ],
+      [
+       -1,
+       "Grasping Hands T3 Immobilize duration reduced from +1s to +0.75s"
+      ]
+     ],
+     "more": 0
+    },
+    {
+     "d": "2026-05-31",
+     "v": "mixed",
+     "b": 1,
+     "n": 2,
+     "net": -1.0,
+     "tot": 3.0,
+     "l": [
+      [
+       -1,
+       "Jar of Dead damage reduced from 20 + 0.31/spirit to 17 + 0.27/spirit"
+      ],
+      [
+       -1,
+       "Ghouls damage reduced by 15%"
+      ],
+      [
+       1,
+       "Ghouls bounty increased from 25+1/min to 35+2/min"
+      ]
+     ],
+     "more": 0
+    },
+    {
+     "d": "2026-05-22",
+     "v": "buff",
+     "b": 4,
+     "n": 2,
+     "net": 3.31,
+     "tot": 6.45,
+     "l": [
+      [
+       1,
+       "Sprint speed increased from 1.6 to 2.2"
+      ],
+      [
+       1,
+       "Grasping Hands now spawns a ghoul in the base ability (T3 still increases it by 1)"
+      ],
+      [
+       0,
+       "Updated dash ranges for Deadheads to be calculated from the center of Graves when they are following her"
+      ],
+      [
+       0,
+       "Fixed Fire Rate buffs for Deadheads not being applied to their next attack, but only on subsequent attacks"
+      ],
+      [
+       0,
+       "Fixed Deadheads being unable to dash through veils"
+      ],
+      [
+       0,
+       "Fixed Deadheads being unable to dash to targets at the very end of your attack range when they are in follow mode"
+      ],
+      [
+       0,
+       "Fixed Deadhead's damage taken from bullets being unaffected by fall-off"
+      ],
+      [
+       1,
+       "Added 0.1s buffer duration for Deadheads losing line-of-sight before they stop following an enemy"
+      ],
+      [
+       0,
+       "Fixed Deadheads becoming inactive if Graves dies while they are following her"
+      ],
+      [
+       -1,
+       "Jar of Dead spirit scaling reduced from 0.35 to 0.31 (they are better at dealing damage now)"
+      ],
+      [
+       1,
+       "Increased speed & acceleration of Deadheads only when they are following Graves - doesn't affect in-combat"
+      ],
+      [
+       0,
+       "Fixed certain projectiles (i.e Gray Talon's Bird) colliding with Deadheads"
+      ],
+      [
+       0,
+       "Update Grave's melee to also set the dash target for Deadheads"
+      ],
+      [
+       -1,
+       "Bullet damage and growth reduced by -10%"
+      ]
+     ],
+     "more": 0
+    }
+   ]
   },
   "grey-talon": {
    "name": "Grey Talon",
@@ -2259,7 +3820,125 @@
     "Enchanter's Emblem": 11.8,
     "Swift Striker": 12.3,
     "Extra Stamina": 15.2
-   }
+   },
+   "changes": [
+    {
+     "d": "2026-10-30",
+     "v": "mixed",
+     "b": 2,
+     "n": 1,
+     "net": 1.0,
+     "tot": 3.0,
+     "l": [
+      [
+       -1,
+       "Charged Shot - T2 now also has -2s Charge Delay"
+      ],
+      [
+       1,
+       "Charged Shot - T3 no longer has -3s Charge Delay"
+      ],
+      [
+       1,
+       "Charged Shot - T3 now also lets the shot bounce once off a wall (can't hit a target more than once)"
+      ],
+      [
+       0,
+       "Guided Owl - Now launches in the exact direction you're aiming, including steep downward angles (previously always launched at least 45° upward)"
+      ]
+     ],
+     "more": 0
+    },
+    {
+     "d": "2026-06-30",
+     "v": "nerf",
+     "b": 0,
+     "n": 2,
+     "net": -1.5,
+     "tot": 1.5,
+     "l": [
+      [
+       -1,
+       "Rain of Arrows cooldown increased from 23s to 25s"
+      ],
+      [
+       -1,
+       "Guided Owl permanent spirit bonus reduced from 10 to 8"
+      ]
+     ],
+     "more": 0
+    },
+    {
+     "d": "2026-06-12",
+     "v": "nerf",
+     "b": 1,
+     "n": 3,
+     "net": -1.25,
+     "tot": 2.25,
+     "l": [
+      [
+       -1,
+       "Gun cycle time increased from 0.5775 to 0.6 (~4% DPS nerf)"
+      ],
+      [
+       -1,
+       "Bullet damage growth reduced from +1.0 to +0.85"
+      ],
+      [
+       -1,
+       "Rain of Arrows cooldown increased from 22s to 23s"
+      ],
+      [
+       1,
+       "Rain of Arrows T2 reduced from -13s Cooldown to -12s"
+      ]
+     ],
+     "more": 0
+    },
+    {
+     "d": "2026-05-22",
+     "v": "mixed",
+     "b": 4,
+     "n": 2,
+     "net": 3.08,
+     "tot": 9.58,
+     "l": [
+      [
+       1,
+       "Rain of Arrows cooldown reduced from 30s to 22s"
+      ],
+      [
+       1,
+       "Rain of Arrows cast delay reduced from 0.5s to 0.2s"
+      ],
+      [
+       -1,
+       "Rain of Arrows duration reduced from 7s to 4s"
+      ],
+      [
+       1,
+       "Rain of Arrows moving ability in air improved"
+      ],
+      [
+       0,
+       "Rain of Arrow stamina distance changed from being -9% to +25%"
+      ],
+      [
+       -1,
+       "Rain of Arrows Weapon Damage bonus reduced from +4 to +3"
+      ],
+      [
+       0,
+       "Rain of Arrows T1 changed from \"-14s Cooldown\" to \"+3 Weapon Damage and +30% Slow for 1.5s\""
+      ],
+      [
+       1,
+       "Rain of Arrows T2 changed from \"+5 Weapon Damage and +40% Slow for 1.5s\" to \"-13s Cooldown\" (Total CD from 16s to 9s)"
+      ]
+     ],
+     "more": 0
+    }
+   ]
   },
   "haze": {
    "name": "Haze",
@@ -2419,7 +4098,135 @@
     "Kinetic Dash": 10.9,
     "Swift Striker": 7.1,
     "Extra Stamina": 10.8
-   }
+   },
+   "changes": [
+    {
+     "d": "2026-10-30",
+     "v": "other",
+     "b": 0,
+     "n": 0,
+     "net": 0.0,
+     "tot": 0.0,
+     "l": [
+      [
+       0,
+       "Smoke Bomb - Fixed T3 dispelling debuffs that can't be dispelled (like the Specter Crash from Nurse's Wretched Vapors)"
+      ]
+     ],
+     "more": 0
+    },
+    {
+     "d": "2026-09-16",
+     "v": "buff",
+     "b": 2,
+     "n": 0,
+     "net": 2.83,
+     "tot": 2.83,
+     "l": [
+      [
+       1,
+       "Fixation headshot stack count increased from +2 to +3"
+      ],
+      [
+       1,
+       "Fixation T3 weapon scaling increased from 0.0003 to 0.00035"
+      ]
+     ],
+     "more": 0
+    },
+    {
+     "d": "2026-07-28",
+     "v": "nerf",
+     "b": 1,
+     "n": 3,
+     "net": -2.81,
+     "tot": 4.81,
+     "l": [
+      [
+       -1,
+       "Sleep Dagger wake up time spirit scaling reduced from 0.003 to 0.002"
+      ],
+      [
+       -1,
+       "Sleep Dagger damage spirit scaling reduced from 2.8 to 2.2"
+      ],
+      [
+       0,
+       "Sleep Dagger T2 changed from “-17s Cooldown and Applies 15 Fixation Stacks” to “+1s Sleep Duration and Applies 15 Fixation Stacks”"
+      ],
+      [
+       0,
+       "Sleep Dagger T3 changed from “+1s Sleep Duration and -50% Move and Dash Speed for 3s on wake-up” to “-17s Cooldown and -50% Move and Dash Speed for 3s on wake-up”"
+      ],
+      [
+       -1,
+       "Fixation T3 reduced from +0.14 per Stack to +0.11"
+      ],
+      [
+       1,
+       "Fixation T3 now also scales with Weapon Damage (0.0003)"
+      ]
+     ],
+     "more": 0
+    },
+    {
+     "d": "2026-07-09",
+     "v": "buff",
+     "b": 2,
+     "n": 0,
+     "net": 1.5,
+     "tot": 1.5,
+     "l": [
+      [
+       1,
+       "Sleep Dagger T2 now also applies 15 Fixation Stacks"
+      ],
+      [
+       1,
+       "Sleep Dagger T2 reduced from -18s Cooldown to -17s"
+      ]
+     ],
+     "more": 0
+    },
+    {
+     "d": "2026-06-30",
+     "v": "buff",
+     "b": 2,
+     "n": 1,
+     "net": 2.0,
+     "tot": 3.0,
+     "l": [
+      [
+       1,
+       "Sleep Dagger T1 increased from -8% Bullet Resist to -10%"
+      ],
+      [
+       -1,
+       "Sleep Dagger T2 increased from -17s Cooldown to -18s"
+      ],
+      [
+       1,
+       "Smoke Bomb T3 increased from +40% Bullet Lifesteal to +50%"
+      ]
+     ],
+     "more": 0
+    },
+    {
+     "d": "2026-05-22",
+     "v": "buff",
+     "b": 1,
+     "n": 0,
+     "net": 0.83,
+     "tot": 0.83,
+     "l": [
+      [
+       1,
+       "Fixation T3 increased from +0.12 to +0.14"
+      ]
+     ],
+     "more": 0
+    }
+   ]
   },
   "holliday": {
    "name": "Holliday",
@@ -2584,7 +4391,159 @@
     "Headhunter": 15.7,
     "Swift Striker": 15.8,
     "Extra Stamina": 13.3
-   }
+   },
+   "changes": [
+    {
+     "d": "2026-09-16",
+     "v": "buff",
+     "b": 3,
+     "n": 0,
+     "net": 2.75,
+     "tot": 2.75,
+     "l": [
+      [
+       1,
+       "Health per boon increased from 41 to 43"
+      ],
+      [
+       1,
+       "Crackshot T2 now also applies -6% Bullet Resistance for 5s"
+      ],
+      [
+       1,
+       "Lasso duration extention by Bounce Pad increased from +1s to +1.25s"
+      ]
+     ],
+     "more": 0
+    },
+    {
+     "d": "2026-08-12",
+     "v": "other",
+     "b": 0,
+     "n": 0,
+     "net": 0.0,
+     "tot": 0.0,
+     "l": [
+      [
+       0,
+       "Powder Keg now does half its damage immediately and half over 3s as a damage over time burn (same overall damage, multiple instances stack)"
+      ]
+     ],
+     "more": 0
+    },
+    {
+     "d": "2026-07-09",
+     "v": "nerf",
+     "b": 0,
+     "n": 1,
+     "net": -0.62,
+     "tot": 0.62,
+     "l": [
+      [
+       -1,
+       "Powder Keg spirit scaling reduced from 1.2 to 1.05"
+      ]
+     ],
+     "more": 0
+    },
+    {
+     "d": "2026-06-30",
+     "v": "nerf",
+     "b": 0,
+     "n": 4,
+     "net": -3.21,
+     "tot": 3.21,
+     "l": [
+      [
+       -1,
+       "Powder Keg velocity reduced slightly"
+      ],
+      [
+       -1,
+       "Powder Keg charge delay increased from 7s to 7.5s"
+      ],
+      [
+       -1,
+       "Powder Keg spirit scaling reduced from 1.4 to 1.2"
+      ],
+      [
+       -1,
+       "Powder Keg T3 reduced from +100 Damage to +80"
+      ]
+     ],
+     "more": 0
+    },
+    {
+     "d": "2026-06-12",
+     "v": "mixed",
+     "b": 3,
+     "n": 3,
+     "net": -0.88,
+     "tot": 6.88,
+     "l": [
+      [
+       1,
+       "Powder Keg now has an alt cast behavior to place the barrel at her feet"
+      ],
+      [
+       1,
+       "Powder Keg various improvements to the launch angles, velocities and feel of casting"
+      ],
+      [
+       0,
+       "Powder Keg now starts with 2 charges"
+      ],
+      [
+       -1,
+       "Powder Keg Charge Time increased from 3.5s to 7s"
+      ],
+      [
+       -1,
+       "Powder Keg spirit scaling reduced from 1.6 to 1.4"
+      ],
+      [
+       0,
+       "Powder Keg T2 changed from \"+58 Damage\" to \"+1 Charge\""
+      ],
+      [
+       0,
+       "Powder Keg T3 changed from \"+2 Charges and +0.4s Displacement\" to \"+100 Damage, +0.5 Spirit Scaling and -5s Charge Time\""
+      ],
+      [
+       0,
+       "Fixed various issues with placing bounce pad on elevated areas"
+      ],
+      [
+       -1,
+       "Bounce Pad landing radius reduced from 12m to 9m"
+      ],
+      [
+       1,
+       "Bounce Pad T3 changed from \"+68 Stomp Damage and Improved Spirit Scaling\" to \"+0.7s Stomp Stun\" (only triggers from Holliday)"
+      ]
+     ],
+     "more": 0
+    },
+    {
+     "d": "2026-05-22",
+     "v": "buff",
+     "b": 2,
+     "n": 0,
+     "net": 2.5,
+     "tot": 2.5,
+     "l": [
+      [
+       1,
+       "Base bullet damage increased from 18.8 to 19.7"
+      ],
+      [
+       1,
+       "Health regen increased from 1 to 2"
+      ]
+     ],
+     "more": 0
+    }
+   ]
   },
   "infernus": {
    "name": "Infernus",
@@ -2730,7 +4689,66 @@
     "Enchanter's Emblem": 13.1,
     "Spirit Rend": 27.6,
     "Swift Striker": 9.3
-   }
+   },
+   "changes": [
+    {
+     "d": "2026-10-30",
+     "v": "buff",
+     "b": 2,
+     "n": 0,
+     "net": 2.67,
+     "tot": 2.67,
+     "l": [
+      [
+       1,
+       "Napalm - T2 lifesteal increased from 15% to 20%"
+      ],
+      [
+       1,
+       "Concussive Combustion - T3 now increases spirit scaling by 0.4"
+      ]
+     ],
+     "more": 0
+    },
+    {
+     "d": "2026-06-12",
+     "v": "other",
+     "b": 0,
+     "n": 0,
+     "net": 0.0,
+     "tot": 0.0,
+     "l": [
+      [
+       0,
+       "Fixed Afterburn Max duration refreshing not properly accounting for both Debuff Resist and +Ability Duration"
+      ],
+      [
+       0,
+       "Fixed Concussive Combustion cooldown not updating when getting the T2 or other CD reducing items when the ability is on cooldown"
+      ]
+     ],
+     "more": 0
+    },
+    {
+     "d": "2026-05-22",
+     "v": "buff",
+     "b": 2,
+     "n": 0,
+     "net": 2.67,
+     "tot": 2.67,
+     "l": [
+      [
+       1,
+       "Bullet size increased from 3 to 4"
+      ],
+      [
+       1,
+       "Concussive Combustion T3 increased from +0.75s Stun Duration to +0.9s"
+      ]
+     ],
+     "more": 0
+    }
+   ]
   },
   "ivy": {
    "name": "Ivy",
@@ -2919,7 +4937,96 @@
     "Swift Striker": 16.6,
     "Extra Stamina": 11.7,
     "Rebuttal": 8.5
-   }
+   },
+   "changes": [
+    {
+     "d": "2026-09-16",
+     "v": "nerf",
+     "b": 0,
+     "n": 2,
+     "net": -1.21,
+     "tot": 1.21,
+     "l": [
+      [
+       -1,
+       "Stone Form radius reduced from 6m to 5.75m"
+      ],
+      [
+       -1,
+       "Stone Form T1 max health heal reduced from 7% to 6%"
+      ]
+     ],
+     "more": 0
+    },
+    {
+     "d": "2026-08-12",
+     "v": "nerf",
+     "b": 0,
+     "n": 1,
+     "net": -1.25,
+     "tot": 1.25,
+     "l": [
+      [
+       -1,
+       "Stone Form T3 stun duration reduced from +1s to +0.75s"
+      ]
+     ],
+     "more": 0
+    },
+    {
+     "d": "2026-07-28",
+     "v": "nerf",
+     "b": 0,
+     "n": 1,
+     "net": -0.59,
+     "tot": 0.59,
+     "l": [
+      [
+       -1,
+       "Stone Form T3 spirit scaling reduced from +1.7 to +1.5"
+      ]
+     ],
+     "more": 0
+    },
+    {
+     "d": "2026-06-30",
+     "v": "buff",
+     "b": 2,
+     "n": 1,
+     "net": 2.11,
+     "tot": 4.11,
+     "l": [
+      [
+       1,
+       "Entangling Thorns spirit scaling increased from 0.45 to 0.55"
+      ],
+      [
+       1,
+       "Kudzu Connection Replicated Healing per boon scale increased from +0.5 to +0.85"
+      ],
+      [
+       -1,
+       "Air Drop cooldown reduction when used on allies increased from -25% to -30%"
+      ]
+     ],
+     "more": 0
+    },
+    {
+     "d": "2026-06-12",
+     "v": "other",
+     "b": 0,
+     "n": 0,
+     "net": 0.0,
+     "tot": 0.0,
+     "l": [
+      [
+       0,
+       "Fixed a bug where Stone Form could sometimes do significantly more damage than intended"
+      ]
+     ],
+     "more": 0
+    }
+   ]
   },
   "kelvin": {
    "name": "Kelvin",
@@ -3075,7 +5182,89 @@
     "Extra Charge": 4.8,
     "Enchanter's Emblem": 11.2,
     "Extra Stamina": 7.4
-   }
+   },
+   "changes": [
+    {
+     "d": "2026-10-30",
+     "v": "nerf",
+     "b": 1,
+     "n": 2,
+     "net": -1.73,
+     "tot": 3.27,
+     "l": [
+      [
+       -1,
+       "Frozen Shelter - Cooldown increased from 185s to 190s"
+      ],
+      [
+       -1,
+       "Frozen Shelter - T1 increased from -20s Cooldown to -30s"
+      ],
+      [
+       0,
+       "Frozen Shelter - T2 now also reduces enemy fire rate by -20%"
+      ],
+      [
+       1,
+       "Frozen Shelter - T3 regen increased from +65 to +75"
+      ]
+     ],
+     "more": 0
+    },
+    {
+     "d": "2026-09-16",
+     "v": "other",
+     "b": 0,
+     "n": 0,
+     "net": 0.0,
+     "tot": 0.0,
+     "l": [
+      [
+       0,
+       "Frozen Shelter base ability health regen now scales with spirit power (0.2)"
+      ]
+     ],
+     "more": 0
+    },
+    {
+     "d": "2026-07-28",
+     "v": "buff",
+     "b": 1,
+     "n": 0,
+     "net": 0.5,
+     "tot": 0.5,
+     "l": [
+      [
+       1,
+       "Frozen Shelter cooldown reduced from 195s to 185s"
+      ]
+     ],
+     "more": 0
+    },
+    {
+     "d": "2026-05-22",
+     "v": "nerf",
+     "b": 0,
+     "n": 3,
+     "net": -2.91,
+     "tot": 2.91,
+     "l": [
+      [
+       -1,
+       "Frost Grenade damage spirit scaling reduced from 0.7 to 0.6"
+      ],
+      [
+       -1,
+       "When interrupted on Ice Path, it no longer creates an ice path below him and instead lets him fall to the ground"
+      ],
+      [
+       -1,
+       "Arctic Beam DPS spirit scaling reduced from 0.5 to 0.38"
+      ]
+     ],
+     "more": 0
+    }
+   ]
   },
   "lady-geist": {
    "name": "Lady Geist",
@@ -3231,7 +5420,70 @@
     "Enchanter's Emblem": 13.8,
     "Kinetic Dash": 12.8,
     "Extra Stamina": 11.0
-   }
+   },
+   "changes": [
+    {
+     "d": "2026-10-30",
+     "v": "buff",
+     "b": 1,
+     "n": 0,
+     "net": 0.53,
+     "tot": 0.53,
+     "l": [
+      [
+       1,
+       "Essence Bomb spirit scaling increased from 1.22 to 1.35"
+      ]
+     ],
+     "more": 0
+    },
+    {
+     "d": "2026-09-16",
+     "v": "buff",
+     "b": 2,
+     "n": 0,
+     "net": 2.77,
+     "tot": 2.77,
+     "l": [
+      [
+       1,
+       "Life Drain T3 spirit scaling increased from +0.3 to +0.45"
+      ],
+      [
+       1,
+       "Essence Bomb T3 damage increased from 26% to 30%"
+      ]
+     ],
+     "more": 0
+    },
+    {
+     "d": "2026-07-28",
+     "v": "mixed",
+     "b": 2,
+     "n": 2,
+     "net": 0.76,
+     "tot": 4.0,
+     "l": [
+      [
+       1,
+       "Life Drain changed from 75% Damage to Heal to 100%"
+      ],
+      [
+       -1,
+       "Life Drain DPS reduced to provide the same effective heal as before but with less DPS"
+      ],
+      [
+       -1,
+       "Malice Damage amplification reduced from 8% to 7%"
+      ],
+      [
+       1,
+       "Malice T3 increased from +7% Damage Amp to +8%"
+      ]
+     ],
+     "more": 0
+    }
+   ]
   },
   "lash": {
    "name": "Lash",
@@ -3369,7 +5621,132 @@
     "Enchanter's Emblem": 13.6,
     "Headhunter": 16.5,
     "Extra Stamina": 12.5
-   }
+   },
+   "changes": [
+    {
+     "d": "2026-10-30",
+     "v": "buff",
+     "b": 1,
+     "n": 0,
+     "net": 1.0,
+     "tot": 1.0,
+     "l": [
+      [
+       1,
+       "Grapple - T3 now also increases Jump Velocity by +4m"
+      ],
+      [
+       0,
+       "Death Slam - Targeting indicator changed from a cone to a cylinder to more accurately match the ability's range (visual change only)"
+      ]
+     ],
+     "more": 0
+    },
+    {
+     "d": "2026-09-16",
+     "v": "nerf",
+     "b": 3,
+     "n": 5,
+     "net": -4.46,
+     "tot": 9.8,
+     "l": [
+      [
+       -1,
+       "Gun falloff range reduced from 18m->54m to 16m->48m"
+      ],
+      [
+       1,
+       "Ground Strike T3 spirit scaling increased from +0.03 to +0.04"
+      ],
+      [
+       1,
+       "Ground Strike T3 damage per meter scaling increased from 110% to 120%"
+      ],
+      [
+       -1,
+       "Grapple T2 Weapon Damage buff duration reduced from 10s to 6s"
+      ],
+      [
+       -1,
+       "Flog heal reduced from 50% to 40%"
+      ],
+      [
+       1,
+       "Flog angle increased from 38 to 40"
+      ],
+      [
+       -1,
+       "Flog T3 reduced from +40 degrees angle to +25"
+      ],
+      [
+       -1,
+       "Flog T3 reduced from +20% heal to +15%"
+      ]
+     ],
+     "more": 0
+    },
+    {
+     "d": "2026-08-12",
+     "v": "nerf",
+     "b": 0,
+     "n": 1,
+     "net": -1.0,
+     "tot": 1.0,
+     "l": [
+      [
+       -1,
+       "Falloff range reduced from 20m->58m to 18m->54m"
+      ]
+     ],
+     "more": 0
+    },
+    {
+     "d": "2026-06-30",
+     "v": "buff",
+     "b": 2,
+     "n": 0,
+     "net": 2.04,
+     "tot": 2.04,
+     "l": [
+      [
+       1,
+       "Ground Strike cooldown reduced from 21s to 18s"
+      ],
+      [
+       1,
+       "Flog angle increased from 30 to 38"
+      ]
+     ],
+     "more": 0
+    },
+    {
+     "d": "2026-05-22",
+     "v": "mixed",
+     "b": 2,
+     "n": 2,
+     "net": 0.0,
+     "tot": 3.0,
+     "l": [
+      [
+       -1,
+       "Bullet damage per boon reduced from 0.341 to 0.31"
+      ],
+      [
+       1,
+       "Ground Strike damage per meter spirit scaling increased from 0.0372 to 0.04"
+      ],
+      [
+       -1,
+       "Grapple T2 bonus damage no longer stacks with itself, but instead refreshes the duration"
+      ],
+      [
+       1,
+       "Grapple T3 now also grants +1 Charge"
+      ]
+     ],
+     "more": 0
+    }
+   ]
   },
   "mcginnis": {
    "name": "McGinnis",
@@ -3543,7 +5920,144 @@
     "Enchanter's Emblem": 13.0,
     "Swift Striker": 10.6,
     "Extra Stamina": 8.4
-   }
+   },
+   "changes": [
+    {
+     "d": "2026-10-30",
+     "v": "buff",
+     "b": 2,
+     "n": 0,
+     "net": 2.06,
+     "tot": 2.06,
+     "l": [
+      [
+       1,
+       "Mini Turret - Damage vs troopers increased from 50% to 65%"
+      ],
+      [
+       1,
+       "Mini Turret - Health per boon increased from 9 to 10"
+      ]
+     ],
+     "more": 0
+    },
+    {
+     "d": "2026-08-12",
+     "v": "nerf",
+     "b": 2,
+     "n": 4,
+     "net": -3.0,
+     "tot": 7.0,
+     "l": [
+      [
+       -1,
+       "Bullet damage base and growth values reduced by 5%"
+      ],
+      [
+       -1,
+       "Spirit Resist per boon reduced from +0.625% to +0.35%"
+      ],
+      [
+       -1,
+       "Mini Turrets no longer shoots heroes on ziplines"
+      ],
+      [
+       -1,
+       "Mini Turrets no longer have 80% decaying resist for the first 6s"
+      ],
+      [
+       1,
+       "Mini Turrets health increased from 90 + 7.8/boon to 100 + 9/boon"
+      ],
+      [
+       0,
+       "Medicinal Specter T1 changed from \"Provides +40% Spirit Resist\" to \"+1.5s Duration\""
+      ],
+      [
+       0,
+       "Medicinal Specter T3 no longer increases duration by +1.5s"
+      ],
+      [
+       1,
+       "Medicinal Specter T3 now also increases spirit resistance by +40%"
+      ]
+     ],
+     "more": 0
+    },
+    {
+     "d": "2026-06-12",
+     "v": "nerf",
+     "b": 0,
+     "n": 2,
+     "net": -1.33,
+     "tot": 1.33,
+     "l": [
+      [
+       0,
+       "Mini Turret DPS rescaled from 30+0.39 to 24+0.42 (break even at 200 spirit power)"
+      ],
+      [
+       -1,
+       "Mini Turrets T3 Fire Rate reduced from +30% to +25%"
+      ],
+      [
+       0,
+       "Fixed some rare cases where Heavy Barrage would stop working"
+      ],
+      [
+       -1,
+       "Heavy Barrage DPS reduced from 22.5 to 21"
+      ]
+     ],
+     "more": 0
+    },
+    {
+     "d": "2026-05-31",
+     "v": "nerf",
+     "b": 0,
+     "n": 3,
+     "net": -4.23,
+     "tot": 4.23,
+     "l": [
+      [
+       -1,
+       "Heavy Barrage range reduced from 50m to 36m"
+      ],
+      [
+       -1,
+       "Heavy Barrage T1 Dash Slow reduced from 30% to 18% (regular slow still 30%)"
+      ],
+      [
+       -1,
+       "Heavy Barrage T3 Damage Per Rocket reduced from +18 to +15"
+      ]
+     ],
+     "more": 0
+    },
+    {
+     "d": "2026-05-22",
+     "v": "buff",
+     "b": 2,
+     "n": 0,
+     "net": 1.0,
+     "tot": 1.0,
+     "l": [
+      [
+       1,
+       "Bullet damage per boon increased from 0.17 to 0.18"
+      ],
+      [
+       0,
+       "Fixed Heavy Barrage not triggering Diviner's Kevlar"
+      ],
+      [
+       1,
+       "Medicinal Specter radius increased from 5.5m to 6m"
+      ]
+     ],
+     "more": 0
+    }
+   ]
   },
   "mina": {
    "name": "Mina",
@@ -3682,7 +6196,86 @@
     "Spirit Rend": 27.1,
     "Swift Striker": 16.9,
     "Extra Stamina": 9.7
-   }
+   },
+   "changes": [
+    {
+     "d": "2026-07-28",
+     "v": "buff",
+     "b": 1,
+     "n": 1,
+     "net": 0.96,
+     "tot": 2.38,
+     "l": [
+      [
+       -1,
+       "Sanguine Retreat recast time increased from 3.5s to 4s"
+      ],
+      [
+       1,
+       "Sanguine Retreat T3 cast range increased from +3m to +4m"
+      ]
+     ],
+     "more": 0
+    },
+    {
+     "d": "2026-06-30",
+     "v": "buff",
+     "b": 4,
+     "n": 0,
+     "net": 3.0,
+     "tot": 3.0,
+     "l": [
+      [
+       1,
+       "Rake missing health as damage increased from 5% to 6%"
+      ],
+      [
+       1,
+       "Sanguine Retreat T3 now also increases range by +3m"
+      ],
+      [
+       1,
+       "Nox Nostra damage increased from 4.45 to 4.6"
+      ],
+      [
+       1,
+       "Nox Nostra T1 damage increased from +1.74 to +1.9"
+      ]
+     ],
+     "more": 0
+    },
+    {
+     "d": "2026-05-22",
+     "v": "nerf",
+     "b": 0,
+     "n": 3,
+     "net": -4.25,
+     "tot": 4.25,
+     "l": [
+      [
+       0,
+       "Innate -8% Debuff Resist"
+      ],
+      [
+       0,
+       "Fixed Rake sometimes not working with high ping"
+      ],
+      [
+       -1,
+       "Love Bites T3 increased from -4s Cooldown to -5s"
+      ],
+      [
+       -1,
+       "Love Bites no longer applies the flat on hit damage to abilities (was doing 20% of its value on Nox Nostra)"
+      ],
+      [
+       -1,
+       "Nox Nostra T3 reduced from 1% Current HP to 0.5%"
+      ]
+     ],
+     "more": 0
+    }
+   ]
   },
   "mirage": {
    "name": "Mirage",
@@ -3838,7 +6431,137 @@
     "Spirit Rend": 28.6,
     "Swift Striker": 15.2,
     "Extra Stamina": 12.5
-   }
+   },
+   "changes": [
+    {
+     "d": "2026-10-30",
+     "v": "mixed",
+     "b": 2,
+     "n": 2,
+     "net": -1.25,
+     "tot": 5.25,
+     "l": [
+      [
+       -1,
+       "Traveler - Channel time increased from 2s to 3s"
+      ],
+      [
+       -1,
+       "Traveler - Onterrupt/cancel cooldown increased from 4s to 5s"
+      ],
+      [
+       0,
+       "Traveler - Now gets interrupted if you are Stunned/Immobilized/Slept or have slowing hex on you"
+      ],
+      [
+       1,
+       "Traveler - Now grants the old T2 barrier in the base ability (with no scaling)"
+      ],
+      [
+       0,
+       "Traveler - The minimap now moves to the center of the screen and is enlarged while targeting"
+      ],
+      [
+       0,
+       "Traveler - Added a targeting reticle under your cursor on the minimap that your allies can see, so they can tell where you're thinking of going before you click"
+      ],
+      [
+       0,
+       "Traveler - Your destination is now marked on your and your allies' minimaps until you arrive, and stays there briefly after landing"
+      ],
+      [
+       0,
+       "Traveler - T2 changed from \"400 Barrier that scales with spirit\" to \"-65s Cooldown\""
+      ],
+      [
+       0,
+       "Traveler - T3 changed from \"-90s Cooldown\" to \"Cannot be interrupted by damage\""
+      ],
+      [
+       1,
+       "Traveler - T3 now also adds barrier spirit scaling (0.8)"
+      ]
+     ],
+     "more": 0
+    },
+    {
+     "d": "2026-07-28",
+     "v": "nerf",
+     "b": 1,
+     "n": 2,
+     "net": -2.43,
+     "tot": 4.43,
+     "l": [
+      [
+       -1,
+       "Fire Scarabs duration reduced from 7s to 5s"
+      ],
+      [
+       -1,
+       "Fire Scarabs T2 reduced from +2 Charges to +1 Charge"
+      ],
+      [
+       1,
+       "Fire Scarabs T2 now also increases duration by 2s"
+      ],
+      [
+       0,
+       "Dust Devil T3 no longer increases Lift Duration by +0.3s"
+      ],
+      [
+       0,
+       "Fixed Djinn's Mark T3 still being -1s Cooldown instead of -0.75s"
+      ]
+     ],
+     "more": 0
+    },
+    {
+     "d": "2026-07-09",
+     "v": "nerf",
+     "b": 2,
+     "n": 3,
+     "net": -2.86,
+     "tot": 6.36,
+     "l": [
+      [
+       -1,
+       "Fire Scarabs T3 spirit scaling reduced from +0.17 to +0.13"
+      ],
+      [
+       -1,
+       "Dust Devil T3 spirit scaling reduced from +1 to +0.6"
+      ],
+      [
+       1,
+       "Djinn's Mark cooldown reduced from 3s to 2.75"
+      ],
+      [
+       1,
+       "Djinn's Mark T3 cooldown reduced from -1s Cooldown to -0.75s"
+      ],
+      [
+       -1,
+       "Traveler T3 increased from -70s Cooldown to -90s"
+      ]
+     ],
+     "more": 0
+    },
+    {
+     "d": "2026-05-22",
+     "v": "other",
+     "b": 0,
+     "n": 0,
+     "net": 0.0,
+     "tot": 0.0,
+     "l": [
+      [
+       0,
+       "Updated Djinn's Mark visuals"
+      ]
+     ],
+     "more": 0
+    }
+   ]
   },
   "mo-krill": {
    "name": "Mo & Krill",
@@ -3984,7 +6707,120 @@
     "Arctic Blast": 30.6,
     "Enchanter's Emblem": 15.0,
     "Rebuttal": 8.7
-   }
+   },
+   "changes": [
+    {
+     "d": "2026-11-05",
+     "v": "buff",
+     "b": 3,
+     "n": 0,
+     "net": 2.75,
+     "tot": 2.75,
+     "l": [
+      [
+       1,
+       "Scorn - Heal from heroes increased from 1.2x to 1.3x"
+      ],
+      [
+       1,
+       "Burrow - Damage radius increased by +0.5m"
+      ],
+      [
+       0,
+       "Sand Blast - T2 slow from -24% Slow and -26% Dash distance to -28% for both"
+      ],
+      [
+       1,
+       "Combo - Health per kill increased from 40 to 50"
+      ]
+     ],
+     "more": 0
+    },
+    {
+     "d": "2026-10-30",
+     "v": "nerf",
+     "b": 1,
+     "n": 2,
+     "net": -2.0,
+     "tot": 4.0,
+     "l": [
+      [
+       -1,
+       "Spirit per boon reduced from 1.1 to 0.6"
+      ],
+      [
+       -1,
+       "Spirit damage on all abilities reduced by 10% (base values and growth/upgrades)"
+      ],
+      [
+       1,
+       "Bullet damage per boon increased by 4%"
+      ]
+     ],
+     "more": 0
+    },
+    {
+     "d": "2026-07-28",
+     "v": "buff",
+     "b": 1,
+     "n": 0,
+     "net": 1.0,
+     "tot": 1.0,
+     "l": [
+      [
+       1,
+       "Burrow cooldown no longer starts after the conclusion of the ability, now starts immediately"
+      ],
+      [
+       0,
+       "Combo now lets you cast items while using it"
+      ]
+     ],
+     "more": 0
+    },
+    {
+     "d": "2026-06-30",
+     "v": "mixed",
+     "b": 2,
+     "n": 1,
+     "net": 0.75,
+     "tot": 3.25,
+     "l": [
+      [
+       1,
+       "Sand Blast T2 slow increased from -25% to -30%"
+      ],
+      [
+       -1,
+       "Sand Blast T3 increased from -20s Cooldown to -25s"
+      ],
+      [
+       1,
+       "Combo bonus max health per kill increased from 30+1/boon to 40+2/boon"
+      ]
+     ],
+     "more": 0
+    },
+    {
+     "d": "2026-05-22",
+     "v": "mixed",
+     "b": 1,
+     "n": 1,
+     "net": 1.0,
+     "tot": 3.0,
+     "l": [
+      [
+       -1,
+       "Getting hit with a melee no longer knocks you up when you are burrowed"
+      ],
+      [
+       1,
+       "Sand Blast T3 increased from +1s Duration to +1.5s"
+      ]
+     ],
+     "more": 0
+    }
+   ]
   },
   "nurse-harrow": {
    "name": "Nurse Harrow",
@@ -4149,7 +6985,99 @@
     "Kinetic Dash": 9.4,
     "Swift Striker": 13.5,
     "Extra Stamina": 8.3
-   }
+   },
+   "changes": [
+    {
+     "d": "2026-11-05",
+     "v": "buff",
+     "b": 2,
+     "n": 1,
+     "net": 1.88,
+     "tot": 3.12,
+     "l": [
+      [
+       1,
+       "Bullet damage increased by 8%"
+      ],
+      [
+       1,
+       "Lurking Terrors - Vertical angle increased from 50% to 65%"
+      ],
+      [
+       -1,
+       "Lurking Terrors - Fear buildup time reduced from 2s to 1.75s"
+      ]
+     ],
+     "more": 0
+    },
+    {
+     "d": "2026-10-30",
+     "v": "mixed",
+     "b": 3,
+     "n": 8,
+     "net": -4.03,
+     "tot": 13.37,
+     "l": [
+      [
+       -1,
+       "Base gun damage reduced by 10%"
+      ],
+      [
+       0,
+       "Leech Therapy - Fixed enemies being unable to see the glow on the hunting leeches"
+      ],
+      [
+       0,
+       "Leech Therapy - Fixed leeches attaching to targets while the game is paused"
+      ],
+      [
+       0,
+       "Leech Therapy - Fed leeches duration on the ground changed from a fixed 180s to 120s + 3s/min"
+      ],
+      [
+       1,
+       "Wretched Vapors - T3 increased from +15% Rush Speed to +20%"
+      ],
+      [
+       -1,
+       "Healing Needles - Heal Per Shot reduced from 25 to 22"
+      ],
+      [
+       -1,
+       "Healing Needles - T2 Heal Per Shot reduced from +20 to +16"
+      ],
+      [
+       1,
+       "Healing Needles - Spirit scaling increased from 0.2 to 0.24"
+      ],
+      [
+       1,
+       "Lurking Terrors - Fear buildup time increased from 1.3s to 2s"
+      ],
+      [
+       -1,
+       "Lurking Terrors - Enemies no longer build fear when Nurse is more than 50 degrees above or below their view"
+      ],
+      [
+       -1,
+       "Lurking Terrors - T3 changed from \"Immune to damage while channeling\" to \"Takes 50% Reduced Damage while channeling\""
+      ],
+      [
+       -1,
+       "Leech Therapy - Leeches on the ground are now removed on round reset"
+      ],
+      [
+       -1,
+       "Lurking Terrors - Duration reduced from 7s to 5s"
+      ],
+      [
+       -1,
+       "Lurking Terrors - T3 reduced from +3s Duration to +2s"
+      ]
+     ],
+     "more": 0
+    }
+   ]
   },
   "paige": {
    "name": "Paige",
@@ -4304,7 +7232,182 @@
     "Enchanter's Emblem": 14.2,
     "Extra Stamina": 13.3,
     "Rebuttal": 8.3
-   }
+   },
+   "changes": [
+    {
+     "d": "2026-10-30",
+     "v": "nerf",
+     "b": 1,
+     "n": 2,
+     "net": -1.63,
+     "tot": 3.37,
+     "l": [
+      [
+       -1,
+       "Base bullet damage reduced from 35 to 32"
+      ],
+      [
+       1,
+       "Bullet damage growth per boon increased from 0.52 to 0.61"
+      ],
+      [
+       -1,
+       "Bookwyrm - T2 Trail Duration reduced from +2s to +1s"
+      ]
+     ],
+     "more": 0
+    },
+    {
+     "d": "2026-09-16",
+     "v": "buff",
+     "b": 2,
+     "n": 1,
+     "net": 2.64,
+     "tot": 5.36,
+     "l": [
+      [
+       1,
+       "Heavy Melee spirit scaling increased from 0.3 to 0.45"
+      ],
+      [
+       -1,
+       "Captivating Read T1 increased from -11s Cooldown to -14s"
+      ],
+      [
+       1,
+       "Captivating Read T3 increased from +1m to +2m"
+      ],
+      [
+       0,
+       "Fixed some collision issues with Rallying Charge"
+      ]
+     ],
+     "more": 0
+    },
+    {
+     "d": "2026-08-12",
+     "v": "buff",
+     "b": 1,
+     "n": 0,
+     "net": 2.0,
+     "tot": 2.0,
+     "l": [
+      [
+       1,
+       "Plot Armor weapon damage scaling increased from 0.2 to 0.3"
+      ]
+     ],
+     "more": 0
+    },
+    {
+     "d": "2026-07-28",
+     "v": "buff",
+     "b": 1,
+     "n": 0,
+     "net": 0.5,
+     "tot": 0.5,
+     "l": [
+      [
+       1,
+       "Rallying Charge cooldown reduced from 220s to 210s"
+      ]
+     ],
+     "more": 0
+    },
+    {
+     "d": "2026-06-30",
+     "v": "buff",
+     "b": 4,
+     "n": 1,
+     "net": 4.51,
+     "tot": 6.51,
+     "l": [
+      [
+       1,
+       "Health per boon increased from 29 to 33"
+      ],
+      [
+       0,
+       "Bookwyrm T1 changed from \"+2s Trail Duration and +1m Radius\" to \"-12s Cooldown\""
+      ],
+      [
+       0,
+       "Bookwyrm T2 changed from \"+10m Range and -12s Cooldown\" to \"+1 Charge, +1m Radius and +2s Trail Duration\""
+      ],
+      [
+       0,
+       "Bookworm T3 changed from \"+100 Damage, +30 DPS and +1 Charge\" to \"+100 Damage, +30 DPS and +12m Travel Range\""
+      ],
+      [
+       1,
+       "Plot Armor T1 fire rate spirit scaling increased from 0.13 to 0.16"
+      ],
+      [
+       1,
+       "Plot Armor T3 increased from 75% Barrier to 100%"
+      ],
+      [
+       -1,
+       "Rallying Charge is now properly counted as a \"miss\" (for the -50% CD Reduction) if the only thing that was impacted were non-heroes"
+      ],
+      [
+       1,
+       "Rallying Charge T3 Max Amp increased from +50% to +70%"
+      ]
+     ],
+     "more": 0
+    },
+    {
+     "d": "2026-06-12",
+     "v": "mixed",
+     "b": 2,
+     "n": 2,
+     "net": -0.66,
+     "tot": 6.2,
+     "l": [
+      [
+       -1,
+       "Rallying Charge distance for max amp reduced from 350m to 250m"
+      ],
+      [
+       -1,
+       "Rallying Charge T2 increased from -30s Cooldown to -50s"
+      ],
+      [
+       1,
+       "Plot Armor barrier spirit scaling increased from 1.3 to 1.5"
+      ],
+      [
+       1,
+       "Plot Armor T3 barrier spirit scaling increased from +0.3 to +0.5"
+      ]
+     ],
+     "more": 0
+    },
+    {
+     "d": "2026-05-22",
+     "v": "nerf",
+     "b": 1,
+     "n": 2,
+     "net": -2.07,
+     "tot": 3.93,
+     "l": [
+      [
+       -1,
+       "Bookwyrm T2 improved from -8s Cooldown to -12s"
+      ],
+      [
+       1,
+       "Rallying Charge T3 increased from +135 Damage to +160"
+      ],
+      [
+       -1,
+       "Rallying Charge now has half cooldown if it hits no allies or enemies"
+      ]
+     ],
+     "more": 0
+    }
+   ]
   },
   "paradox": {
    "name": "Paradox",
@@ -4463,7 +7566,93 @@
     "Headhunter": 13.2,
     "Extra Stamina": 14.3,
     "Rebuttal": 10.1
-   }
+   },
+   "changes": [
+    {
+     "d": "2026-10-30",
+     "v": "buff",
+     "b": 1,
+     "n": 0,
+     "net": 0.68,
+     "tot": 0.68,
+     "l": [
+      [
+       1,
+       "Paradoxical Swap - Cooldown reduced from 110s to 95s"
+      ]
+     ],
+     "more": 0
+    },
+    {
+     "d": "2026-09-16",
+     "v": "nerf",
+     "b": 0,
+     "n": 1,
+     "net": -2.0,
+     "tot": 2.0,
+     "l": [
+      [
+       -1,
+       "Kinetic Carbine min damage multiplier reduced from 25% to 10% (max damage multiplier unaffected)"
+      ],
+      [
+       0,
+       "Kinetic Carbine min damage multiplier no longer gets increased by the T3"
+      ]
+     ],
+     "more": 0
+    },
+    {
+     "d": "2026-06-30",
+     "v": "buff",
+     "b": 1,
+     "n": 0,
+     "net": 1.0,
+     "tot": 1.0,
+     "l": [
+      [
+       1,
+       "Kinetic Carbine T2 now also increases move speed spirit scaling (0.06)"
+      ],
+      [
+       0,
+       "Kinetic Carbine T3 changed from affecting Max Damage Scaling to affecting both Min and Max Damage Scaling"
+      ]
+     ],
+     "more": 0
+    },
+    {
+     "d": "2026-05-22",
+     "v": "buff",
+     "b": 5,
+     "n": 0,
+     "net": 7.5,
+     "tot": 7.5,
+     "l": [
+      [
+       1,
+       "Time Wall T1 duration increased from +2.5s to +3.5s"
+      ],
+      [
+       1,
+       "Time Wall T3 increased from +1 Charge to +2"
+      ],
+      [
+       1,
+       "Time Wall T3 Charge Delay reduced from 4s to 2s"
+      ],
+      [
+       1,
+       "Kinetic Carbine T3 increased from +50% Max Damage Scaling to +55%"
+      ],
+      [
+       1,
+       "Paradoxical Swap damage increased from 125 to 150"
+      ]
+     ],
+     "more": 0
+    }
+   ]
   },
   "pocket": {
    "name": "Pocket",
@@ -4602,7 +7791,123 @@
     "Enchanter's Emblem": 11.8,
     "Swift Striker": 11.5,
     "Extra Stamina": 12.2
-   }
+   },
+   "changes": [
+    {
+     "d": "2026-07-28",
+     "v": "mixed",
+     "b": 1,
+     "n": 1,
+     "net": -0.5,
+     "tot": 1.5,
+     "l": [
+      [
+       1,
+       "Flying Cloak T3 reduced from -11s Cooldown to -10s"
+      ],
+      [
+       -1,
+       "Affliction DPS reduced by ~6% (also reduces the spirit scaling and the upgrades)"
+      ]
+     ],
+     "more": 0
+    },
+    {
+     "d": "2026-07-09",
+     "v": "nerf",
+     "b": 0,
+     "n": 1,
+     "net": -0.5,
+     "tot": 0.5,
+     "l": [
+      [
+       -1,
+       "Affliction duration reduced from 11s to 10s"
+      ]
+     ],
+     "more": 0
+    },
+    {
+     "d": "2026-06-30",
+     "v": "mixed",
+     "b": 1,
+     "n": 1,
+     "net": -0.12,
+     "tot": 1.12,
+     "l": [
+      [
+       -1,
+       "Bullet damage per boon reduced from 0.16 to 0.14"
+      ],
+      [
+       1,
+       "Flying Cloak T3 reduced from -12s Cooldown to -11s"
+      ]
+     ],
+     "more": 0
+    },
+    {
+     "d": "2026-06-12",
+     "v": "mixed",
+     "b": 1,
+     "n": 1,
+     "net": -0.5,
+     "tot": 1.5,
+     "l": [
+      [
+       -1,
+       "Bullet damage growth reduced from +0.2 to +0.16"
+      ],
+      [
+       1,
+       "Flying Cloak T3 reduced from -13s Cooldown to -12s"
+      ],
+      [
+       0,
+       "Affliction now does half damage on objectives"
+      ]
+     ],
+     "more": 0
+    },
+    {
+     "d": "2026-05-31",
+     "v": "nerf",
+     "b": 1,
+     "n": 1,
+     "net": -0.61,
+     "tot": 1.61,
+     "l": [
+      [
+       1,
+       "Flying Cloak T3 reduced from -14s Cooldown to -13s"
+      ],
+      [
+       -1,
+       "Affliction T3 reduced from +18 DPS to +14"
+      ]
+     ],
+     "more": 0
+    },
+    {
+     "d": "2026-05-22",
+     "v": "nerf",
+     "b": 0,
+     "n": 2,
+     "net": -1.75,
+     "tot": 1.75,
+     "l": [
+      [
+       -1,
+       "Flying Cloak T2 weapon damage duration reduced from 8s to 6s"
+      ],
+      [
+       -1,
+       "Affliction cooldown increased from 140s to 150s"
+      ]
+     ],
+     "more": 0
+    }
+   ]
   },
   "rat-king": {
    "name": "Rat King",
@@ -4765,7 +8070,182 @@
     "Restorative Shot": 3.4,
     "Swift Striker": 10.9,
     "Rebuttal": 10.9
-   }
+   },
+   "changes": [
+    {
+     "d": "2026-11-05",
+     "v": "mixed",
+     "b": 3,
+     "n": 1,
+     "net": 0.79,
+     "tot": 4.55,
+     "l": [
+      [
+       1,
+       "Bullet damage increased from 5.7 to 5.8"
+      ],
+      [
+       1,
+       "Ammo increased from 24 to 26"
+      ],
+      [
+       -1,
+       "Scrap Grenade - Meleeing the grenade fuse time extension reduced from 0.4s to 0.25s"
+      ],
+      [
+       1,
+       "Rule, Ratannia! - Move Speed increased from +3m to +4m"
+      ],
+      [
+       0,
+       "Rule, Ratannia! - T1 now also reduces cooldown by -25s"
+      ]
+     ],
+     "more": 0
+    },
+    {
+     "d": "2026-10-30",
+     "v": "nerf",
+     "b": 2,
+     "n": 12,
+     "net": -10.1,
+     "tot": 13.34,
+     "l": [
+      [
+       -1,
+       "Base bullet damage reduced by 5%"
+      ],
+      [
+       -1,
+       "Bullet damage growth reduced by 20%"
+      ],
+      [
+       -1,
+       "Scrap Grenade - Damage reduced from 70 to 60"
+      ],
+      [
+       -1,
+       "Scrap Grenade - T2 damage reduced from +70 to +60"
+      ],
+      [
+       -1,
+       "Scrap Grenade - T3 damage reduced from 300 to 275"
+      ],
+      [
+       1,
+       "Scrap Grenade - Fuse timers increased by 0.1s (first bounce from 0.8s to 0.9s, later bounces from 0.7s to 0.8s, T3 final explosion from 1.5s to 1.6s)"
+      ],
+      [
+       1,
+       "Scrap Grenade - Meleeing the grenade now gives it at least 0.4s before it explodes (if less than 0.4s was left on its fuse, the fuse is extended to 0.4s)"
+      ],
+      [
+       -1,
+       "Rule, Ratannia! - Knockup duration reduced by 50%"
+      ],
+      [
+       -1,
+       "Rule, Ratannia! - Cooldown increased from 160s to 180s"
+      ],
+      [
+       0,
+       "Rule, Ratannia! - Now goes on cooldown when stunned/slept before placing it. In that case, the flag is placed in that position but without any of the initial impact effec"
+      ],
+      [
+       -1,
+       "Scrap Grenade - Radius reduced from 8m to 6m"
+      ],
+      [
+       -1,
+       "Scrap Grenade - Large explosion radius reduced from 14m to 10m"
+      ],
+      [
+       -1,
+       "Rule, Ratannia! - Radius reduced from 20m to 16m"
+      ],
+      [
+       -1,
+       "Rule, Ratannia! - T2 Radius reduced from +8m to +6m"
+      ],
+      [
+       -1,
+       "Rule, Ratannia! - Duration reduced from 12s to 9s"
+      ]
+     ],
+     "more": 0
+    },
+    {
+     "d": "2026-10-05",
+     "v": "nerf",
+     "b": 4,
+     "n": 8,
+     "net": -6.9,
+     "tot": 14.32,
+     "l": [
+      [
+       0,
+       "Scrap Grenade - Fixed some bugs with bouncing targeting"
+      ],
+      [
+       1,
+       "Scrap Grenade - Damage increased from 65 to 70"
+      ],
+      [
+       1,
+       "Scrap Grenade - T2 Damage increased from 65 to 70"
+      ],
+      [
+       1,
+       "Rat Swarm - Base Cooldown reduced from 28s to 24s"
+      ],
+      [
+       -1,
+       "Rule, Ratannia! - Cooldown increased from 130 to 160"
+      ],
+      [
+       -1,
+       "Rule, Ratannia! - Damage Reduction reduced from 20% to 15%"
+      ],
+      [
+       -1,
+       "Rule, Ratannia! - Radius reduced from 24m to 20m"
+      ],
+      [
+       -1,
+       "Rule, Ratannia! - Charge Duration reduced from 12s to 10s"
+      ],
+      [
+       -1,
+       "Rule, Ratannia! - Bonus Move speed no longer scales with Spirit"
+      ],
+      [
+       0,
+       "Rule, Ratannia! - Now falls faster while charging"
+      ],
+      [
+       0,
+       "Rule, Ratannia! - T1 +1m/s Move Speed to +2m/s Move Speed"
+      ],
+      [
+       1,
+       "Rule, Ratannia! - T1 No longer gives -20s cooldown (Total cooldown from 110s to 160s)"
+      ],
+      [
+       -1,
+       "Rule, Ratannia! - T2 No longer grants +8s Charge Duration (Total charge duration from 20s to 10s)"
+      ],
+      [
+       -1,
+       "Rule, Ratannia! - T2 Flag Duration reduced from +8s to +5s"
+      ],
+      [
+       -1,
+       "Rule, Ratannia! - T3 Damage Reduction reduced from 15% to 10% (Total Damage Reduction from 35% to 25%)"
+      ]
+     ],
+     "more": 0
+    }
+   ]
   },
   "rem": {
    "name": "Rem",
@@ -4929,7 +8409,134 @@
     "Enchanter's Emblem": 12.1,
     "Extra Stamina": 11.0,
     "Rebuttal": 9.3
-   }
+   },
+   "changes": [
+    {
+     "d": "2026-09-16",
+     "v": "other",
+     "b": 0,
+     "n": 0,
+     "net": 0.0,
+     "tot": 0.0,
+     "l": [
+      [
+       0,
+       "Fixed a bug where multiple helpers could be sent to follow a single player for no effect"
+      ],
+      [
+       0,
+       "Lil Helpers now have a target UI when instant cast mode is selected"
+      ]
+     ],
+     "more": 0
+    },
+    {
+     "d": "2026-06-30",
+     "v": "nerf",
+     "b": 0,
+     "n": 3,
+     "net": -3.97,
+     "tot": 3.97,
+     "l": [
+      [
+       -1,
+       "Tag Along healing per second spirit scaling reduced from 0.66 to 0.4"
+      ],
+      [
+       -1,
+       "Tag Along T3 missing health spirit scaling reduced from +0.02 to +0.016"
+      ],
+      [
+       -1,
+       "Lil Helpers Spirit Resist reduced from 15% to 12%"
+      ],
+      [
+       0,
+       "Lil Helpers T1 changed from \"+1 Helper\" to \"+1 Helper and +1.5m/s Move Speed\""
+      ],
+      [
+       0,
+       "Lil Helpers T2 changed from \"+8% Spirit Resist and +1.5m/s Move Speed\" to \"+1 Helper and +15% Trooper Damage and Resist\""
+      ],
+      [
+       0,
+       "Lil Helpers T3 changed from \"+2 Helpers and +20% Trooper Damage and Resist\" to \"+1 Helper and +15% Spirit Resist\""
+      ]
+     ],
+     "more": 0
+    },
+    {
+     "d": "2026-05-22",
+     "v": "mixed",
+     "b": 5,
+     "n": 5,
+     "net": -0.55,
+     "tot": 12.79,
+     "l": [
+      [
+       1,
+       "Pillow Toss charge time reduced from 9s to 8s"
+      ],
+      [
+       1,
+       "Pillow Toss T3 increased from +90 to +100 Damage"
+      ],
+      [
+       1,
+       "Tag Along burst heal now also applies to secondary allies that you jump to"
+      ],
+      [
+       -1,
+       "Tag Along lingering heal duration reduced from 3s to 2s (values rebalanced to be the same overall heal just faster)"
+      ],
+      [
+       1,
+       "Tag Along T2 Barrier and Item Duration/Range effectiveness increased from 25% to 35%"
+      ],
+      [
+       1,
+       "Tag Along T3 now also increases Missing Health Heal from 0.03 to 0.05 and Regen Per Second from 0.66 to 1.0"
+      ],
+      [
+       0,
+       "Tag Along can now be cast through veils"
+      ],
+      [
+       -1,
+       "Reduced lockout period after ejecting from Tag Along from 1s to 0.3s"
+      ],
+      [
+       0,
+       "Tag Along time to fly to your ally is now 50% faster"
+      ],
+      [
+       0,
+       "Tag Along heal duration is now displayed on the hud as well as the healthbar icon"
+      ],
+      [
+       0,
+       "Tag Along fixed specific abilities/items that could kill Rem while he's napping"
+      ],
+      [
+       0,
+       "Tag Along now allows friendly auras to affect Rem"
+      ],
+      [
+       -1,
+       "Tag Along eject is no longer affected by debuff resistance and now launches upwards slightly more to prevent hitting the ground"
+      ],
+      [
+       -1,
+       "Tag Along eject no longer briefly restricts movement abilities and input"
+      ],
+      [
+       -1,
+       "Naptime now provides +30% damage reduction in the base ability (T3 still adds +50%)"
+      ]
+     ],
+     "more": 0
+    }
+   ]
   },
   "seven": {
    "name": "Seven",
@@ -5087,7 +8694,108 @@
     "Enchanter's Emblem": 10.6,
     "Spirit Rend": 26.3,
     "Extra Stamina": 7.0
-   }
+   },
+   "changes": [
+    {
+     "d": "2026-10-30",
+     "v": "buff",
+     "b": 1,
+     "n": 0,
+     "net": 1.11,
+     "tot": 1.11,
+     "l": [
+      [
+       1,
+       "Static Charge - T3 stun duration increased from 0.9s to 1.1s"
+      ]
+     ],
+     "more": 0
+    },
+    {
+     "d": "2026-08-12",
+     "v": "buff",
+     "b": 1,
+     "n": 0,
+     "net": 0.83,
+     "tot": 0.83,
+     "l": [
+      [
+       1,
+       "Lightning Ball T3 radius increased from +1.5m to +1.75m"
+      ]
+     ],
+     "more": 0
+    },
+    {
+     "d": "2026-06-30",
+     "v": "buff",
+     "b": 4,
+     "n": 0,
+     "net": 4.71,
+     "tot": 4.71,
+     "l": [
+      [
+       1,
+       "Lightning Ball charge delay reduced from 7s to 6s"
+      ],
+      [
+       1,
+       "Storm Cloud time to expand increased from 1.5s to 3.5s"
+      ],
+      [
+       1,
+       "Storm Cloud damage interval increased from 0.25s to 0.3s (DPS unchanged)"
+      ],
+      [
+       1,
+       "Storm Cloud T2 now also increases Initial Radius by +5m"
+      ]
+     ],
+     "more": 0
+    },
+    {
+     "d": "2026-06-12",
+     "v": "nerf",
+     "b": 0,
+     "n": 2,
+     "net": -2.27,
+     "tot": 2.27,
+     "l": [
+      [
+       -1,
+       "Bullet damage growth reduced from 0.337 to 0.24"
+      ],
+      [
+       -1,
+       "Power Surge T3 reduced from +12s Duration to +10s"
+      ],
+      [
+       0,
+       "Storm Cloud now hits breakables"
+      ]
+     ],
+     "more": 0
+    },
+    {
+     "d": "2026-05-22",
+     "v": "buff",
+     "b": 1,
+     "n": 1,
+     "net": 1.5,
+     "tot": 2.5,
+     "l": [
+      [
+       -1,
+       "Bullet damage growth reduced from 0.374 to 0.337"
+      ],
+      [
+       1,
+       "Crit reduction increased from 35% to 55%"
+      ]
+     ],
+     "more": 0
+    }
+   ]
   },
   "shiv": {
    "name": "Shiv",
@@ -5252,7 +8960,293 @@
     "Restorative Shot": 1.6,
     "Enchanter's Emblem": 13.2,
     "Rebuttal": 10.4
-   }
+   },
+   "changes": [
+    {
+     "d": "2026-10-30",
+     "v": "mixed",
+     "b": 2,
+     "n": 2,
+     "net": -0.54,
+     "tot": 3.96,
+     "l": [
+      [
+       -1,
+       "Alt Fire damage per boon reduced by 5%"
+      ],
+      [
+       0,
+       "Fixed the Alt Fire last-shot sound only playing when you had 1 bullet left"
+      ],
+      [
+       1,
+       "Serrated Knives - Rage damage increased from 3.5% Current Health to 4%"
+      ],
+      [
+       1,
+       "Serrated Knives - T3 now also increases rage damage spirit scaling by +0.01"
+      ],
+      [
+       0,
+       "Bloodletting - Fixed damage ticks playing audio"
+      ],
+      [
+       -1,
+       "Killing Blow - Recast duration reduced from 16s to 12s"
+      ]
+     ],
+     "more": 0
+    },
+    {
+     "d": "2026-09-16",
+     "v": "buff",
+     "b": 2,
+     "n": 0,
+     "net": 2.0,
+     "tot": 2.0,
+     "l": [
+      [
+       1,
+       "Alt fire base damage increased by 4%"
+      ],
+      [
+       1,
+       "Alt fire damage per boon increased from +0.2 to +0.24"
+      ],
+      [
+       0,
+       "Serrated Knives while rage is full now deals 3.5% current HP damage on impact instead of ricocheting (0.01 spirit scaling)"
+      ]
+     ],
+     "more": 0
+    },
+    {
+     "d": "2026-07-28",
+     "v": "mixed",
+     "b": 1,
+     "n": 1,
+     "net": -0.5,
+     "tot": 1.5,
+     "l": [
+      [
+       1,
+       "Stamina regen increased from 5.5s to 6s"
+      ],
+      [
+       -1,
+       "Killing Blow recast window reduced from 20s to 16s"
+      ]
+     ],
+     "more": 0
+    },
+    {
+     "d": "2026-07-09",
+     "v": "nerf",
+     "b": 2,
+     "n": 7,
+     "net": -6.11,
+     "tot": 10.03,
+     "l": [
+      [
+       -1,
+       "Serrated Knives T3 spirit scaling reduced from +0.09 to +0.07"
+      ],
+      [
+       -1,
+       "Slice and Dice spirit scaling reduced from 1.44 to 1.2"
+      ],
+      [
+       -1,
+       "Slice and Dice T2 reduced from -6% Spirit Resist to -4%"
+      ],
+      [
+       -1,
+       "Bloodletting cooldown increased from 20s to 25s"
+      ],
+      [
+       -1,
+       "Bloodletting T1 increased from -10s Cooldown to -15s"
+      ],
+      [
+       -1,
+       "Bloodletting Damage Cleared reduced from 35% to 30%"
+      ],
+      [
+       1,
+       "Bloodletting T2 Damage Cleared increased from 35% to 40%"
+      ],
+      [
+       -1,
+       "Killing Blow Health Threshold reduced from 20% to 18%"
+      ],
+      [
+       1,
+       "Killing Blow T3 Health Threshold increased from +8% to +10%"
+      ]
+     ],
+     "more": 0
+    },
+    {
+     "d": "2026-07-01",
+     "v": "mixed",
+     "b": 2,
+     "n": 2,
+     "net": 0.25,
+     "tot": 4.25,
+     "l": [
+      [
+       1,
+       "Alt Fire ammo cost reduced from 5 to 4"
+      ],
+      [
+       0,
+       "Weapon now has fixed pellet spread"
+      ],
+      [
+       -1,
+       "Slice and Dice is now back to doing spirit damage and reducing Spirit Resistance from enemies"
+      ],
+      [
+       1,
+       "Slice and Dice damage increased from 60 to 75"
+      ],
+      [
+       -1,
+       "Killing Blow T3 reduced from +10% Enemy Health Threshold to +8%"
+      ]
+     ],
+     "more": 0
+    },
+    {
+     "d": "2026-06-30",
+     "v": "buff",
+     "b": 8,
+     "n": 2,
+     "net": 8.22,
+     "tot": 14.9,
+     "l": [
+      [
+       1,
+       "Alt Fire damage now has a custom value per boon (+0.2)"
+      ],
+      [
+       1,
+       "Alt Fire ammo consumed per shot increased from 3 to 5"
+      ],
+      [
+       0,
+       "Alt Fire knockback movement is now disabled by slowing hex state"
+      ],
+      [
+       1,
+       "Serrated Knives cooldown reduced from 18s to 16s"
+      ],
+      [
+       0,
+       "Slice and Dice now deals +25 light melee damage (75 total) instead of 60 spirit damage"
+      ],
+      [
+       1,
+       "Slice and Dice changed from -6% Spirit Resist to +4% Damage Amp"
+      ],
+      [
+       0,
+       "Bloodletting T2 changed from \"+15% Incoming Damage Deferred\" to \"+35% Deferred Damage Cleared\""
+      ],
+      [
+       0,
+       "Bloodletting T3 changed from \"+50% Deferred Damage Cleared\" to \"+15% Incoming Damage Deferred\""
+      ],
+      [
+       0,
+       "Killing Blow now deals damage to troopers and neutrals along the way"
+      ],
+      [
+       0,
+       "Killing Blow executing a hero now instantly fills the rage bar"
+      ],
+      [
+       1,
+       "Killing Blow now has the T3 \"recast within 20s on a hero kill\" as part of the base ability"
+      ],
+      [
+       -1,
+       "Killing Blow Full Rage Damage Bonus reduced from +12% to +8%"
+      ],
+      [
+       -1,
+       "Killing Blow range reduced from 18m to 12m"
+      ],
+      [
+       1,
+       "Killing Blow T1 now also increases range by +6m"
+      ],
+      [
+       1,
+       "Killing Blow T2 increased from +10% Full Rage Bonus Damage to +16%"
+      ],
+      [
+       1,
+       "Killing Blow T3 increased from +5% Enemy health Threshold to +10%"
+      ]
+     ],
+     "more": 0
+    },
+    {
+     "d": "2026-06-12",
+     "v": "nerf",
+     "b": 0,
+     "n": 1,
+     "net": -1.0,
+     "tot": 1.0,
+     "l": [
+      [
+       -1,
+       "Killing Blow now has +30% more cooldown whenever it does not impact a player"
+      ]
+     ],
+     "more": 0
+    },
+    {
+     "d": "2026-05-22",
+     "v": "mixed",
+     "b": 2,
+     "n": 4,
+     "net": -1.72,
+     "tot": 5.34,
+     "l": [
+      [
+       -1,
+       "Slice and Dice T2 reduced from -8% Spirit Resist to -6%"
+      ],
+      [
+       -1,
+       "Bloodletting Deferred Damage Cleared reduced from 40% to 35%"
+      ],
+      [
+       1,
+       "Bloodletting T3 increased from +45% Deferred Damage Cleared to +50%"
+      ],
+      [
+       -1,
+       "Killing Blow cooldown increased from 105s to 125s"
+      ],
+      [
+       -1,
+       "Killing Blow full rage damage bonus reduced from 14% to 12%"
+      ],
+      [
+       1,
+       "Killing Blow T2 increased from +8% Full Rage Damage Bonus to +10%"
+      ],
+      [
+       0,
+       "Killing Blow T2 now also reduces cooldown by -30s"
+      ]
+     ],
+     "more": 0
+    }
+   ]
   },
   "silver": {
    "name": "Silver",
@@ -5416,7 +9410,202 @@
     "Swift Striker": 10.9,
     "Extra Stamina": 10.6,
     "Rebuttal": 9.6
-   }
+   },
+   "changes": [
+    {
+     "d": "2026-10-30",
+     "v": "buff",
+     "b": 1,
+     "n": 0,
+     "net": 1.0,
+     "tot": 1.0,
+     "l": [
+      [
+       1,
+       "Base health regen increased from 2.5 to 3"
+      ],
+      [
+       0,
+       "Entangling Bola - Fixed Unstoppable flying targets being made to fall"
+      ],
+      [
+       0,
+       "Entangling Bola - Fixed not grounding Grey Talon during his Rain of Arrows"
+      ],
+      [
+       0,
+       "Go For The Throat - Now counts weapon damage from Point Blank and Opening Rounds"
+      ]
+     ],
+     "more": 0
+    },
+    {
+     "d": "2026-09-16",
+     "v": "buff",
+     "b": 4,
+     "n": 0,
+     "net": 4.54,
+     "tot": 4.54,
+     "l": [
+      [
+       1,
+       "Health per boon increased from 28 to 31"
+      ],
+      [
+       1,
+       "Sprint speed increased from 1.5 to 2.5"
+      ],
+      [
+       1,
+       "Dashes and light melee's no longer pause your gun's cycle time"
+      ],
+      [
+       0,
+       "Boot Kick can only target heroes and objectives now"
+      ],
+      [
+       0,
+       "Entangling Bola can only target heroes now"
+      ],
+      [
+       1,
+       "Weighted Bola now increases gravity during the debuff duration, and interrupts flying abilities (same rules as Phantom Strike)"
+      ]
+     ],
+     "more": 0
+    },
+    {
+     "d": "2026-07-28",
+     "v": "nerf",
+     "b": 0,
+     "n": 4,
+     "net": -6.25,
+     "tot": 6.25,
+     "l": [
+      [
+       -1,
+       "Gun falloff range reduced from 20m->46m to 17m→42m"
+      ],
+      [
+       0,
+       "Slam Fire now does 100% bonus damage against NPCs (troopers and neutrals, not objectives)"
+      ],
+      [
+       -1,
+       "Lycan Curse precast time increased from 0.2 to 0.3"
+      ],
+      [
+       -1,
+       "Lycan Curse precast movespeed reduced from 7.6m to 2.5m"
+      ],
+      [
+       -1,
+       "Lycan Curse T1 reduced from +20% Resists to +15%"
+      ]
+     ],
+     "more": 0
+    },
+    {
+     "d": "2026-07-09",
+     "v": "buff",
+     "b": 1,
+     "n": 0,
+     "net": 1.25,
+     "tot": 1.25,
+     "l": [
+      [
+       1,
+       "Lycan Curse cooldown reduced from 80s to 60s"
+      ]
+     ],
+     "more": 0
+    },
+    {
+     "d": "2026-06-12",
+     "v": "nerf",
+     "b": 0,
+     "n": 2,
+     "net": -3.0,
+     "tot": 3.0,
+     "l": [
+      [
+       -1,
+       "Lycan Curse cooldown increased from 40s to 70s"
+      ],
+      [
+       -1,
+       "Lycan Curse T3 no longer heals"
+      ]
+     ],
+     "more": 0
+    },
+    {
+     "d": "2026-05-31",
+     "v": "nerf",
+     "b": 0,
+     "n": 5,
+     "net": -4.7,
+     "tot": 4.7,
+     "l": [
+      [
+       -1,
+       "Slam Fire Current Health as Damage reduced from 3% to 2.5%"
+      ],
+      [
+       -1,
+       "Slam Fire T3 reduced from 8% Current Health as Damage to 7%"
+      ],
+      [
+       -1,
+       "Entangling Bola cooldown increased from 20s to 23s"
+      ],
+      [
+       -1,
+       "Entangling Bola T2 increased from -5s Cooldown to -8s"
+      ],
+      [
+       -1,
+       "Lycan Curse Fire Rate reduced from 65% to 60%"
+      ]
+     ],
+     "more": 0
+    },
+    {
+     "d": "2026-05-22",
+     "v": "mixed",
+     "b": 2,
+     "n": 2,
+     "net": 0.56,
+     "tot": 4.44,
+     "l": [
+      [
+       1,
+       "Bullet Cycle Time reduced from 0.9s to 0.85s (overall DPS adjusted to remain the same)"
+      ],
+      [
+       -1,
+       "Entangling Bola no longer prevents you from jumping and mantling"
+      ],
+      [
+       0,
+       "Entangling Bola T2 changed from \"+0.75s Duration\" to \"-5s Cooldown\""
+      ],
+      [
+       0,
+       "Entangling Bola T3 changed from \"-5s Cooldown and Ricochet to 2 additional targets\" to \"+0.75s Duration and Ricochet to 2 additional targets\""
+      ],
+      [
+       -1,
+       "Lycan Curse Fire Rate reduced from 80% to 65%"
+      ],
+      [
+       1,
+       "Lycan Curse Fire Rate spirit scaling increased from 0.25 to 0.45"
+      ]
+     ],
+     "more": 0
+    }
+   ]
   },
   "sinclair": {
    "name": "Sinclair",
@@ -5588,7 +9777,56 @@
     "Enchanter's Emblem": 13.3,
     "Extra Stamina": 9.6,
     "Rebuttal": 8.0
-   }
+   },
+   "changes": [
+    {
+     "d": "2026-10-05",
+     "v": "nerf",
+     "b": 0,
+     "n": 8,
+     "net": -9.92,
+     "tot": 9.92,
+     "l": [
+      [
+       -1,
+       "Base HP Regen reduced from 2 to 1"
+      ],
+      [
+       -1,
+       "Gun - Falloff range reduced from 25-61 to 20-60"
+      ],
+      [
+       -1,
+       "Gun - Reduced bullet base damage from 17.76 to 16.5"
+      ],
+      [
+       0,
+       "Vexing Bolt - Now does half damage to objectives"
+      ],
+      [
+       -1,
+       "Spectral Assistant - Gun falloff range reduced from 25-61 to 20-60"
+      ],
+      [
+       -1,
+       "Rabbit Hex - Radius reduced from 6.5m to 6m"
+      ],
+      [
+       -1,
+       "Rabbit Hex - T3 reduced from +3m Radius to +2m"
+      ],
+      [
+       -1,
+       "Audience Participation - Copy duration reduced from 12s to 9s"
+      ],
+      [
+       -1,
+       "Audience Participation - Copied cooldown increased from 40% to 60%"
+      ]
+     ],
+     "more": 0
+    }
+   ]
   },
   "solomon": {
    "name": "Solomon",
@@ -5750,7 +9988,96 @@
     "Spirit Rend": 24.4,
     "Swift Striker": 13.1,
     "Extra Stamina": 10.6
-   }
+   },
+   "changes": [
+    {
+     "d": "2026-10-30",
+     "v": "mixed",
+     "b": 8,
+     "n": 7,
+     "net": 0.6,
+     "tot": 18.76,
+     "l": [
+      [
+       0,
+       "Gun now deals -20% headshot damage"
+      ],
+      [
+       -1,
+       "Base bullet damage reduced from 30 to 25"
+      ],
+      [
+       0,
+       "Polished slide animations, added new ability and item aim poses, and adjusted run-to-stop timing"
+      ],
+      [
+       -1,
+       "Setup Bishop - Square height reduced from 4m to 1m"
+      ],
+      [
+       1,
+       "Setup Bishop - On Square spirit scaling increased from 0.64 to 0.85"
+      ],
+      [
+       1,
+       "Setup Bishop - T1 increased from +15% slow to +25%"
+      ],
+      [
+       -1,
+       "Setup Bishop - T3 Spirit Resist reduction is now applied on impact instead of by squares"
+      ],
+      [
+       -1,
+       "Setup Bishop - T3 increased from -2.5% to -5% Spirit Resist per stack (max reduction unchanged)"
+      ],
+      [
+       -1,
+       "Rook Battery - Damage scaling reduced from 1.3 to 0.9"
+      ],
+      [
+       1,
+       "Rook Battery - T3 reduced from -12s cooldown to -10s"
+      ],
+      [
+       -1,
+       "Develop Queen - Cooldown increased from 210s to 240s"
+      ],
+      [
+       1,
+       "Develop Queen - Damage scaling increased from 1.4 to 1.6"
+      ],
+      [
+       -1,
+       "Develop Queen - Delay for stun tiles increased from 1s to 1.2s"
+      ],
+      [
+       1,
+       "Develop Queen - Improved warning effects on the stun tiles to make it clear its just those tiles rather than the full area"
+      ],
+      [
+       0,
+       "Develop Queen - Fixed hitting things outside of the intended square volumes"
+      ],
+      [
+       1,
+       "Develop Queen - Base ability now has the checkmate behavior for heroes under 100 Health (scales +5/boon)"
+      ],
+      [
+       1,
+       "Develop Queen - T2 now increases checkmate threshold by 150"
+      ],
+      [
+       1,
+       "Move Piece - Range to grab pieces increased from 50m to 65m"
+      ],
+      [
+       0,
+       "Move Piece - Improved placement: pieces no longer fall through geometry or end up under the map, land closer to where you aim, and can now be placed closer to walls and i"
+      ]
+     ],
+     "more": 0
+    }
+   ]
   },
   "the-doorman": {
    "name": "The Doorman",
@@ -5914,7 +10241,198 @@
     "Headhunter": 17.1,
     "Extra Stamina": 12.7,
     "Rebuttal": 7.7
-   }
+   },
+   "changes": [
+    {
+     "d": "2026-10-30",
+     "v": "mixed",
+     "b": 1,
+     "n": 1,
+     "net": 0.0,
+     "tot": 2.0,
+     "l": [
+      [
+       1,
+       "Luggage Cart - T2 increased from +75 Damage on Wall Impact to +90"
+      ],
+      [
+       -1,
+       "Luggage Cart - T3 increased from -15s Cooldown to -18s"
+      ]
+     ],
+     "more": 0
+    },
+    {
+     "d": "2026-08-12",
+     "v": "mixed",
+     "b": 1,
+     "n": 2,
+     "net": -0.5,
+     "tot": 2.5,
+     "l": [
+      [
+       -1,
+       "Doorway range reduced from 70m to 65m"
+      ],
+      [
+       -1,
+       "Walker will no longer consider Luggage Cart dragged enemies as valid targets to trigger the stomp on until soon after they are dropped off"
+      ],
+      [
+       1,
+       "Similar to the Walker change above, the turrets in the healing area in base now also wait on considering valid targets"
+      ]
+     ],
+     "more": 0
+    },
+    {
+     "d": "2026-07-28",
+     "v": "mixed",
+     "b": 3,
+     "n": 5,
+     "net": -0.3,
+     "tot": 9.48,
+     "l": [
+      [
+       0,
+       "Bullet damage rescaled from 26 + 1.19/boon to 24 + 1.25"
+      ],
+      [
+       -1,
+       "Call Bell Charge Time increased from 6s to 7s"
+      ],
+      [
+       -1,
+       "Doorway duration reduced from 20s to 15s"
+      ],
+      [
+       1,
+       "Doorway T1 duration increased from +15s to +20s"
+      ],
+      [
+       -1,
+       "Doorway T3 range reduced from +45m to +40m"
+      ],
+      [
+       -1,
+       "Luggage Cart damage reduced from 80 to 60"
+      ],
+      [
+       1,
+       "Luggage Cart T1 increased from +60 Damage to +80"
+      ],
+      [
+       -1,
+       "Luggage Cart range reduced from 25m to 20m"
+      ],
+      [
+       1,
+       "Luggage Cart T2 increased from +20m Cast Range to +25m"
+      ]
+     ],
+     "more": 0
+    },
+    {
+     "d": "2026-07-09",
+     "v": "nerf",
+     "b": 0,
+     "n": 2,
+     "net": -2.0,
+     "tot": 2.0,
+     "l": [
+      [
+       0,
+       "Bullet damage rescaled from 29.26 + 1.1/boon to 26 + 1.19"
+      ],
+      [
+       -1,
+       "Crit scaling reduced from -25% to -30%"
+      ],
+      [
+       -1,
+       "Hotel Guest T3 increased from 13s Cooldown on Failure to Check Out to 15s"
+      ]
+     ],
+     "more": 0
+    },
+    {
+     "d": "2026-06-30",
+     "v": "nerf",
+     "b": 0,
+     "n": 1,
+     "net": -0.62,
+     "tot": 0.62,
+     "l": [
+      [
+       -1,
+       "Doorway cooldown increased from 40s to 45s"
+      ]
+     ],
+     "more": 0
+    },
+    {
+     "d": "2026-06-12",
+     "v": "nerf",
+     "b": 0,
+     "n": 2,
+     "net": -1.13,
+     "tot": 1.13,
+     "l": [
+      [
+       -1,
+       "Call Bell explosion damage spirit scaling reduced from 1.3 to 1.2"
+      ],
+      [
+       -1,
+       "Call Bell T3 spirit scaling reduced from 0.4 to 0.35"
+      ]
+     ],
+     "more": 0
+    },
+    {
+     "d": "2026-05-22",
+     "v": "nerf",
+     "b": 1,
+     "n": 5,
+     "net": -5.38,
+     "tot": 6.62,
+     "l": [
+      [
+       -1,
+       "Call Bell radius reduced from 6m to 5.5m"
+      ],
+      [
+       1,
+       "Call Bell T3 radius increased from +4m to +4.5m"
+      ],
+      [
+       -1,
+       "Call Bell explosion damage spirit scaling reduced from 1.4 to 1.3"
+      ],
+      [
+       -1,
+       "Call Bell inaccuracy debuff no longer diminishes from 100% to 0% over 1 second (the rest of the debuff is 4s)"
+      ],
+      [
+       -1,
+       "Call Bell inaccuracy debuff reduced from -100% to -40% (lasts the full duration)"
+      ],
+      [
+       0,
+       "Doorways close sub ability now starts on cooldown for 8s"
+      ],
+      [
+       -1,
+       "Doorway is no longer unsilenceable"
+      ],
+      [
+       0,
+       "Fixed recent bug causing Luggage Cart not being dispelled"
+      ]
+     ],
+     "more": 0
+    }
+   ]
   },
   "venator": {
    "name": "Venator",
@@ -6073,7 +10591,97 @@
     "Swift Striker": 10.7,
     "Extra Stamina": 12.2,
     "Rebuttal": 9.7
-   }
+   },
+   "changes": [
+    {
+     "d": "2026-10-30",
+     "v": "mixed",
+     "b": 1,
+     "n": 1,
+     "net": 0.13,
+     "tot": 1.87,
+     "l": [
+      [
+       -1,
+       "Ira Domini - Blessed stake damage reduced from 115 to 95"
+      ],
+      [
+       1,
+       "Ira Domini - Blessed stake damage boon scaling increased from 3 to 3.6"
+      ]
+     ],
+     "more": 0
+    },
+    {
+     "d": "2026-09-16",
+     "v": "other",
+     "b": 0,
+     "n": 0,
+     "net": 0.0,
+     "tot": 0.0,
+     "l": [
+      [
+       0,
+       "Ira Domini now works with Ricochet, all the shots will bounce"
+      ],
+      [
+       0,
+       "Ira Domini can now split shot (releases 1 extra bolt on each side, 3 total)"
+      ]
+     ],
+     "more": 0
+    },
+    {
+     "d": "2026-07-28",
+     "v": "mixed",
+     "b": 2,
+     "n": 2,
+     "net": -0.92,
+     "tot": 4.42,
+     "l": [
+      [
+       -1,
+       "Sprint speed reduced from 1.5m to 1m"
+      ],
+      [
+       -1,
+       "Bullet falloff range reduced from 20m-51m to 18m-47m"
+      ],
+      [
+       1,
+       "Ira Domini cooldown no longer starts after the conclusion of the ability, now starts immediately"
+      ],
+      [
+       1,
+       "Ira Domini blessed stakes damage increased from 100 to 115"
+      ]
+     ],
+     "more": 0
+    },
+    {
+     "d": "2026-05-22",
+     "v": "buff",
+     "b": 3,
+     "n": 0,
+     "net": 3.0,
+     "tot": 3.0,
+     "l": [
+      [
+       1,
+       "Health increased from 790+43/boon to 830+48/boon"
+      ],
+      [
+       1,
+       "Hex-Lined Snap Trap T3 increased from +25% Damage Against Revealed Targets to +30%"
+      ],
+      [
+       1,
+       "Hex-Lined Snap Trap T3 now also grants +1 Charge"
+      ]
+     ],
+     "more": 0
+    }
+   ]
   },
   "victor": {
    "name": "Victor",
@@ -6227,7 +10835,112 @@
     "Mercurial Magnum": 23.8,
     "Swift Striker": 10.0,
     "Rebuttal": 9.5
-   }
+   },
+   "changes": [
+    {
+     "d": "2026-10-30",
+     "v": "buff",
+     "b": 1,
+     "n": 0,
+     "net": 0.5,
+     "tot": 0.5,
+     "l": [
+      [
+       1,
+       "Aura of Suffering - T3 increased from +15% Damage to +16%"
+      ]
+     ],
+     "more": 0
+    },
+    {
+     "d": "2026-07-09",
+     "v": "buff",
+     "b": 1,
+     "n": 0,
+     "net": 0.64,
+     "tot": 0.64,
+     "l": [
+      [
+       1,
+       "Shocking Reanimation cooldown reduced from 275s to 240s"
+      ]
+     ],
+     "more": 0
+    },
+    {
+     "d": "2026-06-12",
+     "v": "buff",
+     "b": 3,
+     "n": 2,
+     "net": 1.27,
+     "tot": 3.39,
+     "l": [
+      [
+       -1,
+       "Aura of Suffering radius reduced from 9m to 8m"
+      ],
+      [
+       1,
+       "Aura of Suffering T3 now also increases radius by +1m"
+      ],
+      [
+       0,
+       "Fixed some client performance issues when using Aura of Suffering"
+      ],
+      [
+       -1,
+       "Shocking Reanimation cooldown increased from 230s to 240s"
+      ],
+      [
+       1,
+       "Shocking Reanimation T3 reduced from -120s Cooldown to -110s"
+      ],
+      [
+       1,
+       "Shocking Reanimation T3 increased from +150 Damage to +175"
+      ]
+     ],
+     "more": 0
+    },
+    {
+     "d": "2026-05-31",
+     "v": "buff",
+     "b": 1,
+     "n": 0,
+     "net": 0.5,
+     "tot": 0.5,
+     "l": [
+      [
+       1,
+       "Shocking Reanimation T3 reduced from -130s Cooldown to -120s"
+      ]
+     ],
+     "more": 0
+    },
+    {
+     "d": "2026-05-22",
+     "v": "mixed",
+     "b": 1,
+     "n": 1,
+     "net": 1.0,
+     "tot": 3.0,
+     "l": [
+      [
+       -1,
+       "Bullet damage reduced from 13+0.3135 to 12+0.26"
+      ],
+      [
+       1,
+       "Jumpstart T3 spirit scaling increased from +0.6 to +0.9"
+      ],
+      [
+       0,
+       "Aura of Suffering now does 50% damage to objectives"
+      ]
+     ],
+     "more": 0
+    }
+   ]
   },
   "vindicta": {
    "name": "Vindicta",
@@ -6383,7 +11096,66 @@
     "Enchanter's Emblem": 15.4,
     "Swift Striker": 14.8,
     "Extra Stamina": 13.5
-   }
+   },
+   "changes": [
+    {
+     "d": "2026-08-12",
+     "v": "nerf",
+     "b": 0,
+     "n": 1,
+     "net": -1.54,
+     "tot": 1.54,
+     "l": [
+      [
+       -1,
+       "Stake T1 reduced from +65 Damage to +45"
+      ]
+     ],
+     "more": 0
+    },
+    {
+     "d": "2026-06-30",
+     "v": "mixed",
+     "b": 3,
+     "n": 1,
+     "net": 0.58,
+     "tot": 3.92,
+     "l": [
+      [
+       1,
+       "Stake T2 reduced from -20s Cooldown to -22s"
+      ],
+      [
+       -1,
+       "Crow Familiar T2 increased from -12s Cooldown to -16s"
+      ],
+      [
+       1,
+       "Crow Familiar collision radius between each crow increased slightly"
+      ],
+      [
+       1,
+       "Assassinate Max Bonus Damage spirit scaling increased from 2 to 2.3"
+      ]
+     ],
+     "more": 0
+    },
+    {
+     "d": "2026-06-12",
+     "v": "buff",
+     "b": 1,
+     "n": 0,
+     "net": 0.88,
+     "tot": 0.88,
+     "l": [
+      [
+       1,
+       "Assassinate Max Bonus Damage spirit scaling increased from 1.7 to 2.0"
+      ]
+     ],
+     "more": 0
+    }
+   ]
   },
   "violet": {
    "name": "Violet",
@@ -6539,7 +11311,84 @@
     "Enchanter's Emblem": 14.5,
     "Swift Striker": 17.6,
     "Extra Stamina": 15.6
-   }
+   },
+   "changes": [
+    {
+     "d": "2026-10-30",
+     "v": "nerf",
+     "b": 2,
+     "n": 8,
+     "net": -7.65,
+     "tot": 12.51,
+     "l": [
+      [
+       1,
+       "Some moderate performance improvements (still more to do here)"
+      ],
+      [
+       -1,
+       "Still Life - Stun duration reduced from 1.0s to 0.9s"
+      ],
+      [
+       0,
+       "Still Life - Line of sight is now required when the channel ends, even during the grace period"
+      ],
+      [
+       0,
+       "Still Life - Now shows a text bar to the victim"
+      ],
+      [
+       0,
+       "Still Life - Sketches now grant +2% healing amp from Nurse Harrow, Kelvin, Ivy, Dynamo, Paige, and Rem instead"
+      ],
+      [
+       0,
+       "Still Life - Sketches changed to give Spirit Power instead of Weapon Damage for Grey Talon, Infernus and Mina"
+      ],
+      [
+       0,
+       "Still Life - T1 health regen is now only granted while drawing (still refreshes for 4s on pickup)"
+      ],
+      [
+       -1,
+       "Still Life - T1 health regen scaling reduced from 0.25 to 0.15"
+      ],
+      [
+       1,
+       "Still Life - T3 stun duration increased from +0.35s to +0.45s"
+      ],
+      [
+       -1,
+       "Abstract Landscape - Cooldown increased from 165s to 180s"
+      ],
+      [
+       -1,
+       "Abstract Landscape - Duration spirit scaling reduced from 0.04 to 0.01"
+      ],
+      [
+       0,
+       "Abstract Landscape - Now ends early if Violet dies"
+      ],
+      [
+       -1,
+       "Abstract Landscape - Cooldown between times you can be affected by it increased from 0.5s to 0.75s"
+      ],
+      [
+       -1,
+       "Abstract Landscape - T3 no longer has \"Ink is no longer destroyed\""
+      ],
+      [
+       -1,
+       "Abstract Landscape - Duration reduced from 6s to 5s"
+      ],
+      [
+       -1,
+       "Abstract Landscape - T3 reduced from +4s to +3s"
+      ]
+     ],
+     "more": 0
+    }
+   ]
   },
   "viscous": {
    "name": "Viscous",
@@ -6712,7 +11561,198 @@
     "Enchanter's Emblem": 13.3,
     "Extra Stamina": 9.2,
     "Rebuttal": 8.9
-   }
+   },
+   "changes": [
+    {
+     "d": "2026-10-30",
+     "v": "buff",
+     "b": 2,
+     "n": 0,
+     "net": 2.25,
+     "tot": 2.25,
+     "l": [
+      [
+       1,
+       "Alt fire damage growth per boon increased by 5%"
+      ],
+      [
+       1,
+       "Splatter - T1 increased from +36 Damage to +45 Damage"
+      ],
+      [
+       0,
+       "Goo Ball - Fixed being able to heavy melee or activate Ethereal Shift during the cast delay"
+      ],
+      [
+       0,
+       "Goo Ball - Fixed the direction indicator not appearing"
+      ]
+     ],
+     "more": 0
+    },
+    {
+     "d": "2026-09-16",
+     "v": "mixed",
+     "b": 2,
+     "n": 4,
+     "net": -2.11,
+     "tot": 6.11,
+     "l": [
+      [
+       -1,
+       "Alt fire damage growth reduced by 10%"
+      ],
+      [
+       1,
+       "Splatter detonation cooldown reduced from 0.15 to 0.12"
+      ],
+      [
+       -1,
+       "Splatter T1 reduced from +2m to +1.5m"
+      ],
+      [
+       -1,
+       "The Cube cast range reduced from 26m to 20m"
+      ],
+      [
+       -1,
+       "Puddle Punch cooldown increased from 21s to 24s"
+      ],
+      [
+       1,
+       "Goo Ball T3 now also increases spirit scaling by 0.2"
+      ]
+     ],
+     "more": 0
+    },
+    {
+     "d": "2026-07-28",
+     "v": "mixed",
+     "b": 5,
+     "n": 4,
+     "net": 2.67,
+     "tot": 12.57,
+     "l": [
+      [
+       -1,
+       "Splatter damage reduced from 70 to 55"
+      ],
+      [
+       -1,
+       "Splatter spirit ratio reduced from 0.8 to 0.7"
+      ],
+      [
+       1,
+       "Splatter base bounce count increased from 1 to 2"
+      ],
+      [
+       -1,
+       "Splatter T3 bounce count reduced from +2 to +1"
+      ],
+      [
+       1,
+       "The Cube T3 reduced from -25s Cooldown to -20s"
+      ],
+      [
+       -1,
+       "Puddle Punch slow duration reduced from 4s to 3s"
+      ],
+      [
+       1,
+       "Puddle Punch slow increased from -20% to -30%"
+      ],
+      [
+       1,
+       "Puddle Punch cooldown reduced from 24s to 21s"
+      ],
+      [
+       1,
+       "Goo Ball T2 increased from +10% Resists to +20%"
+      ]
+     ],
+     "more": 0
+    },
+    {
+     "d": "2026-07-09",
+     "v": "nerf",
+     "b": 0,
+     "n": 1,
+     "net": -0.5,
+     "tot": 0.5,
+     "l": [
+      [
+       -1,
+       "Splatter T3 spirit scaling reduced from +1.0 to +0.9"
+      ]
+     ],
+     "more": 0
+    },
+    {
+     "d": "2026-06-30",
+     "v": "mixed",
+     "b": 1,
+     "n": 2,
+     "net": -0.5,
+     "tot": 2.16,
+     "l": [
+      [
+       -1,
+       "Splatter T3 spirit scaling reduced from +1.1 to +1.0"
+      ],
+      [
+       -1,
+       "Puddle Punch T3 increased from -12s Cooldown to -14s"
+      ],
+      [
+       1,
+       "Goo Ball T3 increased from +6s Duration to +7s"
+      ]
+     ],
+     "more": 0
+    },
+    {
+     "d": "2026-06-12",
+     "v": "buff",
+     "b": 2,
+     "n": 0,
+     "net": 3.0,
+     "tot": 3.0,
+     "l": [
+      [
+       1,
+       "Puddle Punch T2 increased from +40% Lifesteal to +60%"
+      ],
+      [
+       1,
+       "Goo Ball T2 now also increases Bullet and Spirit Resist by +10%"
+      ]
+     ],
+     "more": 0
+    },
+    {
+     "d": "2026-05-22",
+     "v": "buff",
+     "b": 2,
+     "n": 0,
+     "net": 2.0,
+     "tot": 2.0,
+     "l": [
+      [
+       1,
+       "Puddle Punch T1 now also increases damage by +20"
+      ],
+      [
+       0,
+       "Puddle Punch T2 no longer increases damage by +30"
+      ],
+      [
+       1,
+       "Puddle Punch T2 now also grants +40% Lifesteal (1/4th against non-heroes)"
+      ]
+     ],
+     "more": 0
+    }
+   ]
   },
   "vyper": {
    "name": "Vyper",
@@ -6871,7 +11911,85 @@
     "Mercurial Magnum": 23.1,
     "Swift Striker": 11.9,
     "Extra Stamina": 14.9
-   }
+   },
+   "changes": [
+    {
+     "d": "2026-09-16",
+     "v": "nerf",
+     "b": 0,
+     "n": 2,
+     "net": -1.5,
+     "tot": 1.5,
+     "l": [
+      [
+       -1,
+       "Slither T3 barrier duration reduced from 5s to 4s"
+      ],
+      [
+       -1,
+       "Petrifying Bola cooldown increased from 105s to 115s"
+      ]
+     ],
+     "more": 0
+    },
+    {
+     "d": "2026-08-12",
+     "v": "buff",
+     "b": 2,
+     "n": 0,
+     "net": 2.5,
+     "tot": 2.5,
+     "l": [
+      [
+       1,
+       "Petrifying Bola radius increased from 8m to 12m"
+      ],
+      [
+       1,
+       "Petrifying Bola petrify duration increased from 2s to 2.2s"
+      ]
+     ],
+     "more": 0
+    },
+    {
+     "d": "2026-06-30",
+     "v": "buff",
+     "b": 2,
+     "n": 0,
+     "net": 3.67,
+     "tot": 3.67,
+     "l": [
+      [
+       1,
+       "Screwjab Dagger T3 now also reduces charge delay from 4s to 2s"
+      ],
+      [
+       1,
+       "Slither T3 spirit scaling increased from 0.6 to 0.8"
+      ]
+     ],
+     "more": 0
+    },
+    {
+     "d": "2026-05-22",
+     "v": "mixed",
+     "b": 1,
+     "n": 1,
+     "net": 0.0,
+     "tot": 2.0,
+     "l": [
+      [
+       -1,
+       "Screwjab Dagger T2 bullet resist per stack from -5% to -6%"
+      ],
+      [
+       1,
+       "Screwjab Dagger T3 now also increases max stacks by 2"
+      ]
+     ],
+     "more": 0
+    }
+   ]
   },
   "warden": {
    "name": "Warden",
@@ -7045,7 +12163,164 @@
     "Kinetic Dash": 11.9,
     "Swift Striker": 9.9,
     "Extra Stamina": 9.4
-   }
+   },
+   "changes": [
+    {
+     "d": "2026-10-30",
+     "v": "mixed",
+     "b": 2,
+     "n": 2,
+     "net": 0.17,
+     "tot": 5.51,
+     "l": [
+      [
+       0,
+       "Alchemical Flask - Now travels 40% faster (overall cast range unchanged)"
+      ],
+      [
+       -1,
+       "Alchemical Flask - Weapon Damage reduction increased from -25% to -30%"
+      ],
+      [
+       1,
+       "Willpower - Speed bonus increased from +15% to +20%"
+      ],
+      [
+       1,
+       "Last Stand - T2 increased from +40.5 DPS to +50"
+      ],
+      [
+       -1,
+       "Last Stand - T2 cooldown reduction increased from -30s to -40s"
+      ]
+     ],
+     "more": 0
+    },
+    {
+     "d": "2026-09-16",
+     "v": "nerf",
+     "b": 0,
+     "n": 5,
+     "net": -4.7,
+     "tot": 4.7,
+     "l": [
+      [
+       -1,
+       "Bullet damage per boon reduced from 0.28 to 0.25"
+      ],
+      [
+       -1,
+       "Fire Rate spirit scaling reduced from 0.25 to 0.21"
+      ],
+      [
+       -1,
+       "Alchemical Flask projectile range and speed reduced by 30%"
+      ],
+      [
+       -1,
+       "Willpower T3 spirit scaling reduced from +2.7 to +2.1"
+      ],
+      [
+       -1,
+       "Willpower T3 debuff resistance reduced from 40% to 30%"
+      ]
+     ],
+     "more": 0
+    },
+    {
+     "d": "2026-06-30",
+     "v": "nerf",
+     "b": 1,
+     "n": 2,
+     "net": -0.88,
+     "tot": 1.88,
+     "l": [
+      [
+       -1,
+       "Bullet damage per boon reduced from 0.34 to 0.28"
+      ],
+      [
+       -1,
+       "Willpower T2 increased from -22s Cooldown to -24s"
+      ],
+      [
+       1,
+       "Willpower T3 increased from +2.5 spirit power scaling to +2.7"
+      ]
+     ],
+     "more": 0
+    },
+    {
+     "d": "2026-06-12",
+     "v": "buff",
+     "b": 5,
+     "n": 4,
+     "net": 3.67,
+     "tot": 9.93,
+     "l": [
+      [
+       -1,
+       "Bullet falloff reduced from 20m->58m to 18m->47m"
+      ],
+      [
+       -1,
+       "Alchemical Flask spirit scaling reduced from 0.73 to 0.63"
+      ],
+      [
+       -1,
+       "Alchemical Flask T2 reduced from +40 Damage to +35"
+      ],
+      [
+       1,
+       "Alchemical Flask T2 increased from -20% Weapon Damage to -25%"
+      ],
+      [
+       1,
+       "Willpower spirit scaling increased from +0.5 to +0.8"
+      ],
+      [
+       1,
+       "Binding Word T3 reduced from -18s Cooldown to -14s"
+      ],
+      [
+       1,
+       "Last Stand lifesteal increased from 65% to 75%"
+      ],
+      [
+       -1,
+       "Last Stand T2 increased from -30s Cooldown to -35s"
+      ],
+      [
+       1,
+       "Last Stand T3 increased from +3s Duration to +4s"
+      ]
+     ],
+     "more": 0
+    },
+    {
+     "d": "2026-05-22",
+     "v": "nerf",
+     "b": 0,
+     "n": 1,
+     "net": -0.53,
+     "tot": 0.53,
+     "l": [
+      [
+       -1,
+       "Bullet damage per boon reduced from 0.38 to 0.34"
+      ],
+      [
+       0,
+       "Willpower T3 debuff resistance now retroactively applies to existing debuffs when cast"
+      ],
+      [
+       0,
+       "Binding Word T2 no longer increases cast range by +12m"
+      ]
+     ],
+     "more": 0
+    }
+   ]
   },
   "wraith": {
    "name": "Wraith",
@@ -7200,7 +12475,90 @@
     "Enchanter's Emblem": 15.9,
     "Spirit Rend": 29.4,
     "Swift Striker": 13.2
-   }
+   },
+   "changes": [
+    {
+     "d": "2026-10-30",
+     "v": "nerf",
+     "b": 0,
+     "n": 3,
+     "net": -3.42,
+     "tot": 3.42,
+     "l": [
+      [
+       -1,
+       "Card Trick - Heal reduced from 60 to 45"
+      ],
+      [
+       -1,
+       "Project Mind - Cooldown increased from 46s to 50s"
+      ],
+      [
+       -1,
+       "Project Mind - Initial cast time for projectile increased from 0.75s to 1s"
+      ]
+     ],
+     "more": 0
+    },
+    {
+     "d": "2026-09-16",
+     "v": "nerf",
+     "b": 1,
+     "n": 5,
+     "net": -3.54,
+     "tot": 7.54,
+     "l": [
+      [
+       -1,
+       "Card Trick heart heal reduced from 75 to 60"
+      ],
+      [
+       -1,
+       "Card Trick heart heal spirit scaling reduced from 0.75 to 0.5"
+      ],
+      [
+       -1,
+       "Card Trick Diamond Bullet and Spirit Resist reduction reduced from -8% to -7%"
+      ],
+      [
+       -1,
+       "Card Trick T3 Diamond Bullet and Spirit Resist reduction reduced from -5% to -4%"
+      ],
+      [
+       -1,
+       "Card Trick T3 Clubs slow from +20% to +15%"
+      ],
+      [
+       0,
+       "Fixed Project Mind getting caught on edges/corners when aiming past it"
+      ],
+      [
+       1,
+       "Full Auto spirit damage per bullet scaling increased from 0.03 to 0.045"
+      ]
+     ],
+     "more": 0
+    },
+    {
+     "d": "2026-08-12",
+     "v": "nerf",
+     "b": 0,
+     "n": 2,
+     "net": -2.5,
+     "tot": 2.5,
+     "l": [
+      [
+       -1,
+       "Card Trick Heart heal spirit scaling reduced from 1 to 0.75"
+      ],
+      [
+       -1,
+       "Full Auto T3 spirit scaling reduced from +0.06 to +0.045"
+      ]
+     ],
+     "more": 0
+    }
+   ]
   },
   "yamato": {
    "name": "Yamato",
@@ -7360,7 +12718,167 @@
     "Restorative Shot": 1.7,
     "Enchanter's Emblem": 14.6,
     "Rebuttal": 10.8
-   }
+   },
+   "changes": [
+    {
+     "d": "2026-10-30",
+     "v": "nerf",
+     "b": 1,
+     "n": 3,
+     "net": -2.08,
+     "tot": 4.08,
+     "l": [
+      [
+       1,
+       "Power Slash - Spirit scaling increased by 6% (base and T3)"
+      ],
+      [
+       -1,
+       "Flying Slash - Cast Range reduced from 26m to 23m"
+      ],
+      [
+       0,
+       "Flying Slash - Enemy targets are now marked with an overhead symbol as soon as the grapple is cast, instead of only when the hook lands"
+      ],
+      [
+       -1,
+       "Flying Slash - T3 Cast Range reduced from +15m to +8m"
+      ],
+      [
+       -1,
+       "Shadow Transformation - Cooldown increased from 150s to 160s (moved to T2)"
+      ]
+     ],
+     "more": 0
+    },
+    {
+     "d": "2026-09-16",
+     "v": "buff",
+     "b": 2,
+     "n": 0,
+     "net": 2.0,
+     "tot": 2.0,
+     "l": [
+      [
+       1,
+       "Crimson Slash T3 now also increases the heal spirit scaling by +0.4"
+      ],
+      [
+       1,
+       "Flying Slash light melee scaling increased from 1.0 to 1.2"
+      ]
+     ],
+     "more": 0
+    },
+    {
+     "d": "2026-07-28",
+     "v": "nerf",
+     "b": 0,
+     "n": 3,
+     "net": -3.87,
+     "tot": 3.87,
+     "l": [
+      [
+       -1,
+       "Flying Slash T2 reduced from +40 Spirit Power to +35"
+      ],
+      [
+       -1,
+       "Flying Slash T3 charges from +2 to +1"
+      ],
+      [
+       -1,
+       "Flying Slash T3 Charge Time increased from 4s to 5s"
+      ]
+     ],
+     "more": 0
+    },
+    {
+     "d": "2026-07-09",
+     "v": "nerf",
+     "b": 0,
+     "n": 2,
+     "net": -2.17,
+     "tot": 2.17,
+     "l": [
+      [
+       -1,
+       "Flying Slash range reduced from 28m to 26m"
+      ],
+      [
+       -1,
+       "Flying Slash T3 Charge Delay increased from 3s to 4s"
+      ],
+      [
+       0,
+       "Flying Slash T3 Ally Targeting now requires alt cast input"
+      ]
+     ],
+     "more": 0
+    },
+    {
+     "d": "2026-05-31",
+     "v": "nerf",
+     "b": 0,
+     "n": 2,
+     "net": -1.1,
+     "tot": 1.1,
+     "l": [
+      [
+       -1,
+       "Power Slash spirit scaling reduced from 2.1 to 1.85"
+      ],
+      [
+       -1,
+       "Flying Slash cast range reduced from 30m to 28m"
+      ]
+     ],
+     "more": 0
+    },
+    {
+     "d": "2026-05-22",
+     "v": "buff",
+     "b": 6,
+     "n": 1,
+     "net": 7.65,
+     "tot": 9.65,
+     "l": [
+      [
+       1,
+       "Power Slash post cast time reduced from 0.4s to 0.2s"
+      ],
+      [
+       1,
+       "Power Slash spirit scaling increased from 1.86s to 2.1"
+      ],
+      [
+       1,
+       "Flying Slash range increased from 25m to 30m"
+      ],
+      [
+       -1,
+       "Flying Slash T2 no longer grants +20m Cast Range"
+      ],
+      [
+       1,
+       "Flying Slash T3 now also grants +15m Cast Range"
+      ],
+      [
+       1,
+       "Flying Slash T3 increased from +1 Charge to +2"
+      ],
+      [
+       0,
+       "Fixed Crimson Slash not being able to hit anything if the player is aimed too high or low"
+      ],
+      [
+       1,
+       "Shadow Transformation T1 increased from +5 Weapon Damage to +7"
+      ]
+     ],
+     "more": 0
+    }
+   ]
   }
  },
  "img": {
@@ -57482,238 +63000,334 @@
  "history": {
   "windows": [
    {
-    "from": "2026-09-29",
+    "from": "2026-08-22",
+    "to": "2026-09-16"
+   },
+   {
+    "from": "2026-09-16",
     "to": "2026-10-05"
    },
    {
     "from": "2026-10-05",
-    "to": "2026-10-14"
+    "to": "2026-10-15"
    },
    {
-    "from": "2026-10-14",
-    "to": "2026-10-29"
+    "from": "2026-10-15",
+    "to": "2026-10-30"
+   },
+   {
+    "from": "2026-10-30",
+    "to": "2026-11-05"
    }
   ],
   "hero": {
    "abrams": [
-    50.9,
-    50.2,
-    51.6
+    50.7,
+    51.7,
+    50.0,
+    51.8,
+    52.8
    ],
    "apollo": [
-    49.8,
-    49.0,
-    49.4
+    50.4,
+    50.3,
+    49.1,
+    49.2,
+    48.6
    ],
    "baba": [
     null,
-    52.3,
-    53.9
+    null,
+    52.8,
+    53.3,
+    55.2
    ],
    "bebop": [
-    47.5,
-    47.6,
-    48.5
+    47.0,
+    47.1,
+    47.9,
+    48.4,
+    48.4
    ],
    "billy": [
-    47.3,
-    46.4,
-    48.1
+    47.9,
+    48.3,
+    46.2,
+    48.2,
+    49.2
    ],
    "calico": [
-    48.6,
-    47.8,
-    48.2
+    51.0,
+    50.4,
+    48.0,
+    47.9,
+    48.6
    ],
    "celeste": [
-    48.9,
-    48.6,
-    48.6
+    51.9,
+    49.2,
+    48.7,
+    48.5,
+    48.0
    ],
    "deadman-danny": [
     null,
-    37.7,
-    48.7
+    null,
+    38.7,
+    49.9,
+    54.4
    ],
    "drifter": [
-    49.4,
-    49.7,
-    50.5
+    50.6,
+    50.3,
+    49.9,
+    50.4,
+    51.1
    ],
    "dynamo": [
+    51.8,
     52.5,
-    52.3,
+    52.1,
+    51.8,
     51.8
    ],
    "graves": [
-    56.6,
+    56.8,
     56.7,
-    57.6
+    56.9,
+    57.6,
+    57.3
    ],
    "grey-talon": [
+    47.8,
+    47.6,
     47.4,
-    47.1,
-    46.9
+    46.8,
+    48.1
    ],
    "haze": [
-    54.4,
+    50.8,
+    53.7,
     55.0,
-    53.1
+    53.0,
+    53.6
    ],
    "holliday": [
-    47.6,
+    47.1,
+    47.5,
     48.3,
-    46.6
+    46.4,
+    47.7
    ],
    "infernus": [
-    48.6,
-    49.1,
-    49.2
+    49.4,
+    49.0,
+    49.2,
+    49.2,
+    49.3
    ],
    "ivy": [
-    53.1,
-    53.0,
-    52.8
+    53.9,
+    52.8,
+    52.9,
+    52.6,
+    52.7
    ],
    "kelvin": [
-    53.6,
+    54.0,
     53.9,
-    54.1
+    53.8,
+    54.0,
+    55.1
    ],
    "lady-geist": [
-    50.8,
-    49.7,
-    51.5
+    49.9,
+    51.8,
+    50.1,
+    51.5,
+    52.5
    ],
    "lash": [
-    50.8,
-    51.2,
-    50.7
+    51.8,
+    50.9,
+    51.3,
+    50.5,
+    51.0
    ],
    "mcginnis": [
-    47.4,
+    49.9,
+    48.4,
     47.3,
-    48.5
+    48.4,
+    50.6
    ],
    "mina": [
-    46.9,
+    45.2,
+    46.3,
     46.6,
-    45.1
-   ],
-   "mirage": [
-    44.7,
-    44.7,
+    44.9,
     44.8
    ],
+   "mirage": [
+    43.9,
+    44.4,
+    44.7,
+    44.7,
+    43.7
+   ],
    "mo-krill": [
-    50.2,
-    48.7,
-    50.7
+    52.5,
+    51.9,
+    48.6,
+    50.9,
+    47.3
    ],
    "nurse-harrow": [
     null,
     null,
-    51.7
+    null,
+    51.8,
+    50.0
    ],
    "paige": [
-    56.8,
+    54.2,
+    56.2,
     57.0,
-    55.5
+    55.4,
+    56.4
    ],
    "paradox": [
+    46.9,
+    45.9,
+    46.4,
     45.7,
-    46.3,
-    45.8
+    46.8
    ],
    "pocket": [
-    45.1,
+    45.7,
+    45.7,
     44.6,
-    44.7
+    44.4,
+    44.3
    ],
    "rat-king": [
+    null,
     61.1,
-    56.8,
-    56.3
+    57.0,
+    56.2,
+    54.2
    ],
    "rem": [
-    46.2,
+    47.7,
+    46.8,
     47.0,
+    45.2,
     45.5
    ],
    "seven": [
-    55.4,
-    55.3,
-    54.4
+    54.8,
+    55.2,
+    55.5,
+    54.4,
+    55.2
    ],
    "shiv": [
-    44.0,
+    47.4,
+    45.3,
     43.6,
-    45.1
+    45.0,
+    44.9
    ],
    "silver": [
-    45.7,
+    44.6,
+    46.4,
     45.4,
-    45.9
+    45.9,
+    46.4
    ],
    "sinclair": [
-    48.0,
-    45.9,
-    44.7
+    45.0,
+    45.8,
+    45.8,
+    44.7,
+    44.9
    ],
    "solomon": [
     null,
-    45.0,
-    46.5
+    null,
+    45.5,
+    46.3,
+    47.3
    ],
    "the-doorman": [
-    45.2,
-    46.5,
-    45.6
+    46.3,
+    45.6,
+    46.6,
+    45.5,
+    45.9
    ],
    "venator": [
-    46.9,
-    47.3,
-    47.2
+    45.1,
+    46.4,
+    47.4,
+    47.1,
+    46.5
    ],
    "victor": [
-    54.5,
+    56.4,
+    55.5,
     52.9,
-    54.7
+    54.7,
+    54.1
    ],
    "vindicta": [
-    50.1,
+    51.1,
+    50.2,
     49.8,
-    48.9
+    48.8,
+    49.7
    ],
    "violet": [
     null,
     null,
-    51.2
+    null,
+    51.3,
+    47.9
    ],
    "viscous": [
-    45.8,
+    48.5,
+    45.9,
     45.5,
-    45.7
+    45.6,
+    46.7
    ],
    "vyper": [
-    48.0,
-    47.1,
-    46.2
+    50.5,
+    48.3,
+    46.9,
+    46.0,
+    46.0
    ],
    "warden": [
-    45.5,
+    53.1,
+    47.4,
     46.0,
-    47.1
+    47.3,
+    50.6
    ],
    "wraith": [
-    50.4,
-    51.2,
-    50.9
+    50.8,
+    49.5,
+    51.3,
+    50.7,
+    50.0
    ],
    "yamato": [
-    47.8,
-    46.9,
-    47.7
+    48.4,
+    49.0,
+    47.1,
+    47.5,
+    47.2
    ]
   }
  },
@@ -81876,5 +87490,77 @@
     53.6
    ]
   ]
- }
+ },
+ "patches": [
+  {
+   "d": "2026-11-05",
+   "title": "Minor Update - 11-04-2026",
+   "url": "https://steamstore-a.akamaihd.net/news/externalpost/steam_community_announcements/1848664643339845"
+  },
+  {
+   "d": "2026-10-30",
+   "title": "Halloween 2026 + Gameplay Update",
+   "url": "https://steamstore-a.akamaihd.net/news/externalpost/steam_community_announcements/1847920302240420"
+  },
+  {
+   "d": "2026-10-15",
+   "title": "Minor Update - 10-14-2026",
+   "url": "https://steamstore-a.akamaihd.net/news/externalpost/steam_community_announcements/1846651706676198"
+  },
+  {
+   "d": "2026-10-05",
+   "title": "Minor Update - 10-05-2026",
+   "url": "https://steamstore-a.akamaihd.net/news/externalpost/steam_community_announcements/1845383656394833"
+  },
+  {
+   "d": "2026-09-16",
+   "title": "Minor Update - 09-16-2026",
+   "url": "https://steamstore-a.akamaihd.net/news/externalpost/steam_community_announcements/1844115010490072"
+  },
+  {
+   "d": "2026-08-22",
+   "title": "Minor Update - 08-22-2026",
+   "url": "https://steamstore-a.akamaihd.net/news/externalpost/steam_community_announcements/1841579228672283"
+  },
+  {
+   "d": "2026-08-12",
+   "title": "Minor Update - 08-12-2026",
+   "url": "https://steamstore-a.akamaihd.net/news/externalpost/steam_community_announcements/1840944183775204"
+  },
+  {
+   "d": "2026-07-28",
+   "title": "Minor Update - 07-28-2026",
+   "url": "https://steamstore-a.akamaihd.net/news/externalpost/steam_community_announcements/1839041357039193"
+  },
+  {
+   "d": "2026-07-09",
+   "title": "Minor Update - 07-09-2026",
+   "url": "https://steamstore-a.akamaihd.net/news/externalpost/steam_community_announcements/1836506165584438"
+  },
+  {
+   "d": "2026-07-01",
+   "title": "Minor Update - 07-01-2026",
+   "url": "https://steamstore-a.akamaihd.net/news/externalpost/steam_community_announcements/1836506165566600"
+  },
+  {
+   "d": "2026-06-30",
+   "title": "Minor Update - 06-30-2026",
+   "url": "https://steamstore-a.akamaihd.net/news/externalpost/steam_community_announcements/1836506165563227"
+  },
+  {
+   "d": "2026-06-12",
+   "title": "Minor Update - 06-11-2026",
+   "url": "https://steamstore-a.akamaihd.net/news/externalpost/steam_community_announcements/1835236783562074"
+  },
+  {
+   "d": "2026-05-31",
+   "title": "Minor Update - 05-31-2026",
+   "url": "https://steamstore-a.akamaihd.net/news/externalpost/steam_community_announcements/1833968530895860"
+  },
+  {
+   "d": "2026-05-22",
+   "title": "Gameplay Update - 05-22-2026",
+   "url": "https://steamstore-a.akamaihd.net/news/externalpost/steam_community_announcements/1833334318572828"
+  }
+ ]
 }

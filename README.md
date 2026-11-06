@@ -55,6 +55,14 @@ Everything comes from the public Deadlock API (`api.deadlock-api.com`):
 - **items**: average buy minute per item and per hero, and the game's component chains (what an item is built from and what it upgrades into).
 - **history**: winrate per hero between the balance patches listed in `meta.patchDates` (edit that list when a new balance patch ships).
 
+### Patch changes
+
+    python3 scripts/update_patches.py               # last 180 days of official patch notes
+    python3 scripts/update_patches.py --show 2026-10-15   # print how each line of that patch was classified
+    python3 scripts/update_stats.py --only history  # refresh the winrate windows afterwards
+
+Reads Valve's official announcements from Steam's public news API, keeps the lines written as `- Hero: change`, and classifies each line as buff, nerf or neutral from its wording and numbers (a longer cooldown is a nerf, a bigger damage number a buff). A hero's verdict for a patch comes from the size-weighted total (buff or nerf when at least 35% of the total, otherwise mixed). It is a heuristic: every line is shown with its own arrow and the original English text so a wrong call is easy to spot. The tier list shows a marker for patches in the two weeks up to the latest one. The script also sets `meta.patchDates`.
+
 Still maintained by hand: the tier list, the game plans, the news and the coaching copy. Hand-written lane tips go in `heroes[slug].tips` (a list of Spanish sentences, each with an English entry in `i18n/en.json`) and show up on the hero page; none are written yet.
 When a script adds new heroes, items or text, add their English text to `i18n/en.json` (the checker shows what is missing).
 
