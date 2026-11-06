@@ -14,6 +14,10 @@ Steps (API: https://api.deadlock-api.com):
   builds   most bought items per game phase for every hero (item-stats with purchase-time windows)
   variants heroes played two ways (e.g. spirit / gun): detects the two archetypes from item co-purchase data
            (item-permutation-stats) and builds each one from the players who went that way
+  abilities ability upgrade order per hero from ability-order-stats / ability-max-first-stats (replaces the deadlocktiers order)
+  flow     item progression per hero by game phase with transitions (item-flow-stats)
+  counter  items that win more than usual against teams with a given hero (item-stats with enemy_hero_ids)
+  items    average buy minute per item and per hero, and component / upgrade chains from the game's item data
   history  winrate per hero in each window between the balance patches listed in meta.patchDates
 
 Also keeps item costs current and adds items the API has but data.json does not.
@@ -240,6 +244,118 @@ def variants_step(S, flt, slug_by_id, upgrades, only=None):
     print(f"{found} heroes with two builds")
 
 
+def abilities_step(S, flt, slug_by_id, all_items):
+    """Ability upgrade order from real games: consensus order of the 15 upgrade points, max-priority order and what is maxed first.
+
+    heroes[slug].order = {seq: [slot, ...] (1-4, the consensus upgrade order), prio: [ability names by when they are maxed],
+                          maxFirst: [[name, share %, winrate %], ...]}"""
+    for hid, s in slug_by_id.items():
+        h = S["heroes"][s]
+        ids = {i["id"]: h["abilities"].index(i["name"]) + 1 for i in all_items
+               if i.get("type") == "ability" and hid in (i.get("heroes") or []) and i["name"] in h["abilities"]}
+        if len(ids) < 4:
+            print(f"  {s}: found {len(ids)}/4 ability ids, keeping the old order", file=sys.stderr)
+            continue
+        rows = get("/analytics/ability-order-stats", hero_id=hid, min_matches=100, **flt)
+        pos = {}                                  # (slot, k-th point) -> [weighted position sum, weight]
+        for r in rows:
+            seen = {}
+            for idx, a in enumerate(r["abilities"]):
+                slot = ids.get(a)
+                if slot is None:
+                    continue
+                seen[slot] = seen.get(slot, 0) + 1
+                acc = pos.setdefault((slot, seen[slot]), [0.0, 0])
+                acc[0] += idx * r["matches"]; acc[1] += r["matches"]
+        if not pos:
+            continue
+        seq = [k[0] for k in sorted(pos, key=lambda k: pos[k][0] / pos[k][1])]
+        third = {slot: pos[(slot, 3)][0] / pos[(slot, 3)][1] for slot in range(1, 5) if (slot, 3) in pos}
+        prio = [h["abilities"][slot - 1] for slot in sorted(third, key=third.get)] + [n for i, n in enumerate(h["abilities"], 1) if i not in third]
+        mf = [r for r in get("/analytics/ability-max-first-stats", hero_id=hid, min_matches=200, **flt) if r["ability_id"] in ids]
+        tot = sum(r["matches"] for r in mf) or 1
+        order = {"seq": seq[:15], "prio": prio,
+                 "maxFirst": [[h["abilities"][ids[r["ability_id"]] - 1], round(r["matches"] / tot * 100, 1), round(r["wins"] / r["matches"] * 100, 1)]
+                              for r in sorted(mf, key=lambda r: -r["matches"])[:3]]}
+        h["order"], h["prio"] = order, prio
+        print(f"  {s}: max first {order['maxFirst'][0][0] if order['maxFirst'] else '-'}; order {''.join(map(str, order['seq']))}")
+
+
+FLOW_COLS = 4          # item-flow-stats phases: 0-9, 9-20, 20-30, 30+ minutes
+FLOW_TOP = 8
+
+
+def flow_step(S, flt, slug_by_id, item_names):
+    """Item progression per hero: the most bought items in each game phase with pick rate, winrate and what they are followed by.
+
+    flow[slug] = {n: players, cols: [[[item, pick %, winrate %, [[next item, share % of buyers], ...]], ...], x4]}"""
+    S["flow"] = {}
+    for hid, s in slug_by_id.items():
+        f = get("/analytics/item-flow-stats", hero_ids=hid, min_matches=300, **flt)
+        reached = f["reached_per_column"]
+        nodes = [n for n in f["nodes"] if n["item_id"] in item_names]
+        by = {(n["column"], n["item_id"]): n for n in nodes}
+        out = []
+        for col in range(FLOW_COLS):
+            top = sorted((n for n in nodes if n["column"] == col), key=lambda n: -n["matches"])[:FLOW_TOP]
+            col_out = []
+            for n in top:
+                nxt = sorted((e for e in f["edges"] if e["from_column"] == col and e["from_item_id"] == n["item_id"] and e["to_item_id"] in item_names),
+                             key=lambda e: -e["matches"])[:3] if col < FLOW_COLS - 1 else []
+                col_out.append([item_names[n["item_id"]], round(n["matches"] / reached[col] * 100, 1), round(n["wins"] / n["matches"] * 100, 1),
+                                [[item_names[e["to_item_id"]], round(e["matches"] / n["matches"] * 100)] for e in nxt]])
+            out.append(col_out)
+        S["flow"][s] = {"n": reached[0], "cols": out}
+    print(f"  flow for {len(S['flow'])} heroes")
+
+
+def counter_step(S, flt, slug_by_id, item_names):
+    """Items that win more than usual against teams with a given hero: counter[enemy] = [[item, lift in winrate points, winrate %], ...].
+    The lift is relative to the hero's own effect on every item, so it shows what is better than average against them."""
+    base = {i["item_id"]: i["wins"] / i["matches"] * 100 for i in get("/analytics/item-stats", min_matches=2000, **flt) if i["matches"]}
+    S["counter"] = {}
+    for hid, s in slug_by_id.items():
+        rows = get("/analytics/item-stats", enemy_hero_ids=hid, min_matches=1500, **flt)
+        raw = [(item_names[i["item_id"]], i["wins"] / i["matches"] * 100 - base[i["item_id"]], i["wins"] / i["matches"] * 100)
+               for i in rows if i["item_id"] in item_names and i["item_id"] in base]
+        if not raw:
+            S["counter"][s] = []
+            continue
+        # every item wins less against a strong hero: centre on the median so the lift shows which items do better than usual
+        med = sorted(l for _, l, _ in raw)[len(raw) // 2]
+        lifts = sorted(((n, l - med, w) for n, l, w in raw), key=lambda x: -x[1])[:6]
+        S["counter"][s] = [[n, round(l, 1), round(w, 1)] for n, l, w in lifts]
+    print(f"  counter items for {len(S['counter'])} heroes")
+
+
+def items_step(S, flt, slug_by_id, upgrades, item_names):
+    """Item timing and upgrade chains.
+
+    items[name].t = average minute the item is bought; items[name].from / .to = components it is built from / items it upgrades into;
+    heroes[slug].times = {item: average buy minute} for the items the hero buys."""
+    for i in get("/analytics/item-stats", min_matches=2000, **flt):
+        if i["item_id"] in item_names:
+            S["items"][item_names[i["item_id"]]]["t"] = round(i["avg_buy_time_s"] / 60, 1)
+    cls = {i["class_name"]: i["name"] for i in upgrades}
+    for name in S["items"]:
+        S["items"][name].pop("from", None); S["items"][name].pop("to", None)
+    for i in upgrades:
+        if i["name"] not in S["items"]:
+            continue
+        comps = [cls[c] for c in (i.get("component_items") or []) if c in cls and cls[c] in S["items"]]
+        if comps:
+            S["items"][i["name"]]["from"] = comps
+            for c in comps:
+                S["items"][c].setdefault("to", []).append(i["name"])
+    for hid, s in slug_by_id.items():
+        rows = get("/analytics/item-stats", hero_id=hid, min_matches=300, **flt)
+        n = max((r["matches"] for r in rows), default=0)
+        S["heroes"][s]["times"] = {item_names[r["item_id"]]: round(r["avg_buy_time_s"] / 60, 1) for r in rows
+                                   if r["item_id"] in item_names and r["matches"] >= 0.03 * n}
+    print("  item timing and upgrade chains updated")
+
+
+
 def history_step(S, flt, slug_by_id):
     ds = sorted(S["meta"].get("patchDates", []))
     if not ds:
@@ -261,7 +377,7 @@ def history_step(S, flt, slug_by_id):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--days", type=int, default=14)
-    ap.add_argument("--only", choices=["stats", "curves", "builds", "variants", "history"])
+    ap.add_argument("--only", choices=["stats", "curves", "builds", "variants", "abilities", "flow", "counter", "items", "history"])
     ap.add_argument("--hero", help="with --only variants: comma separated hero slugs to (re)build")
     ap.add_argument("--skip-curves", action="store_true")
     a = ap.parse_args()
@@ -274,7 +390,8 @@ def main():
     if len(ids) != len(S["heroes"]):
         sys.exit("hero names in data.json do not all match the API")
     slug_by_id = {v: k for k, v in ids.items()}
-    upgrades = [i for i in get("/assets/items") if i.get("type") == "upgrade" and not i.get("disabled")]
+    all_items = get("/assets/items")
+    upgrades = [i for i in all_items if i.get("type") == "upgrade" and not i.get("disabled")]
     item_names = {i["id"]: i["name"] for i in upgrades if i["name"] in S["items"]}
     for i in upgrades:   # keep shop costs current
         if i["name"] in S["items"] and i.get("cost"):
@@ -301,6 +418,19 @@ def main():
     if run("variants"):
         print("== build variants (ranked, all ranks)")
         variants_step(S, {"min_unix_timestamp": since, "match_mode": "ranked"}, slug_by_id, upgrades, only=set(a.hero.split(",")) if a.hero else None)
+    ranked = {"min_unix_timestamp": since, "match_mode": "ranked"}
+    if run("abilities"):
+        print("== ability order (ranked, all ranks)")
+        abilities_step(S, ranked, slug_by_id, all_items)
+    if run("flow"):
+        print("== item flow (ranked, all ranks)")
+        flow_step(S, ranked, slug_by_id, item_names)
+    if run("counter"):
+        print("== items against each hero (ranked, all ranks)")
+        counter_step(S, ranked, slug_by_id, item_names)
+    if run("items"):
+        print("== item timing and upgrade chains (ranked, all ranks)")
+        items_step(S, ranked, slug_by_id, upgrades, item_names)
     if run("history"):
         print("== history")
         h = history_step(S, {}, slug_by_id)
