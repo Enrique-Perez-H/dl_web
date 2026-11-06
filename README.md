@@ -38,7 +38,7 @@ The header has a rank switch (all ranks / Oracle+) and a language switch (ES / E
 
     python3 scripts/update_stats.py                 # everything, last 14 days (about 30 min, mostly lane curves)
     python3 scripts/update_stats.py --skip-curves   # faster, keeps the previous lane curves
-    python3 scripts/update_stats.py --only builds   # one step: stats | curves | builds | history
+    python3 scripts/update_stats.py --only builds   # one step: stats | curves | builds | variants | history
     python3 scripts/fetch_item_icons.py             # icons for every item in data.json (needs: pip install pillow to resize)
     python3 scripts/check_i18n.py                   # lists strings without an English translation
 
@@ -47,6 +47,7 @@ Everything comes from the public Deadlock API (`api.deadlock-api.com`):
 - **stats** (per rank bracket): winrate, pick rate, games, best-winrate items, same-lane hero matchups, best lane partners.
 - **curves**: souls lead of a hero's duo over the enemy duo at 3/6/9/12/15 minutes for every pair of heroes that lane against each other (`lane-soul-curve`, which the API marks as subject to change).
 - **builds**: the most bought items per phase for every hero (ranked, purchase-time windows). They overwrite `early`/`mid`/`late` in `data.json`.
+- **variants**: heroes played two ways (spirit / gun Talon). Items bought by 12-80% of a hero's players are candidates; if two of them are rarely bought together the hero has two archetypes, and each gets a build from the players who bought both of its signature items. Both archetypes must cover at least 20% of the hero's players and differ in kind (weapon / spirit / tank), otherwise the hero keeps one build. Stored in `heroes[slug].variants`; loosen `VARIANT_SHARE` in the script to find more heroes.
 - **history**: winrate per hero between the balance patches listed in `meta.patchDates` (edit that list when a new balance patch ships).
 
 Still maintained by hand: the tier list, the game plans, the news, the coaching copy, and the ability order (from deadlocktiers.com).

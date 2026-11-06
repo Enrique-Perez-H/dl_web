@@ -4,7 +4,7 @@
     python3 scripts/update_stats.py                  # everything, last 14 days
     python3 scripts/update_stats.py --days 7
     python3 scripts/update_stats.py --skip-curves    # skip the slow per-matchup lane curves (~10 min)
-    python3 scripts/update_stats.py --only builds    # one step: stats | curves | builds | history
+    python3 scripts/update_stats.py --only builds    # one step: stats | curves | builds | variants | history
 
 Steps (API: https://api.deadlock-api.com):
   stats    per rank bracket: winrate / pick rate / games (hero-stats), best-winrate items (item-stats),
@@ -12,6 +12,8 @@ Steps (API: https://api.deadlock-api.com):
   curves   per rank bracket: souls lead of a hero's duo over the enemy duo at 3/6/9/12/15 min for every
            hero pair that lanes against each other (lane-soul-curve; the API marks it "subject to change")
   builds   most bought items per game phase for every hero (item-stats with purchase-time windows)
+  variants heroes played two ways (e.g. spirit / gun): detects the two archetypes from item co-purchase data
+           (item-permutation-stats) and builds each one from the players who went that way
   history  winrate per hero in each window between the balance patches listed in meta.patchDates
 
 Also keeps item costs current and adds items the API has but data.json does not.
@@ -32,6 +34,8 @@ BEST_N = 4
 BUILD_N = 6              # items per phase in a build
 PHASES = (("early", 0, 600), ("mid", 600, 1200), ("late", 1200, None))
 PARTNER_K, PARTNERS_N = 300, 6
+VARIANT_MIN, VARIANT_MAX, VARIANT_LIFT = 0.12, 0.80, 0.60
+VARIANT_SHARE = 20.0   # % of a hero's players each variant must cover (and the two must differ in kind: weapon / spirit / vitality)
 CURVE_TIMES = (180, 360, 540, 720, 900)
 SLOT_CAT = {"weapon": "w", "vitality": "v", "spirit": "s"}
 
@@ -128,37 +132,112 @@ def curves_step(flt, hero_ids):
     return out
 
 
+def phase_build(hid, flt, names, include=None):
+    """Most bought items per phase for a hero, optionally only among players who bought every item in `include`."""
+    per = {}
+    for key, lo, hi in PHASES:
+        items = get("/analytics/item-stats", hero_id=hid, min_bought_at_s=lo, max_bought_at_s=hi, min_matches=100 if include else 200,
+                    include_item_ids=",".join(map(str, include)) if include else None, **flt)
+        per[key] = {names[i["item_id"]]: i for i in items if i["item_id"] in names}
+    owner = {}   # an item belongs to the phase where it is bought most
+    for key, _, _ in PHASES:
+        for n, i in per[key].items():
+            if n not in owner or i["matches"] > per[owner[n]][n]["matches"]:
+                owner[n] = key
+    build = {}
+    for key, _, _ in PHASES:
+        top = sorted((n for n, k in owner.items() if k == key), key=lambda n: -per[key][n]["matches"])[:BUILD_N]
+        build[key] = sorted(top, key=lambda n: per[key][n]["avg_buy_time_s"])
+    return build
+
+
+def add_new_items(S, build, by_name):
+    added = 0
+    for lst in build.values():
+        for n in lst:
+            if n not in S["items"]:
+                S["items"][n] = {"c": SLOT_CAT.get(by_name[n].get("item_slot_type"), "s"), "cost": by_name[n].get("cost") or 0}
+                added += 1
+    return added
+
+
 def builds_step(S, flt, slug_by_id, upgrades):
     names = {i["id"]: i["name"] for i in upgrades}
     by_name = {i["name"]: i for i in upgrades}
     added = 0
     for hid, s in slug_by_id.items():
-        per = {}
-        for key, lo, hi in PHASES:
-            items = get("/analytics/item-stats", hero_id=hid, min_bought_at_s=lo, max_bought_at_s=hi, min_matches=200, **flt)
-            per[key] = {names[i["item_id"]]: i for i in items if i["item_id"] in names}
-        owner = {}   # an item belongs to the phase where it is bought most
-        for key, _, _ in PHASES:
-            for n, i in per[key].items():
-                if n not in owner or i["matches"] > per[owner[n]][n]["matches"]:
-                    owner[n] = key
-        build = {}
-        for key, _, _ in PHASES:
-            top = sorted((n for n, k in owner.items() if k == key), key=lambda n: -per[key][n]["matches"])[:BUILD_N]
-            build[key] = sorted(top, key=lambda n: per[key][n]["avg_buy_time_s"])
+        build = phase_build(hid, flt, names)
         if sum(map(len, build.values())) < 6:
             print(f"not enough build data for {s}, keeping the old build", file=sys.stderr)
             continue
-        for key, lst in build.items():
-            S["heroes"][s][key] = lst
-            for n in lst:
-                if n not in S["items"]:
-                    it = by_name[n]
-                    S["items"][n] = {"c": SLOT_CAT.get(it.get("item_slot_type"), "s"), "cost": it.get("cost") or 0}
-                    added += 1
+        S["heroes"][s].update(build)
+        added += add_new_items(S, build, by_name)
         print(f"  build {s}: " + " | ".join(", ".join(build[k][:3]) for k, _, _ in PHASES))
     if added:
         print(f"added {added} items to data.json (run scripts/fetch_item_icons.py for their icons)")
+
+
+def variants_step(S, flt, slug_by_id, upgrades, only=None):
+    """Find heroes played in two distinct ways (e.g. spirit Talon / gun Talon) and build each variant.
+
+    Items bought by 12-80% of a hero's players are candidates. If two of them are rarely bought together
+    (co-purchase lift <= VARIANT_LIFT) the hero has two archetypes: every other candidate joins the anchor it is
+    co-bought with more. Each archetype is identified by two items bought together; its build, share and winrate
+    are read from the players who bought both."""
+    names = {i["id"]: i["name"] for i in upgrades}
+    by_name = {i["name"]: i for i in upgrades}
+    slot = {i["id"]: i.get("item_slot_type") for i in upgrades}
+    found = 0
+    for hid, s in slug_by_id.items():
+        if only and s not in only:
+            continue
+        S["heroes"][s].pop("variants", None)
+        items = get("/analytics/item-stats", hero_id=hid, min_matches=500, **flt)
+        cnt = {i["item_id"]: i["matches"] for i in items if i["item_id"] in names}
+        if not cnt:
+            continue
+        N = max(cnt.values())
+        cand = [i for i, c in cnt.items() if VARIANT_MIN <= c / N <= VARIANT_MAX and c >= 1000]
+        if len(cand) < 4:
+            continue
+        pairs = get("/analytics/item-permutation-stats", hero_ids=hid, comb_size=2, min_matches=max(100, int(N * 0.004)), **flt)
+        co = {frozenset(p["item_ids"]): p["matches"] for p in pairs}
+        lift = lambda a, b: co.get(frozenset((a, b)), 0) * N / (cnt[a] * cnt[b])
+        a, b = min(((x, y) for i, x in enumerate(cand) for y in cand[i + 1:]), key=lambda p: lift(*p))
+        if lift(a, b) > VARIANT_LIFT:
+            continue
+        groups = {a: [a], b: [b]}
+        for x in cand:
+            if x not in (a, b):
+                groups[a if lift(x, a) >= lift(x, b) else b].append(x)
+        if min(map(len, groups.values())) < 2:
+            continue
+        variants = []
+        for anchor, members in groups.items():
+            mates = [m for m in sorted(members, key=lambda m: -cnt[m]) if m != anchor and lift(anchor, m) >= 1.0]
+            if not mates:
+                continue
+            sig = [anchor, mates[0]]
+            stat = get("/analytics/item-stats", hero_id=hid, include_item_ids=",".join(map(str, sig)), min_matches=100, **flt)
+            row = next((i for i in stat if i["item_id"] == anchor), None)
+            if not row or row["matches"] / N < VARIANT_SHARE / 100 * 0.9:
+                continue
+            kinds = {}
+            for m in members:
+                kinds[slot[m]] = kinds.get(slot[m], 0) + cnt[m]
+            build = phase_build(hid, flt, names, include=sig)
+            if sum(map(len, build.values())) < 6:
+                continue
+            add_new_items(S, build, by_name)
+            variants.append({"kind": SLOT_CAT.get(max(kinds, key=kinds.get), "s"), "share": round(row["matches"] / N * 100, 1),
+                             "wr": round(row["wins"] / row["matches"] * 100, 1), "games": row["matches"],
+                             "sig": [names[x] for x in sig], **build})
+        if len(variants) == 2 and min(v["share"] for v in variants) >= VARIANT_SHARE and variants[0]["kind"] != variants[1]["kind"]:
+            variants.sort(key=lambda v: -v["share"])
+            S["heroes"][s]["variants"] = variants
+            found += 1
+            print(f"  {s}: lift {lift(a, b):.2f}  " + "  vs  ".join(f"{v['kind']} {v['share']}% wr {v['wr']} [{', '.join(v['sig'])}]" for v in variants))
+    print(f"{found} heroes with two builds")
 
 
 def history_step(S, flt, slug_by_id):
@@ -182,7 +261,8 @@ def history_step(S, flt, slug_by_id):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--days", type=int, default=14)
-    ap.add_argument("--only", choices=["stats", "curves", "builds", "history"])
+    ap.add_argument("--only", choices=["stats", "curves", "builds", "variants", "history"])
+    ap.add_argument("--hero", help="with --only variants: comma separated hero slugs to (re)build")
     ap.add_argument("--skip-curves", action="store_true")
     a = ap.parse_args()
     run = lambda step: a.only in (None, step) and not (step == "curves" and a.skip_curves and a.only is None)
@@ -218,6 +298,9 @@ def main():
         print("== builds (ranked, all ranks)")
         builds_step(S, {"min_unix_timestamp": since, "match_mode": "ranked"}, slug_by_id, upgrades)
         S["meta"]["buildsSrc"] = {"srcName": "Deadlock API", "src": "https://deadlock-api.com", "date": date.today().isoformat(), "days": a.days}
+    if run("variants"):
+        print("== build variants (ranked, all ranks)")
+        variants_step(S, {"min_unix_timestamp": since, "match_mode": "ranked"}, slug_by_id, upgrades, only=set(a.hero.split(",")) if a.hero else None)
     if run("history"):
         print("== history")
         h = history_step(S, {}, slug_by_id)

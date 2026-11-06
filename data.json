@@ -458,7 +458,77 @@
     "rat-king"
    ],
    "wr": 50.8,
-   "plan": "Tras el buff del 14 oct: Strix Salvo marca y el disparo cargado consume la marca. Híbrido espíritu/arma, Express Shot es clave."
+   "plan": "Tras el buff del 14 oct: Strix Salvo marca y el disparo cargado consume la marca. Híbrido espíritu/arma, Express Shot es clave.",
+   "variants": [
+    {
+     "kind": "v",
+     "share": 32.0,
+     "wr": 50.6,
+     "games": 43998,
+     "sig": [
+      "Fortitude",
+      "Mystic Expansion"
+     ],
+     "early": [
+      "High-Velocity Rounds",
+      "Extra Regen",
+      "Opening Rounds",
+      "Extra Spirit",
+      "Mystic Burst",
+      "Extra Health"
+     ],
+     "mid": [
+      "Grit",
+      "Mystic Expansion",
+      "Reactive Barrier",
+      "Express Shot",
+      "Improved Spirit",
+      "Fortitude"
+     ],
+     "late": [
+      "Tankbuster",
+      "Greater Expansion",
+      "Toxic Bullets",
+      "Compress Cooldown",
+      "Boundless Spirit",
+      "Superior Cooldown"
+     ]
+    },
+    {
+     "kind": "s",
+     "share": 28.9,
+     "wr": 54.6,
+     "games": 39735,
+     "sig": [
+      "Enchanter's Emblem",
+      "Greater Expansion"
+     ],
+     "early": [
+      "High-Velocity Rounds",
+      "Extra Regen",
+      "Grit",
+      "Opening Rounds",
+      "Long Range",
+      "Sharpshooter"
+     ],
+     "mid": [
+      "Enchanter's Emblem",
+      "Improved Spirit",
+      "Mystic Burst",
+      "Reactive Barrier",
+      "Tankbuster",
+      "Healbane"
+     ],
+     "late": [
+      "Compress Cooldown",
+      "Greater Expansion",
+      "Superior Cooldown",
+      "Dispel Magic",
+      "Boundless Spirit",
+      "Spirit Burn"
+     ]
+    }
+   ]
   },
   "drifter": {
    "name": "Drifter",
@@ -506,7 +576,77 @@
     "rat-king"
    ],
    "wr": 50.3,
-   "plan": "Cazador de picks: marca, aísla y remata en la noche. Rend y Stalker's Mark a 4 puntos."
+   "plan": "Cazador de picks: marca, aísla y remata en la noche. Rend y Stalker's Mark a 4 puntos.",
+   "variants": [
+    {
+     "kind": "w",
+     "share": 22.5,
+     "wr": 50.7,
+     "games": 29793,
+     "sig": [
+      "Swift Striker",
+      "Sprint Boots"
+     ],
+     "early": [
+      "Close Quarters",
+      "Stalker",
+      "Rapid Rounds",
+      "Extra Stamina",
+      "Sprint Boots",
+      "Kinetic Dash"
+     ],
+     "mid": [
+      "Extra Health",
+      "Enduring Speed",
+      "Fortitude",
+      "Swift Striker",
+      "Slowing Bullets",
+      "Point Blank"
+     ],
+     "late": [
+      "Hunter's Aura",
+      "Burst Fire",
+      "Bullet Lifesteal",
+      "Glass Cannon",
+      "Lucky Shot",
+      "Vampiric Burst"
+     ]
+    },
+    {
+     "kind": "s",
+     "share": 21.5,
+     "wr": 60.0,
+     "games": 28450,
+     "sig": [
+      "Spirit Burn",
+      "Spirit Strike"
+     ],
+     "early": [
+      "Melee Lifesteal",
+      "Mystic Burst",
+      "Stalker",
+      "Spirit Strike",
+      "Sprint Boots",
+      "Trophy Collector"
+     ],
+     "mid": [
+      "Spirit Snatch",
+      "Compress Cooldown",
+      "Extra Health",
+      "Melee Charge",
+      "Shadow Weave",
+      "Fortitude"
+     ],
+     "late": [
+      "Tankbuster",
+      "Hunter's Aura",
+      "Lifestrike",
+      "Superior Duration",
+      "Spirit Burn",
+      "Crushing Fists"
+     ]
+    }
+   ]
   },
   "dynamo": {
    "name": "Dynamo",
@@ -554,7 +694,77 @@
     "seven"
    ],
    "wr": 51.9,
-   "plan": "Iniciador de equipo: Singularity bien colocada gana la pelea. Refresher para la doble ultimate en late."
+   "plan": "Iniciador de equipo: Singularity bien colocada gana la pelea. Refresher para la doble ultimate en late.",
+   "variants": [
+    {
+     "kind": "v",
+     "share": 33.4,
+     "wr": 52.5,
+     "games": 25080,
+     "sig": [
+      "Arcane Surge",
+      "Compress Cooldown"
+     ],
+     "early": [
+      "Extra Regen",
+      "Extra Charge",
+      "Extra Stamina",
+      "Sprint Boots",
+      "Arcane Surge",
+      "Trophy Collector"
+     ],
+     "mid": [
+      "Mystic Expansion",
+      "Healing Booster",
+      "Compress Cooldown",
+      "Duration Extender",
+      "Rapid Recharge",
+      "Warp Stone"
+     ],
+     "late": [
+      "Superior Cooldown",
+      "Greater Expansion",
+      "Superior Duration",
+      "Refresher",
+      "Unstoppable",
+      "Transcendent Cooldown"
+     ]
+    },
+    {
+     "kind": "s",
+     "share": 20.4,
+     "wr": 56.3,
+     "games": 15327,
+     "sig": [
+      "Mystic Reverb",
+      "Rapid Recharge"
+     ],
+     "early": [
+      "Extra Regen",
+      "Headshot Booster",
+      "Extra Charge",
+      "Mystic Burst",
+      "Trophy Collector",
+      "Headhunter"
+     ],
+     "mid": [
+      "Recharging Rush",
+      "Rapid Recharge",
+      "Mystic Expansion",
+      "Sprint Boots",
+      "Enduring Speed",
+      "Tankbuster"
+     ],
+     "late": [
+      "Compress Cooldown",
+      "Superior Cooldown",
+      "Greater Expansion",
+      "Mystic Reverb",
+      "Spirit Burn",
+      "Transcendent Cooldown"
+     ]
+    }
+   ]
   },
   "graves": {
    "name": "Graves",
@@ -650,7 +860,77 @@
     "paige"
    ],
    "wr": 46.4,
-   "plan": "Talon de espíritu: Charged Shot al máximo y poke desde lejos. Mystic Reverb multiplica cada disparo cargado."
+   "plan": "Talon de espíritu: Charged Shot al máximo y poke desde lejos. Mystic Reverb multiplica cada disparo cargado.",
+   "variants": [
+    {
+     "kind": "s",
+     "share": 40.1,
+     "wr": 46.4,
+     "games": 26459,
+     "sig": [
+      "Mystic Shot",
+      "Compress Cooldown"
+     ],
+     "early": [
+      "Mystic Burst",
+      "Extra Charge",
+      "High-Velocity Rounds",
+      "Extra Spirit",
+      "Improved Spirit",
+      "Compress Cooldown"
+     ],
+     "mid": [
+      "Mystic Shot",
+      "Extra Stamina",
+      "Recharging Rush",
+      "Rapid Recharge",
+      "Stamina Mastery",
+      "Tankbuster"
+     ],
+     "late": [
+      "Boundless Spirit",
+      "Superior Cooldown",
+      "Counterspell",
+      "Spirit Burn",
+      "Mystic Reverb",
+      "Transcendent Cooldown"
+     ]
+    },
+    {
+     "kind": "w",
+     "share": 36.1,
+     "wr": 46.1,
+     "games": 23828,
+     "sig": [
+      "Long Range",
+      "High-Velocity Rounds"
+     ],
+     "early": [
+      "Mystic Burst",
+      "High-Velocity Rounds",
+      "Extra Charge",
+      "Opening Rounds",
+      "Long Range",
+      "Extra Spirit"
+     ],
+     "mid": [
+      "Improved Spirit",
+      "Enchanter's Emblem",
+      "Compress Cooldown",
+      "Recharging Rush",
+      "Extra Stamina",
+      "Tankbuster"
+     ],
+     "late": [
+      "Rapid Recharge",
+      "Stamina Mastery",
+      "Boundless Spirit",
+      "Superior Cooldown",
+      "Spirit Burn",
+      "Mystic Reverb"
+     ]
+    }
+   ]
   },
   "haze": {
    "name": "Haze",

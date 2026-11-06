@@ -48,6 +48,7 @@ const catName = c => t({w:"Arma",v:"Vitalidad",s:"Espíritu"}[c]);
 const TYPES = {parche:["Parche","var(--t-b)"],heroe:["Héroe nuevo","var(--t-splus)"],discord:["Discord","var(--spirit)"],ranked:["Ranked","var(--t-s)"]};
 const ROLES = ["Todos","Luchador","Asesino","Tirador","Místico"];
 const PH = [["early","Línea","0–10 min","e"],["mid","Medio","10–20 min","m"],["late","Final","20+ min","l"]];
+const KIND = {w:"Arma",s:"Espíritu",v:"Tanque"};
 
 const $ = (s,el=document)=>el.querySelector(s);
 const esc = s => String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
@@ -71,10 +72,12 @@ const scopeTxt = () => `${t("últimos {n} días",{n:S.stats.scope.days})} · ${b
 
 // item -> [{slug, phase}] for every hero build
 const USE = {};
-Object.keys(S.heroes).forEach(sl=>PH.forEach(([k])=>S.heroes[sl][k].forEach(n=>{ (USE[n]=USE[n]||[]).push({slug:sl,phase:k}); })));
+Object.keys(S.heroes).forEach(sl=>PH.forEach(([k])=>{
+  new Set([...S.heroes[sl][k], ...(S.heroes[sl].variants||[]).flatMap(v=>v[k])]).forEach(n=>{ (USE[n]=USE[n]||[]).push({slug:sl,phase:k}); });
+}));
 
 // UI state that survives re-renders
-const U = {wrSort:{k:"wr",dir:-1}, iq:"", icat:"all", itier:0, isort:"cost", bq:"", bcat:"all", tq:"", trole:"Todos", query:"", filterRole:"Todos", bm:null, tl:null, dragging:null};
+const U = {wrSort:{k:"wr",dir:-1}, iq:"", icat:"all", itier:0, isort:"cost", bq:"", bcat:"all", tq:"", trole:"Todos", query:"", filterRole:"Todos", bm:null, tl:null, dragging:null, vi:0};
 
 /* ═══════════════ Lane model ═══════════════ */
 const LANE_K = 1000, LANE_SHRINK = 300;
@@ -174,7 +177,7 @@ function buildsView(){
     <div class="sh"><h2>${t("Builds por héroe")}</h2><p>${t("Objetos más comprados en ranked (últimos {n} días) · ordenados por tier",{n:(S.meta.buildsSrc||{}).days||14})}</p></div>
     <div class="filters"><input id="q" type="search" placeholder="${esc(t("Buscar héroe…"))}" value="${esc(U.query)}" aria-label="${esc(t("Buscar héroe"))}">
       ${ROLES.map(r=>`<button class="chip" data-role="${r}" aria-pressed="${U.filterRole===r}">${t(r)}</button>`).join("")}</div>
-    <div class="grid">${list.map(s=>`<a class="card" href="#h-${s}">${img(s)}<div><b>${esc(H(s).name)}</b><span><span class="tb" style="--tc:${TC[tierOf(s)]||'var(--line)'}">${tierOf(s)}</span> ${esc(t(H(s).role))}</span></div></a>`).join("") || `<p style="color:var(--muted)">${t("Ningún héroe coincide.")}</p>`}</div>
+    <div class="grid">${list.map(s=>`<a class="card" href="#h-${s}">${img(s)}<div><b>${esc(H(s).name)}</b><span><span class="tb" style="--tc:${TC[tierOf(s)]||'var(--line)'}">${tierOf(s)}</span> ${esc(t(H(s).role))}${H(s).variants?` <span class="v2" title="${esc(H(s).variants.map(x=>t(KIND[x.kind])).join(" / "))}">${t("2 builds")}</span>`:''}</span></div></a>`).join("") || `<p style="color:var(--muted)">${t("Ningún héroe coincide.")}</p>`}</div>
   </section>`;
 }
 
@@ -240,11 +243,20 @@ function historyBlock(slug){
     <p class="fine">${t("Cada punto es el periodo que empieza en la fecha indicada y llega hasta el siguiente parche (todos los rangos). Último cambio:")} <b class="${d>=0?'dup':'ddn'}">${dpts(d)} ${t("puntos")}</b>.</p></div>`;
 }
 
+// one build, or a primary and a secondary build for heroes played in two ways (e.g. spirit / gun Talon)
+function buildBlock(slug){
+  const h = H(slug), vs = h.variants, bs = S.meta.buildsSrc, v = vs ? vs[Math.min(U.vi,vs.length-1)] : h;
+  const ph = ([k,lab,time])=>`<div class="ph"><h4>${t(lab)}<small>${time}</small></h4><ol class="items">${v[k].map(itemLi).join("")}</ol></div>`;
+  const tabs = vs ? `<div class="vtabs" role="tablist">${vs.map((x,i)=>`<button role="tab" class="vtab" data-vi="${i}" aria-selected="${U.vi===i}"><b>${t(i?"Secundaria":"Principal")}</b><span>${t(KIND[x.kind])}</span><small>${t("{n}% de sus jugadores",{n:nf(x.share,{maximumFractionDigits:0})})} · ${pct(x.wr)} WR</small></button>`).join("")}</div>` : "";
+  const note = vs ? `<p class="fine">${t("{hero} se juega de dos formas. Cada build sale de las partidas ranked de quienes compraron {a} y {b} (el {n}% de los jugadores del héroe).",{hero:h.name,a:v.sig[0],b:v.sig[1],n:nf(v.share,{maximumFractionDigits:0})})} ${t("El winrate es el de esos jugadores. Como llegaron a comprar esos objetos, no es comparable con el winrate general del héroe.")}</p>` : "";
+  return `<div class="blk"><h3>${t(vs?"Builds":"Build por fase")}</h3>${tabs}<div class="phases">${PH.map(ph).join("")}</div>${note}
+      <div class="cats">${Object.keys(CAT).map(c=>`<span style="--cat:${CAT[c]}"><i></i>${catName(c)}</span>`).join("")}<span>${t("Coste en almas")}</span>${bs?`<span>${t("Datos: objetos más comprados en ranked, últimos {n} días",{n:bs.days})} (<a href="${esc(bs.src)}" target="_blank" rel="noopener">${esc(bs.srcName)}</a>)</span>`:''}</div></div>`;
+}
+
 function heroView(slug){
   const h = H(slug), x = tierOf(slug), st = S.stats.hero[slug];
   const abil = h.abilities.map((a,i)=>{ const p = h.prio.indexOf(a)+1; return `<div class="ab"><span class="slot">${t("Habilidad {n}",{n:i+1})}${i===3?' · '+t("ulti"):''}</span><b>${esc(a)}</b><span class="pr ${p===1?'p1':''}">${p===1?t("Max primero"):t("{n}º",{n:p})}</span></div>`; }).join("");
-  const ph = ([k,lab,time])=>`<div class="ph"><h4>${t(lab)}<small>${time}</small></h4><ol class="items">${h[k].map(itemLi).join("")}</ol></div>`;
-  const best = st.best, bs = S.meta.buildsSrc;
+  const best = st.best;
   return `<section class="wrap">
     <a class="back" href="#builds">← ${t("Todas las builds")}</a>
     <div class="sheet-head">${img(slug)}
@@ -254,8 +266,7 @@ function heroView(slug){
     <div class="plan"><p class="k">${t("Plan de juego")}</p><p>${esc(t(h.plan))}</p></div>
     <div class="acts"><a class="btn pri" href="#crear/${slug}">${t("Crear mi build")}</a><a class="btn" href="#comparar/${slug}">${t("Comparar con otro héroe")}</a></div>
     <div class="blk"><h3>${t("Orden de habilidades")}</h3><div class="abil">${abil}</div></div>
-    <div class="blk"><h3>${t("Build por fase")}</h3><div class="phases">${PH.map(ph).join("")}</div>
-      <div class="cats">${Object.keys(CAT).map(c=>`<span style="--cat:${CAT[c]}"><i></i>${catName(c)}</span>`).join("")}<span>${t("Coste en almas")}</span>${bs?`<span>${t("Datos: objetos más comprados en ranked, últimos {n} días",{n:bs.days})} (<a href="${esc(bs.src)}" target="_blank" rel="noopener">${esc(bs.srcName)}</a>)</span>`:''}</div></div>
+    ${buildBlock(slug)}
     <div class="blk"><h3>${t("Objetos con mejor winrate")}</h3>
       ${best.length ? `<div class="best">${best.map(([n,w])=>`<div class="bi" style="--cat:${CAT[(S.items[n]||{c:'s'}).c]}"><i></i><a class="il" href="#objeto/${islug(n)}">${ico(n)}${esc(n)}</a><b>${pct(w)}</b></div>`).join("")}</div>
       <p class="fine">${t("De {src} ({scope}), entre objetos comprados en al menos el 5% de las partidas del héroe. Casi todos son de final: quien llega a comprarlos suele ir ganando ya, así que indican qué cerrar, no qué comprar primero.",{src:SRC(),scope:scopeTxt()})}</p>` : `<p class="fine">${t("No hay datos suficientes de objetos para este héroe ahora mismo.")}</p>`}</div>
@@ -562,7 +573,7 @@ function mkView(slug){
   return `<section class="wrap">
     <div class="sh"><h2>${t("Crea tu build")}</h2><p>${t("Elige objetos por fase y comparte el enlace: la build va dentro de la URL")}</p></div>
     <div class="mkbar">${img(slug)}<label>${t("Héroe")}<select id="mk-h">${hopts}</select></label>
-      <div class="mkbtns"><button class="btn" data-bmload="pop">${t("Cargar la más comprada")}</button><button class="btn" data-bmload="clear">${t("Vaciar")}</button><button class="btn pri" id="bm-copy">${t("Copiar enlace")}</button></div>
+      <div class="mkbtns">${H(slug).variants ? H(slug).variants.map((x,i)=>`<button class="btn" data-bmload="v${i}">${t(i?"Cargar la secundaria":"Cargar la principal")} (${t(KIND[x.kind])})</button>`).join("") : `<button class="btn" data-bmload="pop">${t("Cargar la más comprada")}</button>`}<button class="btn" data-bmload="clear">${t("Vaciar")}</button><button class="btn pri" id="bm-copy">${t("Copiar enlace")}</button></div>
       <span class="fine" id="bm-msg" role="status">${t("Total: {n} almas",{n:nf(bmTotal())})}</span></div>
     <div class="phases">${cols}</div>
     ${shareBlock("bm",false)}
@@ -688,6 +699,7 @@ document.addEventListener("click", e=>{
   if (!e.target.closest(".gs")){ const g=$("#gsr"); if (g) g.hidden = true; }
   const el = e.target.closest("button,a"); if (!el) return;
   const D = el.dataset;
+  if (D.vi!==undefined){ U.vi = +D.vi; rerender(); return; }
   if (D.bracket){ useBracket(D.bracket); rerender(); return; }
   if (D.lang){ lang = D.lang; LS.set("dl-lang",lang); loadLang().then(()=>rerender()); return; }
   if (D.hero){ location.hash = "h-"+D.hero; return; }
@@ -703,7 +715,7 @@ document.addEventListener("click", e=>{
   if (D.bmadd){ if (!bmHas(D.bmadd)){ bm[bm.ph].push(D.bmadd); bmSync(); rerender(); } return; }
   if (D.bmrm){ const [k,i] = D.bmrm.split(":"); bm[k].splice(+i,1); bmSync(); rerender(); return; }
   if (D.bmload){
-    const src = D.bmload==="clear" ? {early:[],mid:[],late:[]} : H(bm.slug);
+    const src = D.bmload==="clear" ? {early:[],mid:[],late:[]} : /^v\d$/.test(D.bmload) ? H(bm.slug).variants[+D.bmload[1]] : H(bm.slug);
     bm.e = [...src.early]; bm.m = [...src.mid]; bm.l = [...src.late]; bmSync(); rerender(); return; }
   if (el.id==="bm-discord"){ copyText(bmText(), "#bm-smsg", "#bm-text", "Mensaje copiado. Pégalo en el canal de builds ✓"); return; }
   if (el.id==="bm-img-copy" || el.id==="bm-img-dl"){ shareImage(bmImage, el.id==="bm-img-copy", `build-${bm.slug}.png`, "#bm-smsg", "#bm-canvas-wrap"); return; }
@@ -766,6 +778,6 @@ document.addEventListener("drop", e=>{
 });
 document.addEventListener("dragend", ()=>{ U.dragging = null; document.querySelectorAll(".over").forEach(x=>x.classList.remove("over")); });
 
-window.addEventListener("hashchange", ()=>{ U.bm = null; U.tl = null; render(); window.scrollTo(0,0); });
+window.addEventListener("hashchange", ()=>{ U.bm = null; U.tl = null; U.vi = 0; render(); window.scrollTo(0,0); });
 render();
 })();
