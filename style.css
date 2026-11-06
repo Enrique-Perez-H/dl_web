@@ -350,3 +350,27 @@ svg.hist.lead{max-width:360px}
 .vtab[aria-selected="true"]{border-color:var(--brass);background:var(--panel2)}
 .vtab[aria-selected="true"] b{color:var(--brass)}
 .v2{display:inline-block;margin-left:6px;padding:1px 6px;border-radius:5px;background:var(--panel2);border:1px solid var(--line);font:700 11px/1.3 var(--f-display);letter-spacing:.06em;text-transform:uppercase;color:var(--brass)}
+
+/* ability order, progression, timing, counters */
+.seq{display:flex;gap:4px;flex-wrap:wrap;margin-top:14px}
+.sq{width:30px;height:30px;display:grid;place-items:center;border-radius:6px;font:800 15px/1 var(--f-display);color:#101413}
+.sq.s1{background:var(--t-splus)}.sq.s2{background:var(--t-a)}.sq.s3{background:var(--vital)}.sq.s4{background:var(--spirit)}
+.fcols{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+@media (max-width:900px){.fcols{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:520px){.fcols{grid-template-columns:1fr}}
+.fcol{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:12px;min-width:0}
+.fcol h4{margin:0 0 8px;font:800 18px/1 var(--f-display);text-transform:uppercase}
+.fi{display:grid;gap:2px;padding:7px 8px;margin-bottom:5px;background:var(--panel2);border-left:3px solid var(--cat);border-radius:7px;font-size:13px}
+.fi .fm{font:500 12px var(--f-mono);color:var(--muted)}.fi .fm b{color:var(--fg)}
+.fi small{color:var(--muted);font-size:11px;line-height:1.35}
+.tm{color:var(--muted);margin-right:4px}
+.sub{margin:14px 0 8px;font:800 15px/1 var(--f-display);letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.chain{display:flex;gap:28px;flex-wrap:wrap}.when{margin:0 0 6px}
+.tips{padding-left:20px;max-width:75ch}
+.crows{display:grid;gap:6px}
+.crow{display:grid;grid-template-columns:44px minmax(120px,1.2fr) minmax(80px,2fr) 60px 90px;gap:12px;align-items:center;background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:6px 12px 6px 6px;text-decoration:none;color:var(--fg)}
+.crow:hover{border-color:var(--brass)}.crow img{width:42px;height:42px}
+.crow .cn b{display:block;font:800 18px/1.1 var(--f-display);text-transform:uppercase}.crow small{color:var(--muted);font-size:12px}
+.crow .cbar{height:8px;border-radius:4px;background:var(--panel2);overflow:hidden}.crow .cbar i{display:block;height:100%;background:var(--vital)}
+.crow em{font:700 14px var(--f-mono);font-style:normal;text-align:right}
+@media (max-width:640px){.crow{grid-template-columns:44px 1fr 56px}.crow .cbar,.crow>small{display:none}}

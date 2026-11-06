@@ -77,7 +77,7 @@ Object.keys(S.heroes).forEach(sl=>PH.forEach(([k])=>{
 }));
 
 // UI state that survives re-renders
-const U = {wrSort:{k:"wr",dir:-1}, iq:"", icat:"all", itier:0, isort:"cost", bq:"", bcat:"all", tq:"", trole:"Todos", query:"", filterRole:"Todos", bm:null, tl:null, dragging:null, vi:0};
+const U = {wrSort:{k:"wr",dir:-1}, iq:"", icat:"all", itier:0, isort:"cost", bq:"", bcat:"all", tq:"", trole:"Todos", query:"", filterRole:"Todos", bm:null, tl:null, dragging:null, vi:0, crole:"Todos"};
 
 /* ═══════════════ Lane model ═══════════════ */
 const LANE_K = 1000, LANE_SHRINK = 300;
@@ -113,6 +113,7 @@ const hardLanes = slug => matchupsOf(slug).slice(-3).reverse().map(o=>o.x);
 function route(){
   const h = (location.hash||"").slice(1).split("?")[0];
   if (h==="mi-tier") return {v:"tl"};
+  if (h==="contrarrestar" || h.startsWith("contrarrestar/")){ const e = h.split("/")[1]; return {v:"ctr",e:S.heroes[e]?e:""}; }
   if (h==="objetos") return {v:"items"};
   if (h.startsWith("objeto/") && ISL[h.slice(7)]) return {v:"item",name:ISL[h.slice(7)]};
   if (h==="comparar" || h.startsWith("comparar/")){ const [,a,b] = h.split("/"); return {v:"cmp",a:S.heroes[a]?a:"",b:S.heroes[b]?b:""}; }
@@ -138,7 +139,7 @@ function header(r){
       ${seg("bracket",bracket,[["all","Todos","Todos los rangos"],["high","Oracle+","Oracle+"]],"Rango de las estadísticas")}
       ${seg("lang",lang,[["es","ES"],["en","EN"]],"Idioma")}
     </div>
-    <nav class="tabs" aria-label="${esc(t("Secciones"))}">${a("tier","tier","Tier list")}${a("builds","builds","Builds")}${a("wr","winrates","Winrates")}${a("items","objetos","Objetos")}${a("cmp","comparar","Comparar")}${a("mk","crear","Mi build")}${a("tl","mi-tier","Mi tier list")}${a("news","noticias","Noticias")}<a href="#coaching" class="cta-tab" ${cur==="coach"?'aria-current="page"':''}>${t("Coaching")}</a></nav>
+    <nav class="tabs" aria-label="${esc(t("Secciones"))}">${a("tier","tier","Tier list")}${a("builds","builds","Builds")}${a("wr","winrates","Winrates")}${a("items","objetos","Objetos")}${a("cmp","comparar","Comparar")}${a("ctr","contrarrestar","Contrarrestar")}${a("mk","crear","Mi build")}${a("tl","mi-tier","Mi tier list")}${a("news","noticias","Noticias")}<a href="#coaching" class="cta-tab" ${cur==="coach"?'aria-current="page"':''}>${t("Coaching")}</a></nav>
   </div></header>`;
 }
 
@@ -220,9 +221,9 @@ function wrView(){
 }
 
 /* ═══════════════ Hero page ═══════════════ */
-function itemLi(n){
-  const it = S.items[n] || {c:"s",cost:0};
-  return `<li style="--cat:${CAT[it.c]}"><i title="${esc(catName(it.c))}"></i><span><a class="il" href="#objeto/${islug(n)}">${ico(n)}${esc(n)}</a></span><em>${it.cost?souls(it.cost):""}</em></li>`;
+function itemLi(n,times){
+  const it = S.items[n] || {c:"s",cost:0}, m = times && times[n];
+  return `<li style="--cat:${CAT[it.c]}"><i title="${esc(catName(it.c))}"></i><span><a class="il" href="#objeto/${islug(n)}">${ico(n)}${esc(n)}</a></span><em>${m?`<span class="tm" title="${esc(t("Minuto medio de compra"))}">${nf(m,{maximumFractionDigits:0})}'</span> `:""}${it.cost?souls(it.cost):""}</em></li>`;
 }
 
 function historyBlock(slug){
@@ -244,9 +245,29 @@ function historyBlock(slug){
 }
 
 // one build, or a primary and a secondary build for heroes played in two ways (e.g. spirit / gun Talon)
+// item progression: what players of the hero buy in each phase of the game, how often, and what comes next
+function flowBlock(slug){
+  const f = (S.flow||{})[slug]; if (!f) return "";
+  const lab = ["0–9 min","9–20 min","20–30 min","30+ min"];
+  const col = (c,i) => `<div class="fcol"><h4>${lab[i]}</h4>${c.slice(0,6).map(([n,pk,wr,nx])=>`<div class="fi" style="--cat:${CAT[(S.items[n]||{c:'s'}).c]}"><a class="il" href="#objeto/${islug(n)}">${ico(n)}${esc(n)}</a><span class="fm"><b>${nf(pk,{maximumFractionDigits:0})}%</b> · ${pct(wr)}</span>${nx.length?`<small>→ ${nx.map(([m,p])=>`${esc(m)} ${p}%`).join(" · ")}</small>`:''}</div>`).join("")}</div>`;
+  return `<div class="blk"><h3>${t("Progresión de objetos por fase")}</h3><div class="fcols">${f.cols.map(col).join("")}</div>
+    <p class="fine">${t("Los objetos más comprados en cada fase. El primer número es el % de jugadores que lo compra en esa fase y el segundo su winrate. La flecha muestra qué compran después los que lo llevan (% de ellos). Los objetos de final salen más ganadores porque solo los compra quien ya va bien: sirven para ver el camino, no para comparar objetos entre sí.")} ${t("Datos de {src} (ranked, {n} jugadores).",{src:SRC(),n:nf(f.n)})}</p></div>`;
+}
+function counterItemsBlock(slug){
+  const c = (S.counter||{})[slug] || [];
+  if (!c.length) return `<p class="fine">${t("Sin datos suficientes.")}</p>`;
+  return `<h4 class="sub">${t("Objetos que rinden mejor contra {hero}",{hero:H(slug).name})}</h4><div class="best">${c.map(([n,l,w])=>`<div class="bi" style="--cat:${CAT[(S.items[n]||{c:'s'}).c]}"><i></i><a class="il" href="#objeto/${islug(n)}">${ico(n)}${esc(n)}</a><b>${dpts(l)}</b></div>`).join("")}</div>
+    <p class="fine">${t("Diferencia de winrate del objeto contra equipos con {hero} frente a lo habitual para ese objeto, ya descontado el efecto general del héroe. Los efectos son pequeños (uno o dos puntos): úsalo como pista, no como regla. Datos de {src} (ranked).",{hero:H(slug).name,src:SRC()})}</p>`;
+}
+// matchup tips written by hand: heroes[slug].tips = ["text", ...] (each text also needs an entry in i18n/en.json)
+function tipsBlock(slug){
+  const tips = H(slug).tips; if (!tips || !tips.length) return "";
+  return `<div class="blk"><h3>${t("Consejos de línea")}</h3><ul class="tips">${tips.map(x=>`<li>${esc(t(x))}</li>`).join("")}</ul></div>`;
+}
+
 function buildBlock(slug){
   const h = H(slug), vs = h.variants, bs = S.meta.buildsSrc, v = vs ? vs[Math.min(U.vi,vs.length-1)] : h;
-  const ph = ([k,lab,time])=>`<div class="ph"><h4>${t(lab)}<small>${time}</small></h4><ol class="items">${v[k].map(itemLi).join("")}</ol></div>`;
+  const ph = ([k,lab,time])=>`<div class="ph"><h4>${t(lab)}<small>${time}</small></h4><ol class="items">${v[k].map(n=>itemLi(n,h.times)).join("")}</ol></div>`;
   const tabs = vs ? `<div class="vtabs" role="tablist">${vs.map((x,i)=>`<button role="tab" class="vtab" data-vi="${i}" aria-selected="${U.vi===i}"><b>${t(i?"Secundaria":"Principal")}</b><span>${t(KIND[x.kind])}</span><small>${t("{n}% de sus jugadores",{n:nf(x.share,{maximumFractionDigits:0})})} · ${pct(x.wr)} WR</small></button>`).join("")}</div>` : "";
   const note = vs ? `<p class="fine">${t("{hero} se juega de dos formas. Cada build sale de las partidas ranked de quienes compraron {a} y {b} (el {n}% de los jugadores del héroe).",{hero:h.name,a:v.sig[0],b:v.sig[1],n:nf(v.share,{maximumFractionDigits:0})})} ${t("El winrate es el de esos jugadores. Como llegaron a comprar esos objetos, no es comparable con el winrate general del héroe.")}</p>` : "";
   return `<div class="blk"><h3>${t(vs?"Builds":"Build por fase")}</h3>${tabs}<div class="phases">${PH.map(ph).join("")}</div>${note}
@@ -255,6 +276,9 @@ function buildBlock(slug){
 
 function heroView(slug){
   const h = H(slug), x = tierOf(slug), st = S.stats.hero[slug];
+  const oc = h.order;
+  const seq = oc ? `<div class="seq" role="img" aria-label="${esc(t("Orden de subida de habilidades"))}: ${oc.seq.join(" ")}">${oc.seq.map(slot=>`<span class="sq s${slot}" title="${esc(h.abilities[slot-1])}">${slot}</span>`).join("")}</div>
+    <p class="fine">${t("Orden de subida más habitual: cada casilla es un punto de mejora y el número es la habilidad (1 a 4).")}${oc.maxFirst.length?` ${t("Se sube primero al máximo")}: ${oc.maxFirst.map(([n,sh,wr])=>`<b>${esc(n)}</b> ${nf(sh,{maximumFractionDigits:0})}% (${pct(wr)} WR)`).join(" · ")}.`:""} ${t("Datos de {src}.",{src:SRC()})}</p>` : "";
   const abil = h.abilities.map((a,i)=>{ const p = h.prio.indexOf(a)+1; return `<div class="ab"><span class="slot">${t("Habilidad {n}",{n:i+1})}${i===3?' · '+t("ulti"):''}</span><b>${esc(a)}</b><span class="pr ${p===1?'p1':''}">${p===1?t("Max primero"):t("{n}º",{n:p})}</span></div>`; }).join("");
   const best = st.best;
   return `<section class="wrap">
@@ -265,13 +289,16 @@ function heroView(slug){
     </div>
     <div class="plan"><p class="k">${t("Plan de juego")}</p><p>${esc(t(h.plan))}</p></div>
     <div class="acts"><a class="btn pri" href="#crear/${slug}">${t("Crear mi build")}</a><a class="btn" href="#comparar/${slug}">${t("Comparar con otro héroe")}</a></div>
-    <div class="blk"><h3>${t("Orden de habilidades")}</h3><div class="abil">${abil}</div></div>
+    <div class="blk"><h3>${t("Orden de habilidades")}</h3><div class="abil">${abil}</div>${seq}</div>
     ${buildBlock(slug)}
     <div class="blk"><h3>${t("Objetos con mejor winrate")}</h3>
       ${best.length ? `<div class="best">${best.map(([n,w])=>`<div class="bi" style="--cat:${CAT[(S.items[n]||{c:'s'}).c]}"><i></i><a class="il" href="#objeto/${islug(n)}">${ico(n)}${esc(n)}</a><b>${pct(w)}</b></div>`).join("")}</div>
       <p class="fine">${t("De {src} ({scope}), entre objetos comprados en al menos el 5% de las partidas del héroe. Casi todos son de final: quien llega a comprarlos suele ir ganando ya, así que indican qué cerrar, no qué comprar primero.",{src:SRC(),scope:scopeTxt()})}</p>` : `<p class="fine">${t("No hay datos suficientes de objetos para este héroe ahora mismo.")}</p>`}</div>
+    ${flowBlock(slug)}
     ${historyBlock(slug)}
     ${heroLaneBlock(slug)}
+    ${tipsBlock(slug)}
+    <div class="blk"><h3>${t("Si juegas contra {hero}",{hero:h.name})}</h3>${counterItemsBlock(slug)}<div class="acts" style="margin-top:14px"><a class="btn" href="#contrarrestar/${slug}">${t("Ver los mejores héroes contra {hero}",{hero:h.name})}</a></div></div>
     <div class="blk"><h3>${t("Líneas más difíciles")}</h3><div class="lanes">${hardLanes(slug).map(s=>`<a class="lane" href="#comparar/${slug}/${s}">${img(s)}${esc(H(s).name)}</a>`).join("")}</div>
       <p class="fine">${t("Los tres héroes contra los que peor rinde en línea según los datos.")}</p></div>
   </section>`;
@@ -359,6 +386,15 @@ function itemsView(){
   </section>`;
 }
 
+function itemTiming(n){
+  const it = S.items[n], chip = m => `<a class="lane" href="#objeto/${islug(m)}">${ico(m)}${esc(m)} <small>${souls(S.items[m].cost)}</small></a>`;
+  const by = Object.keys(S.heroes).filter(sl=>(S.heroes[sl].times||{})[n]!=null).map(sl=>({sl,m:S.heroes[sl].times[n]})).sort((a,b)=>a.m-b.m);
+  const chain = (it.from||[]).length || (it.to||[]).length ? `<div class="chain">${(it.from||[]).length?`<div><h4 class="sub">${t("Se construye con")}</h4><div class="lanes">${it.from.map(chip).join("")}</div></div>`:""}${(it.to||[]).length?`<div><h4 class="sub">${t("Mejora a")}</h4><div class="lanes">${it.to.map(chip).join("")}</div></div>`:""}</div>` : "";
+  const when = it.t!=null ? `<p class="when">${t("Se compra de media en el minuto {n}",{n:`<b>${nf(it.t,{maximumFractionDigits:0})}</b>`})}.</p>` : "";
+  const heroes = by.length ? `<h4 class="sub">${t("Minuto medio de compra por héroe")}</h4><div class="lanes">${by.slice(0,12).map(b=>`<a class="lane" href="#h-${b.sl}">${img(b.sl)}${esc(H(b.sl).name)} <small>${nf(b.m,{maximumFractionDigits:0})}'</small></a>`).join("")}</div>` : "";
+  if (!when && !chain && !heroes) return "";
+  return `<div class="blk"><h3>${t("Cuándo se compra y cómo mejora")}</h3>${when}${chain}${heroes}<p class="fine">${t("Minuto medio de compra en partidas ranked y cadena de componentes del juego: los objetos baratos se combinan en los caros.")}</p></div>`;
+}
 function itemView(n){
   const it = S.items[n], c = costTier(it.cost);
   const users = PH.map(([k,lab,time])=>[lab,time,(USE[n]||[]).filter(u=>u.phase===k).map(u=>u.slug)]).filter(x=>x[2].length);
@@ -367,6 +403,7 @@ function itemView(n){
     <a class="back" href="#objetos">← ${t("Todos los objetos")}</a>
     <div class="sheet-head ihead" style="--cat:${CAT[it.c]}">${ico(n,"xl")}
       <div><h2>${esc(n)}</h2><div class="meta"><span class="tb" style="--tc:${CAT[it.c]}">${catName(it.c)}</span>${c?`<span>Tier ${c}</span>`:''}${it.cost?`<span>· ${t("{n} almas",{n:nf(it.cost)})}</span>`:''}</div></div></div>
+    ${itemTiming(n)}
     <div class="blk"><h3>${t("Lo compran en su build")}</h3>${users.length ? users.map(([lab,time,l])=>`<div class="ufor"><h4>${t(lab)}<small>${time}</small></h4><div class="lanes">${l.sort((a,b)=>H(a).name.localeCompare(H(b).name)).map(hchip).join("")}</div></div>`).join("") : `<p class="fine">${t("Ningún héroe lo lleva en su build más comprada ahora mismo.")}</p>`}</div>
     <div class="blk"><h3>${t("Héroes donde mejor rinde")}</h3>${bestIn.length ? `<div class="best">${bestIn.map(b=>`<a class="bi" href="#h-${b.sl}">${img(b.sl)}<span>${esc(H(b.sl).name)}</span><b>${pct(b.wr)}</b></a>`).join("")}</div><p class="fine">${t("Winrate del héroe con este objeto, según {src}.",{src:SRC()})}</p>` : `<p class="fine">${t("No aparece entre los objetos con mejor winrate de ningún héroe.")}</p>`}</div>
     <div class="acts"><a class="btn pri" href="#crear">${t("Crear una build")}</a></div>
@@ -425,6 +462,24 @@ function heroLaneBlock(slug){
     <div class="duocols"><div><h4>${t("Mejores enfrentamientos")}</h4><div class="lanes">${odds.slice(0,5).map(chip).join("")}</div></div><div><h4>${t("Peores enfrentamientos")}</h4><div class="lanes">${odds.slice(-5).reverse().map(chip).join("")}</div></div></div>
     <p class="fine">${t("Probabilidad de ganar la línea con {hero} contra cada héroe. Pulsa uno para compararlos.",{hero:H(slug).name})}</p>
     <h4 style="margin-top:20px">${t("Mejores compañeros de línea")}</h4>${duoList(slug)}</div>`;
+}
+
+function counterView(e){
+  const opts = `<option value="">${t("Elige un héroe…")}</option>` + Object.keys(S.heroes).sort((x,y)=>H(x).name.localeCompare(H(y).name)).map(k=>`<option value="${k}" ${k===e?'selected':''}>${esc(H(k).name)}</option>`).join("");
+  const head = `<div class="sh"><h2>${t("Contrarrestar a un héroe")}</h2><p>${t("Elige al héroe rival y mira qué héroes y qué objetos funcionan mejor contra él")}</p></div>
+    <div class="cmpbar"><label>${t("Héroe rival")}<select id="ce">${opts}</select></label></div>`;
+  if (!e) return `<section class="wrap">${head}</section>`;
+  const cands = Object.keys(S.heroes).filter(x=>x!==e && (U.crole==="Todos"||H(x).role===U.crole)).map(x=>({x,o:laneOdds(x,e)})).sort((a,b)=>b.o.p-a.o.p);
+  const row = c => `<a class="crow" href="#comparar/${c.x}/${e}">${img(c.x)}<span class="cn"><b>${esc(H(c.x).name)}</b><small>${esc(t(H(c.x).role))} · Tier ${tierOf(c.x)}</small></span>
+      <span class="cbar" role="img" aria-label="${pct(c.o.p)}"><i style="width:${Math.min(Math.max((c.o.p-35)/30*100,3),100)}%"></i></span><em>${pct(c.o.p)}</em><small>${c.o.games?t("{n} partidas",{n:kfmt(c.o.games)}):"—"}</small></a>`;
+  return `<section class="wrap">${head}
+    <div class="filters">${ROLES.map(r=>`<button class="chip" data-crole="${r}" aria-pressed="${U.crole===r}">${t(r)}</button>`).join("")}</div>
+    <div class="blk"><h3>${t("Mejores héroes contra {hero}",{hero:H(e).name})}</h3><div class="crows">${cands.slice(0,8).map(row).join("")}</div>
+      <p class="fine">${t("Probabilidad de ganar la línea contra {hero}, de mayor a menor (mismo cálculo que en Comparar). Pulsa uno para ver el detalle.",{hero:H(e).name})}</p></div>
+    <div class="blk"><h3>${t("Los que peor rinden contra {hero}",{hero:H(e).name})}</h3><div class="crows">${cands.slice(8).slice(-4).reverse().map(row).join("")}</div></div>
+    <div class="blk"><h3>${t("Objetos contra {hero}",{hero:H(e).name})}</h3>${counterItemsBlock(e)}</div>
+    <div class="acts"><a class="btn" href="#h-${e}">${t("Ver la ficha de {hero}",{hero:H(e).name})}</a></div>
+  </section>`;
 }
 
 function cmpView(a,b){
@@ -684,7 +739,7 @@ function gsFill(){
 /* ═══════════════ Render and events ═══════════════ */
 function render(){
   const r = route();
-  const body = r.v==="hero" ? heroView(r.slug) : r.v==="builds" ? buildsView() : r.v==="items" ? itemsView() : r.v==="item" ? itemView(r.name) : r.v==="cmp" ? cmpView(r.a,r.b) : r.v==="mk" ? mkView(r.slug) : r.v==="tl" ? tlView() : r.v==="news" ? newsView() : r.v==="wr" ? wrView() : r.v==="coach" ? coachView() : r.v==="legal" ? legalView() : tierView();
+  const body = r.v==="hero" ? heroView(r.slug) : r.v==="builds" ? buildsView() : r.v==="items" ? itemsView() : r.v==="item" ? itemView(r.name) : r.v==="cmp" ? cmpView(r.a,r.b) : r.v==="ctr" ? counterView(r.e) : r.v==="mk" ? mkView(r.slug) : r.v==="tl" ? tlView() : r.v==="news" ? newsView() : r.v==="wr" ? wrView() : r.v==="coach" ? coachView() : r.v==="legal" ? legalView() : tierView();
   $("#app").innerHTML = header(r) + `<main>${body}</main>` + footer();
   document.title = r.v==="hero" ? `${H(r.slug).name} · Zok3r Deadlock Meta` : r.v==="item" ? `${r.name} · Zok3r Deadlock Meta` : "Zok3r Deadlock Meta";
   document.documentElement.lang = lang;
@@ -700,6 +755,7 @@ document.addEventListener("click", e=>{
   const el = e.target.closest("button,a"); if (!el) return;
   const D = el.dataset;
   if (D.vi!==undefined){ U.vi = +D.vi; rerender(); return; }
+  if (D.crole){ U.crole = D.crole; rerender(); return; }
   if (D.bracket){ useBracket(D.bracket); rerender(); return; }
   if (D.lang){ lang = D.lang; LS.set("dl-lang",lang); loadLang().then(()=>rerender()); return; }
   if (D.hero){ location.hash = "h-"+D.hero; return; }
@@ -736,6 +792,7 @@ document.addEventListener("click", e=>{
 document.addEventListener("change", e=>{
   const id = e.target.id;
   if (id==="isort"){ U.isort = e.target.value; rerender(); return; }
+  if (id==="ce"){ location.hash = "contrarrestar/"+e.target.value; return; }
   if (id==="mk-h"){ U.bm = null; location.hash = "crear/"+e.target.value; return; }
   if (id==="ca" || id==="cb"){ const a=$("#ca").value, b=$("#cb").value; location.hash = "comparar/"+a+(b?"/"+b:""); return; }
 });

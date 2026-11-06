@@ -26,7 +26,8 @@ There is no build step. Serve the folder with any static host. Locally:
 | `#tier` | Tier list |
 | `#builds`, `#h-<hero>` | Hero list and hero sheets (build by phase, best items, winrate history, lane matchups and partners) |
 | `#winrates` | Winrate table with change since the previous patch |
-| `#objetos`, `#objeto/<item>` | Item browser and item detail |
+| `#objetos`, `#objeto/<item>` | Item browser and item detail (buy timing and upgrade chain) |
+| `#contrarrestar/<hero>` | Counter-pick: best heroes and items against an enemy hero |
 | `#comparar/<a>/<b>` | Hero comparison: lane win chance, soul lead curve, partners, builds |
 | `#crear/<hero>?e=..&m=..&l=..` | Build maker. The build lives in the URL |
 | `#mi-tier?sp=..&s=..&a=..&b=..&c=..&f=..` | Tier list maker. Hero slugs per tier live in the URL |
@@ -48,9 +49,13 @@ Everything comes from the public Deadlock API (`api.deadlock-api.com`):
 - **curves**: souls lead of a hero's duo over the enemy duo at 3/6/9/12/15 minutes for every pair of heroes that lane against each other (`lane-soul-curve`, which the API marks as subject to change).
 - **builds**: the most bought items per phase for every hero (ranked, purchase-time windows). They overwrite `early`/`mid`/`late` in `data.json`.
 - **variants**: heroes played two ways (spirit / gun Talon). Items bought by 12-80% of a hero's players are candidates; if two of them are rarely bought together the hero has two archetypes, and each gets a build from the players who bought both of its signature items. Both archetypes must cover at least 20% of the hero's players and differ in kind (weapon / spirit / tank), otherwise the hero keeps one build. Stored in `heroes[slug].variants`; loosen `VARIANT_SHARE` in the script to find more heroes.
+- **abilities**: ability upgrade order per hero (consensus order of the upgrade points, the order abilities are maxed, and what is maxed first with its winrate). Replaces the deadlocktiers order.
+- **flow**: item progression per hero in four phases (0-9, 9-20, 20-30, 30+ min) with pick rate, winrate and what players buy next.
+- **counter**: items that do better than usual against teams with a given hero, relative to that hero's overall effect on every item.
+- **items**: average buy minute per item and per hero, and the game's component chains (what an item is built from and what it upgrades into).
 - **history**: winrate per hero between the balance patches listed in `meta.patchDates` (edit that list when a new balance patch ships).
 
-Still maintained by hand: the tier list, the game plans, the news, the coaching copy, and the ability order (from deadlocktiers.com).
+Still maintained by hand: the tier list, the game plans, the news and the coaching copy. Hand-written lane tips go in `heroes[slug].tips` (a list of Spanish sentences, each with an English entry in `i18n/en.json`) and show up on the hero page; none are written yet.
 When a script adds new heroes, items or text, add their English text to `i18n/en.json` (the checker shows what is missing).
 
 ## Lane odds, in short
